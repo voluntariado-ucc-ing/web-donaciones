@@ -1,0 +1,61 @@
+#formulario {
+  width: 50vw;
+  margin-left: 25%;
+  text-align: left;
+}
+
+#formulario li {
+  list-style-type: none;
+}
+
+.acincuenta {
+  display: block;
+  float: left;
+  width: 50%;
+}
+
+#nombreCompleto {
+  width: 100%;
+}
+
+#nombreCompleto input {
+  display: block;
+  float: left;
+  width: 30%;
+  margin-left: 0px;
+  margin-right: 10%;
+}
+
+#forumulario input[type="text"]:focus {
+  border: 3px solid #23b1e9;
+}
+
+#formulario input {
+  margin-top: 1vw;
+  margin-bottom: 1vw;
+}
+
+.titles {
+  display: block;
+}
+
+#consulta {
+  height: 25vh;
+  width: 90%;
+  margin-right: 10%;
+}
+
+#enviar {
+  float: right;
+  margin-right: 10%;
+  background-color: black;
+  padding: 10px;
+  border-radius: 5px;
+  text-decoration: none;
+  color: aliceblue;
+  border: 3px solid transparent;
+}
+
+#enviar:hover {
+  border: 3px solid #23b1e9;
+}
