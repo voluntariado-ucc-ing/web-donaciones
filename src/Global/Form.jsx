@@ -1,6 +1,11 @@
 import React, { Component } from "react";
 import "./css/Form.css";
-class Form extends Component {
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
+import Col from "react-bootstrap/Col";
+import Row from "react-bootstrap/Row";
+
+class Formulario extends Component {
   render() {
     return (
       <div>
@@ -11,56 +16,84 @@ class Form extends Component {
           Su propuesta va a ser analizada y luego uno de nuestros representantes
           va a responderle si fue aprobada o no.
         </p>
-        <form id="formulario">
-          <h5>Donacion</h5>
-          <ul>
-            <li id="nombreCompleto">
-              <a className="acincuenta" for="name">
-                Nombre
-              </a>
-              <a className="acincuenta">Apellido</a>
-              <br />
-              <input type="text"></input>
-              <input type="text"></input>
-            </li>
-            <li>
-              <a className="titles">Teléfono</a>
-              <input
-                id="telefono"
-                type="tel"
-                placeholder="Teléfono 351 XXX XXXX"
-              ></input>
-            </li>
-            <li>
-              <a className="titles">Mail</a>
-              <input type="email" placeholder="e-Mail"></input>
-            </li>
-            <li>
-              <a className="titles">Su consulta</a>
-              <textarea for="msg" id="consulta"></textarea>
-            </li>
-            <li>
-              <input placeholder="Direccion" />
-            </li>
-            <li>
-              <input placeholder="Tipo de donacion a" />
-            </li>
-            <li>
-              {" "}
-              <input placeholder="Cantidad ax2" />
-            </li>
-            <li>
-              {" "}
-              <input placeholder="Como se entero opciones" />
-            </li>
-          </ul>
-          <a id="enviar" href="">
-            Enviar
-          </a>
-        </form>
+
+        <Form id="formulario">
+        <Form.Group controlId="name">
+          <Form.Label>Nombre</Form.Label>
+          <Form.Control type="text" placeholder="Apellido" />
+        </Form.Group>
+
+        <Form.Group controlId="lastName">
+          <Form.Label>Apellido</Form.Label>
+          <Form.Control type="text" placeholder="Apellido" />
+        </Form.Group>
+
+        <Form.Group controlId="tel">
+          <Form.Label>Teléfono</Form.Label>
+          <Form.Control type="tel" placeholder="351 XXX XXXX" />
+        </Form.Group>
+
+          <Form.Group controlId="formEmail">
+            <Form.Label>Email address</Form.Label>
+            <Form.Control type="email" placeholder="Enter email" />
+          </Form.Group>
+
+        <Form.Group controlId="dire">
+          <Form.Label>Dirección</Form.Label>
+          <Form.Control type="text" placeholder="Ciudad, calle, altura" />
+        </Form.Group>
+
+          <Form.Group controlId="exampleForm.ControlSelect2">
+            <Form.Label>Tipo de donación</Form.Label>
+            <Form.Control as="select" multiple>
+              <option>Material de construccion</option>
+              <option>Elementos de banio</option>
+              <option>Herramientas</option>
+              <option>Muebles</option>
+              <option>Otro</option>
+            </Form.Control>
+          </Form.Group>
+
+          <fieldset>
+            <Form.Group as={Row}>
+              <Form.Label as="legend" column sm={2}>
+                Cantidad
+              </Form.Label>
+              <Col sm={10}>
+                <Form.Check
+                    type="radio"
+                    label="first radio"
+                    name="formHorizontalRadios"
+                    id="formHorizontalRadios1"
+                />
+                <Form.Check
+                    type="radio"
+                    label="second radio"
+                    name="formHorizontalRadios"
+                    id="formHorizontalRadios2"
+                />
+                <Form.Check
+                    type="radio"
+                    label="third radio"
+                    name="formHorizontalRadios"
+                    id="formHorizontalRadios3"
+                />
+              </Col>
+            </Form.Group>
+          </fieldset>
+
+          <Form.Group controlId="exampleForm.ControlTextarea1">
+            <Form.Label>Si prefiere describir una cantidad no convencional, describalo aqui</Form.Label>
+            <Form.Control as="textarea" rows="3" />
+          </Form.Group>
+
+        <Button variant="primary" type="submit">
+          Enviar
+        </Button>
+      </Form>
       </div>
     );
   }
 }
 
-export default Form;
+export default Formulario;

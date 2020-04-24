@@ -1,16 +1,19 @@
 import React, {Component} from "react";
-import { Link } from "react-router-dom";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Navbar from "react-bootstrap/Navbar";
+import Nav from "react-bootstrap/Nav";
 
 class Header extends Component{
     render(){
         return(
            <div>
-               <nav>
-                   <ul>
-                       <li><Link to="/">Home</Link></li>
-                       <li><Link to="/form">Formulario</Link></li>
-                   </ul>
-               </nav>
+               <Navbar bg="dark" variant="dark">
+                   <Navbar.Brand href="#home">Voluntariado</Navbar.Brand>
+                   <Nav className="mr-auto">
+                       <Nav.Link href="/">Home</Nav.Link>
+                       <Nav.Link href="/form">Donaciones</Nav.Link>
+                   </Nav>
+               </Navbar>
            </div>
         );
     }
