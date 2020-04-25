@@ -1,9 +1,3 @@
-#web {
-  max-width: available;
-  height: 90vh;
-  text-align: center;
-}
-
 div.background {
   background-repeat: repeat;
   background-image: url(../../images/imagenportada.jpg);
@@ -14,7 +8,6 @@ div.transbox {
   background-color: #ffffff;
   opacity: 0.6;
 }
-
 
 div.transbox p {
   margin: 5%;
