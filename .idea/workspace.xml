@@ -18,6 +18,9 @@
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\milel\OneDrive\Documentos\GitHub\web-donaciones\src" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\milel\OneDrive\Documentos\GitHub\web-donaciones" />
     </key>
@@ -58,7 +61,9 @@
       <updated>1587736326971</updated>
       <workItem from="1587736330613" duration="51000" />
       <workItem from="1587736382395" duration="943000" />
-      <workItem from="1587755424268" duration="5007000" />
+      <workItem from="1587755424268" duration="5058000" />
+      <workItem from="1587821442483" duration="6233000" />
+      <workItem from="1587836871891" duration="677000" />
     </task>
     <servers />
   </component>
