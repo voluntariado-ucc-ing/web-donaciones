@@ -1,19 +1,29 @@
 import React, {Component} from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bootstrap/Navbar";
 
 class Header extends Component{
     render(){
         return(
            <div>
-               <Navbar bg="dark" variant="dark">
-                   <Navbar.Brand href="#home">Voluntariado</Navbar.Brand>
+               <Nav variant="pills" defaultActiveKey="/">
+               <Navbar bg="light" >
+                   <Navbar.Brand href="/home">
+                       <img
+                           alt="ucc"
+                           src={"https://www.uccor.edu.ar/portal2015/UniversidadCatolica/images/logo-ucc-2018.svg"}
+                           width="80"
+                           height="40"
+                           className="d-inline-block align-top"
+                       />
+                   </Navbar.Brand>
                    <Nav className="mr-auto">
-                       <Nav.Link href="/">Home</Nav.Link>
-                       <Nav.Link href="/form">Donaciones</Nav.Link>
+                       <Nav.Link href="/home">Inicio</Nav.Link>
+                       <Nav.Link eventKey="link-1" href="/form">Donaciones</Nav.Link>
                    </Nav>
                </Navbar>
+               </Nav>
            </div>
         );
     }

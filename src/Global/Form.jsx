@@ -8,15 +8,14 @@ import Row from "react-bootstrap/Row";
 class Formulario extends Component {
   render() {
     return (
-      <div>
-        <h2>Donen</h2>
-        <p>
-          Esta es la pagina web para realizar donaciones en el voluntarioado de
-          ingenieria de la Universidad Catolica de Cordoba. <br />
-          Su propuesta va a ser analizada y luego uno de nuestros representantes
-          va a responderle si fue aprobada o no.
-        </p>
-
+      <div id="web">
+                  <h2>Donen</h2>
+                  <p>
+                      Esta es la pagina web para realizar donaciones en el voluntariado de
+                      ingenieria de la Universidad Catolica de Cordoba. <br />
+                      Su propuesta va a ser analizada y luego uno de nuestros representantes
+                      va a responderle si fue aprobada o no.
+                  </p>
         <Form id="formulario">
         <Form.Group controlId="name">
           <Form.Label>Nombre</Form.Label>
@@ -34,8 +33,8 @@ class Formulario extends Component {
         </Form.Group>
 
           <Form.Group controlId="formEmail">
-            <Form.Label>Email address</Form.Label>
-            <Form.Control type="email" placeholder="Enter email" />
+            <Form.Label>Email</Form.Label>
+            <Form.Control type="email" placeholder="example@mail.com" />
           </Form.Group>
 
         <Form.Group controlId="dire">
@@ -87,7 +86,7 @@ class Formulario extends Component {
             <Form.Control as="textarea" rows="3" />
           </Form.Group>
 
-        <Button variant="primary" type="submit">
+        <Button id="enviar" type="submit">
           Enviar
         </Button>
       </Form>
