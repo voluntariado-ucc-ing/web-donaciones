@@ -8,6 +8,35 @@ import Row from "react-bootstrap/Row";
 import Donacion from "./Donacion";
 
 class Formulario extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      donaciones: [],
+    };
+    this.init();
+  }
+
+  init = () => {
+    var dons = this.state.donaciones;
+    var done = new Donacion();
+    done.id = 0;
+    dons.push(done);
+    this.setState({ donaciones: dons });
+  };
+
+  newDonation = () => {
+    var dons = this.state.donaciones;
+    var done = new Donacion();
+    done.id = dons.length;
+    dons.push(done);
+    this.setState({ donaciones: dons });
+  };
+
+  handleDelete = (id) => {
+    const dons = this.state.donaciones.filter((c) => c.id !== id);
+    this.setState({ donaciones: dons });
+  };
+
   render() {
     return (
       <Conteiner id="formulario">
@@ -59,8 +88,18 @@ class Formulario extends Component {
               <Form.Control type="number" placeholder="Altura" required />
             </Form.Group>
           </Form.Row>
-          <Donacion></Donacion>
 
+          {this.state.donaciones.map((donacion) => (
+            <Donacion
+              key={donacion.id}
+              id={donacion.id}
+              onDelete={this.handleDelete}
+            />
+          ))}
+
+          <Button variant="primary" onClick={this.newDonation}>
+            +
+          </Button>
           <Form.Group>
             <Form.Label>Aclaraciones</Form.Label>
             <Form.Control as="textarea" />
