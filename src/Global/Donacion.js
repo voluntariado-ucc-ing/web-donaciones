@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./css/Form.css";
+import "./css/Donacion.css";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Col from "react-bootstrap/Col";
@@ -56,10 +56,12 @@ class Donacion extends Component {
             {this.otro()}
           </Form.Group>
 
-          <Form.Group as={Col} md="1">
-            <Form.Label>.</Form.Label>
-            <Button onClick={() => this.props.onDelete(this.props.id)}>
-              -
+          <Form.Group id="menos" as={Col} md="1">
+            <Button
+              variant="danger"
+              onClick={() => this.props.onDelete(this.props.id)}
+            >
+              Quitar
             </Button>{" "}
           </Form.Group>
         </Form.Row>

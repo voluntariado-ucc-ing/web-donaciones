@@ -89,6 +89,7 @@ class Formulario extends Component {
             </Form.Group>
           </Form.Row>
 
+          <Form.Label>Donaciones</Form.Label>
           {this.state.donaciones.map((donacion) => (
             <Donacion
               key={donacion.id}
@@ -97,8 +98,8 @@ class Formulario extends Component {
             />
           ))}
 
-          <Button variant="primary" onClick={this.newDonation}>
-            +
+          <Button id="mas" variant="primary" onClick={this.newDonation}>
+            Agregar nueva
           </Button>
           <Form.Group>
             <Form.Label>Aclaraciones</Form.Label>
