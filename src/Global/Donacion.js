@@ -8,6 +8,10 @@ import Row from "react-bootstrap/Row";
 class Donacion extends Component {
   state = {
     isNoConventional: false,
+    donationType: "",
+    quantity: "",
+    unit: "",
+    nonConventionalUnit: "",
   };
 
   otro = () => {
@@ -15,14 +19,27 @@ class Donacion extends Component {
       return (
         <div>
           <Form.Label>Unidad no convencional</Form.Label>
-          <Form.Control rows="3" />
+          <Form.Control rows="3" value={this.state.nonConventionalUnit} onChange={this.handleNonConventionalUnit} />
         </div>
       );
   };
+
   handleUnitChange = (e) => {
-    if (e.target.value === "Otro") this.setState({ isNoConventional: true });
-    else this.setState({ isNoConventional: false });
+    let isNonConventional = e.target.value === "otro" ? true : false
+    this.setState({unit: e.target.value, isNoConventional: isNonConventional})
   };
+
+  handleDonationType = e => {
+    this.setState({donationType: e.target.value})
+  }
+
+  handleQuantity = e => {
+    this.setState({quantity: e.target.value})
+  }
+
+  handleNonConventionalUnit = e => {
+    this.setState({nonConventionalUnit: e.target.value})
+  }
 
   render() {
     return (
@@ -30,25 +47,25 @@ class Donacion extends Component {
         <Form.Row>
           <Form.Group as={Col} md="4" controlId="donacion">
             <Form.Label>Tipo de donación</Form.Label>
-            <Form.Control as="select" required>
-              <option>Material de construccion</option>
-              <option>Elementos de banio</option>
-              <option>Herramientas</option>
-              <option>Muebles</option>
-              <option>Otro</option>
+            <Form.Control as="select" required onChange={this.handleDonationType}>
+              <option value="material-de-construccion">Material de construccion</option>
+              <option value="elemento-de-banio">Elementos de baño</option>
+              <option value="herramientas">Herramientas</option>
+              <option value="muebles">Muebles</option>
+              <option value="otro">Otro</option>
             </Form.Control>
           </Form.Group>
 
           <Form.Group as={Col} md="2">
             <Form.Label>Cantidad</Form.Label>
-            <Form.Control type="number"></Form.Control>
+            <Form.Control type="number" value={this.state.quantity} onChange={this.handleQuantity}/>
           </Form.Group>
           <Form.Group as={Col} md="2">
             <Form.Label>Unidad</Form.Label>
             <Form.Control as="select" onChange={this.handleUnitChange}>
-              <option>Metros</option>
-              <option>Kg</option>
-              <option value="Otro">Otro</option>
+              <option value="m">Metros</option>
+              <option value="kg">Kg</option>
+              <option value="otro">Otro</option>
             </Form.Control>
           </Form.Group>
 
