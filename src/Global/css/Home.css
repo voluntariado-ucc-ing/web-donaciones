@@ -10,7 +10,6 @@ div.transbox {
 }
 
 div.transbox p {
-  margin: 5%;
-  font-weight: bold;
+  font-weight: normal;
   color: #000000;
 }
