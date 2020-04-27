@@ -1,3 +1,9 @@
 Nav.Link {
   text-decoration-color: #002c55;
+  justify-items: end;
 }
+
+.nav-end{
+  padding-left: 70%;
+}
+
