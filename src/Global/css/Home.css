@@ -26,8 +26,12 @@
 
 .site-section {
     padding: 2em 0;
-    border-bottom-color: gray;
 }
+
+.site-color{
+    background-color: rgb(220,220,220);
+}
+
 @media (min-width: 768px) {
     .site-section {
         padding: 4em 0; } }

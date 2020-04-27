@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Carousel from "react-bootstrap/Carousel";
+import "../css/Carousel.css"
 
 class CarouselUcc extends Component {
     render() {
@@ -9,7 +10,7 @@ class CarouselUcc extends Component {
                 <Carousel.Item>
                     <img
                         className="d-block w-100"
-                        src={""}
+                        src={require('../../images/portada.jpg')}
                         alt="First slide"
                     />
                     <Carousel.Caption>
@@ -20,7 +21,7 @@ class CarouselUcc extends Component {
                 <Carousel.Item>
                     <img
                         className="d-block w-100"
-                        src="holder.js/800x400?text=Second slide&bg=282c34"
+                        src={require('../../images/portada.jpg')}
                         alt="Third slide"
                     />
 
@@ -32,7 +33,7 @@ class CarouselUcc extends Component {
                 <Carousel.Item>
                     <img
                         className="d-block w-100"
-                        src="holder.js/800x400?text=Third slide&bg=20232a"
+                        src={require('../../images/portada.jpg')}
                         alt="Third slide"
                     />
 
