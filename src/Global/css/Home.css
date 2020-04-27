@@ -24,6 +24,35 @@
     }
 }
 
+.site-section {
+    padding: 2em 0;
+    border-bottom-color: gray;
+}
+@media (min-width: 768px) {
+    .site-section {
+        padding: 4em 0; } }
+.site-section.site-section-sm {
+    padding: 4em 0;
+}
+
+.heading h2 {
+    font-size: 2rem;
+    letter-spacing: .2em;
+    position: relative;
+    padding-bottom: 20px;
+    display: inline-block;
+}
+
+.heading h2:after {
+    position: absolute;
+    width: 70px;
+    left: 0;
+    bottom: 0;
+    height: 2px;
+    background: #520029 ;
+}
+
+
 
 
 
