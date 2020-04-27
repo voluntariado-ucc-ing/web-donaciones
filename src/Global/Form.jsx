@@ -161,7 +161,7 @@ class Formulario extends Component {
             <Form.Control as="textarea" onChange={this.handleExtraData} value={this.state.extraData}/>
           </Form.Group>
 
-          <Button onClick={ () => {console.log(JSON.stringify(this.state))}} id="enviar">
+          <Button type="submit" onClick={ () => {console.log(JSON.stringify(this.state))}} id="enviar">
             Enviar
           </Button>
         </Form>
