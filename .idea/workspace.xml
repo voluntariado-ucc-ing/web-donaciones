@@ -8,6 +8,9 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FavoritesManager">
+    <favorites_list name="web-donaciones" />
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -64,6 +67,13 @@
       <workItem from="1587755424268" duration="5058000" />
       <workItem from="1587821442483" duration="6233000" />
       <workItem from="1587836871891" duration="677000" />
+      <workItem from="1587848759359" duration="646000" />
+      <workItem from="1587927212450" duration="81000" />
+      <workItem from="1587927344743" duration="203000" />
+      <workItem from="1587929855326" duration="1234000" />
+      <workItem from="1587935625982" duration="355000" />
+      <workItem from="1587994928700" duration="1474000" />
+      <workItem from="1588011203396" duration="5812000" />
     </task>
     <servers />
   </component>
