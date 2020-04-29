@@ -17,23 +17,34 @@ class Home extends Component{
                     </div>
                 </Container>
                 <Container fluid className="site-section heading">
-                    <h2>Quienes somos</h2>
-                    <p>
-                        Somos un voluntariado que pertenece a la UCC y</p>
-                    <p>esta conformado por chicos de varias universidades.
-                    </p>
+                    <Row>
+                        <Col>
+                        <img
+                            src={require('../images/logoucc.png')}
+                            alt={"voluntarios"}
+                        />
+                        </Col>
+                    <Col>
+                        <h2>Quienes somos</h2>
+                        <p>
+                            Somos un voluntariado que pertenece a la UCC y</p>
+                        <p>esta conformado por chicos de varias universidades.
+                        </p>
+                    </Col>
+
+                    </Row>
                 </Container>
                 <Container fluid className={"site-section heading"}>
                     <h2>Que hacemos</h2>
-                    <CarouselUcc/>
+                       <CarouselUcc/>
                 </Container>
-
                 <Container className={"site-section heading"}>
                 <h2>En donde</h2>
                 <p>El barrio "El Milagro"</p>
                 <p>Al lado de la ciudad Obispo Angelelli</p>
                 </Container>
-                <Container className={"site-section heading site-color"}>
+
+                <Container bg={"secondary"} className={"site-section heading site-color"}>
                 <h2 className={"w-border"}>Como podes ayudarnos a ayudar</h2>
                 <p>Realizando donaciones de:</p>
                 <ul>

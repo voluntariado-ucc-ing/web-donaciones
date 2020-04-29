@@ -11,6 +11,13 @@
   <component name="FavoritesManager">
     <favorites_list name="web-donaciones" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="CSS File" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -18,6 +25,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../src" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RecentsManager">
@@ -73,7 +81,13 @@
       <workItem from="1587929855326" duration="1234000" />
       <workItem from="1587935625982" duration="355000" />
       <workItem from="1587994928700" duration="1474000" />
-      <workItem from="1588011203396" duration="5812000" />
+      <workItem from="1588011203396" duration="8287000" />
+      <workItem from="1588022369596" duration="2596000" />
+      <workItem from="1588038140644" duration="640000" />
+      <workItem from="1588039143705" duration="1243000" />
+      <workItem from="1588090868724" duration="1447000" />
+      <workItem from="1588100760541" duration="2455000" />
+      <workItem from="1588106082072" duration="505000" />
     </task>
     <servers />
   </component>

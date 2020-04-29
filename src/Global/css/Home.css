@@ -17,24 +17,43 @@
     padding-bottom: 5%;
 }
 
-@media (max-width: 740px){
-    .transbox{
-        padding-top: 30%;
 
+@media screen and (max-width: 992px) {
+
+}
+
+/* On screens that are 600px or less, set the background color to olive */
+@media screen and (max-width: 690px) {
+    .transbox{
+        padding-top: 40%;
+    }
+}
+
+@media (max-width: 670px){
+    .transbox{
+        padding-top: 50%;
+    }
+}
+
+@media (max-width: 550px){
+    .transbox{
+        padding-top: 70%;
     }
 }
 
 .site-section {
-    padding: 2em 0;
+    padding: 1em;
 }
 
 .site-color{
-    background-color: rgb(220,220,220);
+    background: rgb(220, 220, 220) 100%;
 }
 
 @media (min-width: 768px) {
     .site-section {
-        padding: 4em 0; } }
+        padding: 4em 0;
+    }
+}
 .site-section.site-section-sm {
     padding: 4em 0;
 }
@@ -47,14 +66,8 @@
     display: inline-block;
 }
 
-.heading h2:after {
-    position: absolute;
-    width: 70px;
-    left: 0;
-    bottom: 0;
-    height: 2px;
-    background: #520029 ;
-}
+
+
 
 
 
