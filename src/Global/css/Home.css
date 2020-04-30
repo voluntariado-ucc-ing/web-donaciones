@@ -42,7 +42,7 @@
 @media (max-width: 550px){
     .transbox{
         padding-top: 70%;
-        width: 925px;
+        width: 100%;
     }
 
 }
@@ -51,9 +51,7 @@
     padding: 1em;
 }
 
-.site-color{
-    background: rgb(220, 220, 220) 100%;
-}
+
 
 @media (min-width: 768px) {
     .site-section {

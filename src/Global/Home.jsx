@@ -1,4 +1,4 @@
-import React, {Component, useEffect, useState} from "react";
+import React, {Component} from "react";
 import "././css/Home.css"
 import CarouselUcc from "./components/Carousel";
 import Row from "react-bootstrap/Row";
@@ -61,7 +61,7 @@ render() {
                     </Row>
                 </Container>
 
-                <Container bg={"secondary"} className={"site-section heading site-color"}>
+                <Container fluid className={"site-section heading site-color who"}>
                 <h2 className={"w-border"}>Como podes ayudarnos a ayudar</h2>
                 <p>Realizando donaciones de:</p>
                 <ul>
