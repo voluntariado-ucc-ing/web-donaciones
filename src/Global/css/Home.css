@@ -19,7 +19,7 @@
 
 
 @media screen and (max-width: 992px) {
-
+    
 }
 
 /* On screens that are 600px or less, set the background color to olive */
@@ -52,6 +52,7 @@
 @media (min-width: 768px) {
     .site-section {
         padding: 4em 0;
+        width: 925px;   /*modifica el ancho del carrusel*/
     }
 }
 .site-section.site-section-sm {
