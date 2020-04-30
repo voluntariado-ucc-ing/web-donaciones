@@ -27,6 +27,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../src" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="vcs.Git" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -88,6 +89,9 @@
       <workItem from="1588090868724" duration="1447000" />
       <workItem from="1588100760541" duration="2455000" />
       <workItem from="1588106082072" duration="505000" />
+      <workItem from="1588193962559" duration="2319000" />
+      <workItem from="1588202200929" duration="4659000" />
+      <workItem from="1588259737067" duration="643000" />
     </task>
     <servers />
   </component>
