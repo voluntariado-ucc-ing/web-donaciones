@@ -1,9 +1,12 @@
-Nav.Link {
+.navbar {
   text-decoration-color: #002c55;
-  justify-items: end;
+  background-color: #EEEEEE;
 }
 
-.nav-end{
-  padding-left: 70%;
+.b1{
+  margin-right: 30px;
 }
 
+.b2{
+  margin-right: 10px;
+}
