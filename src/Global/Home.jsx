@@ -25,7 +25,7 @@ render() {
                                     className={"logo1"}
                                 />
                                 <img
-                                    src={require('../images/logovol2.jpg')}
+                                    src={require('../images/logo.png')}
                                     alt={"voluntarios"}
                                     className={"logo2"}
                                 />
@@ -33,25 +33,22 @@ render() {
 
                         </Col>
                     <Col className={"info-1"}>
-                        <h2>Quienes somos</h2>
+                        <h2>Quiénes somos</h2>
                         <p>
-                            Somos un voluntariado que pertenece a la UCC y</p>
-                        <p>esta conformado por chicos de varias universidades.
-                        </p>
+                            Somos un voluntariado perteneciente a la Universidad Católica de Córdoba conformado por todos aquellos que quieran ayudar sin importar la universidad en la que estudian.</p>
                     </Col>
 
                     </Row>
                 </Container>
                 <Container fluid className={"site-section heading"}>
-                    <h2>Que hacemos</h2>
+                    <h2>Qué hacemos</h2>
                        <CarouselUcc/>
                 </Container>
                 <Container className={"site-section heading"}>
                     <Row>
                         <Col className={"info"}>
-                            <h2>En donde</h2>
-                            <p>El barrio "El Milagro"</p>
-                            <p>Al lado de la ciudad Obispo Angelelli</p>
+                            <h2>En dónde</h2>
+                               <p>Los encuentros se llevan a cabo los días sábados de 9 a 13 hs en el barrio El Milagro, al lado de Ciudad Obispo Angelelli, Córdoba.</p>
                         </Col>
                         <Col>
                             <iframe
@@ -62,12 +59,10 @@ render() {
                 </Container>
 
                 <Container fluid className={"site-section heading site-color who"}>
-                <h2 className={"w-border"}>Como podes ayudarnos a ayudar</h2>
-                <p>Realizando donaciones de:</p>
-                <ul>
-                    <ul>Comida</ul>
-                    <ul>Ropa</ul>
-                </ul>
+                <h2 className={"w-border"}>Cómo podes ayudarnos a ayudar</h2>
+                <p>Recibimos materiales y elementos de construcción, alimentos, ropa y todo aquello que pueda colaborar con nuestra labor en el barrio.
+                    
+                    También puede colaborar con dinero para que el voluntariado adquiera lo necesario para realizar las tareas solidarias. </p>
                 </Container>
             </div>
 

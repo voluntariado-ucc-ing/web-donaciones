@@ -52,13 +52,6 @@
 }
 
 
-
-@media (min-width: 768px) {
-    .site-section {
-        padding: 2em 0;
-    }
-
-}
 .site-section.site-section-sm {
     padding: 1em 0;
 }
@@ -91,7 +84,7 @@
 }
 
 .who{
-    background-color: #F6F6F6;
+    background-color: #F9F9F9;
 }
 
 iframe{
