@@ -7,7 +7,7 @@ import Form from "./Form";
 const Main = () => (
     <div>
         <Switch>
-            <Route exact path="/home" component={Home} />
+            <Route exact path="/" component={Home} />
             <Route path="/form" component={Form} />
         </Switch>
     </div>

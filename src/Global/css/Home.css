@@ -51,7 +51,6 @@
     padding: 1em;
 }
 
-
 .site-section.site-section-sm {
     padding: 1em 0;
 }
@@ -103,6 +102,7 @@ iframe{
     width: 100%;
     height: 20rem;
     border: none;
+    padding: 5%;
 }
 
 
