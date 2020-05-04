@@ -3,7 +3,9 @@ import "././css/Home.css"
 import CarouselUcc from "./components/Carousel";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import Badge from "react-bootstrap/Badge"
+import Badge from "react-bootstrap/Badge";
+import Button from "react-bootstrap/Button";
+import ButtonGroup from "react-bootstrap/ButtonGroup";
 import Container from "react-bootstrap/Container";
 
 class Home extends Component{
@@ -15,6 +17,7 @@ render() {
                         <Badge variant="light"><h1>Voluntariado El Milagro</h1></Badge>
                     </div>
                 </Container>
+
                 <Container fluid className="site-section heading">
                     <Row className={"justify-content-md-center who"} xs={1} md={2}>
                         <Col>
@@ -30,7 +33,6 @@ render() {
                                     className={"logo2"}
                                 />
                             </div>
-
                         </Col>
                     <Col className={"info-1"}>
                         <h2>Quiénes somos</h2>
@@ -40,11 +42,11 @@ render() {
 
                     </Row>
                 </Container>
-                <Container fluid className={"site-section heading"}>
-                    <h2>Qué hacemos</h2>
+                <Container fluid className={"site-section heading what"}>
+                    <h2 className={"text-light"}>Qué hacemos</h2>
                        <CarouselUcc/>
                 </Container>
-                <Container className={"site-section heading"}>
+                <Container fluid className={"site-section heading where"}>
                     <Row>
                         <Col className={"info"}>
                             <h2>En dónde</h2>
@@ -58,11 +60,21 @@ render() {
                     </Row>
                 </Container>
 
-                <Container fluid className={"site-section heading site-color who"}>
-                <h2 className={"w-border"}>Cómo podes ayudarnos a ayudar</h2>
-                <p>Recibimos materiales y elementos de construcción, alimentos, ropa y todo aquello que pueda colaborar con nuestra labor en el barrio.
-                    
-                    También puede colaborar con dinero para que el voluntariado adquiera lo necesario para realizar las tareas solidarias. </p>
+                <Container fluid className={"site-section heading site-color how"}>
+                    <Row>
+                        <Col>
+                            <ButtonGroup vertical className={"info"}>
+                                <Button  variant="outline-dark" size="lg" href={"#"}>Hacer transferencia</Button>
+                                <Button  variant="outline-dark" size="lg" href={"/form"}>Donar materiales y herramientas</Button>
+                            </ButtonGroup>
+                        </Col>
+                        <Col>
+                            <h2 className={"w-border"}>Cómo podes ayudarnos a ayudar</h2>
+                            <p>Recibimos materiales y elementos de construcción, alimentos, ropa y todo aquello que pueda colaborar con nuestra labor en el barrio.
+
+                                También puede colaborar con dinero para que el voluntariado adquiera lo necesario para realizar las tareas solidarias. </p>
+                        </Col>
+                    </Row>
                 </Container>
             </div>
 

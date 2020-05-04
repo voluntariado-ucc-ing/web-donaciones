@@ -87,6 +87,18 @@
     background-color: #F9F9F9;
 }
 
+.where{
+    background-color: #E4DEDE;
+}
+
+.what{
+    background-color: #11368B;
+}
+
+.how{
+    background-color: #F5EEEE;
+}
+
 iframe{
     width: 100%;
     height: 20rem;
