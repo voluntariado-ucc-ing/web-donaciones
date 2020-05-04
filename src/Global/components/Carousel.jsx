@@ -17,7 +17,7 @@ class CarouselUcc extends Component {
                 <Carousel.Item>
                     <img
                         className="img-carousel"
-                        src={require('../../images/portada.jpg')}
+                        src={require('../../images/carrusel_2.jpg')}
                         alt="Third slide"
                     />
                 </Carousel.Item>
