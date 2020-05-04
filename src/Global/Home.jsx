@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import "././css/Home.css"
 import CarouselUcc from "./components/Carousel";
 import Row from "react-bootstrap/Row";
@@ -8,8 +8,8 @@ import Button from "react-bootstrap/Button";
 import ButtonGroup from "react-bootstrap/ButtonGroup";
 import Container from "react-bootstrap/Container";
 
-class Home extends Component{
-render() {
+class Home extends Component {
+    render() {
         return (
             <div>
                 <Container fluid className={"background"}>
@@ -34,23 +34,23 @@ render() {
                                 />
                             </div>
                         </Col>
-                    <Col className={"info-1"}>
-                        <h2>Quiénes somos</h2>
-                        <p>
-                            Somos un voluntariado perteneciente a la Universidad Católica de Córdoba conformado por todos aquellos que quieran ayudar sin importar la universidad en la que estudian.</p>
-                    </Col>
+                        <Col className={"info-1"}>
+                            <h2>Quiénes somos</h2>
+                            <p>
+                                Somos un voluntariado perteneciente a la Universidad Católica de Córdoba conformado por todos aquellos que quieran ayudar sin importar la universidad en la que estudian.</p>
+                        </Col>
 
                     </Row>
                 </Container>
                 <Container fluid className={"site-section heading what"}>
                     <h2 className={"text-light"}>Qué hacemos</h2>
-                       <CarouselUcc/>
+                    <CarouselUcc />
                 </Container>
                 <Container fluid className={"site-section heading where"}>
                     <Row className={"justify-content-md-center"} xs={1} md={2}>
                         <Col className={"info"}>
                             <h2>En dónde</h2>
-                               <p>Los encuentros se llevan a cabo los días sábados de 9 a 13 hs en el barrio El Milagro, al lado de Ciudad Obispo Angelelli, Córdoba.</p>
+                            <p>Los encuentros se llevan a cabo los días sábados de 9 a 13 hs en el barrio El Milagro, al lado de Ciudad Obispo Angelelli, Córdoba.</p>
                         </Col>
                         <Col>
                             <iframe
@@ -64,8 +64,8 @@ render() {
                     <Row>
                         <Col>
                             <ButtonGroup vertical className={"info"}>
-                                <Button  variant="outline-dark" size="lg" className="link btn" href={"https://donaronline.org/universidad-catolica-de-cordoba/desde-casa-podes-ayudar-a-las-familias-de-barrio-el-milagro?preview=true"}>Hacer transferencia</Button>
-                                <Button  variant="outline-dark" size="lg" className="link" href={"/form"}>Donar materiales y herramientas</Button>
+                                <Button variant="outline-dark" size="lg" className="link btn" href={"https://donaronline.org/universidad-catolica-de-cordoba/desde-casa-podes-ayudar-a-las-familias-de-barrio-el-milagro?preview=true"}>Hacer transferencia</Button>
+                                <Button variant="outline-dark" size="lg" className="link" href={"/formcopy"}>Donar materiales y herramientas</Button>
                             </ButtonGroup>
                         </Col>
                         <Col>
