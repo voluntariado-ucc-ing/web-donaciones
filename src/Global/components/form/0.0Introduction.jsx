@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import Button from '@material-ui/core/Button';
+import '../../css/Formcopy.css';
+
 
 class Intro extends Component {
     continue = (e) => {
@@ -23,9 +25,20 @@ class Intro extends Component {
                     <br />
                     Su propuesta va a ser analizada y luego uno de nuestros representantes se va a comunicar con usted.
                 </p>
-                <div>Seleccione si ya ha realizado donacion (en produccion)</div>
-                <Button onClick={this.continue2}>Ya done una vez</Button>
-                <Button onClick={this.continue}> Mi primera vez donando</Button>
+                <div>Si alguna vez a realizado alguna donacion, sus datos han sidos guardados en nuestra base de datos!</div>
+                <Button
+                    onClick={this.continue2}
+                    className="backButton"
+                    variant="contained"
+                    color="primary"
+                >
+                    Ya done una vez</Button>
+                <Button
+                    onClick={this.continue}
+                    className="forwardButton"
+                    variant="contained"
+                    color="primary"
+                > Mi primera vez donando</Button>
             </div>
         );
     }

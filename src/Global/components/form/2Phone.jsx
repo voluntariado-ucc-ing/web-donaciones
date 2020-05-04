@@ -6,6 +6,7 @@ import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
 import style from '../../css/Formcopy.css'
 import Button from '@material-ui/core/Button';
+import '../../css/Formcopy.css';
 
 
 
@@ -23,12 +24,16 @@ class Phone extends Component {
 		const { handleChange, value } = this.props
 		return (
 			<Container>
+				<p>Necesitamos los siguientes datos para poder comunicarnos con usted!</p>
+				<br />
+				<Form.Label>Telefono o celular</Form.Label>
+				<br />
 				<IntlTelInput
 					preferredCountries={['ar']}
 					separateDialCode={true}
 					containerClassName={style.tel}
 				/>
-				<Form.Group as={Col} md="6"
+				<Form.Group
 					controlId="formEmail">
 					<Form.Label>Email</Form.Label>
 					<Form.Control
@@ -47,8 +52,16 @@ class Phone extends Component {
 						value={value.emailconfirmation}
 					/>
 				</Form.Group>
-				<Button onClick={this.back}> Atras</Button>
-				<Button onClick={this.continue}>Continue</Button>
+				<Button onClick={this.back}
+					className="backButton"
+					variant="contained"
+					color="secondary"
+				> Atras</Button>
+				<Button onClick={this.continue}
+					className="forwardButton"
+					variant="contained"
+					color="primary"
+				>Continue</Button>
 			</Container >
 		);
 	}

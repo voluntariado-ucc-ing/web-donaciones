@@ -4,6 +4,7 @@ import Col from 'react-bootstrap/Col';
 import Button from '@material-ui/core/Button';
 import Container from "react-bootstrap/Container";
 import Checkbox from '@material-ui/core/Checkbox';
+import '../../css/Formcopy.css';
 
 //import address
 import Address from './4Address'
@@ -191,13 +192,17 @@ class Donation extends Component {
                 <Button
                     type="submit"
                     onClick={this.back}
+                    className="backButton"
+                    variant="contained"
+                    color="secondary"
                 > Atras</Button>
-                <Button onClick={() => {
-                    console.log(JSON.stringify(this.state));
-                }}>Nueva Donacion</Button>
+                <Button>Nueva Donacion</Button>
                 <Button
                     onClick={this.continue}
                     type="submit"
+                    className="forwardButton"
+                    variant="contained"
+                    color="primary"
                 >Continue</Button>
             </Container >
         );

@@ -3,6 +3,7 @@ import Button from '@material-ui/core/Button';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Col from 'react-bootstrap/Form';
+import '../../css/Formcopy.css';
 
 class Confirmation extends Component {
     back = (e) => {
@@ -16,6 +17,8 @@ class Confirmation extends Component {
     render() {
         return (
             <Container>
+                <h2>Los datos que ha ingresado son</h2>
+                <br />
                 <Form.Row>
                     <Form.Group as={Col} md="6" controlId="name">
                         <Form.Label>Nombre</Form.Label>
@@ -60,14 +63,22 @@ class Confirmation extends Component {
                 </Form.Row>
                 <Button
                     onClick={this.back}
+                    className="backButton"
+                    variant="contained"
+                    color="secondary"
+
                 >Atras</Button>
-                <Button id="mas" variant="primary"
+                <Button
+                    variant="contained"
+                    color="primary"
                     onClick={
                         this.newDonation
                     }>
                     Nueva donacion
                 </Button>
                 <Button type="submit"
+                    variant="contained"
+                    color="primary"
                     onClick={
                         () => {
                             console.log(JSON.stringify(this.state));
