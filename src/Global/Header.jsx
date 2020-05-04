@@ -18,7 +18,7 @@ class Header extends Component{
                    />
                </Navbar.Brand>
                <Nav className="ml-auto">
-                   <Nav.Link href="/home" className="b1">Inicio</Nav.Link>
+                   <Nav.Link href="/" className="b1">Inicio</Nav.Link>
                    <Nav.Link eventKey="link-1" className= "b2" href="/form">Donaciones</Nav.Link>
                </Nav>
            </Navbar>

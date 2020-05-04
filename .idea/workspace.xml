@@ -3,8 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="058e4855-73ce-42c9-a059-f623e17f1ce7" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Global/Home.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Global/Home.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Global/css/Home.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/Global/css/Home.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Global/Header.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Global/Header.jsx" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -22,14 +21,14 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="css" value="1" />
-          <entry key="jsx" value="1" />
+          <entry key="css" value="2" />
+          <entry key="jsx" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="CSS" value="1" />
-          <entry key="JSX Harmony" value="1" />
+          <entry key="CSS" value="2" />
+          <entry key="JSX Harmony" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
@@ -52,22 +51,13 @@
   <component name="FileEditorManager">
     <leaf>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Global/Home.jsx">
+        <entry file="file://$PROJECT_DIR$/src/Global/Header.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="194">
-              <caret line="56" column="86" lean-forward="true" selection-start-line="56" selection-start-column="86" selection-end-line="56" selection-end-column="86" />
+            <state relative-caret-position="238">
+              <caret line="20" column="36" selection-start-line="20" selection-start-column="36" selection-end-line="20" selection-end-column="36" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Global/css/Home.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="215">
-              <caret line="117" column="21" selection-start-line="117" selection-start-column="21" selection-end-line="117" selection-end-column="21" />
             </state>
           </provider>
         </entry>
@@ -95,6 +85,7 @@
       <list>
         <option value="$PROJECT_DIR$/src/Global/Home.jsx" />
         <option value="$PROJECT_DIR$/src/Global/css/Home.css" />
+        <option value="$PROJECT_DIR$/src/Global/Header.jsx" />
       </list>
     </option>
   </component>
@@ -224,16 +215,15 @@
       <workItem from="1588361035918" duration="10046000" />
       <workItem from="1588608939844" duration="85000" />
       <workItem from="1588614962632" duration="265000" />
-      <workItem from="1588616653614" duration="502000" />
+      <workItem from="1588616653614" duration="1351000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="502000" />
+    <option name="totallyTimeSpent" value="1351000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="npm" order="0" side_tool="true" />
       <window_info id="Grunt " order="1" side_tool="true" />
@@ -289,10 +279,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Global/css/Header.css">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Global/Home.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="194">
+        <state relative-caret-position="500">
           <caret line="56" column="86" lean-forward="true" selection-start-line="56" selection-start-column="86" selection-end-line="56" selection-end-column="86" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Global/Header.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="20" column="36" selection-start-line="20" selection-start-column="36" selection-end-line="20" selection-end-column="36" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
           </folding>
