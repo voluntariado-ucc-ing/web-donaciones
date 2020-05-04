@@ -64,7 +64,7 @@ render() {
                     <Row>
                         <Col>
                             <ButtonGroup vertical className={"info"}>
-                                <Button  variant="outline-dark" size="lg" href={"#"}>Hacer transferencia</Button>
+                                <Button  variant="outline-dark" size="lg" href={"https://donaronline.org/universidad-catolica-de-cordoba/desde-casa-podes-ayudar-a-las-familias-de-barrio-el-milagro?preview=true"}>Hacer transferencia</Button>
                                 <Button  variant="outline-dark" size="lg" href={"/form"}>Donar materiales y herramientas</Button>
                             </ButtonGroup>
                         </Col>
