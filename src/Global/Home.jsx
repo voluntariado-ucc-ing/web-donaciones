@@ -48,7 +48,7 @@ render() {
                 </Container>
                 <Container fluid className={"site-section heading where"}>
                     <Row className={"justify-content-md-center"} xs={1} md={2}>
-                        <Col className={"info"}>
+                        <Col className={"info-1"}>
                             <h2>En dónde</h2>
                                <p>Los encuentros se llevan a cabo los días sábados de 9 a 13 hs en el barrio El Milagro, al lado de Ciudad Obispo Angelelli, Córdoba.</p>
                         </Col>

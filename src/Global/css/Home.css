@@ -36,7 +36,9 @@
     .transbox{
         padding-top: 50%;
     }
-
+    .mobile{
+        display: none;
+    }
 }
 
 @media (max-width: 550px){
@@ -72,6 +74,7 @@
     .logo1{
         display: inline-flex;
     }
+
 }
 
 .info{
@@ -81,6 +84,7 @@
 .info-1{
     padding-top: 5%;
 }
+
 
 .who{
     background-color: #F9F9F9;
