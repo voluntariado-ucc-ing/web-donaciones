@@ -4,7 +4,7 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import "././css/Header.css";
 import { Link } from "react-scroll";
-
+import iconoCatolica from "../images/iconoCatolica.svg"
 
 class Header extends Component {
     render() {
@@ -14,7 +14,7 @@ class Header extends Component {
                     <Navbar.Brand>
                         <img
                             alt="ucc"
-                            src={"https://www.uccor.edu.ar/portal2015/UniversidadCatolica/images/logo-ucc-2018.svg"}
+                            src={iconoCatolica}
                             width="80"
                             height="40"
                             className="d-inline-block align-top"
