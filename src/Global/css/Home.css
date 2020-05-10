@@ -109,7 +109,18 @@ iframe{
     padding: 5%;
 }
 
+.link{
+    background-color: #716969;
+    color: #E4DEDE;
+}
 
+.btn{
+    margin-bottom: 20px;
+}
+
+.w-border{
+    padding-top: 30px;
+}
 
 
 
