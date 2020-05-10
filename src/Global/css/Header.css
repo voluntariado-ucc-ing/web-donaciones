@@ -8,23 +8,5 @@
 }
 
 .b2{
-  margin-right: 17px;
-  text-decoration: none;
-  color: rgb(59, 59, 59);
+  margin-right: 10px;
 }
-
-.b2:hover{
-  text-decoration: none;
-  color: #61b3e4;
-  padding: 0px;
-  
-}
-
-Eliminar borde punteado a los enlaces
-a:active, a:active * { 
-  outline: none !important; 
-  outline-style: none !important; 
-}
-a:focus, a:focus * { 
-  outline: none !important; 
-  outline-style: none !important; }
