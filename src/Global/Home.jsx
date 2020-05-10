@@ -8,18 +8,17 @@ import Button from "react-bootstrap/Button";
 import ButtonGroup from "react-bootstrap/ButtonGroup";
 import Container from "react-bootstrap/Container";
 
-
 class Home extends Component {
     render() {
         return (
-            <div className="totalContainer">
-                <Container id="intro" fluid className={"background"}>
+            <div>
+                <Container fluid className={"background"}>
                     <div className="transbox">
                         <Badge variant="light"><h1>Voluntariado El Milagro</h1></Badge>
                     </div>
                 </Container>
 
-                <Container id="quienesSomos" fluid className="site-section heading">
+                <Container fluid className="site-section heading">
                     <Row className={"justify-content-md-center who"} xs={1} md={2}>
                         <Col>
                             <div data-aos="zoom-in-right">
@@ -40,34 +39,16 @@ class Home extends Component {
                             <p>
                                 Somos un voluntariado perteneciente a la Universidad Católica de Córdoba conformado por todos aquellos que quieran ayudar sin importar la universidad en la que estudian.</p>
                         </Col>
+
                     </Row>
                 </Container>
-
-                <Container id="ayudanos" fluid className={"site-section heading site-color how"}>
-                    <Row>
-                        <Col>
-                            <h2 className={"w-border"}>Cómo podes ayudarnos a ayudar</h2>
-                            <p>Recibimos materiales y elementos de construcción, alimentos, ropa y todo aquello que pueda colaborar con nuestra labor en el barrio.
-
-                                También puede colaborar con dinero para que el voluntariado adquiera lo necesario para realizar las tareas solidarias. </p>
-                        </Col>
-                        <Col>
-                            <ButtonGroup vertical className={"info"}>
-                                <Button variant="outline-dark" size="lg" className="link btn" target="_blank" href={"https://donaronline.org/universidad-catolica-de-cordoba/desde-casa-podes-ayudar-a-las-familias-de-barrio-el-milagro?preview=true"}>Donar dinero(transferencia)</Button>
-                                <Button variant="outline-dark" size="lg" className="link" target="_blank" href={"/form"}>Otra clase de donaciones</Button>
-                            </ButtonGroup>
-                        </Col>
-                    </Row>
-                </Container>
-
-                <Container id="queHacemos" fluid className={"site-section heading what"}>
-                    <h2>Qué hacemos</h2>
+                <Container fluid className={"site-section heading what"}>
+                    <h2 className={"text-light"}>Qué hacemos</h2>
                     <CarouselUcc />
                 </Container>
-
-                <Container id="dondeEstamos" fluid className={"site-section heading where"}>
+                <Container fluid className={"site-section heading where"}>
                     <Row className={"justify-content-md-center"} xs={1} md={2}>
-                        <Col className={"info"}>
+                        <Col className={"info-1"}>
                             <h2>En dónde</h2>
                             <p>Los encuentros se llevan a cabo los días sábados de 9 a 13 hs en el barrio El Milagro, al lado de Ciudad Obispo Angelelli, Córdoba.</p>
                         </Col>
@@ -79,6 +60,22 @@ class Home extends Component {
                     </Row>
                 </Container>
 
+                <Container fluid className={"site-section heading site-color how"}>
+                    <Row>
+                        <Col>
+                            <ButtonGroup vertical className={"info"}>
+                                <Button variant="outline-dark" size="lg" className="link btn" href={"https://donaronline.org/universidad-catolica-de-cordoba/desde-casa-podes-ayudar-a-las-familias-de-barrio-el-milagro?preview=true"}>Hacer transferencia</Button>
+                                <Button variant="outline-dark" size="lg" className="link" href={"/formcopy"}>Donar materiales y herramientas</Button>
+                            </ButtonGroup>
+                        </Col>
+                        <Col>
+                            <h2 className={"w-border"}>Cómo podes ayudarnos a ayudar</h2>
+                            <p>Recibimos materiales y elementos de construcción, alimentos, ropa y todo aquello que pueda colaborar con nuestra labor en el barrio.
+
+                                También puede colaborar con dinero para que el voluntariado adquiera lo necesario para realizar las tareas solidarias. </p>
+                        </Col>
+                    </Row>
+                </Container>
             </div>
         );
     }

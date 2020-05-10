@@ -17,10 +17,6 @@
     padding-bottom: 5%;
 }
 
-.totalContainer{
-    margin-top: 60px;
-}
-
 @media screen {
     .logo1{
         display: none;
@@ -39,7 +35,9 @@
     .transbox{
         padding-top: 50%;
     }
-
+    .mobile{
+        display: none;
+    }
 }
 
 @media (max-width: 550px){
@@ -75,8 +73,8 @@
     .logo1{
         display: inline-flex;
     }
-}
 
+}
 
 .info{
    padding-top: 10%;
@@ -85,6 +83,7 @@
 .info-1{
     padding-top: 5%;
 }
+
 
 .who{
     background-color: #F9F9F9;
@@ -95,27 +94,11 @@
 }
 
 .what{
-    background-color: #F5EEEE;
+    background-color: #11368B;
 }
 
 .how{
-    background-color: #002C55;
-    color: ivory;
-}
-
-.how h2{
-    width: 80%;
-    margin-left: 10%;
-}
-
-.how p{
-    transition: transform .3s; 
-    width: 80%;
-    margin-left: 10%;
-}
-
-.how p:hover{
-    transform: scale(1.1);
+    background-color: #F5EEEE;
 }
 
 iframe{
@@ -126,13 +109,8 @@ iframe{
 }
 
 .link{
-    background-color: #F9F9F9;
-    color: #002C55;
-}
-
-.link:hover{
-    background-color: #002C55;
-
+    background-color: #716969;
+    color: #E4DEDE;
 }
 
 .btn{
