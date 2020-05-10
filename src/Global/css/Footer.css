@@ -1,3 +1,10 @@
 .connect{
     display: inline;
 }
+
+@media (min-width: 740px){
+    .connect{
+        display: block;
+    }
+}
+
