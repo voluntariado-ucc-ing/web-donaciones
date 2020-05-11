@@ -6,24 +6,29 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelopeOpen, faPhone } from "@fortawesome/free-solid-svg-icons";
 import { faInstagram } from "@fortawesome/free-brands-svg-icons";
 import Col from "react-bootstrap/Col";
+import {Link} from "react-router-dom";
 
 
 class Footer extends Component {
     render() {
         return (
             <div>
-                <Container fluid className={"site-section heading site-color how"}>
+                <Container fluid className={"site-section heading site-color how connect"}>
                     <Row className={"justify-text-center"}>
                         <p>Voluntariado Barrio El Milagro</p>
                     </Row>
-                    <Row className={"connect"}>
+                    <Row>
                         <Col>
                             <FontAwesomeIcon icon={faEnvelopeOpen}/>
                             <p>voluntariado.vmru@ucc.edu.ar</p>
                         </Col>
                         <Col>
                             <FontAwesomeIcon icon={faInstagram}/>
-                            <p>@voluntariadouccing</p>
+                            <Link to={"https://www.instagram.com/voluntariadouccing/"}>
+                                <p className={"text-light"}>
+                                @voluntariadouccing
+                                </p>
+                            </Link>
                         </Col>
                         <Col>
                             <FontAwesomeIcon icon={faPhone}/>
