@@ -6,6 +6,8 @@ import '../../css/Formcopy.css';
 
 
 class Names extends Component {
+
+
 	continue = (e) => {
 		e.preventDefault()
 		this.props.nextStep()
