@@ -24,6 +24,7 @@ class Formulario extends Component {
             email: '',
             emailConfirmation: '',
             donations: [],
+            alreadyDonate: false,
         };
     }
     //transiciones
@@ -75,7 +76,7 @@ class Formulario extends Component {
                 < Donation
                     value={this.state.donations[0]}
                     nextStep={this.nextStep}
-                    prevStep={this.prevStep}
+                    prevStep={this.prevStep2}
                     handleChange={this.handleDonation}
                     donation={this.handleDonation}
 
@@ -105,6 +106,10 @@ class Formulario extends Component {
         this.setState({
             pasos: pasos + 1
         });
+        if (pasos === 2)
+            this.setState({
+                alreadyDonate: false
+            })
     }
 
     prevStep = () => {
@@ -116,7 +121,8 @@ class Formulario extends Component {
 
     alreadyDonateNextStep = () => {
         this.setState({
-            pasos: 11
+            pasos: 11,
+            alreadyDonate: true
         })
     }
 
@@ -130,11 +136,22 @@ class Formulario extends Component {
         this.setState({
             pasos: 3
         })
+    }
 
+    prevStep2 = () => {
+        if (this.state.alreadyDonate === true)
+            this.setState({
+                pasos: 11
+            })
+        else
+            this.setState({
+                pasos: 2
+            })
     }
 
     //guardado de datos
     handleChange = input => (e) => {
+        e.preventDefault()
         this.setState({ [input]: e.target.value })
     }
 
