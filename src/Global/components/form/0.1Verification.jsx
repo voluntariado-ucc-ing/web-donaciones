@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-import IntlTelInput from 'react-intl-tel-input';
 import Form from 'react-bootstrap/Form';
 import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField';
 import '../../css/Formcopy.css';
 
 class Verification extends Component {
@@ -44,7 +42,7 @@ class Verification extends Component {
                         required
                     />
                     {this.state.wrongEmail === true ?
-                        (<Form.Text className="text-muted">
+                        (<Form.Text className="invalidInput">
                             Debe introducir su email.
                         </Form.Text>) : (null)
                     }
