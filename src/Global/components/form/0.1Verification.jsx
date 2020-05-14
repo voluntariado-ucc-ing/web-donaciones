@@ -20,7 +20,6 @@ class Verification extends Component {
     continue = (e) => {
         var emailRegex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
         e.preventDefault()
-        console.log(this.props.value.email)
         if (emailRegex.test(this.props.value.email)) {
             this.setState({ wrongEmail: false })
             this.props.nextStep()
