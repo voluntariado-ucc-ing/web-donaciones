@@ -27,6 +27,10 @@
   text-align: left;
 }
 
+.invalidInput{
+  color: rgb(199, 53, 53);
+}
+
 .backButton{
   float: left;
 }
