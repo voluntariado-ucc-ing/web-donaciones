@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from '@material-ui/core/Button';
-import Container from 'react-bootstrap/Container'
+import Container from 'react-bootstrap/Container';
 import '../../css/Formcopy.css';
 
 
@@ -9,22 +9,25 @@ class Names extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			nameWritten: true,
+			firstNameWritten: true,
 			lastNameWritten: true
 		}
 	}
 	continue = (e) => {
 		e.preventDefault()
 		if (this.props.value.firstName !== '' && this.props.value.lastName !== '') {
-			this.setState({ nameWritten: true })
+			this.setState({ firstNameWritten: true })
 			this.setState({ lastNameWritten: true })
 			this.props.nextStep()
 		}
 		else {
-			if (this.props.value.name === '')
-				this.setState({ nameWritten: false })
-			else
+			if (this.props.value.firstName === '') {
+				this.setState({ firstNameWritten: false })
+			}
+			else {
+				this.setState({ firstNameWritten: true })
 				this.setState({ lastNameWritten: false })
+			}
 		}
 	}
 	back = (e) => {
@@ -45,7 +48,7 @@ class Names extends Component {
 						onChange={handleChange('firstName')}
 						value={value.firstName}
 					/>
-					{this.state.nameWritten ? null : (<Form.Text className="text-muted">
+					{this.state.firstNameWritten ? null : (<Form.Text className="invalidInput">
 						Debe introducir su nombre.
 					</Form.Text>)}
 				</Form.Group>
@@ -58,7 +61,7 @@ class Names extends Component {
 						onChange={handleChange('lastName')}
 						value={value.lastName}
 					/>
-					{this.state.lastNameWritten ? null : (<Form.Text className="text-muted">
+					{this.state.lastNameWritten ? null : (<Form.Text className="invalidInput">
 						Debe introducir su apellido.
 					</Form.Text>)}
 				</Form.Group>
