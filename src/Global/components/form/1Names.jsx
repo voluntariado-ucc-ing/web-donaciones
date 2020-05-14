@@ -34,7 +34,6 @@ class Names extends Component {
 		e.preventDefault()
 		this.props.prevStep()
 	}
-
 	render() {
 		const { handleChange, value } = this.props
 		return (
