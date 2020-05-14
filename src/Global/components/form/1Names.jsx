@@ -6,11 +6,26 @@ import '../../css/Formcopy.css';
 
 
 class Names extends Component {
-
-
+	constructor(props) {
+		super(props);
+		this.state = {
+			nameWritten: true,
+			lastNameWritten: true
+		}
+	}
 	continue = (e) => {
 		e.preventDefault()
-		this.props.nextStep()
+		if (this.props.value.firstName !== '' && this.props.value.lastName !== '') {
+			this.setState({ nameWritten: true })
+			this.setState({ lastNameWritten: true })
+			this.props.nextStep()
+		}
+		else {
+			if (this.props.value.name === '')
+				this.setState({ nameWritten: false })
+			else
+				this.setState({ lastNameWritten: false })
+		}
 	}
 	back = (e) => {
 		e.preventDefault()
@@ -30,6 +45,9 @@ class Names extends Component {
 						onChange={handleChange('firstName')}
 						value={value.firstName}
 					/>
+					{this.state.nameWritten ? null : (<Form.Text className="text-muted">
+						Debe introducir su nombre.
+					</Form.Text>)}
 				</Form.Group>
 				<Form.Group>
 					<Form.Label>Apellido</Form.Label>
@@ -40,6 +58,9 @@ class Names extends Component {
 						onChange={handleChange('lastName')}
 						value={value.lastName}
 					/>
+					{this.state.lastNameWritten ? null : (<Form.Text className="text-muted">
+						Debe introducir su apellido.
+					</Form.Text>)}
 				</Form.Group>
 				<Button onClick={this.back}
 					className="backButton"
