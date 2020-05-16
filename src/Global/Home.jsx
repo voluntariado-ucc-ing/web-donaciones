@@ -15,7 +15,7 @@ class Home extends Component {
             <div className="totalContainer">
                 <Container id="intro" fluid className={"background"}>
                     <div className="transbox">
-                        <Badge variant="light"><h1>Voluntariado El Milagro</h1></Badge>
+                        <Badge variant="light"><h1>Voluntariado Barrio El Milagro</h1></Badge>
                     </div>
                 </Container>
 
@@ -73,7 +73,8 @@ class Home extends Component {
                         </Col>
                         <Col>
                             <iframe
-                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3402.3788896518245!2d-64.2479116856604!3d-31.486267781380874!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9432a3df896024af%3A0xfac12a594425f547!2sUniversidad%20Cat%C3%B3lica%20de%20C%C3%B3rdoba%20%7C%20Campus!5e0!3m2!1ses!2sar!4v1588194712435!5m2!1ses!2sar"
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3401.8228500839773!2d-64.1979016848499!3d-31.50155278137586!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9432a5ecfcca7701%3A0xe8d124696f0e3b94!2sBarrio%20el%20milagro!5e0!3m2!1ses!2sar!4v1589661316454!5m2!1ses!2sar"
+                                width="600" height="450" frameBorder="0" allowFullScreen=""
                                 aria-hidden="false" tabIndex="0"/>
                         </Col>
                     </Row>
