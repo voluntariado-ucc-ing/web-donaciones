@@ -46,7 +46,7 @@ class Footer extends Component {
                         </Row>
                         <Row>
                             <Col sm>
-                                <FontAwesomeIcon icon={faInstagram}/>
+                                <FontAwesomeIcon icon={faInstagram} />
                             </Col>
                             <Col>
                                 <Link to={"https://www.instagram.com/voluntariadouccing/"}>
@@ -58,18 +58,18 @@ class Footer extends Component {
                         </Row>
                         <Row>
                             <Col sm>
-                            <FontAwesomeIcon icon={faEnvelopeOpen}/>
+                                <FontAwesomeIcon icon={faEnvelopeOpen} />
                             </Col>
                             <Col>
-                            <p>voluntariado.vmru@ucc.edu.ar</p>
+                                <p>voluntariado.vmru@ucc.edu.ar</p>
                             </Col>
                         </Row>
                         <Row>
                             <Col sm>
-                            <FontAwesomeIcon icon={faPhone}/>
+                                <FontAwesomeIcon icon={faPhone} />
                             </Col>
                             <Col>
-                            <p>(0351) 493 8000 int. 510</p>
+                                <p>(0351) 493 8000 int. 510</p>
                             </Col>
                         </Row>
                     </Col>
