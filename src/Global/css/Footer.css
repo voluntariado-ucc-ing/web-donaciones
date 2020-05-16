@@ -1,17 +1,17 @@
-
-@media (max-width: 2480px) and (min-width: 740px){
-    .connect{
-        display: inline;
-    }
+.mobile-footer{
+    display: none;
 }
 
-@media (max-width: 2480px){
-    .connect{
-        list-style-type: none;
-        border-radius: 5px 5px 0 0;
-        border: 1px  #424242;
-        display: grid;
-        justify-self: end;
+.computer-footer{
+    display: block;
+}
+
+@media (min-width: 500px) and (max-width: 600px){
+    .mobile-footer{
+        display: inline-block;
+    }
+    .computer-footer{
+        display: none;
     }
 }
 
