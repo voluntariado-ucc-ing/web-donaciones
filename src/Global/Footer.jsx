@@ -49,11 +49,11 @@ class Footer extends Component {
                                 <FontAwesomeIcon icon={faInstagram}/>
                             </Col>
                             <Col>
-                                <Link to={"https://www.instagram.com/voluntariadouccing/"}>
+                                <a target="_blank" href="https://www.instagram.com/voluntariadouccing/">
                                     <p className={"text-light"}>
                                         @voluntariadouccing
                                     </p>
-                                </Link>
+                                </a>
                             </Col>
                         </Row>
                         <Row>
