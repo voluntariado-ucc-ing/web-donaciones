@@ -13,7 +13,6 @@ class Donation extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            isOtherDonationType: false,
             isNoConventional: false,
             nonConventionalUnit: "",
             otherDonationType: "",
@@ -72,7 +71,7 @@ class Donation extends Component {
         if (this.state.isNoConventional)
             return (
                 <div>
-                    <Form.Label>Unidad no convencional</Form.Label>
+                    <Form.Label>Otra unidad</Form.Label>
                     <Form.Control
                         type="text"
                         onChange={this.handleNonConventionalUnit}
@@ -90,57 +89,12 @@ class Donation extends Component {
     }
 
     render() {
-        const { donationType, elementDonation, quantity, unit, isOtherDonationType, isNoConventional } = this.state
+        const { elementDonation, quantity, unit, isNoConventional } = this.state
         return (
             <Container controlId="donation">
-                {isOtherDonationType ?
-                    (
-                        <Form.Row>
-                            <Form.Group as={Col} md="6" >
-                                <Form.Label>Tipo de donación</Form.Label>
-                                <Form.Control
-                                    as="select"
-                                    name="donationType"
-                                    onChange={this.handleDonationType}
-                                    value={donationType}
-
-                                >
-                                    <option value="material-de-construccion">Material de construccion</option>
-                                    <option value="elemento-de-banio">Elementos de baño</option>
-                                    <option value="herramientas">Herramientas</option>
-                                    <option value="muebles">Muebles</option>
-                                    <option value="otro">Otro</option>
-                                </Form.Control>
-                            </Form.Group>
-                            <Form.Group
-                                as={Col}
-                                md="6">
-                                {this.otro()}
-                            </Form.Group>
-                        </Form.Row>
-                    )
-                    :
-                    (<Form.Group>
-                        <Form.Label>Tipo de donación</Form.Label>
-                        <Form.Control
-                            as="select"
-                            name="donationType"
-                            onChange={this.handleDonationType}
-                            value={donationType}
-
-                        >
-                            <option value="material-de-construccion">Material de construccion</option>
-                            <option value="elemento-de-banio">Elementos de baño</option>
-                            <option value="herramientas">Herramientas</option>
-                            <option value="muebles">Muebles</option>
-                            <option value="otro">Otro</option>
-                        </Form.Control>
-                    </Form.Group>
-                    )
-                }
-                <Form.Label>Elemento</Form.Label>
+                <Form.Label>¿Con qué vas a ayunos?</Form.Label>
                 <Form.Control
-                    placeholder="Ladrillos, cemento, arena"
+                    placeholder="Ingresa aca lo que vas a donar"
                     name="elementDonation"
                     onChange={this.handleChange('elementDonation')}
                     value={elementDonation}
