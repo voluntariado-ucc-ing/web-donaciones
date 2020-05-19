@@ -28,23 +28,24 @@ class Address extends Component {
     render() {
         return (
             <Container>
-                <Form.Label>Necesitamos saber en donde se encuentran esos materiales</Form.Label>
+                <h5>¿Dónde debemos retirarlos?</h5>
+                <Form.Label>Localidad - Ciudad *</Form.Label>
+                <Form.Group
+                    id="ciudad">
+                    <Form.Control type="text" placeholder="Ciudad"
+                        onChange={
+                            this.handleCity
+                        }
+                        required
+                        value={
+                            this.state.city
+                        } />
+                </Form.Group>
                 <Form.Row>
                     <Form.Group as={Col}
-                        md="3"
-                        controlId="ciudad">
-                        <Form.Control type="text" placeholder="Ciudad"
-                            onChange={
-                                this.handleCity
-                            }
-                            required
-                            value={
-                                this.state.city
-                            } />
-                    </Form.Group>
-                    <Form.Group as={Col}
-                        md="3"
-                        controlId="calle">
+                        md="5"
+                        id="calle">
+                        <Form.Label>Calle *</Form.Label>
                         <Form.Control type="text" placeholder="Calle"
                             onChange={
                                 this.handleStreet
@@ -56,7 +57,9 @@ class Address extends Component {
                     </Form.Group>
                     <Form.Group as={Col}
                         md="2"
-                        controlId="altura">
+                        id="altura">
+                        <Form.Label>Altura *</Form.Label>
+
                         <Form.Control type="number" placeholder="Altura"
                             onChange={
                                 this.handleStreetNumber
@@ -67,8 +70,9 @@ class Address extends Component {
                             } />
                     </Form.Group>
                     <Form.Group as={Col}
-                        md="4"
-                        controlId="Detalle">
+                        md="5"
+                        id="Detalle">
+                        <Form.Label>Otros *</Form.Label>
                         <Form.Control type="text" placeholder="Opcional: Lote, manzana, barrio, piso"
                             onChange={
                                 this.handleStreetDetail

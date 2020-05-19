@@ -65,8 +65,7 @@ class Formulario extends Component {
                         newDonation={this.clickNewDonation}
                         backDonation={this.backDonation}
                         forwardDonation={this.forwardDonation}
-                    >
-                    </Donation >
+                    />
                 ))
             )
         }

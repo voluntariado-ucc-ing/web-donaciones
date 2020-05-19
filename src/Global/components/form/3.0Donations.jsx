@@ -44,7 +44,7 @@ class Donation extends Component {
         if (this.state.isNoConventional)
             return (
                 <div>
-                    <Form.Label>Otra unidad</Form.Label>
+                    <Form.Label>Otra unidad *</Form.Label>
                     <Form.Control
                         type="text"
                         onChange={this.handleNonConventionalUnit}
@@ -79,32 +79,52 @@ class Donation extends Component {
         return (
             <Container id="donation">
                 <div className="donaciones">
-                    {this.props.id > 0 ?
-                        <> <Form.Label>Donacion numero {this.props.id + 1}</Form.Label> <br /> </> : null
+                    {this.props.value.donations.length > 1 ?
+                        <> <h5>Donación número {this.props.id + 1}</h5> <br /> </> : null
                     }
 
-                    <Form.Label>¿Con qué vas a ayudar?</Form.Label>
+                    <h5>¿Con qué desea ayudarnos? *</h5>
 
                     <Form.Control
-                        placeholder="Ingresa aca lo que vas a donar"
+                        placeholder="Ingresá acá lo que vas a donar"
                         name="elementDonation"
                         onChange={this.handleChange('elementDonation')}
                         value={elementDonation}
                         required
                     />
-
-                    <Form.Group >
-                        <Form.Label>Cantidad</Form.Label>
-                        <Form.Control type="number"
-                            name="quantity"
-                            onChange={this.handleChange('quantity')}
-                            value={quantity}
-                        />
-                    </Form.Group>
-                    {isNoConventional ? (
-                        <Form.Row>
-                            <Form.Group as={Col} md="6" >
-                                <Form.Label>Unidad</Form.Label>
+                    <br />
+                    <Form.Row >
+                        <Form.Group as={Col} md='4'>
+                            <Form.Label>Cantidad *</Form.Label>
+                            <Form.Control type="number"
+                                name="quantity"
+                                onChange={this.handleChange('quantity')}
+                                value={quantity}
+                            />
+                        </Form.Group>
+                        {isNoConventional ? (
+                            <>
+                                <Form.Group as={Col} md="4" >
+                                    <Form.Label>Unidad *</Form.Label>
+                                    <Form.Control as="select"
+                                        name="unit"
+                                        onChange={this.handleUnitChange}
+                                        value={unit}
+                                    >
+                                        <option value="m">Metros</option>
+                                        <option value="kg">Kg</option>
+                                        <option value="otro">Otro</option>
+                                    </Form.Control>
+                                </Form.Group>
+                                <Form.Group as={Col} md="4" >
+                                    {this.otro2()}
+                                </Form.Group>
+                            </>
+                        )
+                            :
+                            (<Form.Group
+                                as={Col} md="8" >
+                                <Form.Label>Unidad *</Form.Label>
                                 <Form.Control as="select"
                                     name="unit"
                                     onChange={this.handleUnitChange}
@@ -114,26 +134,9 @@ class Donation extends Component {
                                     <option value="kg">Kg</option>
                                     <option value="otro">Otro</option>
                                 </Form.Control>
-                            </Form.Group>
-                            <Form.Group as={Col} md="6" >
-                                {this.otro2()}
-                            </Form.Group>
-                        </Form.Row>
-                    )
-                        :
-                        (<Form.Group >
-                            <Form.Label>Unidad</Form.Label>
-                            <Form.Control as="select"
-                                name="unit"
-                                onChange={this.handleUnitChange}
-                                value={unit}
-                            >
-                                <option value="m">Metros</option>
-                                <option value="kg">Kg</option>
-                                <option value="otro">Otro</option>
-                            </Form.Control>
-                        </Form.Group>)
-                    }
+                            </Form.Group>)
+                        }
+                    </Form.Row>
                     <Address />
                     <div className="centerButton">
                         <Button onClick={this.newDonation}

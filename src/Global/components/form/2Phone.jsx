@@ -23,9 +23,10 @@ class Phone extends Component {
 		const { handleChange, value } = this.props
 		return (
 			<Container>
-				<p>Necesitamos los siguientes datos para poder comunicarnos con usted!</p>
+				<h3>DATOS PERSONALES</h3>
+				<h5>Necesitamos los siguientes datos para poder comunicarnos con usted</h5>
 				<br />
-				<Form.Label>Telefono o celular</Form.Label>
+				<Form.Label>Teléfono o celular *</Form.Label>
 				<br />
 				<IntlTelInput
 					preferredCountries={['ar']}
@@ -33,8 +34,8 @@ class Phone extends Component {
 					containerClassName={style.tel}
 				/>
 				<Form.Group
-					controlId="formEmail">
-					<Form.Label>Email</Form.Label>
+					id="formEmail">
+					<Form.Label>Email *</Form.Label>
 					<Form.Control
 						type="email"
 						placeholder="example@mail.com"
@@ -42,7 +43,7 @@ class Phone extends Component {
 						onChange={handleChange('email')}
 						value={value.email}
 					/>
-					<Form.Label>Confirmacion</Form.Label>
+					<Form.Label>Confirmación de Email *</Form.Label>
 					<Form.Control
 						type="email"
 						placeholder="example@mail.com"

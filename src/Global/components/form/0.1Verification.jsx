@@ -30,10 +30,9 @@ class Verification extends Component {
         const { handleChange, value } = this.props
         return (
             <div>
-                <a>Necesitamos la siguietne informacion para poder encontrar sus datos</a>
+                <h5>Por favor ingrese su email para identificarse *</h5>
                 <br />
                 <Form.Group>
-                    <Form.Label>Mail</Form.Label>
                     <Form.Control
                         type="email"
                         name='email'
