@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import IntlTelInput from 'react-intl-tel-input';
 import 'react-intl-tel-input/dist/main.css';
 import Form from 'react-bootstrap/Form';
-import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
 import style from '../../css/Formcopy.css'
 import Button from '@material-ui/core/Button';
