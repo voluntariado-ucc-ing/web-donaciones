@@ -28,7 +28,6 @@ class Donation extends Component {
     }
     continue = (e) => {
         e.preventDefault()
-        this.props.donation(this.state.donation)
         this.props.nextStep()
     }
     back = (e) => {
@@ -79,8 +78,7 @@ class Donation extends Component {
         const { elementDonation, quantity, unit, isNoConventional } = this.state
         return (
             <Container id="donation">
-                <div className="donaicocn">
-
+                <div className="donaciones">
                     {this.props.id > 0 ?
                         <> <Form.Label>Donacion numero {this.props.id + 1}</Form.Label> <br /> </> : null
                     }
@@ -137,35 +135,45 @@ class Donation extends Component {
                         </Form.Group>)
                     }
                     <Address />
-                    {this.props.value.donationStep > 0 ?
-                        (<Button variant="contained"
+                    <div className="centerButton">
+                        <Button onClick={this.newDonation}
                             color="primary"
-                            onClick={this.backDonation} > Donacion Anterior</Button>) : null
-                    }
-                    <Button onClick={this.newDonation}>Nueva Donacion</Button>
-                    {console.log(this.props.value.donations.length)}
-
-                    {this.props.value.donationStep < this.props.value.donations.length - 1 ?
-                        (<Button
                             variant="contained"
-                            color="primary"
-                            onClick={this.forwardDonation}> Siguiente Donacion</Button>) : null
-                    }
+                            className="centerButton">Nueva Donacion</Button>
+                    </div>
+                    <div className="pasosDonation">
+                        {this.props.value.donationStep > 0 ?
+                            (<Button
+                                variant="contained"
+                                color="default"
+                                className="backButton"
+                                onClick={this.backDonation} > Donacion Anterior</Button>) : null
+                        }
+                        {this.props.value.donationStep < this.props.value.donations.length - 1 ?
+                            (<Button
+                                variant="contained"
+                                color="default"
+                                className="forwardButton"
+                                onClick={this.forwardDonation}> Siguiente Donacion</Button>) : null
+                        }
+                    </div>
                 </div>
-                <Button
-                    type="submit"
-                    onClick={this.back}
-                    className="backButton"
-                    variant="contained"
-                    color="secondary"
-                > Atras</Button>
-                <Button
-                    onClick={this.continue}
-                    type="submit"
-                    className="forwardButton"
-                    variant="contained"
-                    color="primary"
-                >Continue</Button>
+                <div className="bottomButton2">
+                    <Button
+                        type="submit"
+                        onClick={this.back}
+                        className="backButton"
+                        variant="contained"
+                        color="secondary"
+                    > Atrás</Button>
+                    <Button
+                        onClick={this.continue}
+                        type="submit"
+                        className="forwardButton"
+                        variant="contained"
+                        color="primary"
+                    >Continuar</Button>
+                </div>
             </Container >
         );
     }

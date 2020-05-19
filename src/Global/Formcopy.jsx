@@ -66,7 +66,6 @@ class Formulario extends Component {
                         backDonation={this.backDonation}
                         forwardDonation={this.forwardDonation}
                     >
-                        {console.log('gg' + filteredDonation.id)}
                     </Donation >
                 ))
             )
@@ -169,7 +168,6 @@ class Formulario extends Component {
         this.setState({ donationStep: don.length })
         don.push(done)
         this.setState({ donation: don })
-        console.log(this.state)
     }
     //botones nueva donacion
     backDonation = () => {

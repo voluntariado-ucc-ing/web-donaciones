@@ -26,19 +26,21 @@ class Intro extends Component {
                     Su propuesta va a ser analizada y luego uno de nuestros representantes se va a comunicar con usted.
                 </p>
                 <div>Si alguna vez a realizado alguna donacion, sus datos han sidos guardados en nuestra base de datos!</div>
-                <Button
-                    onClick={this.continue2}
-                    className="backButton"
-                    variant="contained"
-                    color="primary"
-                >
-                    Ya done una vez</Button>
-                <Button
-                    onClick={this.continue}
-                    className="forwardButton"
-                    variant="contained"
-                    color="primary"
-                > Mi primera vez donando</Button>
+                <div className="bottomButton">
+                    <Button
+                        onClick={this.continue2}
+                        className="backButton"
+                        variant="contained"
+                        color="primary"
+                    >
+                        Ya done una vez</Button>
+                    <Button
+                        onClick={this.continue}
+                        className="forwardButton"
+                        variant="contained"
+                        color="primary"
+                    > Mi primera vez donando</Button>
+                </div>
             </div>
         );
     }

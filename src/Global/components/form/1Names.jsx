@@ -64,16 +64,18 @@ class Names extends Component {
 						Debe introducir su apellido.
 					</Form.Text>)}
 				</Form.Group>
-				<Button onClick={this.back}
-					className="backButton"
-					variant="contained"
-					color="secondary"
-				> Atras</Button>
-				<Button onClick={this.continue}
-					className="forwardButton"
-					variant="contained"
-					color="primary"
-				>Continue</Button>
+				<div className="bottomButton">
+					<Button onClick={this.back}
+						className="backButton"
+						variant="contained"
+						color="secondary"
+					> Atrás</Button>
+					<Button onClick={this.continue}
+						className="forwardButton"
+						variant="contained"
+						color="primary"
+					>Continuar</Button>
+				</div>
 			</Container>
 		);
 	}

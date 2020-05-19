@@ -58,35 +58,30 @@ class Confirmation extends Component {
                         <Form.Label>Altura</Form.Label>
                     </Form.Group>
                     <Form.Group as={Col} md="4" controlId="Detalle">
-                        <Form.Label>Aclaracione</Form.Label>
+                        <Form.Label>Aclaraciones</Form.Label>
                     </Form.Group>
                 </Form.Row>
-                <Button
-                    onClick={this.back}
-                    className="backButton"
-                    variant="contained"
-                    color="secondary"
+                <div className="bottomButton">
+                    <Button
+                        onClick={this.back}
+                        className="backButton"
+                        variant="contained"
+                        color="secondary"
 
-                >Atras</Button>
-                <Button
-                    variant="contained"
-                    color="primary"
-                    onClick={
-                        this.newDonation
-                    }>
-                    Nueva donacion
-                </Button>
-                <Button type="submit"
-                    variant="contained"
-                    color="primary"
-                    onClick={
-                        () => {
-                            console.log(JSON.stringify(this.state));
+                    >Atrás</Button>
+                    <Button type="submit"
+                        variant="contained"
+                        className="forwardButton"
+                        color="primary"
+                        onClick={
+                            () => {
+                                console.log(JSON.stringify(this.state));
+                            }
                         }
-                    }
-                    id="enviar">
-                    Enviar
-                </Button>
+                        id="enviar">
+                        Enviar
+                    </Button>
+                </div>
             </Container>
         );
     }

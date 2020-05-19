@@ -47,19 +47,22 @@ class Verification extends Component {
                         </Form.Text>) : (null)
                     }
                     <br />
-                    <Button
-                        className="backButton"
-                        variant="contained"
-                        color="secondary"
-                        onClick={this.back}
-                    > Atras</Button>
-                    <Button
-                        className="forwardButton"
-                        onClick={this.continue}
-                        variant="contained"
-                        color="primary"
-                        type="submit"
-                    >Continue</Button>
+                    <div className="bottomButton">
+                        <Button
+                            className="backButton"
+                            variant="contained"
+                            color="secondary"
+                            onClick={this.back}
+                        > Atrás</Button>
+                        <Button
+                            className="forwardButton"
+                            onClick={this.continue}
+                            variant="contained"
+                            color="primary"
+                            type="submit"
+                        >Continuar</Button>
+                    </div>
+
                 </Form.Group>
             </div>
         );
