@@ -55,13 +55,11 @@ class Formulario extends Component {
             />)
         if (this.state.pasos === 3) {
             return (
-                this.state.donations.filter(donacion => donacion.id === this.state.donationStep).map(filteredDonation => (
+                this.state.donations.filter(x => x.id === this.state.donationStep).map(filteredDonation => (
                     <Donation
                         value={this.state}
                         nextStep={this.nextStep}
-                        prevStep={this.prevStep}
-                        handleChange={this.handleDonation}
-                        donation={this.handleDonation}
+                        prevStep={this.prevStep2}
                         key={filteredDonation.id}
                         id={filteredDonation.id}
                         newDonation={this.clickNewDonation}
@@ -175,10 +173,12 @@ class Formulario extends Component {
     }
     //botones nueva donacion
     backDonation = () => {
-        this.setState({ donationStep: this.donationStep - 1 })
+        var pasoDonacion = this.state.donationStep - 1
+        this.setState({ donationStep: pasoDonacion })
     }
     forwardDonation = () => {
-        this.setState({ donationStep: this.donationStep + 1 })
+        var pasoDonacion = this.state.donationStep + 1
+        this.setState({ donationStep: pasoDonacion })
     }
 
     render() {

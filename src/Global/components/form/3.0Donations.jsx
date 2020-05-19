@@ -78,7 +78,7 @@ class Donation extends Component {
     render() {
         const { elementDonation, quantity, unit, isNoConventional } = this.state
         return (
-            <Container controlId="donation">
+            <Container id="donation">
                 <div className="donaicocn">
 
                     {this.props.id > 0 ?
