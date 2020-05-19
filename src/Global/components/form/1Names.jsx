@@ -38,8 +38,9 @@ class Names extends Component {
 		const { handleChange, value } = this.props
 		return (
 			<Container>
+				<h3>DATOS PERSONALES</h3>
 				<Form.Group>
-					<Form.Label>Nombre</Form.Label>
+					<Form.Label>¿Cual es su nombre? *</Form.Label>
 					<Form.Control
 						type="text"
 						placeholder="Nombre"
@@ -52,7 +53,7 @@ class Names extends Component {
 					</Form.Text>)}
 				</Form.Group>
 				<Form.Group>
-					<Form.Label>Apellido</Form.Label>
+					<Form.Label>¿Y su apellido? *</Form.Label>
 					<Form.Control
 						type="text"
 						placeholder="Apellido"
@@ -64,16 +65,18 @@ class Names extends Component {
 						Debe introducir su apellido.
 					</Form.Text>)}
 				</Form.Group>
-				<Button onClick={this.back}
-					className="backButton"
-					variant="contained"
-					color="secondary"
-				> Atras</Button>
-				<Button onClick={this.continue}
-					className="forwardButton"
-					variant="contained"
-					color="primary"
-				>Continue</Button>
+				<div className="bottomButton">
+					<Button onClick={this.back}
+						className="backButton"
+						variant="contained"
+						color="secondary"
+					> Atrás</Button>
+					<Button onClick={this.continue}
+						className="forwardButton"
+						variant="contained"
+						color="primary"
+					>Continuar</Button>
+				</div>
 			</Container>
 		);
 	}

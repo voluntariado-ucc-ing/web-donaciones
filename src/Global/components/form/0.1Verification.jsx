@@ -30,10 +30,9 @@ class Verification extends Component {
         const { handleChange, value } = this.props
         return (
             <div>
-                <a>Necesitamos la siguietne informacion para poder encontrar sus datos</a>
+                <h5>Por favor ingrese su email para identificarse *</h5>
                 <br />
                 <Form.Group>
-                    <Form.Label>Mail</Form.Label>
                     <Form.Control
                         type="email"
                         name='email'
@@ -47,19 +46,22 @@ class Verification extends Component {
                         </Form.Text>) : (null)
                     }
                     <br />
-                    <Button
-                        className="backButton"
-                        variant="contained"
-                        color="secondary"
-                        onClick={this.back}
-                    > Atras</Button>
-                    <Button
-                        className="forwardButton"
-                        onClick={this.continue}
-                        variant="contained"
-                        color="primary"
-                        type="submit"
-                    >Continue</Button>
+                    <div className="bottomButton">
+                        <Button
+                            className="backButton"
+                            variant="contained"
+                            color="secondary"
+                            onClick={this.back}
+                        > Atrás</Button>
+                        <Button
+                            className="forwardButton"
+                            onClick={this.continue}
+                            variant="contained"
+                            color="primary"
+                            type="submit"
+                        >Continuar</Button>
+                    </div>
+
                 </Form.Group>
             </div>
         );

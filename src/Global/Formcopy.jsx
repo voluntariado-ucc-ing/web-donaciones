@@ -3,13 +3,11 @@ import './css/Formcopy.css';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 
-import Button from '@material-ui/core/Button';
 // subcomponentes
 import Intro from './components/form/0.0Introduction'
 import Names from './components/form/1Names'
 import Phone from './components/form/2Phone'
-import Donation from './components/form/3.0Donation'
-import Address from './components/form/4Address'
+import Donation from './components/form/3.0Donations'
 import Confirmation from './components/form/5Confirmation'
 import Verification from './components/form/0.1Verification'
 
@@ -17,16 +15,19 @@ class Formulario extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            pasos: 3,
+            pasos: 0,
             firstName: '',
             lastName: '',
             phone: '',
             email: '',
             emailConfirmation: '',
             donations: [],
+            donationStep: 0,
             alreadyDonate: false,
+            firstDonationCreated: false
         };
     }
+
     //transiciones
     init = () => {
         if (this.state.pasos === 0)
@@ -52,36 +53,20 @@ class Formulario extends Component {
                 handleChange={this.handleChange}
                 value={this.state}
             />)
-
         if (this.state.pasos === 3) {
-            if (this.state.donations.length === 0) {
-                var don = this.state.donations
-                var done = new Donation();
-                done.id = don.length
-                console.log(done)
-                don.push(done)
-                this.setState({ donation: don })
-                return (
+            return (
+                this.state.donations.filter(x => x.id === this.state.donationStep).map(filteredDonation => (
                     <Donation
-                        value={this.state.donations}
+                        value={this.state}
                         nextStep={this.nextStep}
-                        prevStep={this.prevStep}
-                        handleChange={this.handleDonation}
-                        donation={this.handleDonation}
-                        key={0}
-                        id={0} />
-                )
-            }
-            else return (
-                < Donation
-                    value={this.state.donations[0]}
-                    nextStep={this.nextStep}
-                    prevStep={this.prevStep2}
-                    handleChange={this.handleDonation}
-                    donation={this.handleDonation}
-
-                />
-
+                        prevStep={this.prevStep2}
+                        key={filteredDonation.id}
+                        id={filteredDonation.id}
+                        newDonation={this.clickNewDonation}
+                        backDonation={this.backDonation}
+                        forwardDonation={this.forwardDonation}
+                    />
+                ))
             )
         }
 
@@ -101,6 +86,8 @@ class Formulario extends Component {
                 value={this.state}
             />)
     }
+
+
     nextStep = () => {
         const { pasos } = this.state
         this.setState({
@@ -109,7 +96,16 @@ class Formulario extends Component {
         if (pasos === 2)
             this.setState({
                 alreadyDonate: false
-            })
+            }
+            )
+        if (!this.state.firstDonationCreated) {
+            var don = this.state.donations
+            var done = new Donation();
+            done.id = 0
+            don.push(done)
+            this.setState({ donation: don })
+            this.setState({ firstDonationCreated: true })
+        }
     }
 
     prevStep = () => {
@@ -133,6 +129,14 @@ class Formulario extends Component {
     }
 
     nextStep2 = () => {
+        if (!this.state.firstDonationCreated) {
+            var don = this.state.donations
+            var done = new Donation();
+            done.id = 0
+            don.push(done)
+            this.setState({ donation: don })
+            this.setState({ firstDonationCreated: true })
+        }
         this.setState({
             pasos: 3
         })
@@ -155,16 +159,24 @@ class Formulario extends Component {
         this.setState({ [input]: e.target.value })
     }
 
-    //guardado datos donaciones
-    handleDonation = () => {
+    //nueva donacion
+    clickNewDonation = () => {
         var don = this.state.donations
         var done = new Donation();
         done.id = don.length
-        console.log(done)
+        this.setState({ donationStep: don.length })
         don.push(done)
         this.setState({ donation: don })
     }
-
+    //botones nueva donacion
+    backDonation = () => {
+        var pasoDonacion = this.state.donationStep - 1
+        this.setState({ donationStep: pasoDonacion })
+    }
+    forwardDonation = () => {
+        var pasoDonacion = this.state.donationStep + 1
+        this.setState({ donationStep: pasoDonacion })
+    }
 
     render() {
         return (

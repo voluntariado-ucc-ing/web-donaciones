@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import IntlTelInput from 'react-intl-tel-input';
 import 'react-intl-tel-input/dist/main.css';
 import Form from 'react-bootstrap/Form';
-import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
 import style from '../../css/Formcopy.css'
 import Button from '@material-ui/core/Button';
@@ -24,9 +23,10 @@ class Phone extends Component {
 		const { handleChange, value } = this.props
 		return (
 			<Container>
-				<p>Necesitamos los siguientes datos para poder comunicarnos con usted!</p>
+				<h3>DATOS PERSONALES</h3>
+				<h5>Necesitamos los siguientes datos para poder comunicarnos con usted</h5>
 				<br />
-				<Form.Label>Telefono o celular</Form.Label>
+				<Form.Label>Teléfono o celular *</Form.Label>
 				<br />
 				<IntlTelInput
 					preferredCountries={['ar']}
@@ -34,8 +34,8 @@ class Phone extends Component {
 					containerClassName={style.tel}
 				/>
 				<Form.Group
-					controlId="formEmail">
-					<Form.Label>Email</Form.Label>
+					id="formEmail">
+					<Form.Label>Email *</Form.Label>
 					<Form.Control
 						type="email"
 						placeholder="example@mail.com"
@@ -43,7 +43,7 @@ class Phone extends Component {
 						onChange={handleChange('email')}
 						value={value.email}
 					/>
-					<Form.Label>Confirmacion</Form.Label>
+					<Form.Label>Confirmación de Email *</Form.Label>
 					<Form.Control
 						type="email"
 						placeholder="example@mail.com"
@@ -52,16 +52,18 @@ class Phone extends Component {
 						value={value.emailconfirmation}
 					/>
 				</Form.Group>
-				<Button onClick={this.back}
-					className="backButton"
-					variant="contained"
-					color="secondary"
-				> Atras</Button>
-				<Button onClick={this.continue}
-					className="forwardButton"
-					variant="contained"
-					color="primary"
-				>Continue</Button>
+				<div className="bottomButton">
+					<Button onClick={this.back}
+						className="backButton"
+						variant="contained"
+						color="secondary"
+					> Atrás</Button>
+					<Button onClick={this.continue}
+						className="forwardButton"
+						variant="contained"
+						color="primary"
+					>Continuar</Button>
+				</div>
 			</Container >
 		);
 	}

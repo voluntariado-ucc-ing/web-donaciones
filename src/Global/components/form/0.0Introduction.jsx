@@ -18,27 +18,27 @@ class Intro extends Component {
     render() {
         return (
             <div>
-                <h2>Formulario</h2>
+                <h2>SOBRE LA DONACIÓN</h2>
                 <p>
-                    Esta es la página web para realizar donaciones en el voluntariado de ingeniería de la Universidad
-                    Católica de Córdoba.
+                    El voluntariado trabaja y apoya a familias hace 5 años. Tu colaboración es fundamental para continuar su labor atendiendo sus necesidades.
                     <br />
-                    Su propuesta va a ser analizada y luego uno de nuestros representantes se va a comunicar con usted.
+                    Para sumar tu donación, te pediremos algunos datos personales para poder identificarlo al momento de recibir tu donación.
                 </p>
-                <div>Si alguna vez a realizado alguna donacion, sus datos han sidos guardados en nuestra base de datos!</div>
-                <Button
-                    onClick={this.continue2}
-                    className="backButton"
-                    variant="contained"
-                    color="primary"
-                >
-                    Ya done una vez</Button>
-                <Button
-                    onClick={this.continue}
-                    className="forwardButton"
-                    variant="contained"
-                    color="primary"
-                > Mi primera vez donando</Button>
+                <div className="bottomButton">
+                    <Button
+                        onClick={this.continue2}
+                        className="backButton"
+                        variant="contained"
+                        color="primary"
+                    >
+                        Ya he donado</Button>
+                    <Button
+                        onClick={this.continue}
+                        className="forwardButton"
+                        variant="contained"
+                        color="primary"
+                    > Primera donación</Button>
+                </div>
             </div>
         );
     }
