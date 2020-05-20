@@ -51,7 +51,10 @@ class Formulario extends Component {
                 nextStep={this.nextStep}
                 prevStep={this.prevStep}
                 handleChange={this.handleChange}
-                value={this.state}
+                handlePhone={this.handlePhone}
+                phone={this.state.phone}
+                email={this.state.email}
+                emailConfirmation={this.state.emailConfirmation}
             />)
         if (this.state.pasos === 3) {
             return (
@@ -157,6 +160,11 @@ class Formulario extends Component {
     handleChange = input => (e) => {
         e.preventDefault()
         this.setState({ [input]: e.target.value })
+    }
+
+    //guardado de telefono
+    handlePhone = (phone) => {
+        this.setState({ phone: phone })
     }
 
     //nueva donacion
