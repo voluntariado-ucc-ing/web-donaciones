@@ -28,18 +28,13 @@ class Formulario extends Component {
         };
     }
 
-
-    handleChange = input => e => {
-        this.setState({[input]: e.target.value});
-    };
-
     //transiciones
     init = () => {
         if (this.state.pasos === 0)
             return (<Intro
                 firstDonationButton={this.nextStep}
                 donationButon={this.alreadyDonateNextStep}
-            />);
+            />)
 
         if (this.state.pasos === 1)
             return (
@@ -49,26 +44,32 @@ class Formulario extends Component {
                     handleChange={this.handleChange}
                     value={this.state}
                 />
-            );
+            )
 
         if (this.state.pasos === 2)
             return (< Phone
                 nextStep={this.nextStep}
                 prevStep={this.prevStep}
                 handleChange={this.handleChange}
-                value={this.state}
-            />);
-
+                handlePhone={this.handlePhone}
+                phone={this.state.phone}
+                email={this.state.email}
+                emailConfirmation={this.state.emailConfirmation}
+            />)
         if (this.state.pasos === 3) {
             return (
+                this.state.donations.filter(x => x.id === this.state.donationStep).map(filteredDonation => (
                     <Donation
                         value={this.state}
                         nextStep={this.nextStep}
                         prevStep={this.prevStep2}
+                        key={filteredDonation.id}
+                        id={filteredDonation.id}
                         newDonation={this.clickNewDonation}
                         backDonation={this.backDonation}
                         forwardDonation={this.forwardDonation}
                     />
+                ))
             )
         }
 
@@ -78,7 +79,7 @@ class Formulario extends Component {
                 nextStep={this.nextStep}
                 prevStep={this.prevStep}
 
-            />);
+            />)
 
         if (this.state.pasos === 11)
             return (<Verification
@@ -87,7 +88,7 @@ class Formulario extends Component {
                 handleChange={this.handleChange}
                 value={this.state}
             />)
-    };
+    }
 
 
     nextStep = () => {
@@ -98,13 +99,14 @@ class Formulario extends Component {
         if (pasos === 2)
             this.setState({
                 alreadyDonate: false
-            });
+            }
+            )
         if (!this.state.firstDonationCreated) {
-            var don = this.state.donations;
+            var don = this.state.donations
             var done = new Donation();
-            done.id = 0;
-            don.push(done);
-            this.setState({ donation: don });
+            done.id = 0
+            don.push(done)
+            this.setState({ donation: don })
             this.setState({ firstDonationCreated: true })
         }
     }
@@ -158,6 +160,11 @@ class Formulario extends Component {
     handleChange = input => (e) => {
         e.preventDefault()
         this.setState({ [input]: e.target.value })
+    }
+
+    //guardado de telefono
+    handlePhone = (phone) => {
+        this.setState({ phone: phone })
     }
 
     //nueva donacion
