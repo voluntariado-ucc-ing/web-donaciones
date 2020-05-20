@@ -25,6 +25,8 @@ class Address extends Component {
     handleStreetDetail = (e) => {
         this.setState({ streetDetail: e.target.value });
     };
+
+
     render() {
         return (
             <Container>

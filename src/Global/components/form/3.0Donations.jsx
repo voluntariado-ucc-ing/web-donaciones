@@ -27,17 +27,17 @@ class Donation extends Component {
         }
     }
     continue = (e) => {
-        e.preventDefault()
+        e.preventDefault();
         this.props.nextStep()
-    }
+    };
     back = (e) => {
-        e.preventDefault()
+        e.preventDefault();
         this.props.prevStep()
-    }
+    };
 
     //unit
     handleUnitChange = e => {
-        let isNonConventional = e.target.value === "otro" ? true : false
+        let isNonConventional = e.target.value === "otro";
         this.setState({ unit: e.target.value, isNoConventional: isNonConventional })
     };
     otro2 = () => {
@@ -55,27 +55,27 @@ class Donation extends Component {
     };
     handleNonConventionalUnit = e => {
         this.setState({ nonConventionalUnit: e.target.value })
-    }
+    };
 
     handleChange = input => (e) => {
         this.setState({ [input]: e.target.value })
-    }
+    };
 
     //nuevasDonaciones
     newDonation = (e) => {
-        e.preventDefault()
+        e.preventDefault();
         this.props.newDonation()
-    }
+    };
 
     backDonation = () => {
         this.props.backDonation()
-    }
+    };
     forwardDonation = () => {
         this.props.forwardDonation()
-    }
+    };
 
     render() {
-        const { elementDonation, quantity, unit, isNoConventional } = this.state
+        const { elementDonation, quantity, unit, isNoConventional } = this.state;
         return (
             <Container id="donation">
                 <div className="donaciones">
@@ -85,7 +85,8 @@ class Donation extends Component {
 
                     <h5>¿Con qué desea ayudarnos? *</h5>
 
-                    <Form.Control
+                    <input
+                        type="text"
                         placeholder="Ingresá acá lo que vas a donar"
                         name="elementDonation"
                         onChange={this.handleChange('elementDonation')}
@@ -96,7 +97,8 @@ class Donation extends Component {
                     <Form.Row >
                         <Form.Group as={Col} md='4'>
                             <Form.Label>Cantidad *</Form.Label>
-                            <Form.Control type="number"
+                            <input
+                                type="number"
                                 name="quantity"
                                 onChange={this.handleChange('quantity')}
                                 value={quantity}
@@ -106,7 +108,7 @@ class Donation extends Component {
                             <>
                                 <Form.Group as={Col} md="4" >
                                     <Form.Label>Unidad *</Form.Label>
-                                    <Form.Control as="select"
+                                    <select
                                         name="unit"
                                         onChange={this.handleUnitChange}
                                         value={unit}
@@ -114,7 +116,7 @@ class Donation extends Component {
                                         <option value="m">Metros</option>
                                         <option value="kg">Kg</option>
                                         <option value="otro">Otro</option>
-                                    </Form.Control>
+                                    </select>
                                 </Form.Group>
                                 <Form.Group as={Col} md="4" >
                                     {this.otro2()}
@@ -125,7 +127,7 @@ class Donation extends Component {
                             (<Form.Group
                                 as={Col} md="8" >
                                 <Form.Label>Unidad *</Form.Label>
-                                <Form.Control as="select"
+                                <select
                                     name="unit"
                                     onChange={this.handleUnitChange}
                                     value={unit}
@@ -133,7 +135,7 @@ class Donation extends Component {
                                     <option value="m">Metros</option>
                                     <option value="kg">Kg</option>
                                     <option value="otro">Otro</option>
-                                </Form.Control>
+                                </select>
                             </Form.Group>)
                         }
                     </Form.Row>

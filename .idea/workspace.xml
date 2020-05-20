@@ -35,7 +35,7 @@
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../reactstepform" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
@@ -121,6 +121,8 @@
       <workItem from="1589833743617" duration="2000000" />
       <workItem from="1589844803656" duration="1655000" />
       <workItem from="1589848126200" duration="1700000" />
+      <workItem from="1589905457957" duration="907000" />
+      <workItem from="1589915038805" duration="2964000" />
     </task>
     <servers />
   </component>

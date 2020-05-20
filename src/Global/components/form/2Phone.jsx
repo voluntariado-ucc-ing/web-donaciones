@@ -11,16 +11,16 @@ import '../../css/Formcopy.css';
 
 class Phone extends Component {
 	continue = (e) => {
-		e.preventDefault()
+		e.preventDefault();
 		this.props.nextStep()
-	}
+	};
 	back = (e) => {
-		e.preventDefault()
+		e.preventDefault();
 		this.props.prevStep()
-	}
+	};
 
 	render() {
-		const { handleChange, value } = this.props
+		const { handleChange, value } = this.props;
 		return (
 			<Container>
 				<h3>DATOS PERSONALES</h3>

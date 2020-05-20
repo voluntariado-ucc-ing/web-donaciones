@@ -1,42 +1,97 @@
 import React, {Component} from "react";
 import "./css/formMile.css";
-import Form from "react-bootstrap/Form";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
-import ButtonGroup from "react-bootstrap/ButtonGroup";
+import Intro from "./components/form/0.0Introduction";
+import Names from "./components/form/1Names";
+import Phone from "./components/form/2Phone";
 
 class FormMile extends Component {
-    render() {
-        return (
+    state = {
+        step: 1,
+
+        // step 1
+        alreadyDonate: false,
+        firstDonationCreated: false,
+
+        //step 2
+        firstName: '',
+        lastName: '',
+
+        //step 3
+        phone: '',
+        email: '',
+        emailConfirmation: '',
+
+        // step 2
+        donElem: '',
+        donUnit: '',
+        jobLocation: ''
+
+    };
+
+    nextStep = () => {
+        const { step } = this.state;
+
+        this.setState({
+            step: step + 1
+        });
+    };
+
+    prevStep = () => {
+        const { step } = this.state;
+        this.setState({
+            step: step - 1
+        });
+    };
+
+    handleChange = input => e => {
+        this.setState({[input]: e.target.value});
+    };
+
+    showStep = () => {
+        const { step, firstName, lastName, phone, email, emailConfirmation } = this.state;
+
+        if(step === 1)
+            return (<Intro
+                nextStep = {this.nextStep}
+                handleChange = {this.handleChange}
+                firstDonationButton={this.nextStep}
+                donationButon={this.alreadyDonateNextStep}
+            />);
+        if(step === 2)
+            return (<Names
+                nextStep = {this.nextStep}
+                prevStep = {this.prevStep}
+                handleChange = {this.handleChange}
+                firstName={firstName}
+                lastName={lastName}
+            />);
+        if(step === 3)
+            return (<Phone
+                nextStep = {this.nextStep}
+                prevStep = {this.prevStep}
+                handleChange = {this.handleChange}
+               phone={phone}
+               email={email}
+                emailconfirmation={emailConfirmation}
+            />);
+    };
+
+    render(){
+        const { step } = this.state;
+
+        return(
             <Container classname={"body"}>
-                <Col>
-                    <Row className={"player"}>
-                        <h1>Sobre la donación</h1>
-                        <p>El voluntariado trabaja y apoya a familias hace 5 años. Tu colaboración es fundamental para continuar
-                        su labor atendiendo sus necesidades.</p>
-                        <p>Para sumar tu donación, te pediremos algunos datos personales para poder identificarlo.</p>
-                    </Row>
-                    <Row className={"player justify-content-around mb-5"}>
-                        {/*<Form id="form">
-                            <input id="name" type="text" placeholder="Nombre"/>
-                            <input id="email" type="text" placeholder="Apellido"/>
-                            <Row>
-                                <Col sm>
-                                    <input id="submit" type="submit" value="Ya done"/>
-                                </Col>
-                                <Col sm>
-                                    <input id="submit" type="submit" value="Primera vez que dono"/>
-                                </Col>
-                            </Row>
-                        </Form>*/}
+                <Row className={"player justify-content-around mb-5"}>
 
-                        <Button variant="outline-dark" className="color" size="lg" target="_blank" href={"/form"}>Ya he donado</Button>
-                        <Button variant="outline-dark" className="color" size="lg" target="_blank" href={"/form"}>Primera vez</Button>
+                    <h2>Step {step} of 3.</h2>
+                    {this.showStep()}
 
-                    </Row>
-                </Col>
+                </Row>
+                <Button variant="outline-dark" className="color" size="lg" target="_blank" href={"/form"}>Ya he donado</Button>
+                <Button variant="outline-dark" className="color" size="lg" target="_blank" href={"/form"}>Primera vez</Button>
             </Container>
         );
     }

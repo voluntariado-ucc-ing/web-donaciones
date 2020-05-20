@@ -61,7 +61,6 @@ class Verification extends Component {
                             type="submit"
                         >Continuar</Button>
                     </div>
-
                 </Form.Group>
             </div>
         );
