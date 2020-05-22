@@ -9,64 +9,63 @@ class Address extends Component {
         super(props);
         this.state = {};
     }
-
-    continue = e => {
-        e.preventDefault();
-        this.props.nextStep();
-    };
-
-    back = e => {
-        e.preventDefault();
-        this.props.prevStep();
-    };
-
     render() {
-        const { city, street, number, floorNumber, handleChange } = this.props;
-
         return (
             <Container>
                 <h5>¿Dónde debemos retirarlos?</h5>
-                <label>
-                    <input
-                        type="text"
-                        name="city"
-                        value={city}
-                        onChange={handleChange('city')}
-                        placeholder="Ciudad"
-                    />
-                </label>
-                <label>
-                    <input
-                        type="text"
-                        name="street"
-                        value={street}
-                        onChange={handleChange('street')}
-                        placeholder="Calle"
-                    />
-                </label>
-                <label>
-                    <input
-                        type="text"
-                        name="number"
-                        value={number}
-                        onChange={handleChange('number')}
-                        placeholder="Altura"
-                    />
-                </label>
-                <label>
-                    <input
-                        type="text"
-                        value={floorNumber}
-                        onChange={handleChange('floornumber')}
-                        placeholder="Opcional: Lote, manzana, barrio, piso"
-                    />
-                </label>
-                <button className="Back" onClick={this.back}>
-                    « Back
-                </button>
-                <button className="Next" onClick={this.continue}>
-                    Next »
-                </button>
+                <Form.Label>Localidad - Ciudad *</Form.Label>
+                <Form.Group
+                    id="ciudad">
+                    <Form.Control type="text" placeholder="Ciudad"
+                        onChange={
+                            this.props
+                        }
+                        required
+                        value={
+                            this.state.city
+                        } />
+                </Form.Group>
+                <Form.Row>
+                    <Form.Group as={Col}
+                        md="5"
+                        id="calle">
+                        <Form.Label>Calle *</Form.Label>
+                        <Form.Control type="text" placeholder="Calle"
+                            onChange={
+                                this.handleStreet
+                            }
+                            required
+                            value={
+                                this.state.street
+                            } />
+                    </Form.Group>
+                    <Form.Group as={Col}
+                        md="2"
+                        id="altura">
+                        <Form.Label>Altura *</Form.Label>
+
+                        <Form.Control type="number" placeholder="Altura"
+                            onChange={
+                                this.handleStreetNumber
+                            }
+                            required
+                            value={
+                                this.state.streetNumber
+                            } />
+                    </Form.Group>
+                    <Form.Group as={Col}
+                        md="5"
+                        id="Detalle">
+                        <Form.Label>Otros </Form.Label>
+                        <Form.Control type="text" placeholder="Opcional: Lote, manzana, barrio, piso"
+                            onChange={
+                                this.handleStreetDetail
+                            }
+                            value={
+                                this.state.streetDetail
+                            } />
+                    </Form.Group>
+                </Form.Row>
             </Container>
         );
     }

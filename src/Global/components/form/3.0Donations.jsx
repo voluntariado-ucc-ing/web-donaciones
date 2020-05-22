@@ -3,8 +3,11 @@ import Form from "react-bootstrap/Form";
 import Col from 'react-bootstrap/Col';
 import Button from '@material-ui/core/Button';
 import Container from "react-bootstrap/Container";
+import Checkbox from '@material-ui/core/Checkbox';
 import '../../css/Formcopy.css';
-import Address from "./4Address";
+
+//import address
+import Address from './4Address'
 
 class Donation extends Component {
     constructor(props) {
@@ -12,8 +15,6 @@ class Donation extends Component {
         this.state = {
             isNoConventional: false,
             nonConventionalUnit: "",
-            otherDonationType: "",
-            donationType: '',
             elementDonation: '',
             quantity: '',
             unit: '',
@@ -24,55 +25,61 @@ class Donation extends Component {
         }
     }
     continue = (e) => {
-        e.preventDefault();
+        e.preventDefault()
         this.props.nextStep()
-    };
+    }
     back = (e) => {
-        e.preventDefault();
+        e.preventDefault()
         this.props.prevStep()
-    };
+    }
 
-    //unit
+    //unidad distinta
     handleUnitChange = e => {
-        let isNonConventional = e.target.value === "otro";
+        let isNonConventional = e.target.value === "otro" ? true : false
         this.setState({ unit: e.target.value, isNoConventional: isNonConventional })
     };
-    otro2 = () => {
+    handleTwoChanges = e => {
+        this.handleUnitChange(e)
+        this.props.handleDonacion('unit', this.props.id)
+    }
+    otro = () => {
         if (this.state.isNoConventional)
             return (
                 <div>
                     <Form.Label>Otra unidad *</Form.Label>
                     <Form.Control
                         type="text"
-                        onChange={this.handleNonConventionalUnit}
-                        value={this.state.nonConventionalUnit}
+                        name="nonConventionalUnit"
+                        onChange={this.propshandleDonacion('nonConventionalUnit', this.props.id)}
+                        value={this.props.donations[this.props.id].state.nonConventionalUnit}
                     />
                 </div>
             );
     };
     handleNonConventionalUnit = e => {
         this.setState({ nonConventionalUnit: e.target.value })
-    };
+    }
 
     handleChange = input => (e) => {
         this.setState({ [input]: e.target.value })
-    };
+    }
 
     //nuevasDonaciones
     newDonation = (e) => {
-        e.preventDefault();
+        e.preventDefault()
         this.props.newDonation()
-    };
+    }
 
     backDonation = () => {
         this.props.backDonation()
-    };
+    }
     forwardDonation = () => {
         this.props.forwardDonation()
-    };
+    }
 
     render() {
-        const { elementDonation, quantity, unit, isNoConventional } = this.state;
+        const { isNoConventional } = this.state
+        const { handleDonacion, id, donations } = this.props
         return (
             <Container id="donation">
                 <div className="donaciones">
@@ -82,41 +89,40 @@ class Donation extends Component {
 
                     <h5>¿Con qué desea ayudarnos? *</h5>
 
-                    <input
-                        type="text"
+                    <Form.Control
                         placeholder="Ingresá acá lo que vas a donar"
                         name="elementDonation"
-                        onChange={this.handleChange('elementDonation')}
-                        value={elementDonation}
+                        onChange={handleDonacion('elementDonation', id)}
+                        value={donations[id].state.elementDonation}
                         required
                     />
                     <br />
                     <Form.Row >
                         <Form.Group as={Col} md='4'>
                             <Form.Label>Cantidad *</Form.Label>
-                            <input
+                            <Form.Control
                                 type="number"
                                 name="quantity"
-                                onChange={this.handleChange('quantity')}
-                                value={quantity}
+                                onChange={handleDonacion('quantity', id)}
+                                value={donations[id].state.quantity}
                             />
                         </Form.Group>
                         {isNoConventional ? (
                             <>
                                 <Form.Group as={Col} md="4" >
                                     <Form.Label>Unidad *</Form.Label>
-                                    <input as="select"
+                                    <Form.Control as="select"
                                         name="unit"
-                                        onChange={this.handleUnitChange}
-                                        value={unit}
+                                        onChange={this.handleTwoChanges}
+                                        value={donations[id].state.unit}
                                     >
                                         <option value="m">Metros</option>
                                         <option value="kg">Kg</option>
                                         <option value="otro">Otro</option>
-                                    </input>
+                                    </Form.Control>
                                 </Form.Group>
                                 <Form.Group as={Col} md="4" >
-                                    {this.otro2()}
+                                    {this.otro()}
                                 </Form.Group>
                             </>
                         )
@@ -126,8 +132,8 @@ class Donation extends Component {
                                 <Form.Label>Unidad *</Form.Label>
                                 <Form.Control as="select"
                                     name="unit"
-                                    onChange={this.handleUnitChange}
-                                    value={unit}
+                                    onChange={this.handleTwoChanges}
+                                    value={donations[id].state.unit}
                                 >
                                     <option value="m">Metros</option>
                                     <option value="kg">Kg</option>
@@ -167,14 +173,14 @@ class Donation extends Component {
                         className="backButton"
                         variant="contained"
                         color="secondary"
-                    > Atrás</Button>
+                    > Mis Datos</Button>
                     <Button
                         onClick={this.continue}
                         type="submit"
                         className="forwardButton"
                         variant="contained"
                         color="primary"
-                    >Continuar</Button>
+                    >Finalizar</Button>
                 </div>
             </Container >
         );

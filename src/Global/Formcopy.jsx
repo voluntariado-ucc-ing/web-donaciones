@@ -11,6 +11,9 @@ import Donation from './components/form/3.0Donations'
 import Confirmation from './components/form/5Confirmation'
 import Verification from './components/form/0.1Verification'
 
+// variables globales
+import './components/form/global'
+
 class Formulario extends Component {
     constructor(props) {
         super(props);
@@ -30,13 +33,13 @@ class Formulario extends Component {
 
     //transiciones
     init = () => {
-        if (this.state.pasos === 0)
+        if (this.state.pasos === global.Introduccion)
             return (<Intro
                 firstDonationButton={this.nextStep}
                 donationButon={this.alreadyDonateNextStep}
             />)
 
-        if (this.state.pasos === 1)
+        if (this.state.pasos === global.Nombre)
             return (
                 <Names
                     nextStep={this.nextStep}
@@ -46,7 +49,7 @@ class Formulario extends Component {
                 />
             )
 
-        if (this.state.pasos === 2)
+        if (this.state.pasos === global.Contacto)
             return (< Phone
                 nextStep={this.nextStep}
                 prevStep={this.prevStep}
@@ -56,24 +59,26 @@ class Formulario extends Component {
                 email={this.state.email}
                 emailConfirmation={this.state.emailConfirmation}
             />)
-        if (this.state.pasos === 3) {
+        if (this.state.pasos === global.Donacion) {
             return (
                 this.state.donations.filter(x => x.id === this.state.donationStep).map(filteredDonation => (
                     <Donation
                         value={this.state}
                         nextStep={this.nextStep}
                         prevStep={this.prevStep2}
+                        handleDonacion={this.handleDonaciones}
                         key={filteredDonation.id}
                         id={filteredDonation.id}
                         newDonation={this.clickNewDonation}
                         backDonation={this.backDonation}
                         forwardDonation={this.forwardDonation}
+                        donations={this.state.donations}
                     />
                 ))
             )
         }
 
-        if (this.state.pasos === 4)
+        if (this.state.pasos === global.Confirmaion)
             return (< Confirmation
                 value={this.state}
                 nextStep={this.nextStep}
@@ -81,7 +86,7 @@ class Formulario extends Component {
 
             />)
 
-        if (this.state.pasos === 11)
+        if (this.state.pasos === global.YaHeDonado)
             return (<Verification
                 nextStep={this.nextStep2}
                 prevStep={this.alreadyDonatePrevStep}
@@ -131,6 +136,7 @@ class Formulario extends Component {
         })
     }
 
+    //utilizado cuando el usuario ya creo una donacion anteriormente
     nextStep2 = () => {
         if (!this.state.firstDonationCreated) {
             var don = this.state.donations
@@ -145,6 +151,7 @@ class Formulario extends Component {
         })
     }
 
+    //utilizado cuando el usuario ya creo una donacion anteriormente
     prevStep2 = () => {
         if (this.state.alreadyDonate === true)
             this.setState({
@@ -167,6 +174,13 @@ class Formulario extends Component {
         this.setState({ phone: phone })
     };
 
+    //guardado de donaciones
+    handleDonaciones = (input, id) => (e) => {
+        var updateDonations = this.state.donations
+        updateDonations[id].state[input] = e.target.value
+        this.setState({ donations: updateDonations })
+    }
+
     //nueva donacion
     clickNewDonation = () => {
         var don = this.state.donations;
@@ -175,6 +189,9 @@ class Formulario extends Component {
         this.setState({ donationStep: don.length });
         don.push(done);
         this.setState({ donation: don })
+
+        console.log(JSON.stringify(this.state))
+        console.log(this.state.donations[0].state)
     }
     //botones nueva donacion
     backDonation = () => {
