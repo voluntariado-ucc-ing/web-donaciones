@@ -3,6 +3,7 @@ import Form from 'react-bootstrap/Form';
 import Button from '@material-ui/core/Button';
 import Container from 'react-bootstrap/Container';
 import '../../css/Formcopy.css';
+import progressBar from "./progressBar";
 
 
 class Names extends Component {
@@ -35,9 +36,12 @@ class Names extends Component {
 		this.props.prevStep()
 	}
 	render() {
-		const { handleChange, value } = this.props
+		const { handleChange, value } = this.props;
 		return (
 			<Container>
+
+				<progressBar/>
+
 				<h3>DATOS PERSONALES</h3>
 				<Form.Group>
 					<Form.Label>¿Cual es su nombre? *</Form.Label>

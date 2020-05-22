@@ -158,22 +158,22 @@ class Formulario extends Component {
 
     //guardado de datos
     handleChange = input => (e) => {
-        e.preventDefault()
+        e.preventDefault();
         this.setState({ [input]: e.target.value })
-    }
+    };
 
     //guardado de telefono
     handlePhone = (phone) => {
         this.setState({ phone: phone })
-    }
+    };
 
     //nueva donacion
     clickNewDonation = () => {
-        var don = this.state.donations
+        var don = this.state.donations;
         var done = new Donation();
-        done.id = don.length
-        this.setState({ donationStep: don.length })
-        don.push(done)
+        done.id = don.length;
+        this.setState({ donationStep: don.length });
+        don.push(done);
         this.setState({ donation: don })
     }
     //botones nueva donacion

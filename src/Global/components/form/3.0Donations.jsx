@@ -3,11 +3,8 @@ import Form from "react-bootstrap/Form";
 import Col from 'react-bootstrap/Col';
 import Button from '@material-ui/core/Button';
 import Container from "react-bootstrap/Container";
-import Checkbox from '@material-ui/core/Checkbox';
 import '../../css/Formcopy.css';
-
-//import address
-import Address from './4Address'
+import Address from "./4Address";
 
 class Donation extends Component {
     constructor(props) {
@@ -108,7 +105,7 @@ class Donation extends Component {
                             <>
                                 <Form.Group as={Col} md="4" >
                                     <Form.Label>Unidad *</Form.Label>
-                                    <select
+                                    <input as="select"
                                         name="unit"
                                         onChange={this.handleUnitChange}
                                         value={unit}
@@ -116,7 +113,7 @@ class Donation extends Component {
                                         <option value="m">Metros</option>
                                         <option value="kg">Kg</option>
                                         <option value="otro">Otro</option>
-                                    </select>
+                                    </input>
                                 </Form.Group>
                                 <Form.Group as={Col} md="4" >
                                     {this.otro2()}
@@ -127,7 +124,7 @@ class Donation extends Component {
                             (<Form.Group
                                 as={Col} md="8" >
                                 <Form.Label>Unidad *</Form.Label>
-                                <select
+                                <Form.Control as="select"
                                     name="unit"
                                     onChange={this.handleUnitChange}
                                     value={unit}
@@ -135,7 +132,7 @@ class Donation extends Component {
                                     <option value="m">Metros</option>
                                     <option value="kg">Kg</option>
                                     <option value="otro">Otro</option>
-                                </select>
+                                </Form.Control>
                             </Form.Group>)
                         }
                     </Form.Row>

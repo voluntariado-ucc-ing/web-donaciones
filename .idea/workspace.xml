@@ -35,13 +35,15 @@
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../reactstepform" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/Global" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\milel\OneDrive\Documentos\GitHub\web-donaciones\src\Global" />
+      <recent name="C:\Users\milel\OneDrive\Documentos\GitHub\web-donaciones\src\Global\components" />
       <recent name="C:\Users\milel\OneDrive\Documentos\GitHub\web-donaciones" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -123,6 +125,12 @@
       <workItem from="1589848126200" duration="1700000" />
       <workItem from="1589905457957" duration="907000" />
       <workItem from="1589915038805" duration="2964000" />
+      <workItem from="1589950944870" duration="1881000" />
+      <workItem from="1590009053857" duration="6912000" />
+      <workItem from="1590020641057" duration="682000" />
+      <workItem from="1590064114493" duration="1002000" />
+      <workItem from="1590087288590" duration="265000" />
+      <workItem from="1590095228526" duration="2082000" />
     </task>
     <servers />
   </component>

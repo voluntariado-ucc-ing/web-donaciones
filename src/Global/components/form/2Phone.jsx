@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import 'react-phone-number-input/style.css'
-import PhoneInput from 'react-phone-number-input'
+import 'react-phone-number-input/style.css';
+import PhoneInput from 'react-phone-number-input';
 import Form from 'react-bootstrap/Form';
 import Container from 'react-bootstrap/Container';
 import style from '../../css/Formcopy.css'

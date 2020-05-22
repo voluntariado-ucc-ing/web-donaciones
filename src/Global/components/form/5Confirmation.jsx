@@ -4,17 +4,21 @@ import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Col from 'react-bootstrap/Form';
 import '../../css/Formcopy.css';
+import Donation from "3.0Donations";
 
 class Confirmation extends Component {
     back = (e) => {
-        e.preventDefault()
+        e.preventDefault();
         this.props.prevStep()
-    }
+    };
+
     newDonation = (e) => {
 
-    }
+    };
 
     render() {
+        const { elementDonation, quantity, unit, city, street, height, others } = Donation.props;
+
         return (
             <Container>
                 <h4>CONFIRMACIÓN DE DONACIÓN</h4>
@@ -50,21 +54,30 @@ class Confirmation extends Component {
                     <Form.Label>Email</Form.Label>
                     <br />
                     {this.props.value.email}
+
                 </Form.Group>
                 <Form.Label>Donacion</Form.Label>
+               <b>{elementDonation}</b>
+                <p>Cantidad</p><b>{quantity}</b><br />
+                <p>Unidad:</p><b>{unit}</b><br />
+
                 <Form.Label>Dirección</Form.Label>
                 <Form.Row>
                     <Form.Group as={Col} md="3" id="ciudad">
-                        <Form.Label>Dirección</Form.Label>
+                        <Form.Label>Ciudad</Form.Label>
+                        <p>Ciudad: </p><b>{city}</b>
                     </Form.Group>
                     <Form.Group as={Col} md="3" id="calle">
                         <Form.Label>Numero</Form.Label>
+                        <p>Calle:</p> <b>{street}</b>
                     </Form.Group>
                     <Form.Group as={Col} md="2" id="altura">
                         <Form.Label>Altura</Form.Label>
+                        <p>Altura:</p><b>{height}</b>
                     </Form.Group>
                     <Form.Group as={Col} md="4" id="Detalle">
                         <Form.Label>Aclaraciones</Form.Label>
+                        <p>Otros: </p><b>{others}</b>
                     </Form.Group>
                 </Form.Row>
                 <div className="bottomButton">

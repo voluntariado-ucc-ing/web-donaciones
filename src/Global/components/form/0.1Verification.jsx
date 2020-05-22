@@ -12,12 +12,12 @@ class Verification extends Component {
     }
 
     back = (e) => {
-        e.preventDefault()
+        e.preventDefault();
         this.props.prevStep()
     }
     continue = (e) => {
         var emailRegex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
-        e.preventDefault()
+        e.preventDefault();
         if (emailRegex.test(this.props.value.email)) {
             this.setState({ wrongEmail: false })
             this.props.nextStep()
