@@ -9,22 +9,6 @@ class Address extends Component {
         super(props);
         this.state = {};
     }
-
-    handleCity = (e) => {
-        this.setState({ city: e.target.value });
-    };
-
-    handleStreet = (e) => {
-        this.setState({ street: e.target.value });
-    };
-
-    handleStreetNumber = (e) => {
-        this.setState({ streetNumber: e.target.value });
-    };
-
-    handleStreetDetail = (e) => {
-        this.setState({ streetDetail: e.target.value });
-    };
     render() {
         return (
             <Container>
@@ -34,7 +18,7 @@ class Address extends Component {
                     id="ciudad">
                     <Form.Control type="text" placeholder="Ciudad"
                         onChange={
-                            this.handleCity
+                            this.props
                         }
                         required
                         value={
@@ -72,7 +56,7 @@ class Address extends Component {
                     <Form.Group as={Col}
                         md="5"
                         id="Detalle">
-                        <Form.Label>Otros *</Form.Label>
+                        <Form.Label>Otros </Form.Label>
                         <Form.Control type="text" placeholder="Opcional: Lote, manzana, barrio, piso"
                             onChange={
                                 this.handleStreetDetail

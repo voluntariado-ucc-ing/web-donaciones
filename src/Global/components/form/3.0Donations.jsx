@@ -15,8 +15,6 @@ class Donation extends Component {
         this.state = {
             isNoConventional: false,
             nonConventionalUnit: "",
-            otherDonationType: "",
-            donationType: '',
             elementDonation: '',
             quantity: '',
             unit: '',
@@ -35,20 +33,25 @@ class Donation extends Component {
         this.props.prevStep()
     }
 
-    //unit
+    //unidad distinta
     handleUnitChange = e => {
         let isNonConventional = e.target.value === "otro" ? true : false
         this.setState({ unit: e.target.value, isNoConventional: isNonConventional })
     };
-    otro2 = () => {
+    handleTwoChanges = e => {
+        this.handleUnitChange(e)
+        this.props.handleDonacion('unit', this.props.id)
+    }
+    otro = () => {
         if (this.state.isNoConventional)
             return (
                 <div>
                     <Form.Label>Otra unidad *</Form.Label>
                     <Form.Control
                         type="text"
-                        onChange={this.handleNonConventionalUnit}
-                        value={this.state.nonConventionalUnit}
+                        name="nonConventionalUnit"
+                        onChange={this.propshandleDonacion('nonConventionalUnit', this.props.id)}
+                        value={this.props.donations[this.props.id].state.nonConventionalUnit}
                     />
                 </div>
             );
@@ -75,7 +78,8 @@ class Donation extends Component {
     }
 
     render() {
-        const { elementDonation, quantity, unit, isNoConventional } = this.state
+        const { isNoConventional } = this.state
+        const { handleDonacion, id, donations } = this.props
         return (
             <Container id="donation">
                 <div className="donaciones">
@@ -88,18 +92,19 @@ class Donation extends Component {
                     <Form.Control
                         placeholder="Ingresá acá lo que vas a donar"
                         name="elementDonation"
-                        onChange={this.handleChange('elementDonation')}
-                        value={elementDonation}
+                        onChange={handleDonacion('elementDonation', id)}
+                        value={donations[id].state.elementDonation}
                         required
                     />
                     <br />
                     <Form.Row >
                         <Form.Group as={Col} md='4'>
                             <Form.Label>Cantidad *</Form.Label>
-                            <Form.Control type="number"
+                            <Form.Control
+                                type="number"
                                 name="quantity"
-                                onChange={this.handleChange('quantity')}
-                                value={quantity}
+                                onChange={handleDonacion('quantity', id)}
+                                value={donations[id].state.quantity}
                             />
                         </Form.Group>
                         {isNoConventional ? (
@@ -108,8 +113,8 @@ class Donation extends Component {
                                     <Form.Label>Unidad *</Form.Label>
                                     <Form.Control as="select"
                                         name="unit"
-                                        onChange={this.handleUnitChange}
-                                        value={unit}
+                                        onChange={this.handleTwoChanges}
+                                        value={donations[id].state.unit}
                                     >
                                         <option value="m">Metros</option>
                                         <option value="kg">Kg</option>
@@ -117,7 +122,7 @@ class Donation extends Component {
                                     </Form.Control>
                                 </Form.Group>
                                 <Form.Group as={Col} md="4" >
-                                    {this.otro2()}
+                                    {this.otro()}
                                 </Form.Group>
                             </>
                         )
@@ -127,8 +132,8 @@ class Donation extends Component {
                                 <Form.Label>Unidad *</Form.Label>
                                 <Form.Control as="select"
                                     name="unit"
-                                    onChange={this.handleUnitChange}
-                                    value={unit}
+                                    onChange={this.handleTwoChanges}
+                                    value={donations[id].state.unit}
                                 >
                                     <option value="m">Metros</option>
                                     <option value="kg">Kg</option>
@@ -168,14 +173,14 @@ class Donation extends Component {
                         className="backButton"
                         variant="contained"
                         color="secondary"
-                    > Atrás</Button>
+                    > Mis Datos</Button>
                     <Button
                         onClick={this.continue}
                         type="submit"
                         className="forwardButton"
                         variant="contained"
                         color="primary"
-                    >Continuar</Button>
+                    >Finalizar</Button>
                 </div>
             </Container >
         );
