@@ -45,7 +45,8 @@ class Formulario extends Component {
                     nextStep={this.nextStep}
                     prevStep={this.prevStep}
                     handleChange={this.handleChange}
-                    value={this.state}
+                    firstName={this.state.firstName}
+                    lastName={this.state.lastName}
                 />
             )
 
@@ -63,16 +64,17 @@ class Formulario extends Component {
             return (
                 this.state.donations.filter(x => x.id === this.state.donationStep).map(filteredDonation => (
                     <Donation
-                        value={this.state}
+                        donationStep={this.state.donationStep}
+                        donations={this.state.donations}
                         nextStep={this.nextStep}
                         prevStep={this.prevStep2}
                         handleDonacion={this.handleDonaciones}
+                        handleUnit={this.handleUnitDonation}
                         key={filteredDonation.id}
                         id={filteredDonation.id}
                         newDonation={this.clickNewDonation}
                         backDonation={this.backDonation}
                         forwardDonation={this.forwardDonation}
-                        donations={this.state.donations}
                     />
                 ))
             )
@@ -91,7 +93,7 @@ class Formulario extends Component {
                 nextStep={this.nextStep2}
                 prevStep={this.alreadyDonatePrevStep}
                 handleChange={this.handleChange}
-                value={this.state}
+                email={this.state.email}
             />)
     }
 
@@ -101,7 +103,7 @@ class Formulario extends Component {
         this.setState({
             pasos: pasos + 1
         });
-        if (pasos === 2)
+        if (pasos === global.Contacto)
             this.setState({
                 alreadyDonate: false
             }
@@ -125,18 +127,18 @@ class Formulario extends Component {
 
     alreadyDonateNextStep = () => {
         this.setState({
-            pasos: 11,
+            pasos: global.YaHeDonado,
             alreadyDonate: true
         })
     }
 
     alreadyDonatePrevStep = () => {
         this.setState({
-            pasos: 0
+            pasos: global.Introduccion
         })
     }
 
-    //utilizado cuando el usuario ya creo una donacion anteriormente
+    //utilizado cuando el usuario ya 'creo' una donacion anteriormente
     nextStep2 = () => {
         if (!this.state.firstDonationCreated) {
             var don = this.state.donations
@@ -147,7 +149,7 @@ class Formulario extends Component {
             this.setState({ firstDonationCreated: true })
         }
         this.setState({
-            pasos: 3
+            pasos: global.Donacion
         })
     }
 
@@ -155,11 +157,11 @@ class Formulario extends Component {
     prevStep2 = () => {
         if (this.state.alreadyDonate === true)
             this.setState({
-                pasos: 11
+                pasos: global.YaHeDonado
             })
         else
             this.setState({
-                pasos: 2
+                pasos: global.Contacto
             })
     }
 
@@ -178,6 +180,12 @@ class Formulario extends Component {
     handleDonaciones = (input, id) => (e) => {
         var updateDonations = this.state.donations
         updateDonations[id].state[input] = e.target.value
+        this.setState({ donations: updateDonations })
+    }
+    handleUnitDonation = (id, unit, isNoConventional) => {
+        var updateDonations = this.state.donations
+        updateDonations[id].state.unit = unit
+        updateDonations[id].state.isNoConventional = isNoConventional
         this.setState({ donations: updateDonations })
     }
 

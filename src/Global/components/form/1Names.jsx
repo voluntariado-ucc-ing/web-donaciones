@@ -3,7 +3,6 @@ import Form from 'react-bootstrap/Form';
 import Button from '@material-ui/core/Button';
 import Container from 'react-bootstrap/Container';
 import '../../css/Formcopy.css';
-import progressBar from "./progressBar";
 
 
 class Names extends Component {
@@ -16,13 +15,13 @@ class Names extends Component {
 	}
 	continue = (e) => {
 		e.preventDefault()
-		if (this.props.value.firstName !== '' && this.props.value.lastName !== '') {
+		if (this.props.firstName !== '' && this.props.lastName !== '') {
 			this.setState({ firstNameWritten: true })
 			this.setState({ lastNameWritten: true })
 			this.props.nextStep()
 		}
 		else {
-			if (this.props.value.firstName === '') {
+			if (this.props.firstName === '') {
 				this.setState({ firstNameWritten: false })
 			}
 			else {
@@ -36,12 +35,9 @@ class Names extends Component {
 		this.props.prevStep()
 	}
 	render() {
-		const { handleChange, value } = this.props;
+		const { handleChange, firstName, lastName } = this.props
 		return (
 			<Container>
-
-				<progressBar/>
-
 				<h3>DATOS PERSONALES</h3>
 				<Form.Group>
 					<Form.Label>¿Cual es su nombre? *</Form.Label>
@@ -50,7 +46,7 @@ class Names extends Component {
 						placeholder="Nombre"
 						name="firstName"
 						onChange={handleChange('firstName')}
-						value={value.firstName}
+						value={firstName}
 					/>
 					{this.state.firstNameWritten ? null : (<Form.Text className="invalidInput">
 						Debe introducir su nombre.
@@ -63,7 +59,7 @@ class Names extends Component {
 						placeholder="Apellido"
 						name='lastName'
 						onChange={handleChange('lastName')}
-						value={value.lastName}
+						value={lastName}
 					/>
 					{this.state.lastNameWritten ? null : (<Form.Text className="invalidInput">
 						Debe introducir su apellido.

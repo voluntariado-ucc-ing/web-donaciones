@@ -1,6 +1,18 @@
 .navbar {
   text-decoration-color: #002c55;
   background-color: #EEEEEE;
+  padding: 0;
+  padding-left: 20px;
+}
+
+.links Link{
+  border-bottom: 4px solid transparent;
+  display: block;
+  text-align: center;
+}
+
+.links > .active {
+  border-bottom: 4px solid #61b3e4;
 }
 
 .b1{
@@ -8,16 +20,14 @@
 }
 
 .b2{
-  margin-right: 17px;
   text-decoration: none;
   color: rgb(59, 59, 59);
+  padding: 19px 25px 13px;
 }
 
 .b2:hover{
   text-decoration: none;
   color: #61b3e4;
-  padding: 0px;
-
 }
 
 Eliminar borde punteado a los enlaces

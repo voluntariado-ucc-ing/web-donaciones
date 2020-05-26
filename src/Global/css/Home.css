@@ -127,13 +127,12 @@ iframe{
 }
 
 .link{
-    background-color: #F9F9F9;
-    color: #002C55;
+    background-color: rgb(55, 76, 94);
+    color: #fafafa;
 }
 
 .link:hover{
-    background-color: #002C55;
-
+    background-color: rgb(19, 40, 59);
 }
 
 .btn{

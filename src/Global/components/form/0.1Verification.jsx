@@ -12,13 +12,13 @@ class Verification extends Component {
     }
 
     back = (e) => {
-        e.preventDefault();
+        e.preventDefault()
         this.props.prevStep()
     }
     continue = (e) => {
         var emailRegex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
-        e.preventDefault();
-        if (emailRegex.test(this.props.value.email)) {
+        e.preventDefault()
+        if (emailRegex.test(this.props.email)) {
             this.setState({ wrongEmail: false })
             this.props.nextStep()
         }
@@ -27,7 +27,7 @@ class Verification extends Component {
     }
 
     render() {
-        const { handleChange, value } = this.props
+        const { handleChange, email } = this.props
         return (
             <div>
                 <h5>Por favor ingrese su email para identificarse *</h5>
@@ -37,7 +37,7 @@ class Verification extends Component {
                         type="email"
                         name='email'
                         onChange={handleChange('email')}
-                        value={value.email}
+                        value={email}
                         required
                     />
                     {this.state.wrongEmail === true ?
@@ -61,6 +61,7 @@ class Verification extends Component {
                             type="submit"
                         >Continuar</Button>
                     </div>
+
                 </Form.Group>
             </div>
         );

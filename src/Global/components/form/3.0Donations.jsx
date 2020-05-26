@@ -7,17 +7,17 @@ import Checkbox from '@material-ui/core/Checkbox';
 import '../../css/Formcopy.css';
 
 //import address
-import Address from './4Address'
+import Address from './3.1Address'
 
 class Donation extends Component {
     constructor(props) {
         super(props);
         this.state = {
             isNoConventional: false,
-            nonConventionalUnit: "",
             elementDonation: '',
             quantity: '',
             unit: '',
+            otherUnit: '',
             city: '',
             street: '',
             number: '',
@@ -36,33 +36,10 @@ class Donation extends Component {
     //unidad distinta
     handleUnitChange = e => {
         let isNonConventional = e.target.value === "otro" ? true : false
+        var unit = e.target.value
         this.setState({ unit: e.target.value, isNoConventional: isNonConventional })
+        this.props.handleUnit(this.props.id, unit, isNonConventional)
     };
-    handleTwoChanges = e => {
-        this.handleUnitChange(e)
-        this.props.handleDonacion('unit', this.props.id)
-    }
-    otro = () => {
-        if (this.state.isNoConventional)
-            return (
-                <div>
-                    <Form.Label>Otra unidad *</Form.Label>
-                    <Form.Control
-                        type="text"
-                        name="nonConventionalUnit"
-                        onChange={this.propshandleDonacion('nonConventionalUnit', this.props.id)}
-                        value={this.props.donations[this.props.id].state.nonConventionalUnit}
-                    />
-                </div>
-            );
-    };
-    handleNonConventionalUnit = e => {
-        this.setState({ nonConventionalUnit: e.target.value })
-    }
-
-    handleChange = input => (e) => {
-        this.setState({ [input]: e.target.value })
-    }
 
     //nuevasDonaciones
     newDonation = (e) => {
@@ -78,12 +55,11 @@ class Donation extends Component {
     }
 
     render() {
-        const { isNoConventional } = this.state
-        const { handleDonacion, id, donations } = this.props
+        const { handleDonacion, id, donations, donationStep } = this.props
         return (
             <Container id="donation">
                 <div className="donaciones">
-                    {this.props.value.donations.length > 1 ?
+                    {donations.length > 1 ?
                         <> <h5>Donación número {this.props.id + 1}</h5> <br /> </> : null
                     }
 
@@ -107,14 +83,13 @@ class Donation extends Component {
                                 value={donations[id].state.quantity}
                             />
                         </Form.Group>
-
-                        {isNoConventional ? (
+                        {donations[this.props.id].state.isNoConventional ? (
                             <>
                                 <Form.Group as={Col} md="4" >
                                     <Form.Label>Unidad *</Form.Label>
                                     <Form.Control as="select"
                                         name="unit"
-                                        onChange={this.handleTwoChanges}
+                                        onChange={this.handleUnitChange}
                                         value={donations[id].state.unit}
                                     >
                                         <option value="m">Metros</option>
@@ -123,7 +98,15 @@ class Donation extends Component {
                                     </Form.Control>
                                 </Form.Group>
                                 <Form.Group as={Col} md="4" >
-                                    {this.otro()}
+                                    <div>
+                                        <Form.Label>Otra unidad *</Form.Label>
+                                        <Form.Control
+                                            type="text"
+                                            name="otherUnit"
+                                            onChange={handleDonacion('otherUnit', this.props.id)}
+                                            value={donations[this.props.id].state.otherUnit}
+                                        />
+                                    </div>
                                 </Form.Group>
                             </>
                         )
@@ -133,7 +116,7 @@ class Donation extends Component {
                                 <Form.Label>Unidad *</Form.Label>
                                 <Form.Control as="select"
                                     name="unit"
-                                    onChange={this.handleTwoChanges}
+                                    onChange={this.handleUnitChange}
                                     value={donations[id].state.unit}
                                 >
                                     <option value="m">Metros</option>
@@ -143,7 +126,14 @@ class Donation extends Component {
                             </Form.Group>)
                         }
                     </Form.Row>
-                    <Address />
+                    <Address
+                        id={id}
+                        handleChange={handleDonacion}
+                        city={donations[id].state.city}
+                        street={donations[id].state.street}
+                        number={donations[id].state.number}
+                        floorNumber={donations[id].state.floorNumber}
+                    />
                     <div className="centerButton">
                         <Button onClick={this.newDonation}
                             color="primary"
@@ -151,14 +141,14 @@ class Donation extends Component {
                             className="centerButton">Nueva Donacion</Button>
                     </div>
                     <div className="pasosDonation">
-                        {this.props.value.donationStep > 0 ?
+                        {donationStep > 0 ?
                             (<Button
                                 variant="contained"
                                 color="default"
                                 className="backButton"
                                 onClick={this.backDonation} > Donacion Anterior</Button>) : null
                         }
-                        {this.props.value.donationStep < this.props.value.donations.length - 1 ?
+                        {donationStep < donations.length - 1 ?
                             (<Button
                                 variant="contained"
                                 color="default"
