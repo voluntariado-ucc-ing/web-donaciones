@@ -10,60 +10,50 @@ class Address extends Component {
         this.state = {};
     }
     render() {
+        const { handleChange, id, city, street, number, floorNumber } = this.props
         return (
             <Container>
                 <h5>¿Dónde debemos retirarlos?</h5>
                 <Form.Label>Localidad - Ciudad *</Form.Label>
                 <Form.Group
-                    id="ciudad">
+                >
                     <Form.Control type="text" placeholder="Ciudad"
-                        onChange={
-                            this.props
-                        }
-                        required
-                        value={
-                            this.state.city
-                        } />
+                        name="city"
+                        onChange={handleChange('city', id)}
+                        value={city}
+                    />
                 </Form.Group>
                 <Form.Row>
                     <Form.Group as={Col}
                         md="5"
-                        id="calle">
+                    >
                         <Form.Label>Calle *</Form.Label>
                         <Form.Control type="text" placeholder="Calle"
-                            onChange={
-                                this.handleStreet
-                            }
-                            required
-                            value={
-                                this.state.street
-                            } />
+                            name="street"
+                            onChange={handleChange('street', id)}
+                            value={street}
+                        />
                     </Form.Group>
                     <Form.Group as={Col}
                         md="2"
-                        id="altura">
+                    >
                         <Form.Label>Altura *</Form.Label>
 
                         <Form.Control type="number" placeholder="Altura"
-                            onChange={
-                                this.handleStreetNumber
-                            }
-                            required
-                            value={
-                                this.state.streetNumber
-                            } />
+                            name="number"
+                            onChange={handleChange('number', id)}
+                            value={number}
+                        />
                     </Form.Group>
                     <Form.Group as={Col}
                         md="5"
-                        id="Detalle">
+                    >
                         <Form.Label>Otros </Form.Label>
                         <Form.Control type="text" placeholder="Opcional: Lote, manzana, barrio, piso"
-                            onChange={
-                                this.handleStreetDetail
-                            }
-                            value={
-                                this.state.streetDetail
-                            } />
+                            name="floorNumber"
+                            onChange={handleChange('floorNumber', id)}
+                            value={floorNumber}
+                        />
                     </Form.Group>
                 </Form.Row>
             </Container>
