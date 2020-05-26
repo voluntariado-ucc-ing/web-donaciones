@@ -44,8 +44,6 @@ class Confirmation extends Component {
                         </>
                     )
                 }
-
-
                 <Form.Group id="formEmail">
                     <Form.Label>Email</Form.Label>
                     <br />
@@ -75,7 +73,8 @@ class Confirmation extends Component {
                         color="secondary"
 
                     >Atrás</Button>
-                    <Button type="submit"
+                    <Button
+                        type="submit"
                         variant="contained"
                         className="forwardButton"
                         color="primary"

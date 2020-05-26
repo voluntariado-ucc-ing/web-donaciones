@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import './css/Formcopy.css';
 import Container from 'react-bootstrap/Container';
-import Form from 'react-bootstrap/Form';
+import div from 'react-bootstrap/Form';
 
 // subcomponentes
 import Intro from './components/form/0.0Introduction'
 import Names from './components/form/1Names'
 import Phone from './components/form/2Phone'
 import Donation from './components/form/3.0Donations'
-import Confirmation from './components/form/5Confirmation'
+import Confirmation from './components/form/4Confirmation'
 import Verification from './components/form/0.1Verification'
 
 // variables globales
@@ -215,9 +215,9 @@ class Formulario extends Component {
         return (
             <div id='background'>
                 <Container id="formulario">
-                    <Form id='left-letters'>
+                    <div id='left-letters'>
                         {this.init()}
-                    </Form>
+                    </div>
                 </Container>
             </div>
 
