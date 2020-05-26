@@ -4,7 +4,8 @@ import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Col from 'react-bootstrap/Form';
 import '../../css/Formcopy.css';
-import Donation from "3.0Donations";
+
+import Donation from "./3.0Donations";
 
 class Confirmation extends Component {
     back = (e) => {

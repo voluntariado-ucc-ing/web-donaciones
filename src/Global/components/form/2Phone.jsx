@@ -42,7 +42,7 @@ class Phone extends Component {
 	}
 
 	back = (e) => {
-		e.preventDefault()
+		e.preventDefault();
 		this.props.prevStep()
 	}
 

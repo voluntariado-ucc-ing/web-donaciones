@@ -5,7 +5,8 @@ import '../../css/Formcopy.css';
 
 class Intro extends Component {
     continue = (e) => {
-        e.preventDefault()
+        e.preventDefault();
+
         this.props.firstDonationButton()
     }
     continue2 = e => {

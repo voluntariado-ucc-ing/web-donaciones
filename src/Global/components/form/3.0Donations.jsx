@@ -107,6 +107,7 @@ class Donation extends Component {
                                 value={donations[id].state.quantity}
                             />
                         </Form.Group>
+
                         {isNoConventional ? (
                             <>
                                 <Form.Group as={Col} md="4" >
