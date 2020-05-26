@@ -45,7 +45,8 @@ class Formulario extends Component {
                     nextStep={this.nextStep}
                     prevStep={this.prevStep}
                     handleChange={this.handleChange}
-                    value={this.state}
+                    firstName={this.state.firstName}
+                    lastName={this.state.lastName}
                 />
             )
 
@@ -63,7 +64,8 @@ class Formulario extends Component {
             return (
                 this.state.donations.filter(x => x.id === this.state.donationStep).map(filteredDonation => (
                     <Donation
-                        value={this.state}
+                        donationStep={this.state.donationStep}
+                        donations={this.state.donations}
                         nextStep={this.nextStep}
                         prevStep={this.prevStep2}
                         handleDonacion={this.handleDonaciones}
@@ -73,7 +75,6 @@ class Formulario extends Component {
                         newDonation={this.clickNewDonation}
                         backDonation={this.backDonation}
                         forwardDonation={this.forwardDonation}
-                        donations={this.state.donations}
                     />
                 ))
             )
@@ -92,7 +93,7 @@ class Formulario extends Component {
                 nextStep={this.nextStep2}
                 prevStep={this.alreadyDonatePrevStep}
                 handleChange={this.handleChange}
-                value={this.state}
+                email={this.state.email}
             />)
     }
 
@@ -102,7 +103,7 @@ class Formulario extends Component {
         this.setState({
             pasos: pasos + 1
         });
-        if (pasos === 2)
+        if (pasos === global.Contacto)
             this.setState({
                 alreadyDonate: false
             }
@@ -156,11 +157,11 @@ class Formulario extends Component {
     prevStep2 = () => {
         if (this.state.alreadyDonate === true)
             this.setState({
-                pasos: 11
+                pasos: global.YaHeDonado
             })
         else
             this.setState({
-                pasos: 2
+                pasos: global.Contacto
             })
     }
 

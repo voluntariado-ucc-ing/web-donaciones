@@ -7,7 +7,7 @@ import Checkbox from '@material-ui/core/Checkbox';
 import '../../css/Formcopy.css';
 
 //import address
-import Address from './4Address'
+import Address from './3.1Address'
 
 class Donation extends Component {
     constructor(props) {
@@ -41,14 +41,6 @@ class Donation extends Component {
         this.props.handleUnit(this.props.id, unit, isNonConventional)
     };
 
-    handleNonConventionalUnit = e => {
-        this.setState({ nonConventionalUnit: e.target.value })
-    }
-
-    handleChange = input => (e) => {
-        this.setState({ [input]: e.target.value })
-    }
-
     //nuevasDonaciones
     newDonation = (e) => {
         e.preventDefault()
@@ -63,11 +55,11 @@ class Donation extends Component {
     }
 
     render() {
-        const { handleDonacion, id, donations } = this.props
+        const { handleDonacion, id, donations, donationStep } = this.props
         return (
             <Container id="donation">
                 <div className="donaciones">
-                    {this.props.value.donations.length > 1 ?
+                    {donations.length > 1 ?
                         <> <h5>Donación número {this.props.id + 1}</h5> <br /> </> : null
                     }
 
@@ -91,7 +83,7 @@ class Donation extends Component {
                                 value={donations[id].state.quantity}
                             />
                         </Form.Group>
-                        {this.props.donations[this.props.id].state.isNoConventional ? (
+                        {donations[this.props.id].state.isNoConventional ? (
                             <>
                                 <Form.Group as={Col} md="4" >
                                     <Form.Label>Unidad *</Form.Label>
@@ -111,8 +103,8 @@ class Donation extends Component {
                                         <Form.Control
                                             type="text"
                                             name="otherUnit"
-                                            onChange={this.props.handleDonacion('otherUnit', this.props.id)}
-                                            value={this.props.donations[this.props.id].state.otherUnit}
+                                            onChange={handleDonacion('otherUnit', this.props.id)}
+                                            value={donations[this.props.id].state.otherUnit}
                                         />
                                     </div>
                                 </Form.Group>
@@ -134,7 +126,14 @@ class Donation extends Component {
                             </Form.Group>)
                         }
                     </Form.Row>
-                    <Address />
+                    <Address
+                        id={id}
+                        handleChange={handleDonacion}
+                        city={donations[id].state.city}
+                        street={donations[id].state.street}
+                        number={donations[id].state.number}
+                        floorNumber={donations[id].state.floorNumber}
+                    />
                     <div className="centerButton">
                         <Button onClick={this.newDonation}
                             color="primary"
@@ -142,14 +141,14 @@ class Donation extends Component {
                             className="centerButton">Nueva Donacion</Button>
                     </div>
                     <div className="pasosDonation">
-                        {this.props.value.donationStep > 0 ?
+                        {donationStep > 0 ?
                             (<Button
                                 variant="contained"
                                 color="default"
                                 className="backButton"
                                 onClick={this.backDonation} > Donacion Anterior</Button>) : null
                         }
-                        {this.props.value.donationStep < this.props.value.donations.length - 1 ?
+                        {donationStep < donations.length - 1 ?
                             (<Button
                                 variant="contained"
                                 color="default"
