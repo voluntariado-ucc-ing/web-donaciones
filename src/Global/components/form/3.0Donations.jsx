@@ -29,7 +29,6 @@ class Donation extends Component {
             number: '',
             numberCompleted: true,
             floorNumber: '',
-            requiredFields: false
         }
     }
 
@@ -138,7 +137,6 @@ class Donation extends Component {
                     else
                         if (elementCompleted && quantityCompleted && unitCompleted && cityCompleted && streetCompleted && numberCompleted)
                             this.props.nextStep()
-
                 })
     }
 

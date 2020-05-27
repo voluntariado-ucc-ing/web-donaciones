@@ -18,7 +18,7 @@ class Formulario extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            pasos: 0,
+            pasos: global.Introduccion,
             firstName: '',
             lastName: '',
             phone: '',
