@@ -10,7 +10,7 @@ class Address extends Component {
         this.state = {};
     }
     render() {
-        const { handleChange, id, city, street, number, floorNumber } = this.props
+        const { handleChange, id, city, street, number, floorNumber, cityCompleted, streetCompleted, numberCompleted, floorCompleted } = this.props
         return (
             <Container>
                 <h5>¿Dónde debemos retirarlos?</h5>
@@ -22,6 +22,12 @@ class Address extends Component {
                         onChange={handleChange('city', id)}
                         value={city}
                     />
+                    {
+                        cityCompleted ? null :
+                            <Form.Text className="invalidInput">
+                                Necesitamos este dato
+					                    	</Form.Text>
+                    }
                 </Form.Group>
                 <Form.Row>
                     <Form.Group as={Col}
@@ -33,6 +39,12 @@ class Address extends Component {
                             onChange={handleChange('street', id)}
                             value={street}
                         />
+                        {
+                            streetCompleted ? null :
+                                <Form.Text className="invalidInput">
+                                    Necesitamos este dato
+					                    	</Form.Text>
+                        }
                     </Form.Group>
                     <Form.Group as={Col}
                         md="2"
@@ -44,6 +56,12 @@ class Address extends Component {
                             onChange={handleChange('number', id)}
                             value={number}
                         />
+                        {
+                            numberCompleted ? null :
+                                <Form.Text className="invalidInput">
+                                    Necesitamos este dato
+					                    	</Form.Text>
+                        }
                     </Form.Group>
                     <Form.Group as={Col}
                         md="5"

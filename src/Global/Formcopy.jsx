@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './css/Formcopy.css';
 import Container from 'react-bootstrap/Container';
-import Form from 'react-bootstrap/Form';
+import div from 'react-bootstrap/Form';
 
 // subcomponentes
 import Intro from './components/form/0.0Introduction'
@@ -18,7 +18,7 @@ class Formulario extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            pasos: 0,
+            pasos: global.Introduccion,
             firstName: '',
             lastName: '',
             phone: '',
@@ -167,14 +167,14 @@ class Formulario extends Component {
 
     //guardado de datos
     handleChange = input => (e) => {
-        e.preventDefault();
+        e.preventDefault()
         this.setState({ [input]: e.target.value })
-    };
+    }
 
     //guardado de telefono
     handlePhone = (phone) => {
         this.setState({ phone: phone })
-    };
+    }
 
     //guardado de donaciones
     handleDonaciones = (input, id) => (e) => {
@@ -191,11 +191,11 @@ class Formulario extends Component {
 
     //nueva donacion
     clickNewDonation = () => {
-        var don = this.state.donations;
+        var don = this.state.donations
         var done = new Donation();
-        done.id = don.length;
-        this.setState({ donationStep: don.length });
-        don.push(done);
+        done.id = don.length
+        this.setState({ donationStep: don.length })
+        don.push(done)
         this.setState({ donation: don })
 
         console.log(JSON.stringify(this.state))
@@ -214,10 +214,10 @@ class Formulario extends Component {
     render() {
         return (
             <div id='background'>
-                <Container className={''}>
-                    <Form id='left-letters'>
+                <Container id="formulario">
+                    <div id='left-letters'>
                         {this.init()}
-                    </Form>
+                    </div>
                 </Container>
             </div>
 

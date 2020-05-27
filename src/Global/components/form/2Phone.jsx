@@ -37,7 +37,6 @@ class Phone extends Component {
 					if (this.state.equalEmail === true && this.state.phoneOk === true && this.state.wrongEmail === false)
 						this.props.nextStep()
 				})
-
 	}
 
 	back = (e) => {
@@ -60,7 +59,6 @@ class Phone extends Component {
 				<br />
 				<PhoneInput
 					defaultCountry="AR"
-					preferredCountries={['AR', 'BR', 'CH', 'US']}
 					onChange={this.handleInputChange}
 					value={phone}
 				/>
