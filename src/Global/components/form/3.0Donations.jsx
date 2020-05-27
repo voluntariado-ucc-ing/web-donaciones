@@ -3,7 +3,6 @@ import Form from "react-bootstrap/Form";
 import Col from 'react-bootstrap/Col';
 import Button from '@material-ui/core/Button';
 import Container from "react-bootstrap/Container";
-import Checkbox from '@material-ui/core/Checkbox';
 import '../../css/Formcopy.css';
 
 //import address
@@ -29,49 +28,50 @@ class Donation extends Component {
             number: '',
             numberCompleted: true,
             floorNumber: '',
+            floorCompleted: true
         }
     }
 
     //unidad distinta
     handleUnitChange = e => {
-        let isNonConventional = e.target.value === "otro" ? true : false
-        var unit = e.target.value
-        this.setState({ unit: e.target.value, isNoConventional: isNonConventional })
+        let isNonConventional = e.target.value === "otro";
+        const unit = e.target.value;
+        this.setState({ unit: e.target.value, isNoConventional: isNonConventional });
         this.props.handleUnit(this.props.id, unit, isNonConventional)
     };
 
     //nuevasDonaciones
     newDonation = (e) => {
-        e.preventDefault()
+        e.preventDefault();
         const { elementCompleted, quantityCompleted, unitCompleted, otherUnitCompleted, cityCompleted, streetCompleted, numberCompleted } = this.state
         if (this.props.donations[this.props.id].state.elementDonation === '')
-            this.setState({ elementCompleted: false })
+            this.setState({ elementCompleted: false });
         else
-            this.setState({ elementCompleted: true })
+            this.setState({ elementCompleted: true });
 
         if (this.props.donations[this.props.id].state.quantity === '')
-            this.setState({ quantityCompleted: false })
+            this.setState({ quantityCompleted: false });
         else
-            this.setState({ quantityCompleted: true })
+            this.setState({ quantityCompleted: true });
 
         if (this.props.donations[this.props.id].state.unit === '')
-            this.setState({ unitCompleted: false })
+            this.setState({ unitCompleted: false });
         else
-            this.setState({ unitCompleted: true })
+            this.setState({ unitCompleted: true });
         if (this.props.donations[this.props.id].state.otherUnit === '')
-            this.setState({ otherUnitCompleted: false })
+            this.setState({ otherUnitCompleted: false });
         else
-            this.setState({ otherUnitCompleted: true })
+            this.setState({ otherUnitCompleted: true });
         if (this.props.donations[this.props.id].state.city === '')
-            this.setState({ cityCompleted: false })
+            this.setState({ cityCompleted: false });
         else
-            this.setState({ cityCompleted: true })
+            this.setState({ cityCompleted: true });
         if (this.props.donations[this.props.id].state.street === '')
-            this.setState({ streetCompleted: false })
+            this.setState({ streetCompleted: false });
         else
-            this.setState({ streetCompleted: true })
+            this.setState({ streetCompleted: true });
         if (this.props.donations[this.props.id].state.number === '')
-            this.setState({ numberCompleted: false })
+            this.setState({ numberCompleted: false });
         else
             this.setState({ numberCompleted: true },
                 () => {
@@ -84,49 +84,48 @@ class Donation extends Component {
                             this.props.newDonation()
                 }
             )
-    }
+    };
 
     backDonation = (e) => {
-        e.preventDefault()
+        e.preventDefault();
         this.props.backDonation()
-    }
+    };
 
     forwardDonation = (e) => {
-        e.preventDefault()
+        e.preventDefault();
         this.props.forwardDonation()
-    }
+    };
 
     continue = (e) => {
-        e.preventDefault()
         const { elementCompleted, quantityCompleted, unitCompleted, otherUnitCompleted, cityCompleted, streetCompleted, numberCompleted } = this.state
         if (this.props.donations[this.props.id].state.elementDonation === '')
-            this.setState({ elementCompleted: false })
+            this.setState({ elementCompleted: false });
         else
-            this.setState({ elementCompleted: true })
+            this.setState({ elementCompleted: true });
 
         if (this.props.donations[this.props.id].state.quantity === '')
-            this.setState({ quantityCompleted: false })
+            this.setState({ quantityCompleted: false });
         else
-            this.setState({ quantityCompleted: true })
+            this.setState({ quantityCompleted: true });
 
         if (this.props.donations[this.props.id].state.unit === '')
-            this.setState({ unitCompleted: false })
+            this.setState({ unitCompleted: false });
         else
-            this.setState({ unitCompleted: true })
+            this.setState({ unitCompleted: true });
         if (this.props.donations[this.props.id].state.otherUnit === '')
-            this.setState({ otherUnitCompleted: false })
+            this.setState({ otherUnitCompleted: false });
         else
-            this.setState({ otherUnitCompleted: true })
+            this.setState({ otherUnitCompleted: true });
         if (this.props.donations[this.props.id].state.city === '')
-            this.setState({ cityCompleted: false })
+            this.setState({ cityCompleted: false });
         else
-            this.setState({ cityCompleted: true })
+            this.setState({ cityCompleted: true });
         if (this.props.donations[this.props.id].state.street === '')
-            this.setState({ streetCompleted: false })
+            this.setState({ streetCompleted: false });
         else
-            this.setState({ streetCompleted: true })
+            this.setState({ streetCompleted: true });
         if (this.props.donations[this.props.id].state.number === '')
-            this.setState({ numberCompleted: false })
+            this.setState({ numberCompleted: false });
         else
             this.setState({ numberCompleted: true },
                 () => {
@@ -138,19 +137,19 @@ class Donation extends Component {
                         if (elementCompleted && quantityCompleted && unitCompleted && cityCompleted && streetCompleted && numberCompleted)
                             this.props.nextStep()
                 })
-    }
+    };
 
     back = (e) => {
-        e.preventDefault()
+        e.preventDefault();
         this.props.prevStep()
-    }
+    };
 
     render() {
-        const { handleDonacion, id, donations, donationStep } = this.props
-        const { elementCompleted, quantityCompleted, unitCompleted, otherUnitCompleted } = this.state
+        const { handleDonacion, id, donations, donationStep } = this.props;
+        const { elementCompleted, quantityCompleted, unitCompleted, otherUnitCompleted } = this.state;
         return (
             <Container id="donation">
-                <div className="donaciones">
+                <div>
                     {donations.length > 1 ?
                         <> <h5>Donación número {this.props.id + 1}</h5> <br /> </> : null
                     }

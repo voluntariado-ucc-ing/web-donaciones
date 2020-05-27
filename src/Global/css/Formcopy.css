@@ -1,8 +1,9 @@
 #background{
   z-index: -1;
-  height: calc(100vh - 66px);
-  width: 100vw;
-  display: flex;
+  padding-top: 6%;
+  padding-bottom: 10%;
+  height: auto;
+  width: 100%;
   justify-content: center;
   align-content: center;
   flex-direction: column;
@@ -12,12 +13,10 @@
 
 #formulario {
   width: 100%;
-  height: 600px;
+  height: auto;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #eeeeee5e;
-  padding: 30px;
   border-radius: 5px;
   
 }
@@ -41,7 +40,6 @@
   position: relative;
   bottom: 10px;
   height: 5vh;
-  padding-top: 20%;
 }
 
 .backButton{
@@ -85,8 +83,6 @@
 }
 
 .donaciones{
-  background-color: ghostwhite;
-  padding-top: 0;
-  height: 700px;
+  height: auto;
   width: 100%;
 }
