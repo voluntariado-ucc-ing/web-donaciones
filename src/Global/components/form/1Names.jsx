@@ -35,7 +35,7 @@ class Names extends Component {
 		this.props.prevStep()
 	}
 	render() {
-		const { handleChange, firstName, lastName } = this.props
+		const { handleChange, firstName, lastName } = this.props;
 		return (
 			<Container>
 				<h3>DATOS PERSONALES</h3>

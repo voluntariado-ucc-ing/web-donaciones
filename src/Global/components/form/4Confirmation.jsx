@@ -6,6 +6,9 @@ import Col from 'react-bootstrap/Form';
 import '../../css/Formcopy.css';
 
 import Donation from "./3.0Donations";
+import Tab from "react-bootstrap/Tab";
+import Row from "react-bootstrap/Row";
+import Nav from "react-bootstrap/Nav";
 
 class Confirmation extends Component {
     back = (e) => {

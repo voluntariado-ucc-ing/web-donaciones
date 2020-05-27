@@ -8,7 +8,7 @@ import Intro from './components/form/0.0Introduction'
 import Names from './components/form/1Names'
 import Phone from './components/form/2Phone'
 import Donation from './components/form/3.0Donations'
-import Confirmation from './components/form/5Confirmation'
+import Confirmation from './components/form/4Confirmation'
 import Verification from './components/form/0.1Verification'
 
 // variables globales
@@ -214,7 +214,7 @@ class Formulario extends Component {
     render() {
         return (
             <div id='background'>
-                <Container id="formulario">
+                <Container className={''}>
                     <Form id='left-letters'>
                         {this.init()}
                     </Form>

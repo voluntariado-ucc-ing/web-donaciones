@@ -62,7 +62,10 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="npm.start">
+    <configuration name="3.0Donations.jsx" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="3.0Donations.jsx" working-dir="$PROJECT_DIR$/src/Global/components/form">
+      <method v="2" />
+    </configuration>
     <configuration name="start" type="js.build_tools.npm" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -73,6 +76,11 @@
       <envs />
       <method v="2" />
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Node.js.3.0Donations.jsx" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -138,6 +146,10 @@
       <workItem from="1590245467923" duration="416000" />
       <workItem from="1590505198567" duration="167000" />
       <workItem from="1590510891420" duration="396000" />
+      <workItem from="1590516098153" duration="4845000" />
+      <workItem from="1590526322496" duration="232000" />
+      <workItem from="1590526752270" duration="1769000" />
+      <workItem from="1590580778981" duration="2068000" />
     </task>
     <servers />
   </component>

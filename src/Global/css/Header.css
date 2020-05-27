@@ -42,11 +42,15 @@ a:focus, a:focus * {
 
 .mobile-menu{
 display: none;
+  margin-left: 0;
+
+  padding-left: 0;
 }
 
 @media (max-width: 540px) {
   .navbar {
     display: none;
+
   }
 
   .mobile-menu {
@@ -55,10 +59,10 @@ display: none;
 
   .mobile-menu ul {
     list-style-type: none;
-    border-radius: 5px 5px 0 0;
+    padding-left: 0;
     border: 1px  #424242;
     display: grid;
-    justify-self: end;
+    justify-self: center;
   }
 
   .mobile-menu li{

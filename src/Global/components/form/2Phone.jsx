@@ -3,7 +3,6 @@ import 'react-phone-number-input/style.css';
 import PhoneInput from 'react-phone-number-input';
 import Form from 'react-bootstrap/Form';
 import Container from 'react-bootstrap/Container';
-import style from '../../css/Formcopy.css'
 import Button from '@material-ui/core/Button';
 import '../../css/Formcopy.css';
 
@@ -44,11 +43,11 @@ class Phone extends Component {
 	back = (e) => {
 		e.preventDefault();
 		this.props.prevStep()
-	}
+	};
 
 	handleInputChange = (telNumber) => {
 		this.props.handlePhone(telNumber)
-	}
+	};
 
 	render() {
 		const { handleChange, email, emailConfirmation, phone } = this.props

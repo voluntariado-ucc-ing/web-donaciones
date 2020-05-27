@@ -14,7 +14,7 @@ class Footer extends Component {
     render() {
         return (
             <div>
-                <Container fluid className={"site-section heading site-color how computer-footer"}>
+                <Container fluid className={"site-section heading site-color how computer-footer flex"}>
                     <Row className={"justify-text-center"}>
                         <p>Voluntariado Barrio El Milagro</p>
                     </Row>
