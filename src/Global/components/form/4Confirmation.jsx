@@ -29,7 +29,7 @@ class Confirmation extends Component {
                                 <br />
                                 <Form.Label>Su nombre es {value.firstName} {value.lastName}</Form.Label>
                                 <br />
-                                <Form.Label>El teléfono|celular ingresado es  {value.phone}</Form.Label>
+                                <Form.Label>El teléfono o celular ingresado es  {value.phone}</Form.Label>
 
                             </>
                         )
@@ -37,7 +37,7 @@ class Confirmation extends Component {
                 <Form.Group id="formEmail">
                     <Form.Label>El email ingresado es {value.email}</Form.Label>
                 </Form.Group>
-                <Form.Label>Usted a ingresado la siguiente información</Form.Label>
+                <Form.Label>Usted está ofreciendo</Form.Label>
                 {value.donations.map((donacion) =>
                     <>
                         <p>Donacion {donacion.id}</p>
