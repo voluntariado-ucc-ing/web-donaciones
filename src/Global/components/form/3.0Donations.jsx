@@ -85,6 +85,13 @@ class Donation extends Component {
                 }
             )
     };
+    //deleteDonation
+    deleteDonation = e => {
+        e.preventDefault()
+        var deleteMessage = window.confirm('¿Está seguro que quiere eliminar la donación?')
+        if (deleteMessage)
+            this.props.deleteDonation(this.props.id)
+    }
 
     backDonation = (e) => {
         e.preventDefault();
@@ -246,10 +253,24 @@ class Donation extends Component {
                         floorCompleted={this.state.floorCompleted}
                     />
                     <div className="centerButton">
-                        <Button onClick={this.newDonation}
+                        {
+                            this.props.donations.length > 1 ?
+                                (<Button
+                                    onClick={this.deleteDonation}
+                                    variant="contained"
+                                    color="secondary"
+                                >Borrar Donación
+                                </Button>)
+                                :
+                                null
+                        }
+                        <Button
+                            onClick={this.newDonation}
                             color="primary"
                             variant="contained"
-                            className="centerButton">Nueva Donacion</Button>
+                            className="centerButton"
+                        >Nueva Donación
+                        </Button>
                     </div>
                     <div className="pasosDonation">
                         {donationStep > 0 ?
