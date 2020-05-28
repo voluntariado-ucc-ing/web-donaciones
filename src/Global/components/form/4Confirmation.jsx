@@ -40,7 +40,7 @@ class Confirmation extends Component {
                 <Form.Label>Usted está ofreciendo</Form.Label>
                 {value.donations.map((donacion) =>
                     <>
-                        <p>Donacion {donacion.id}</p>
+                        <p>Donacion {donacion.id + 1}</p>
                         <Form.Label>
                             Lo que usted va a donar son {donacion.state.quantity}
                             {donacion.state.isNoConventional ? (" " + donacion.state.otherUnit) : (" " + donacion.state.unit)}

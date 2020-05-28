@@ -40,10 +40,8 @@ class Donation extends Component {
         this.props.handleUnit(this.props.id, unit, isNonConventional)
     };
 
-    //nuevasDonaciones
-    newDonation = (e) => {
-        e.preventDefault();
-        const { elementCompleted, quantityCompleted, unitCompleted, otherUnitCompleted, cityCompleted, streetCompleted, numberCompleted } = this.state
+    //restricciones campos llenos
+    restrictions = (callback) => {
         if (this.props.donations[this.props.id].state.elementDonation === '')
             this.setState({ elementCompleted: false });
         else
@@ -73,18 +71,26 @@ class Donation extends Component {
         if (this.props.donations[this.props.id].state.number === '')
             this.setState({ numberCompleted: false });
         else
-            this.setState({ numberCompleted: true },
-                () => {
-                    if (this.props.donations[this.props.id].state.unit === "otro") {
-                        if (elementCompleted && quantityCompleted && otherUnitCompleted && cityCompleted && streetCompleted && numberCompleted)
-                            this.props.newDonation()
-                    }
-                    else
-                        if (elementCompleted && quantityCompleted && unitCompleted && cityCompleted && streetCompleted && numberCompleted)
-                            this.props.newDonation()
-                }
-            )
-    };
+            this.setState({ numberCompleted: true });
+        callback()
+    }
+
+    //continuacion callback de restricciones
+    inputCompletedNewDonation = () => {
+        const { elementCompleted, quantityCompleted, unitCompleted, otherUnitCompleted, cityCompleted, streetCompleted, numberCompleted } = this.state
+        if (this.props.donations[this.props.id].state.unit === "otro") {
+            if (elementCompleted && quantityCompleted && otherUnitCompleted && cityCompleted && streetCompleted && numberCompleted)
+                this.props.newDonation()
+        }
+        else
+            if (this.state.elementCompleted && quantityCompleted && unitCompleted && cityCompleted && streetCompleted && numberCompleted)
+                this.props.newDonation()
+    }
+    //crearcion de nueva donacion
+    newDonation = () => {
+        this.restrictions(this.inputCompletedNewDonation)
+    }
+
     //deleteDonation
     deleteDonation = e => {
         e.preventDefault()
@@ -103,47 +109,21 @@ class Donation extends Component {
         this.props.forwardDonation()
     };
 
-    continue = (e) => {
+    //continuacion callback de restricciones
+    inputCompletedContinue = () => {
         const { elementCompleted, quantityCompleted, unitCompleted, otherUnitCompleted, cityCompleted, streetCompleted, numberCompleted } = this.state
-        if (this.props.donations[this.props.id].state.elementDonation === '')
-            this.setState({ elementCompleted: false });
+        if (this.props.donations[this.props.id].state.unit === "otro") {
+            if (elementCompleted && quantityCompleted && otherUnitCompleted && cityCompleted && streetCompleted && numberCompleted)
+                this.props.nextStep()
+        }
         else
-            this.setState({ elementCompleted: true });
+            if (this.state.elementCompleted && quantityCompleted && unitCompleted && cityCompleted && streetCompleted && numberCompleted)
+                this.props.nextStep()
+    }
 
-        if (this.props.donations[this.props.id].state.quantity === '')
-            this.setState({ quantityCompleted: false });
-        else
-            this.setState({ quantityCompleted: true });
-
-        if (this.props.donations[this.props.id].state.unit === '')
-            this.setState({ unitCompleted: false });
-        else
-            this.setState({ unitCompleted: true });
-        if (this.props.donations[this.props.id].state.otherUnit === '')
-            this.setState({ otherUnitCompleted: false });
-        else
-            this.setState({ otherUnitCompleted: true });
-        if (this.props.donations[this.props.id].state.city === '')
-            this.setState({ cityCompleted: false });
-        else
-            this.setState({ cityCompleted: true });
-        if (this.props.donations[this.props.id].state.street === '')
-            this.setState({ streetCompleted: false });
-        else
-            this.setState({ streetCompleted: true });
-        if (this.props.donations[this.props.id].state.number === '')
-            this.setState({ numberCompleted: false });
-        else
-            this.setState({ numberCompleted: true },
-                () => {
-                    if (this.props.donations[this.props.id].state.unit === "otro") {
-                        if (elementCompleted && quantityCompleted && otherUnitCompleted && cityCompleted && streetCompleted && numberCompleted)
-                            this.props.nextStep()
-                    }
-                    else
-                        if (elementCompleted && quantityCompleted && unitCompleted && cityCompleted && streetCompleted && numberCompleted)
-                            this.props.nextStep()
-                })
+    //continuar al ultimo
+    continue = () => {
+        this.restrictions(this.inputCompletedContinue)
     };
 
     back = (e) => {
