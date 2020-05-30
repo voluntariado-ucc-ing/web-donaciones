@@ -12,7 +12,7 @@ import Confirmation from './components/form/4Confirmation'
 import Verification from './components/form/0.1Verification'
 
 // variables globales
-import './components/form/global'
+import './components/form/global';
 
 class Formulario extends Component {
     constructor(props) {

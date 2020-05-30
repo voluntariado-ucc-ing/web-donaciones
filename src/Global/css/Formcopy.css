@@ -54,14 +54,9 @@
   position: absolute;
 }
 
-.centerButton{
-  text-align: center;
-  display: block;
-}
-
 .pasosDonation{
-  margin: 5px;
   display: ruby;
+  padding: 1%;
 }
 
 #confirmationButton{
@@ -82,7 +77,3 @@
   width: auto;
 }
 
-.donaciones{
-  height: auto;
-  width: 100%;
-}

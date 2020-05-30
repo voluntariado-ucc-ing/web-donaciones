@@ -2,11 +2,13 @@ import React, { Component } from "react";
 import Form from "react-bootstrap/Form";
 import Col from 'react-bootstrap/Col';
 import Button from '@material-ui/core/Button';
-import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import '../../css/Formcopy.css';
 
 //import address
-import Address from './3.1Address'
+import Address from './3.1Address';
+import Tabs from "../Tab";
 
 class Donation extends Component {
     constructor(props) {
@@ -148,143 +150,150 @@ class Donation extends Component {
         const { handleDonacion, id, donations, donationStep } = this.props;
         const { elementCompleted, quantityCompleted, unitCompleted, otherUnitCompleted } = this.state;
         return (
-            <Container id="donation">
-                <div>
-                    {donations.length > 1 ?
-                        <> <h5>Donación número {this.props.id + 1}</h5> <br /> </> : null
-                    }
+            <div>
+                <Tabs/>
+                <Row id="donation" className="justify-content-md-center pt-3">
+                    <Col xs lg="2" className={"pt-5"}>
+                        <ButtonGroup vertical>
+                            <Button onClick={this.newDonation}
+                                    color="primary"
+                                    variant="contained"
+                                    className="centerButton mb-2">Nueva Donacion
+                            </Button>
 
-                    <h5>¿Con qué desea ayudarnos? *</h5>
-                    <Form.Control
-                        placeholder="Ingresá acá lo que vas a donar"
-                        name="elementDonation"
-                        onChange={handleDonacion('elementDonation', id)}
-                        value={donations[id].state.elementDonation}
-                    />
-                    {elementCompleted ? null : <Form.Text className="invalidInput">
-                        Debe completar este campo
-						</Form.Text>}
+                            <div>
+                                {donationStep > 0 ?
+                                    (<Button
+                                        variant="contained"
+                                        color="default"
+                                        className="backButton"
+                                        onClick={this.backDonation} > Donacion Anterior</Button>) : null
+                                }
+                                {donationStep < donations.length - 1 ?
+                                    (<Button
+                                        variant="contained"
+                                        color="default"
+                                        className="forwardButton"
+                                        onClick={this.forwardDonation}> Siguiente Donacion</Button>) : null
+                                }
+                            </div>
+                        </ButtonGroup>
+                    </Col>
+                    <Col>
+                        {donations.length > 1 ?
+                            <> <h5>Donación número {this.props.id + 1}</h5> <br /> </> : null
+                        }
 
-                    <br />
-                    <Form.Row >
-                        <Form.Group as={Col} md='4'>
-                            <Form.Label>Cantidad *</Form.Label>
-                            <Form.Control
-                                type="number"
-                                name="quantity"
-                                onChange={handleDonacion('quantity', id)}
-                                value={donations[id].state.quantity}
-                            />
-                            {quantityCompleted ? null : <Form.Text className="invalidInput">
-                                Debe completar este campo
-						</Form.Text>}
-                        </Form.Group>
+                        <h5>¿Con qué desea ayudarnos? *</h5>
+                        <Form.Control
+                            placeholder="Ingresá acá lo que vas a donar"
+                            name="elementDonation"
+                            onChange={handleDonacion('elementDonation', id)}
+                            value={donations[id].state.elementDonation}
+                        />
+                        {elementCompleted ? null : <Form.Text className="invalidInput">
+                            Debe completar este campo
+                        </Form.Text>}
 
-                        {donations[this.props.id].state.isNoConventional ? (
-                            <>
-                                <Form.Group as={Col} md="4" >
+                        <br />
+                        <Form.Row >
+                            <Form.Group as={Col} md='4'>
+                                <Form.Label>Cantidad *</Form.Label>
+                                <Form.Control
+                                    type="number"
+                                    name="quantity"
+                                    onChange={handleDonacion('quantity', id)}
+                                    value={donations[id].state.quantity}
+                                />
+                                {quantityCompleted ? null : <Form.Text className="invalidInput">
+                                    Debe completar este campo
+                                </Form.Text>}
+                            </Form.Group>
+
+                            {donations[this.props.id].state.isNoConventional ? (
+                                    <>
+                                        <Form.Group as={Col} md="4" >
+                                            <Form.Label>Unidad *</Form.Label>
+                                            <Form.Control as="select"
+                                                          name="unit"
+                                                          onChange={this.handleUnitChange}
+                                                          value={donations[id].state.unit}
+                                            >
+                                                <option value="m">Metros</option>
+                                                <option value="kg">Kg</option>
+                                                <option value="otro">Otro</option>
+                                            </Form.Control>
+                                        </Form.Group>
+                                        <Form.Group as={Col} md="4" >
+                                            <Form.Label>Otra unidad *</Form.Label>
+                                            <Form.Control
+                                                type="text"
+                                                name="otherUnit"
+                                                onChange={handleDonacion('otherUnit', this.props.id)}
+                                                value={donations[this.props.id].state.otherUnit}
+                                            />
+                                            {
+                                                otherUnitCompleted ? null :
+                                                    <Form.Text className="invalidInput">
+                                                        Debe introducir una nueva unidad
+                                                    </Form.Text>
+                                            }
+                                        </Form.Group>
+                                    </>
+                                )
+                                :
+                                (<Form.Group
+                                    as={Col} md="8" >
                                     <Form.Label>Unidad *</Form.Label>
                                     <Form.Control as="select"
-                                        name="unit"
-                                        onChange={this.handleUnitChange}
-                                        value={donations[id].state.unit}
+                                                  name="unit"
+                                                  onChange={this.handleUnitChange}
+                                                  value={donations[id].state.unit}
                                     >
                                         <option value="m">Metros</option>
                                         <option value="kg">Kg</option>
                                         <option value="otro">Otro</option>
                                     </Form.Control>
-                                </Form.Group>
-                                <Form.Group as={Col} md="4" >
-                                    <Form.Label>Otra unidad *</Form.Label>
-                                    <Form.Control
-                                        type="text"
-                                        name="otherUnit"
-                                        onChange={handleDonacion('otherUnit', this.props.id)}
-                                        value={donations[this.props.id].state.otherUnit}
-                                    />
                                     {
-                                        otherUnitCompleted ? null :
+                                        unitCompleted ? null :
                                             <Form.Text className="invalidInput">
-                                                Debe introducir una nueva unidad
-					                    	</Form.Text>
+                                                Debe seleccionar una unidad
+                                            </Form.Text>
                                     }
-                                </Form.Group>
-                            </>
-                        )
-                            :
-                            (<Form.Group
-                                as={Col} md="8" >
-                                <Form.Label>Unidad *</Form.Label>
-                                <Form.Control as="select"
-                                    name="unit"
-                                    onChange={this.handleUnitChange}
-                                    value={donations[id].state.unit}
-                                >
-                                    <option value="m">Metros</option>
-                                    <option value="kg">Kg</option>
-                                    <option value="otro">Otro</option>
-                                </Form.Control>
-                                {
-                                    unitCompleted ? null :
-                                        <Form.Text className="invalidInput">
-                                            Debe seleccionar una unidad
-					                	</Form.Text>
-                                }
-                            </Form.Group>)
-                        }
-                    </Form.Row>
-                    <Address
-                        id={id}
-                        handleChange={handleDonacion}
-                        city={donations[id].state.city}
-                        cityCompleted={this.state.cityCompleted}
-                        street={donations[id].state.street}
-                        streetCompleted={this.state.streetCompleted}
-                        number={donations[id].state.number}
-                        numberCompleted={this.state.numberCompleted}
-                        floorNumber={donations[id].state.floorNumber}
-                        floorCompleted={this.state.floorCompleted}
-                    />
-                    <div className="centerButton">
-                        <Button onClick={this.newDonation}
-                            color="primary"
-                            variant="contained"
-                            className="centerButton">Nueva Donacion</Button>
-                    </div>
-                    <div className="pasosDonation">
-                        {donationStep > 0 ?
-                            (<Button
-                                variant="contained"
-                                color="default"
+                                </Form.Group>)
+                            }
+                        </Form.Row>
+                        <Address
+                            id={id}
+                            handleChange={handleDonacion}
+                            city={donations[id].state.city}
+                            cityCompleted={this.state.cityCompleted}
+                            street={donations[id].state.street}
+                            streetCompleted={this.state.streetCompleted}
+                            number={donations[id].state.number}
+                            numberCompleted={this.state.numberCompleted}
+                            floorNumber={donations[id].state.floorNumber}
+                            floorCompleted={this.state.floorCompleted}
+                        />
+                        <div className="bottomButton2">
+                            <Button
+                                type="submit"
+                                onClick={this.back}
                                 className="backButton"
-                                onClick={this.backDonation} > Donacion Anterior</Button>) : null
-                        }
-                        {donationStep < donations.length - 1 ?
-                            (<Button
                                 variant="contained"
-                                color="default"
+                                color="secondary"
+                            > Mis Datos</Button>
+                            <Button
+                                onClick={this.continue}
+                                type="submit"
                                 className="forwardButton"
-                                onClick={this.forwardDonation}> Siguiente Donacion</Button>) : null
-                        }
-                    </div>
-                </div>
-                <div className="bottomButton2">
-                    <Button
-                        type="submit"
-                        onClick={this.back}
-                        className="backButton"
-                        variant="contained"
-                        color="secondary"
-                    > Mis Datos</Button>
-                    <Button
-                        onClick={this.continue}
-                        type="submit"
-                        className="forwardButton"
-                        variant="contained"
-                        color="primary"
-                    >Finalizar</Button>
-                </div>
-            </Container >
+                                variant="contained"
+                                color="primary"
+                            >Finalizar</Button>
+                        </div>
+                    </Col>
+                </Row >
+            </div>
         );
     }
 }
