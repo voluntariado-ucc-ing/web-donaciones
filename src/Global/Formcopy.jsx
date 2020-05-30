@@ -75,6 +75,7 @@ class Formulario extends Component {
                         newDonation={this.clickNewDonation}
                         backDonation={this.backDonation}
                         forwardDonation={this.forwardDonation}
+                        deleteDonation={this.deleteDonation}
                     />
                 ))
             )
@@ -200,6 +201,27 @@ class Formulario extends Component {
 
         console.log(JSON.stringify(this.state))
         console.log(this.state.donations[0].state)
+    }
+
+    //eliminar donacion
+    deleteDonation = (id) => {
+        var don = this.state.donations
+        var deleted = don.splice(id, 1)
+        var step = 0
+        if (id !== 0)
+            step = id - 1
+        console.log(deleted)
+        console.log(don)
+        for (var i = 0; i <= don.length; i++) {
+            console.log('iteracion = ' + i)
+            if (i !== id) {
+                var newId = (element) => element.id === i
+                var a = don.findIndex(newId)
+                don[a].id = a
+            }
+        }
+        this.setState({ donations: don })
+        this.setState({ donationStep: step })
     }
     //botones nueva donacion
     backDonation = () => {

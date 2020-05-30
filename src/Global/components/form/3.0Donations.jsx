@@ -2,13 +2,11 @@ import React, { Component } from "react";
 import Form from "react-bootstrap/Form";
 import Col from 'react-bootstrap/Col';
 import Button from '@material-ui/core/Button';
-import Row from "react-bootstrap/Row";
-import ButtonGroup from 'react-bootstrap/ButtonGroup';
+import Container from "react-bootstrap/Container";
 import '../../css/Formcopy.css';
 
 //import address
-import Address from './3.1Address';
-import Tabs from "../Tab";
+import Address from './3.1Address'
 
 class Donation extends Component {
     constructor(props) {
@@ -42,10 +40,8 @@ class Donation extends Component {
         this.props.handleUnit(this.props.id, unit, isNonConventional)
     };
 
-    //nuevasDonaciones
-    newDonation = (e) => {
-        e.preventDefault();
-        const { elementCompleted, quantityCompleted, unitCompleted, otherUnitCompleted, cityCompleted, streetCompleted, numberCompleted } = this.state
+    //restricciones campos llenos
+    restrictions = (callback) => {
         if (this.props.donations[this.props.id].state.elementDonation === '')
             this.setState({ elementCompleted: false });
         else
@@ -75,18 +71,33 @@ class Donation extends Component {
         if (this.props.donations[this.props.id].state.number === '')
             this.setState({ numberCompleted: false });
         else
-            this.setState({ numberCompleted: true },
-                () => {
-                    if (this.props.donations[this.props.id].state.unit === "otro") {
-                        if (elementCompleted && quantityCompleted && otherUnitCompleted && cityCompleted && streetCompleted && numberCompleted)
-                            this.props.newDonation()
-                    }
-                    else
-                        if (elementCompleted && quantityCompleted && unitCompleted && cityCompleted && streetCompleted && numberCompleted)
-                            this.props.newDonation()
-                }
-            )
-    };
+            this.setState({ numberCompleted: true });
+        callback()
+    }
+
+    //continuacion callback de restricciones
+    inputCompletedNewDonation = () => {
+        const { elementCompleted, quantityCompleted, unitCompleted, otherUnitCompleted, cityCompleted, streetCompleted, numberCompleted } = this.state
+        if (this.props.donations[this.props.id].state.unit === "otro") {
+            if (elementCompleted && quantityCompleted && otherUnitCompleted && cityCompleted && streetCompleted && numberCompleted)
+                this.props.newDonation()
+        }
+        else
+            if (this.state.elementCompleted && quantityCompleted && unitCompleted && cityCompleted && streetCompleted && numberCompleted)
+                this.props.newDonation()
+    }
+    //crearcion de nueva donacion
+    newDonation = () => {
+        this.restrictions(this.inputCompletedNewDonation)
+    }
+
+    //deleteDonation
+    deleteDonation = e => {
+        e.preventDefault()
+        var deleteMessage = window.confirm('¿Está seguro que quiere eliminar la donación?')
+        if (deleteMessage)
+            this.props.deleteDonation(this.props.id)
+    }
 
     backDonation = (e) => {
         e.preventDefault();
@@ -98,47 +109,21 @@ class Donation extends Component {
         this.props.forwardDonation()
     };
 
-    continue = (e) => {
+    //continuacion callback de restricciones
+    inputCompletedContinue = () => {
         const { elementCompleted, quantityCompleted, unitCompleted, otherUnitCompleted, cityCompleted, streetCompleted, numberCompleted } = this.state
-        if (this.props.donations[this.props.id].state.elementDonation === '')
-            this.setState({ elementCompleted: false });
+        if (this.props.donations[this.props.id].state.unit === "otro") {
+            if (elementCompleted && quantityCompleted && otherUnitCompleted && cityCompleted && streetCompleted && numberCompleted)
+                this.props.nextStep()
+        }
         else
-            this.setState({ elementCompleted: true });
+            if (this.state.elementCompleted && quantityCompleted && unitCompleted && cityCompleted && streetCompleted && numberCompleted)
+                this.props.nextStep()
+    }
 
-        if (this.props.donations[this.props.id].state.quantity === '')
-            this.setState({ quantityCompleted: false });
-        else
-            this.setState({ quantityCompleted: true });
-
-        if (this.props.donations[this.props.id].state.unit === '')
-            this.setState({ unitCompleted: false });
-        else
-            this.setState({ unitCompleted: true });
-        if (this.props.donations[this.props.id].state.otherUnit === '')
-            this.setState({ otherUnitCompleted: false });
-        else
-            this.setState({ otherUnitCompleted: true });
-        if (this.props.donations[this.props.id].state.city === '')
-            this.setState({ cityCompleted: false });
-        else
-            this.setState({ cityCompleted: true });
-        if (this.props.donations[this.props.id].state.street === '')
-            this.setState({ streetCompleted: false });
-        else
-            this.setState({ streetCompleted: true });
-        if (this.props.donations[this.props.id].state.number === '')
-            this.setState({ numberCompleted: false });
-        else
-            this.setState({ numberCompleted: true },
-                () => {
-                    if (this.props.donations[this.props.id].state.unit === "otro") {
-                        if (elementCompleted && quantityCompleted && otherUnitCompleted && cityCompleted && streetCompleted && numberCompleted)
-                            this.props.nextStep()
-                    }
-                    else
-                        if (elementCompleted && quantityCompleted && unitCompleted && cityCompleted && streetCompleted && numberCompleted)
-                            this.props.nextStep()
-                })
+    //continuar al ultimo
+    continue = () => {
+        this.restrictions(this.inputCompletedContinue)
     };
 
     back = (e) => {
@@ -150,150 +135,157 @@ class Donation extends Component {
         const { handleDonacion, id, donations, donationStep } = this.props;
         const { elementCompleted, quantityCompleted, unitCompleted, otherUnitCompleted } = this.state;
         return (
-            <div>
-                <Tabs/>
-                <Row id="donation" className="justify-content-md-center pt-3">
-                    <Col xs lg="2" className={"pt-5"}>
-                        <ButtonGroup vertical>
-                            <Button onClick={this.newDonation}
-                                    color="primary"
-                                    variant="contained"
-                                    className="centerButton mb-2">Nueva Donacion
-                            </Button>
+            <Container id="donation">
+                <div>
+                    {donations.length > 1 ?
+                        <> <h5>Donación número {this.props.id + 1}</h5> <br /> </> : null
+                    }
 
-                            <div>
-                                {donationStep > 0 ?
-                                    (<Button
-                                        variant="contained"
-                                        color="default"
-                                        className="backButton"
-                                        onClick={this.backDonation} > Donacion Anterior</Button>) : null
-                                }
-                                {donationStep < donations.length - 1 ?
-                                    (<Button
-                                        variant="contained"
-                                        color="default"
-                                        className="forwardButton"
-                                        onClick={this.forwardDonation}> Siguiente Donacion</Button>) : null
-                                }
-                            </div>
-                        </ButtonGroup>
-                    </Col>
-                    <Col>
-                        {donations.length > 1 ?
-                            <> <h5>Donación número {this.props.id + 1}</h5> <br /> </> : null
-                        }
+                    <h5>¿Con qué desea ayudarnos? *</h5>
+                    <Form.Control
+                        placeholder="Ingresá acá lo que vas a donar"
+                        name="elementDonation"
+                        onChange={handleDonacion('elementDonation', id)}
+                        value={donations[id].state.elementDonation}
+                    />
+                    {elementCompleted ? null : <Form.Text className="invalidInput">
+                        Debe completar este campo
+						</Form.Text>}
 
-                        <h5>¿Con qué desea ayudarnos? *</h5>
-                        <Form.Control
-                            placeholder="Ingresá acá lo que vas a donar"
-                            name="elementDonation"
-                            onChange={handleDonacion('elementDonation', id)}
-                            value={donations[id].state.elementDonation}
-                        />
-                        {elementCompleted ? null : <Form.Text className="invalidInput">
-                            Debe completar este campo
-                        </Form.Text>}
+                    <br />
+                    <Form.Row >
+                        <Form.Group as={Col} md='4'>
+                            <Form.Label>Cantidad *</Form.Label>
+                            <Form.Control
+                                type="number"
+                                name="quantity"
+                                onChange={handleDonacion('quantity', id)}
+                                value={donations[id].state.quantity}
+                            />
+                            {quantityCompleted ? null : <Form.Text className="invalidInput">
+                                Debe completar este campo
+						</Form.Text>}
+                        </Form.Group>
 
-                        <br />
-                        <Form.Row >
-                            <Form.Group as={Col} md='4'>
-                                <Form.Label>Cantidad *</Form.Label>
-                                <Form.Control
-                                    type="number"
-                                    name="quantity"
-                                    onChange={handleDonacion('quantity', id)}
-                                    value={donations[id].state.quantity}
-                                />
-                                {quantityCompleted ? null : <Form.Text className="invalidInput">
-                                    Debe completar este campo
-                                </Form.Text>}
-                            </Form.Group>
-
-                            {donations[this.props.id].state.isNoConventional ? (
-                                    <>
-                                        <Form.Group as={Col} md="4" >
-                                            <Form.Label>Unidad *</Form.Label>
-                                            <Form.Control as="select"
-                                                          name="unit"
-                                                          onChange={this.handleUnitChange}
-                                                          value={donations[id].state.unit}
-                                            >
-                                                <option value="m">Metros</option>
-                                                <option value="kg">Kg</option>
-                                                <option value="otro">Otro</option>
-                                            </Form.Control>
-                                        </Form.Group>
-                                        <Form.Group as={Col} md="4" >
-                                            <Form.Label>Otra unidad *</Form.Label>
-                                            <Form.Control
-                                                type="text"
-                                                name="otherUnit"
-                                                onChange={handleDonacion('otherUnit', this.props.id)}
-                                                value={donations[this.props.id].state.otherUnit}
-                                            />
-                                            {
-                                                otherUnitCompleted ? null :
-                                                    <Form.Text className="invalidInput">
-                                                        Debe introducir una nueva unidad
-                                                    </Form.Text>
-                                            }
-                                        </Form.Group>
-                                    </>
-                                )
-                                :
-                                (<Form.Group
-                                    as={Col} md="8" >
+                        {donations[this.props.id].state.isNoConventional ? (
+                            <>
+                                <Form.Group as={Col} md="4" >
                                     <Form.Label>Unidad *</Form.Label>
                                     <Form.Control as="select"
-                                                  name="unit"
-                                                  onChange={this.handleUnitChange}
-                                                  value={donations[id].state.unit}
+                                        name="unit"
+                                        onChange={this.handleUnitChange}
+                                        value={donations[id].state.unit}
                                     >
                                         <option value="m">Metros</option>
                                         <option value="kg">Kg</option>
                                         <option value="otro">Otro</option>
                                     </Form.Control>
+                                </Form.Group>
+                                <Form.Group as={Col} md="4" >
+                                    <Form.Label>Otra unidad *</Form.Label>
+                                    <Form.Control
+                                        type="text"
+                                        name="otherUnit"
+                                        onChange={handleDonacion('otherUnit', this.props.id)}
+                                        value={donations[this.props.id].state.otherUnit}
+                                    />
                                     {
-                                        unitCompleted ? null :
+                                        otherUnitCompleted ? null :
                                             <Form.Text className="invalidInput">
-                                                Debe seleccionar una unidad
-                                            </Form.Text>
+                                                Debe introducir una nueva unidad
+					                    	</Form.Text>
                                     }
-                                </Form.Group>)
-                            }
-                        </Form.Row>
-                        <Address
-                            id={id}
-                            handleChange={handleDonacion}
-                            city={donations[id].state.city}
-                            cityCompleted={this.state.cityCompleted}
-                            street={donations[id].state.street}
-                            streetCompleted={this.state.streetCompleted}
-                            number={donations[id].state.number}
-                            numberCompleted={this.state.numberCompleted}
-                            floorNumber={donations[id].state.floorNumber}
-                            floorCompleted={this.state.floorCompleted}
-                        />
-                        <div className="bottomButton2">
-                            <Button
-                                type="submit"
-                                onClick={this.back}
+                                </Form.Group>
+                            </>
+                        )
+                            :
+                            (<Form.Group
+                                as={Col} md="8" >
+                                <Form.Label>Unidad *</Form.Label>
+                                <Form.Control as="select"
+                                    name="unit"
+                                    onChange={this.handleUnitChange}
+                                    value={donations[id].state.unit}
+                                >
+                                    <option value="m">Metros</option>
+                                    <option value="kg">Kg</option>
+                                    <option value="otro">Otro</option>
+                                </Form.Control>
+                                {
+                                    unitCompleted ? null :
+                                        <Form.Text className="invalidInput">
+                                            Debe seleccionar una unidad
+					                	</Form.Text>
+                                }
+                            </Form.Group>)
+                        }
+                    </Form.Row>
+                    <Address
+                        id={id}
+                        handleChange={handleDonacion}
+                        city={donations[id].state.city}
+                        cityCompleted={this.state.cityCompleted}
+                        street={donations[id].state.street}
+                        streetCompleted={this.state.streetCompleted}
+                        number={donations[id].state.number}
+                        numberCompleted={this.state.numberCompleted}
+                        floorNumber={donations[id].state.floorNumber}
+                        floorCompleted={this.state.floorCompleted}
+                    />
+                    <div className="centerButton">
+                        {
+                            this.props.donations.length > 1 ?
+                                (<Button
+                                    onClick={this.deleteDonation}
+                                    variant="contained"
+                                    color="secondary"
+                                >Borrar Donación
+                                </Button>)
+                                :
+                                null
+                        }
+                        <Button
+                            onClick={this.newDonation}
+                            color="primary"
+                            variant="contained"
+                            className="centerButton"
+                        >Nueva Donación
+                        </Button>
+                    </div>
+                    <div className="pasosDonation">
+                        {donationStep > 0 ?
+                            (<Button
+                                variant="contained"
+                                color="default"
                                 className="backButton"
+                                onClick={this.backDonation} > Donacion Anterior</Button>) : null
+                        }
+                        {donationStep < donations.length - 1 ?
+                            (<Button
                                 variant="contained"
-                                color="secondary"
-                            > Mis Datos</Button>
-                            <Button
-                                onClick={this.continue}
-                                type="submit"
+                                color="default"
                                 className="forwardButton"
-                                variant="contained"
-                                color="primary"
-                            >Finalizar</Button>
-                        </div>
-                    </Col>
-                </Row >
-            </div>
+                                onClick={this.forwardDonation}> Siguiente Donacion</Button>) : null
+                        }
+                    </div>
+                </div>
+                <div className="bottomButton2">
+                    <Button
+                        type="submit"
+                        onClick={this.back}
+                        className="backButton"
+                        variant="contained"
+                        color="secondary"
+                    > Mis Datos</Button>
+                    <Button
+                        onClick={this.continue}
+                        type="submit"
+                        className="forwardButton"
+                        variant="contained"
+                        color="primary"
+                    >Finalizar</Button>
+                </div>
+            </Container >
         );
     }
 }
