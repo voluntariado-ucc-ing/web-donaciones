@@ -37,7 +37,7 @@ class Formulario extends Component {
             return (<Intro
                 firstDonationButton={this.nextStep}
                 donationButon={this.alreadyDonateNextStep}
-            />)
+            />);
 
         if (this.state.pasos === global.Nombre)
             return (
