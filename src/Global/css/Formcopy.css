@@ -37,7 +37,7 @@
 }
 
 .bottomButton2{
-  position: relative;
+  justify-content: center;
   bottom: 10px;
   height: 5vh;
 }
@@ -48,9 +48,21 @@
   position: absolute;
 }
 
+.deleteButton{
+  top: 70%;
+  margin-left: 50%;
+  margin-right: 50%;
+  position: absolute;
+}
+
 .forwardButton{
   float: right;
   top: 70%;
+  position: absolute;
+}
+
+.addButton{
+  float: right;
   position: absolute;
 }
 
@@ -76,4 +88,27 @@
 .tel{
   width: auto;
 }
+
+.tab{
+  z-index: 10;
+  float: left;
+  display: flex;
+  position: relative;
+  justify-content: end;
+}
+
+.mobile-donation{
+display: none;
+}
+
+@media (max-width: 540px){
+  .computer-donation{
+    display: none;
+  }
+
+  .mobile-donation{
+    display: inline;
+  }
+}
+
 

@@ -1,8 +1,7 @@
 .navbar {
   text-decoration-color: #002c55;
   background-color: #EEEEEE;
-  padding: 0;
-  padding-left: 20px;
+  padding: 0 0 0 20px;
 }
 
 .links Link{
@@ -50,7 +49,6 @@ display: none;
 @media (max-width: 540px) {
   .navbar {
     display: none;
-
   }
 
   .mobile-menu {

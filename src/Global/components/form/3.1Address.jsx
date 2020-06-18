@@ -12,11 +12,11 @@ class Address extends Component {
     render() {
         const { handleChange, id, city, street, number, floorNumber, cityCompleted, streetCompleted, numberCompleted, floorCompleted } = this.props
         return (
-            <Container>
-                <h5>¿Dónde debemos retirarlos?</h5>
+            <div>
+                <hr  className={"m-1"}/>
+                <h5 className={"pt-3"}>¿Dónde debemos retirarlos?</h5>
                 <Form.Label>Localidad - Ciudad *</Form.Label>
-                <Form.Group
-                >
+                <Form.Group>
                     <Form.Control type="text" placeholder="Ciudad"
                         name="city"
                         onChange={handleChange('city', id)}
@@ -74,7 +74,7 @@ class Address extends Component {
                         />
                     </Form.Group>
                 </Form.Row>
-            </Container>
+            </div>
         );
     }
 }

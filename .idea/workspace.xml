@@ -17,8 +17,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
         <option value="CSS File" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -35,7 +35,7 @@
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../vulnerable-node" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../To-Do-App-in-React-code" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
@@ -156,7 +156,20 @@
       <workItem from="1590758391154" duration="4784000" />
       <workItem from="1590781024321" duration="7000" />
       <workItem from="1590853751270" duration="2516000" />
-      <workItem from="1590859760421" duration="5820000" />
+      <workItem from="1590859760421" duration="6439000" />
+      <workItem from="1591305324385" duration="2299000" />
+      <workItem from="1591890212119" duration="2414000" />
+      <workItem from="1591895369132" duration="2768000" />
+      <workItem from="1591910062067" duration="8061000" />
+      <workItem from="1591974327218" duration="3571000" />
+      <workItem from="1592058008252" duration="1927000" />
+      <workItem from="1592171347912" duration="3811000" />
+      <workItem from="1592179210168" duration="50000" />
+      <workItem from="1592335722387" duration="3387000" />
+      <workItem from="1592347549979" duration="5814000" />
+      <workItem from="1592395981234" duration="2744000" />
+      <workItem from="1592509245416" duration="618000" />
+      <workItem from="1592511660332" duration="3653000" />
     </task>
     <servers />
   </component>
