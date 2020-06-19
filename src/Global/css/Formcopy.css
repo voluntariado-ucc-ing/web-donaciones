@@ -97,6 +97,15 @@
   justify-content: end;
 }
 
+.b2{
+  color: rgb(59, 59, 59);
+}
+
+.b2:hover{
+  text-decoration: none;
+  color: #61b3e4;
+}
+
 .mobile-donation{
 display: none;
 }

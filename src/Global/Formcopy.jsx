@@ -79,13 +79,13 @@ class Formulario extends Component {
                                 <div>
                                     <Button
                                     className={"mb-0 ml-1 computer-donation"}
-                                    variant="outline-secondary"
+                                    variant="outline-info"
                                     onClick={()=>this.findDonation(mapNav.id)}
-                                >Donación {mapNav.id + 1} </Button>
+                                    >Donación {mapNav.id + 1} </Button>
 
                                     <Button
                                         className={"mb-0 ml-1 mobile-donation"}
-                                        variant="outline-secondary"
+                                        variant="outline-info"
                                         onClick={()=>this.findDonation(mapNav.id)}
                                     >{mapNav.id + 1}
                                     </Button>

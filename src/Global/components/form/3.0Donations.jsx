@@ -151,7 +151,7 @@ class Donation extends Component {
         return (
             <div>
                 <Nav className={"justify-content-end mr-0 ml-0"}>
-                    <Button  variant="outline-dark" className={"addButton"}>
+                    <Button  variant="outline-primary" className={"addButton"}>
                         <AddCircleIcon
                             onClick={this.newDonation}
                             fontSize={"large"}
@@ -160,7 +160,7 @@ class Donation extends Component {
 
                     {
                         this.props.donations.length > 1 ?
-                            ( <Button  variant="outline-dark" className={"addButton"}>
+                            ( <Button variant="outline-info" className={"addButton"}>
                                 <DeleteOutlineIcon
                                 onClick={this.deleteDonation}
                                 className="ml-1"
@@ -211,6 +211,13 @@ class Donation extends Component {
                                             >
                                                 <option value="m">Metros</option>
                                                 <option value="kg">Kg</option>
+                                                <option value="ltr">Litro</option>
+                                                <option value="bolsa">Bolsa</option>
+                                                <option value="lata">Lata</option>
+                                                <option value="palette">Palette</option>
+                                                <option value="m2">Metro cuadrado</option>
+                                                <option value="m3">Metro cúbico</option>
+                                                <option value="un">Unidad</option>
                                                 <option value="otro">Otro</option>
                                             </Form.Control>
                                         </Form.Group>
@@ -252,6 +259,7 @@ class Donation extends Component {
                                     }
                                 </Form.Group>)
                             }
+
                         </Form.Row>
 
                         <Address
@@ -266,6 +274,14 @@ class Donation extends Component {
                             floorNumber={donations[id].state.floorNumber}
                             floorCompleted={this.state.floorCompleted}
                         />
+                        <hr  className={"mt-1 mb-1"}/>
+                        <Form.Group controlId="exampleForm.ControlTextarea1">
+                            <Form.Label>
+                                <h5 className={"pt-3"}>¿Algo que deberíamos saber?</h5>
+                            </Form.Label>
+                            <Form.Control as="textarea" rows="3" />
+                        </Form.Group>
+                        
                         <div className="bottomButton2">
                             <Button
                                 type="submit"

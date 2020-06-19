@@ -21,11 +21,13 @@ class HeaderDonation extends Component {
                   className="d-inline-block align-top"
               />
             </Navbar.Brand>
-            <Nav className="ml-4">
+
+            <Nav className="justify-content-end ml-auto mr-5">
               <Nav.Link
                   activeClass="active"
                   spy={true}
                   smooth={true}
+                  offset={-64}
                   duration={700}
                   delay={50}
                   href="/"
