@@ -1,21 +1,19 @@
-import React, { Component } from 'react';
+import React, {Component, useState} from 'react';
 import Button from '@material-ui/core/Button';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
-import Col from 'react-bootstrap/Form';
 import '../../css/Formcopy.css';
+import AlertDialogSlide from "../Modal";
 
 class Confirmation extends Component {
     back = (e) => {
-        e.preventDefault()
+        e.preventDefault();
         this.props.prevStep()
-    }
-    newDonation = (e) => {
-
-    }
+    };
 
     render() {
-        const { value } = this.props
+        const { value } = this.props;
+
         return (
             < Container >
                 <h4>CONFIRMACIÓN DE DONACIÓN</h4>
@@ -70,10 +68,10 @@ class Confirmation extends Component {
                             }
                         }
                         id="enviar">
-                        Enviar
+                        <AlertDialogSlide/>
                     </Button>
                 </div>
-            </Container >
+            </Container>
         );
     }
 }

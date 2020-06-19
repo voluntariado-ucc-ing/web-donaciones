@@ -4,7 +4,6 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import "././css/Header.css";
 import iconoCatolica from "../images/iconoCatolica.svg";
-import {Link} from "react-scroll";
 
 class HeaderDonation extends Component {
   render() {
