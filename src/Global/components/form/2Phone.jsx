@@ -18,7 +18,7 @@ class Phone extends Component {
 	}
 
 	continue = (e) => {
-		var emailRegex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+		var emailRegex = /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+.)+[^<>()[\].,;:\s@"]{2,})$/i;
 		e.preventDefault()
 		if (this.props.phone.length > "12" && this.props.phone.length < "16")
 			this.setState({ phoneOk: true })

@@ -25,7 +25,7 @@ class Footer extends Component {
                         </Col>
                         <Col>
                             <FontAwesomeIcon icon={faInstagram} />
-                            <a target="_blank" href="https://www.instagram.com/voluntariadouccing/">
+                            <a target="_blank" href="https://www.instagram.com/voluntariadouccing/" rel="noopener noreferrer">
                                 <p className={"text-light"}>
                                     @voluntariadouccing
                                 </p>
@@ -48,7 +48,7 @@ class Footer extends Component {
                                 <FontAwesomeIcon icon={faInstagram} />
                             </Col>
                             <Col>
-                                <a target="_blank" href="https://www.instagram.com/voluntariadouccing/">
+                                <a target="_blank" href="https://www.instagram.com/voluntariadouccing/" rel="noopener noreferrer">
                                     <p className={"text-light"}>
                                         @voluntariadouccing
                                     </p>

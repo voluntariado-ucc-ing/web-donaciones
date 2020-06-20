@@ -1,4 +1,4 @@
-import React, {Component, useState} from 'react';
+import React, { Component } from 'react';
 import Button from '@material-ui/core/Button';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
@@ -68,7 +68,7 @@ class Confirmation extends Component {
                             }
                         }
                         id="enviar">
-                        <AlertDialogSlide/>
+                        <AlertDialogSlide />
                     </Button>
                 </div>
             </Container>

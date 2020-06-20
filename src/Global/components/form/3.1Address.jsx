@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Col from 'react-bootstrap/Col';
 
@@ -10,10 +9,10 @@ class Address extends Component {
         this.state = {};
     }
     render() {
-        const { handleChange, id, city, street, number, floorNumber, cityCompleted, streetCompleted, numberCompleted, floorCompleted } = this.props
+        const { handleChange, id, city, street, number, floorNumber, cityCompleted, streetCompleted, numberCompleted } = this.props
         return (
             <div>
-                <hr  className={"m-1"}/>
+                <hr className={"m-1"} />
                 <h5 className={"pt-3"}>¿Dónde debemos retirarlos?</h5>
                 <Form.Label>Localidad - Ciudad *</Form.Label>
                 <Form.Group>
