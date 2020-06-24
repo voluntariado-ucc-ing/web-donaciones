@@ -1,5 +1,6 @@
 #web {
-  height: 100vh;
+  height: auto;
+  width: 100%;
   text-align: center;
 }
 

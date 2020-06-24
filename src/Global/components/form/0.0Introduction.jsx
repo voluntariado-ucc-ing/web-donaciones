@@ -25,7 +25,7 @@ class Intro extends Component {
                     <br />
                     Para sumar tu donación, te pediremos algunos datos personales para poder identificarlo al momento de recibir tu donación.
                 </p>
-                <div className="bottomButton">
+                <div className="bottomButton computer-intro">
                     <Button
                         onClick={this.continue2}
                         className="backButton btn"
@@ -38,6 +38,26 @@ class Intro extends Component {
                         variant="contained"
                     > Primera donación</Button>
                 </div>
+
+                <div className="mobile-menu">
+                    <ul>
+                    <li><Button
+                        onClick={this.continue2}
+                        className="btn mb-2"
+                        variant="contained"
+                    >
+                        Ya he donado</Button>
+                    </li>
+                        <li>
+                    <Button
+                        onClick={this.continue}
+                        className="btn"
+                        variant="contained"
+                    > Primera donación</Button>
+                        </li>
+                    </ul>
+                </div>
+
             </div>
         );
     }
