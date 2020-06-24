@@ -74,16 +74,20 @@ class Formulario extends Component {
                             this.state.donations.map(mapNav => (
                                 <div>
                                     <Button
-                                    className={"mb-0 ml-1 btn computer-donation "}
-                                    onClick={()=>this.findDonation(mapNav.id)}
+                                        className={"mb-0 ml-1 computer-donation"}
+                                        variant="outline-info"
+                                        onClick={() => this.findDonation(mapNav.id)}
                                     >Donación {mapNav.id + 1} </Button>
 
                                     <Button
                                         className={"mb-0 ml-1 mobile-donation"}
-                                        onClick={()=>this.findDonation(mapNav.id)}
+                                        variant="outline-info"
+                                        onClick={() => this.findDonation(mapNav.id)}
                                     >{mapNav.id + 1}
                                     </Button>
                                 </div>
+
+
                             ))
                         }
                     </Nav>
@@ -108,7 +112,7 @@ class Formulario extends Component {
                     }
 
                 </div>)
-            }
+        }
 
         if (this.state.pasos === global.Confirmaion)
             return (< Confirmation
@@ -236,8 +240,6 @@ class Formulario extends Component {
     //eliminar donacion
     deleteDonation = (id) => {
         const don = this.state.donations;
-        const deleted = don.splice(id, 1); //Splice borra el numero especificado (posicion de array)
-        // y la cantidad de elementos seguidos a borrar
         let step = 0;
         if (id !== 0)
             step = id - 1;
@@ -264,8 +266,8 @@ class Formulario extends Component {
         this.setState({ donationStep: pasoDonacion })
     };
 
-   findDonation = (id) => {
-       this.setState({ donationStep: id});
+    findDonation = (id) => {
+        this.setState({ donationStep: id });
     };
 
 
@@ -273,11 +275,11 @@ class Formulario extends Component {
     render() {
         return (
             <div>
-                <HeaderDonation/>
+                <HeaderDonation />
                 <div id='background'>
                     <Container id="formulario">
                         <div id='left-letters'>
-                             {this.init()}
+                            {this.init()}
                         </div>
                     </Container>
                 </div>
