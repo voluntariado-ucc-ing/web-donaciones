@@ -39,6 +39,7 @@
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
+    <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\WebStorm 2019.2.1\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -171,7 +172,16 @@
       <workItem from="1592509245416" duration="618000" />
       <workItem from="1592511660332" duration="5525000" />
       <workItem from="1592581752368" duration="1194000" />
-      <workItem from="1592590340525" duration="4921000" />
+      <workItem from="1592590340525" duration="5312000" />
+      <workItem from="1592779789066" duration="604000" />
+      <workItem from="1592823948161" duration="5542000" />
+      <workItem from="1592832545696" duration="267000" />
+      <workItem from="1592833237757" duration="818000" />
+      <workItem from="1592834402825" duration="3000" />
+      <workItem from="1592840405921" duration="1280000" />
+      <workItem from="1592925091532" duration="1320000" />
+      <workItem from="1592948096204" duration="1639000" />
+      <workItem from="1593001209221" duration="969000" />
     </task>
     <servers />
   </component>

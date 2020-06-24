@@ -14,11 +14,7 @@ import Verification from './components/form/0.1Verification'
 // variables globales
 import './components/form/global';
 import Nav from "react-bootstrap/Nav";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import Navbar from "react-bootstrap/Navbar";
 import Button from "react-bootstrap/Button";
-import {light} from "@material-ui/core/styles/createPalette";
 import HeaderDonation from "./Donacion";
 
 class Formulario extends Component {
@@ -78,20 +74,16 @@ class Formulario extends Component {
                             this.state.donations.map(mapNav => (
                                 <div>
                                     <Button
-                                    className={"mb-0 ml-1 computer-donation"}
-                                    variant="outline-info"
+                                    className={"mb-0 ml-1 btn computer-donation "}
                                     onClick={()=>this.findDonation(mapNav.id)}
                                     >Donación {mapNav.id + 1} </Button>
 
                                     <Button
                                         className={"mb-0 ml-1 mobile-donation"}
-                                        variant="outline-info"
                                         onClick={()=>this.findDonation(mapNav.id)}
                                     >{mapNav.id + 1}
                                     </Button>
                                 </div>
-
-
                             ))
                         }
                     </Nav>

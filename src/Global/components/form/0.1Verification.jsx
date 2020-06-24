@@ -48,16 +48,14 @@ class Verification extends Component {
                     <br />
                     <div className="bottomButton">
                         <Button
-                            className="backButton"
+                            className="backButton btn"
                             variant="contained"
-                            color="secondary"
                             onClick={this.back}
                         > Atrás</Button>
                         <Button
-                            className="forwardButton"
+                            className="forwardButton btn"
                             onClick={this.continue}
                             variant="contained"
-                            color="primary"
                             type="submit"
                         >Continuar</Button>
                     </div>

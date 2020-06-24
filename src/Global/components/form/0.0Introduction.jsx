@@ -8,12 +8,12 @@ class Intro extends Component {
         e.preventDefault();
 
         this.props.firstDonationButton()
-    }
+    };
     continue2 = e => {
-        e.preventDefault()
+        e.preventDefault();
         this.props.donationButon()
 
-    }
+    };
 
 
     render() {
@@ -28,16 +28,14 @@ class Intro extends Component {
                 <div className="bottomButton">
                     <Button
                         onClick={this.continue2}
-                        className="backButton"
+                        className="backButton btn"
                         variant="contained"
-                        color="primary"
                     >
                         Ya he donado</Button>
                     <Button
                         onClick={this.continue}
-                        className="forwardButton"
+                        className="forwardButton btn"
                         variant="contained"
-                        color="primary"
                     > Primera donación</Button>
                 </div>
             </div>

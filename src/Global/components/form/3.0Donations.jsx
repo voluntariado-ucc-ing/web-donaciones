@@ -46,7 +46,7 @@ class Donation extends Component {
     //nuevasDonaciones
     newDonation = (e) => {
         e.preventDefault();
-        const { elementCompleted, quantityCompleted, unitCompleted, otherUnitCompleted, cityCompleted, streetCompleted, numberCompleted } = this.state
+        const { elementCompleted, quantityCompleted, unitCompleted, otherUnitCompleted, cityCompleted, streetCompleted, numberCompleted } = this.state;
         if (this.props.donations[this.props.id].state.elementDonation === '')
             this.setState({ elementCompleted: false });
         else
@@ -97,8 +97,8 @@ class Donation extends Component {
             this.props.deleteDonation(this.props.id)
     };
 
-    continue = (e) => {
-        const { elementCompleted, quantityCompleted, unitCompleted, otherUnitCompleted, cityCompleted, streetCompleted, numberCompleted } = this.state
+    continue = () => {
+        const { elementCompleted, quantityCompleted, unitCompleted, otherUnitCompleted, cityCompleted, streetCompleted, numberCompleted } = this.state;
         if (this.props.donations[this.props.id].state.elementDonation === '')
             this.setState({ elementCompleted: false });
         else
@@ -151,12 +151,11 @@ class Donation extends Component {
         return (
             <div>
                 <Nav className={"justify-content-end mr-0 ml-0"}>
-                    <Button  variant="outline-primary" className={"addButton"}>
                         <AddCircleIcon
                             onClick={this.newDonation}
+                            className={"uccColor"}
                             fontSize={"large"}
                         />
-                    </Button>
 
                     {
                         this.props.donations.length > 1 ?
@@ -249,6 +248,13 @@ class Donation extends Component {
                                     >
                                         <option value="m">Metros</option>
                                         <option value="kg">Kg</option>
+                                        <option value="ltr">Litro</option>
+                                        <option value="bolsa">Bolsa</option>
+                                        <option value="lata">Lata</option>
+                                        <option value="palette">Palette</option>
+                                        <option value="m2">Metro cuadrado</option>
+                                        <option value="m3">Metro cúbico</option>
+                                        <option value="un">Unidad</option>
                                         <option value="otro">Otro</option>
                                     </Form.Control>
                                     {
@@ -282,21 +288,19 @@ class Donation extends Component {
                             <Form.Control as="textarea" rows="3" />
                         </Form.Group>
                         
-                        <div className="bottomButton2">
+                        <div >
                             <Button
                                 type="submit"
                                 onClick={this.back}
-                                className="backButton"
+                                className="backButton btn"
                                 variant="contained"
-                                color="secondary"
                             > Mis Datos</Button>
 
                             <Button
                                 onClick={this.continue}
                                 type="submit"
-                                className="forwardButton"
+                                className="forwardButton btn"
                                 variant="contained"
-                                color="primary"
                             >Finalizar</Button>
                         </div>
                     </Col>

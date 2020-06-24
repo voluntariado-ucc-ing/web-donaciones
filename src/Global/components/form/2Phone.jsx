@@ -18,26 +18,26 @@ class Phone extends Component {
 	}
 
 	continue = (e) => {
-		var emailRegex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
-		e.preventDefault()
+		const emailRegex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+		e.preventDefault();
 		if (this.props.phone.length > "12" && this.props.phone.length < "16")
-			this.setState({ phoneOk: true })
+			this.setState({ phoneOk: true });
 		else
-			this.setState({ phoneOk: false })
+			this.setState({ phoneOk: false });
 
 		if (emailRegex.test(this.props.email))
-			this.setState({ wrongEmail: false })
+			this.setState({ wrongEmail: false });
 		else
-			this.setState({ wrongEmail: true })
+			this.setState({ wrongEmail: true });
 		if (this.props.email !== this.props.emailConfirmation)
-			this.setState({ equalEmail: false })
+			this.setState({ equalEmail: false });
 		else
 			this.setState({ equalEmail: true }
 				, () => {
 					if (this.state.equalEmail === true && this.state.phoneOk === true && this.state.wrongEmail === false)
 						this.props.nextStep()
 				})
-	}
+	};
 
 	back = (e) => {
 		e.preventDefault();
@@ -49,13 +49,12 @@ class Phone extends Component {
 	};
 
 	render() {
-		const { handleChange, email, emailConfirmation, phone } = this.props
+		const { handleChange, email, emailConfirmation, phone } = this.props;
 		return (
 			<Container>
-				<h3>DATOS PERSONALES</h3>
 				<h5>Necesitamos los siguientes datos para poder comunicarnos con usted</h5>
-				<br />
-				<Form.Label>Teléfono o celular *</Form.Label>
+				<hr  className={"m-1"}/>
+				<Form.Label className={"pt-3"}>Teléfono o celular *</Form.Label>
 				<br />
 				<PhoneInput
 					defaultCountry="AR"
@@ -69,8 +68,9 @@ class Phone extends Component {
 							Ingrese su el numero de area si el cero y el numero de telefono sin el 15
 						</Form.Text>)
 				}
-				<br />
+				<hr  className={"m-1"}/>
 				<Form.Group
+					className={"pt-2"}
 					id="formEmail">
 					<Form.Label>Email *</Form.Label>
 					<Form.Control
@@ -84,7 +84,7 @@ class Phone extends Component {
 						this.state.wrongEmail === true ?
 							(<Form.Text className="invalidInput">
 								Debe introducir su email de forma correcta.
-							</Form.Text>) : (null)
+							</Form.Text>) : null
 					}
 					<br />
 					<Form.Label>Confirmación de Email *</Form.Label>
@@ -107,14 +107,12 @@ class Phone extends Component {
 				<br />
 				<div className="bottomButton">
 					<Button onClick={this.back}
-						className="backButton"
+						className="backButton btn"
 						variant="contained"
-						color="secondary"
 					> Atrás</Button>
 					<Button onClick={this.continue}
-						className="forwardButton"
+						className="forwardButton btn"
 						variant="contained"
-						color="primary"
 					>Continuar</Button>
 				</div>
 			</Container >

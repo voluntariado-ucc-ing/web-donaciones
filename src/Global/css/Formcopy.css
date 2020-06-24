@@ -1,8 +1,9 @@
 #background{
   z-index: -1;
   padding-top: 6%;
-  padding-bottom: 10%;
+  padding-bottom: 8%;
   height: auto;
+  min-height: 250px;
   width: 100%;
   justify-content: center;
   align-content: center;
@@ -13,12 +14,12 @@
 
 #formulario {
   width: 100%;
-  height: auto;
+  min-height: 250px;
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 5px;
-  
+
 }
 
 #left-letters{
@@ -36,10 +37,14 @@
   width: 100%;
 }
 
-.bottomButton2{
-  justify-content: center;
-  bottom: 10px;
-  height: 5vh;
+.btn{
+  background-color:  #29468A !important;
+  color: white !important;
+  opacity: 90%;
+}
+
+.uccColor{
+  color:  #29468A !important;
 }
 
 .backButton{
@@ -94,8 +99,8 @@
   float: left;
   display: flex;
   position: relative;
-  justify-content: end;
 }
+
 
 .b2{
   color: rgb(59, 59, 59);
@@ -110,6 +115,7 @@
 display: none;
 }
 
+
 @media (max-width: 540px){
   .computer-donation{
     display: none;
@@ -117,6 +123,9 @@ display: none;
 
   .mobile-donation{
     display: inline;
+    outline-style: solid;
+    outline-width: 1px;
+    outline-color: #002c55 !important;
   }
 }
 

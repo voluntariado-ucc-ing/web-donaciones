@@ -14,10 +14,10 @@ class Names extends Component {
 		}
 	}
 	continue = (e) => {
-		e.preventDefault()
+		e.preventDefault();
 		if (this.props.firstName !== '' && this.props.lastName !== '') {
-			this.setState({ firstNameWritten: true })
-			this.setState({ lastNameWritten: true })
+			this.setState({ firstNameWritten: true });
+			this.setState({ lastNameWritten: true });
 			this.props.nextStep()
 		}
 		else {
@@ -25,15 +25,16 @@ class Names extends Component {
 				this.setState({ firstNameWritten: false })
 			}
 			else {
-				this.setState({ firstNameWritten: true })
+				this.setState({ firstNameWritten: true });
 				this.setState({ lastNameWritten: false })
 			}
 		}
-	}
+	};
+
 	back = (e) => {
-		e.preventDefault()
+		e.preventDefault();
 		this.props.prevStep()
-	}
+	};
 	render() {
 		const { handleChange, firstName, lastName } = this.props;
 		return (
@@ -67,14 +68,12 @@ class Names extends Component {
 				</Form.Group>
 				<div className="bottomButton">
 					<Button onClick={this.back}
-						className="backButton"
+						className="backButton btn"
 						variant="contained"
-						color="secondary"
 					> Atrás</Button>
 					<Button onClick={this.continue}
-						className="forwardButton"
+						className="forwardButton btn"
 						variant="contained"
-						color="primary"
 					>Continuar</Button>
 				</div>
 			</Container>
