@@ -5,6 +5,8 @@ import Button from '@material-ui/core/Button';
 import Row from "react-bootstrap/Row";
 import '../../css/Formcopy.css';
 import AddCircleIcon from '@material-ui/icons/AddCircle';
+import Tooltip from '@material-ui/core/Tooltip';
+import Zoom from '@material-ui/core/Zoom';
 import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline';
 
 //import address
@@ -83,8 +85,8 @@ class Donation extends Component {
                             this.props.newDonation()
                     }
                     else
-                    if (elementCompleted && quantityCompleted && unitCompleted && cityCompleted && streetCompleted && numberCompleted)
-                        this.props.newDonation()
+                        if (elementCompleted && quantityCompleted && unitCompleted && cityCompleted && streetCompleted && numberCompleted)
+                            this.props.newDonation()
                 }
             )
     };
@@ -135,8 +137,8 @@ class Donation extends Component {
                             this.props.nextStep()
                     }
                     else
-                    if (elementCompleted && quantityCompleted && unitCompleted && cityCompleted && streetCompleted && numberCompleted)
-                        this.props.nextStep()
+                        if (elementCompleted && quantityCompleted && unitCompleted && cityCompleted && streetCompleted && numberCompleted)
+                            this.props.nextStep()
                 })
     };
 
@@ -151,24 +153,27 @@ class Donation extends Component {
         return (
             <div>
                 <Nav className={"justify-content-end mr-0 ml-0"}>
+                    <Tooltip title="Nueva donación" arrow placement="top"
+                        TransitionComponent={Zoom}
+                        enterDelay={50} leaveDelay={300}>
                         <AddCircleIcon
                             onClick={this.newDonation}
                             className={"uccColor"}
                             fontSize={"large"}
                         />
-
+                    </Tooltip>
                     {
                         this.props.donations.length > 1 ?
                             (<DeleteOutlineIcon
                                 onClick={this.deleteDonation}
                                 className="ml-1 uccColor"
                                 fontSize={"large"}
-                                />)
+                            />)
                             :
                             null
                     }
                 </Nav>
-                <hr  className={"m-1"}/>
+                <hr className={"m-1"} />
                 <Row id={"donation"} className="justify-content-md-center pt-3">
                     <Col>
                         <h5>¿Con qué desea ayudarnos? *</h5>
@@ -198,51 +203,51 @@ class Donation extends Component {
                             </Form.Group>
 
                             {donations[this.props.id].state.isNoConventional ? (
-                                    <>
-                                        <Form.Group as={Col} md="4" >
-                                            <Form.Label>Unidad *</Form.Label>
-                                            <Form.Control as="select"
-                                                          name="unit"
-                                                          onChange={this.handleUnitChange}
-                                                          value={donations[id].state.unit}
-                                            >
-                                                <option value="m">Metros</option>
-                                                <option value="kg">Kg</option>
-                                                <option value="ltr">Litro</option>
-                                                <option value="bolsa">Bolsa</option>
-                                                <option value="lata">Lata</option>
-                                                <option value="palette">Palette</option>
-                                                <option value="m2">Metro cuadrado</option>
-                                                <option value="m3">Metro cúbico</option>
-                                                <option value="un">Unidad</option>
-                                                <option value="otro">Otro</option>
-                                            </Form.Control>
-                                        </Form.Group>
-                                        <Form.Group as={Col} md="4" >
-                                            <Form.Label>Otra unidad *</Form.Label>
-                                            <Form.Control
-                                                type="text"
-                                                name="otherUnit"
-                                                onChange={handleDonacion('otherUnit', this.props.id)}
-                                                value={donations[this.props.id].state.otherUnit}
-                                            />
-                                            {
-                                                otherUnitCompleted ? null :
-                                                    <Form.Text className="invalidInput">
-                                                        Debe introducir una nueva unidad
+                                <>
+                                    <Form.Group as={Col} md="4" >
+                                        <Form.Label>Unidad *</Form.Label>
+                                        <Form.Control as="select"
+                                            name="unit"
+                                            onChange={this.handleUnitChange}
+                                            value={donations[id].state.unit}
+                                        >
+                                            <option value="m">Metros</option>
+                                            <option value="kg">Kg</option>
+                                            <option value="ltr">Litro</option>
+                                            <option value="bolsa">Bolsa</option>
+                                            <option value="lata">Lata</option>
+                                            <option value="palette">Palette</option>
+                                            <option value="m2">Metro cuadrado</option>
+                                            <option value="m3">Metro cúbico</option>
+                                            <option value="un">Unidad</option>
+                                            <option value="otro">Otro</option>
+                                        </Form.Control>
+                                    </Form.Group>
+                                    <Form.Group as={Col} md="4" >
+                                        <Form.Label>Otra unidad *</Form.Label>
+                                        <Form.Control
+                                            type="text"
+                                            name="otherUnit"
+                                            onChange={handleDonacion('otherUnit', this.props.id)}
+                                            value={donations[this.props.id].state.otherUnit}
+                                        />
+                                        {
+                                            otherUnitCompleted ? null :
+                                                <Form.Text className="invalidInput">
+                                                    Debe introducir una nueva unidad
                                                     </Form.Text>
-                                            }
-                                        </Form.Group>
-                                    </>
-                                )
+                                        }
+                                    </Form.Group>
+                                </>
+                            )
                                 :
                                 (<Form.Group
                                     as={Col} md="8" >
                                     <Form.Label>Unidad *</Form.Label>
                                     <Form.Control as="select"
-                                                  name="unit"
-                                                  onChange={this.handleUnitChange}
-                                                  value={donations[id].state.unit}
+                                        name="unit"
+                                        onChange={this.handleUnitChange}
+                                        value={donations[id].state.unit}
                                     >
                                         <option value="m">Metros</option>
                                         <option value="kg">Kg</option>
@@ -278,14 +283,14 @@ class Donation extends Component {
                             floorNumber={donations[id].state.floorNumber}
                             floorCompleted={this.state.floorCompleted}
                         />
-                        <hr  className={"mt-1 mb-1"}/>
+                        <hr className={"mt-1 mb-1"} />
                         <Form.Group controlId="exampleForm.ControlTextarea1">
                             <Form.Label>
                                 <h5 className={"pt-3"}>¿Algo que deberíamos saber?</h5>
                             </Form.Label>
                             <Form.Control as="textarea" rows="3" />
                         </Form.Group>
-                        
+
                         <div >
                             <Button
                                 type="submit"
