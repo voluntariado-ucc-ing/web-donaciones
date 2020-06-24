@@ -111,10 +111,27 @@
   color: #61b3e4;
 }
 
+.mobile-intro{
+  display: none;
+}
+
 .mobile-donation{
 display: none;
 }
 
+@media(max-width: 355px){
+  .media-intro{
+    display: inline-block;
+  }
+
+  .mobile-intro{
+    display: inline-block;
+  }
+
+  .computer-intro{
+    display: none;
+  }
+}
 
 @media (max-width: 540px){
   .computer-donation{
@@ -123,9 +140,6 @@ display: none;
 
   .mobile-donation{
     display: inline;
-    outline-style: solid;
-    outline-width: 1px;
-    outline-color: #002c55 !important;
   }
 }
 

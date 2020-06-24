@@ -15,7 +15,7 @@ import Verification from './components/form/0.1Verification'
 import './components/form/global';
 import Nav from "react-bootstrap/Nav";
 import Button from "react-bootstrap/Button";
-import HeaderDonation from "./Donacion";
+import HeaderDonation from "./HeaderDonacion";
 
 class Formulario extends Component {
     constructor(props) {
@@ -75,13 +75,11 @@ class Formulario extends Component {
                                 <div>
                                     <Button
                                         className={"mb-0 ml-1 computer-donation"}
-                                        variant="outline-info"
                                         onClick={() => this.findDonation(mapNav.id)}
                                     >Donación {mapNav.id + 1} </Button>
 
                                     <Button
                                         className={"mb-0 ml-1 mobile-donation"}
-                                        variant="outline-info"
                                         onClick={() => this.findDonation(mapNav.id)}
                                     >{mapNav.id + 1}
                                     </Button>
@@ -147,7 +145,7 @@ class Formulario extends Component {
             let done = new Donation();
             done.id = 0;
             don.push(done);
-            this.setState({ donation: don })
+            this.setState({ donation: don });
             this.setState({ firstDonationCreated: true })
         }
     };
@@ -175,8 +173,8 @@ class Formulario extends Component {
     //utilizado cuando el usuario ya 'creo' una donacion anteriormente
     nextStep2 = () => {
         if (!this.state.firstDonationCreated) {
-            var don = this.state.donations;
-            var done = new Donation();
+            let don = this.state.donations;
+            let done = new Donation();
             done.id = 0;
             don.push(done);
             this.setState({ donation: don });
@@ -245,8 +243,8 @@ class Formulario extends Component {
             step = id - 1;
         for (let i = 0; i <= don.length; i++) {
             if (i !== id) {
-                var newId = (element) => element.id === i;
-                var a = don.findIndex(newId);
+                let newId = (element) => element.id === i;
+                let a = don.findIndex(newId);
                 don[a].id = a
             }
         }
@@ -276,13 +274,13 @@ class Formulario extends Component {
         return (
             <div>
                 <HeaderDonation />
-                <div id='background'>
+                <Container fluid id='background'>
                     <Container id="formulario">
                         <div id='left-letters'>
                             {this.init()}
                         </div>
                     </Container>
-                </div>
+                </Container>
             </div>
         );
     }

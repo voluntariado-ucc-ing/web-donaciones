@@ -159,13 +159,11 @@ class Donation extends Component {
 
                     {
                         this.props.donations.length > 1 ?
-                            ( <Button variant="outline-info" className={"addButton"}>
-                                <DeleteOutlineIcon
+                            (<DeleteOutlineIcon
                                 onClick={this.deleteDonation}
-                                className="ml-1"
+                                className="ml-1 uccColor"
                                 fontSize={"large"}
-                                />
-                            </Button>)
+                                />)
                             :
                             null
                     }

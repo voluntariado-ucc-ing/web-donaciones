@@ -35,7 +35,7 @@
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../To-Do-App-in-React-code" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../web-donaciones" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
@@ -181,7 +181,7 @@
       <workItem from="1592840405921" duration="1280000" />
       <workItem from="1592925091532" duration="1320000" />
       <workItem from="1592948096204" duration="1639000" />
-      <workItem from="1593001209221" duration="969000" />
+      <workItem from="1593001209221" duration="5146000" />
     </task>
     <servers />
   </component>

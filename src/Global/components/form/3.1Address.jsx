@@ -9,7 +9,7 @@ class Address extends Component {
         this.state = {};
     }
     render() {
-        const { handleChange, id, city, street, number, floorNumber, cityCompleted, streetCompleted, numberCompleted } = this.props
+        const { handleChange, id, city, street, number, floorNumber, cityCompleted, streetCompleted, numberCompleted } = this.props;
         return (
             <div>
                 <hr className={"m-1"} />

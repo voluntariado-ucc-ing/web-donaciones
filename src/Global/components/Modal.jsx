@@ -35,10 +35,10 @@ export default function AlertDialogSlide() {
                 aria-labelledby="alert-dialog-slide-title"
                 aria-describedby="alert-dialog-slide-description"
             >
-                <DialogTitle id="alert-dialog-slide-title">{"Tu donación se envio exitosamente"}</DialogTitle>
+                <DialogTitle id="alert-dialog-slide-title">{"Tu donación se envió exitosamente"}</DialogTitle>
                 <DialogContent>
                     <DialogContentText id="alert-dialog-slide-description">
-                        Las familias del Barrio El Milagro te lo agradecen muchisimo.
+                        Las familias del Barrio El Milagro te lo agradecen muchísimo.
                     </DialogContentText>
                 </DialogContent>
                 <DialogActions>
