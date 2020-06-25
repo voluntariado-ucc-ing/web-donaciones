@@ -210,7 +210,7 @@ class Donation extends Component {
                                             name="unit"
                                             onChange={this.handleUnitChange}
                                             value={donations[id].state.unit}
-                                            defaultValue="Elegir">
+                                        >
                                             <option value="">Elegir</option>
                                             <option value="m">Metros</option>
                                             <option value="kg">Kg</option>
@@ -249,7 +249,6 @@ class Donation extends Component {
                                         name="unit"
                                         onChange={this.handleUnitChange}
                                         value={donations[id].state.unit}
-                                        defaultValue="Elegir"
                                     >
                                         <option value="">Elegir</option>
                                         <option value="m">Metros</option>

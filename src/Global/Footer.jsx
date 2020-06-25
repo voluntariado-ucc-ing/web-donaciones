@@ -67,13 +67,17 @@ class Footer extends Component {
                             <Col sm>
                                 <FontAwesomeIcon icon={faPhone} />
                             </Col>
-                            <Col>
-                                <p href="tel:+5403514938000;510">(0351) 493 8000 int. 510</p>
+                            <Col sm>
+                                <a href="tel:+5403514938000;510" rel="noopener noreferrer">
+                                    <p>
+                                        (0351) 493 8000 int. 510
+                                    </p>
+                                </a>
                             </Col>
                         </Row>
                     </Col>
                 </Container>
-            </div>
+            </div >
         )
     }
 }

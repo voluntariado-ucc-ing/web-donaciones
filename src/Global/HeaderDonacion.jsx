@@ -8,60 +8,51 @@ import iconoCatolica from "../images/iconoCatolica.svg";
 class HeaderDonation extends Component {
   render() {
     return (
-        <div>
-          <Navbar variant="pills" className="navbar" fixed="top">
+      <div>
+        <Navbar variant="pills" className="navbar" fixed="top">
+          <Navbar.Brand>
+            <img
+              alt="ucc"
+              src={iconoCatolica}
+              width="80"
+              height="40"
+              ref="/"
+              className="d-inline-block align-top"
+            />
+          </Navbar.Brand>
+
+          <Nav className="justify-content-end ml-auto mr-5">
+            <Nav.Link
+              offset={-64}
+              duration={700}
+              delay={50}
+              href="/"
+              className="b2"
+            >Inicio</Nav.Link>
+          </Nav>
+        </Navbar>
+
+        <Nav defaultActiveKey="/home" className="flex-column">
+          <Navbar className={"mobile-menu"}>
             <Navbar.Brand>
               <img
-                  alt="ucc"
-                  src={iconoCatolica}
-                  width="80"
-                  height="40"
-                  ref="/"
-                  className="d-inline-block align-top"
+                alt="ucc"
+                src={iconoCatolica}
+                width="80"
+                height="40"
+                ref="/"
+                className="d-inline-block align-top"
               />
             </Navbar.Brand>
-
-            <Nav className="justify-content-end ml-auto mr-5">
-              <Nav.Link
-                  activeClass="active"
-                  spy={true}
-                  smooth={true}
-                  offset={-64}
-                  duration={700}
-                  delay={50}
-                  href="/"
-                  className="b2"
-              >Inicio</Nav.Link>
-            </Nav>
-            </Navbar>
-
-          <Nav defaultActiveKey="/home" className="flex-column">
-            <Navbar className={"mobile-menu"}>
-              <Navbar.Brand>
-                <img
-                    alt="ucc"
-                    src={iconoCatolica}
-                    width="80"
-                    height="40"
-                    ref="/"
-                    className="d-inline-block align-top"
-                />
-              </Navbar.Brand>
-              <ul>
-                <li>
-                  <Nav.Link activeClass="active"
-                        spy={true}
-                        smooth={true}
-                        duration={700}
-                        delay={50}
-                        href="/"
-                        className="b2"
-                  >Inicio</Nav.Link>
-                </li>
-              </ul>
-            </Navbar>
-          </Nav>
-        </div>
+            <ul>
+              <li>
+                <Nav.Link
+                >Inicio</Nav.Link>
+              </li>
+            </ul>
+          </Navbar>
+        </Nav>
+      </div>
     );
   }
 }

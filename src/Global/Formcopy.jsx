@@ -74,7 +74,7 @@ class Formulario extends Component {
                     <Nav className={"justify-content-start tab"} >
                         {
                             this.state.donations.map(mapNav => (
-                                <div>
+                                <div key={mapNav.id}>
                                     <Button
                                         className={"mb-0 ml-1 computer-donation"}
                                         onClick={() => this.findDonation(mapNav.id)}
@@ -116,10 +116,14 @@ class Formulario extends Component {
 
         if (this.state.pasos === global.Confirmaion)
             return (< Confirmation
-                value={this.state}
+                alreadyDonate={this.state.alreadyDonate}
+                firstName={this.state.firstName}
+                lastName={this.state.lastName}
+                phone={this.state.phone}
+                email={this.state.email}
+                donations={this.state.donations}
                 nextStep={this.nextStep}
                 prevStep={this.prevStep}
-
             />);
 
         if (this.state.pasos === global.YaHeDonado)
@@ -232,9 +236,6 @@ class Formulario extends Component {
         this.setState({ donationStep: don.length });
         don.push(done);
         this.setState({ donation: don });
-
-        console.log(JSON.stringify(this.state));
-        console.log(this.state.donations[0].state)
     };
 
     //eliminar donacion
@@ -244,7 +245,7 @@ class Formulario extends Component {
         var step = 0
         if (id !== 0)
             step = id - 1
-        for (var i = 0; i <= don.length; i++) {
+        for (let i = 0; i <= don.length; i++) {
             if (i !== id) {
                 var newId = (element) => element.id === i
                 var a = don.findIndex(newId)
