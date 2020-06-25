@@ -58,7 +58,7 @@ class Home extends Component {
                             </Col>
                             <Col>
                                 <ButtonGroup vertical className={"info"}>
-                                    <Button variant="outline-dark" size="lg" className="link btn" target="_blank" href={"https://donaronline.org/universidad-catolica-de-cordoba/desde-casa-podes-ayudar-a-las-familias-de-barrio-el-milagro?preview=true"}>Donar dinero(transferencia)</Button>
+                                    <Button variant="outline-dark" size="lg" className="link btn" target="_blank" href={"https://donaronline.org/universidad-catolica-de-cordoba/grupo-voluntario-de-jovenes-universitarios-en-barrio-el-milagro?preview=true"}>Donar dinero(transferencia)</Button>
                                     <Button variant="outline-dark" size="lg" className="link" target="_blank" href={"/form"}>Otra clase de donaciones</Button>
                                 </ButtonGroup>
                             </Col>
