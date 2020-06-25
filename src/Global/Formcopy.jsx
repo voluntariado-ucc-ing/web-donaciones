@@ -239,21 +239,21 @@ class Formulario extends Component {
 
     //eliminar donacion
     deleteDonation = (id) => {
-        const don = this.state.donations;
-        let step = 0;
+        var don = this.state.donations //se hace una copia de las donaciones actuales
+        don.splice(id, 1)  // se quita la donacion con posicion id, el uno representa que se quita solo esa donacion
+        var step = 0
         if (id !== 0)
-            step = id - 1;
-        for (let i = 0; i <= don.length; i++) {
+            step = id - 1
+        for (var i = 0; i <= don.length; i++) {
             if (i !== id) {
-                let newId = (element) => element.id === i;
-                let a = don.findIndex(newId);
+                var newId = (element) => element.id === i
+                var a = don.findIndex(newId)
                 don[a].id = a
             }
         }
-
-        this.setState({ donations: don });
+        this.setState({ donations: don })
         this.setState({ donationStep: step })
-    };
+    }
 
     //botones nueva donacion
     backDonation = () => {
