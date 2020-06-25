@@ -8,13 +8,15 @@ import Button from "react-bootstrap/Button";
 import ButtonGroup from "react-bootstrap/ButtonGroup";
 import Container from "react-bootstrap/Container";
 import Header from "./Header";
+import Footer from "./Footer";
+
 
 
 class Home extends Component {
     render() {
         return (
             <div>
-                <Header/>
+                <Header />
                 <div className="totalContainer">
                     <Container id="intro" fluid className={"background"}>
                         <div className="transbox">
@@ -78,11 +80,12 @@ class Home extends Component {
                                 <iframe
                                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3401.8228500839773!2d-64.1979016848499!3d-31.50155278137586!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9432a5ecfcca7701%3A0xe8d124696f0e3b94!2sBarrio%20el%20milagro!5e0!3m2!1ses!2sar!4v1589661316454!5m2!1ses!2sar"
                                     width="600" height="450" frameBorder="0" allowFullScreen=""
-                                    aria-hidden="false" tabIndex="0"/>
+                                    aria-hidden="false" tabIndex="0" />
                             </Col>
                         </Row>
                     </Container>
                 </div>
+                <Footer />
             </div>
         );
     }

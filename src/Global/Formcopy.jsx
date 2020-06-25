@@ -10,6 +10,8 @@ import Phone from './components/form/2Phone'
 import Donation from './components/form/3.0Donations'
 import Confirmation from './components/form/4Confirmation'
 import Verification from './components/form/0.1Verification'
+import Footer from "./Footer";
+
 
 // variables globales
 import './components/form/global';
@@ -281,6 +283,7 @@ class Formulario extends Component {
                         </div>
                     </Container>
                 </Container>
+                <Footer />
             </div>
         );
     }

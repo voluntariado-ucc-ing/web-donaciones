@@ -65,7 +65,7 @@ class Phone extends Component {
 					this.state.phoneOk ?
 						null :
 						(<Form.Text className="invalidInput">
-							Ingrese su el numero de area si el cero y el numero de telefono sin el 15
+							Ingrese su el número de área sin el cero y el numero de teléfono sin el 15
 						</Form.Text>)
 				}
 				<br />

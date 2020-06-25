@@ -1,9 +1,8 @@
 #background{
   z-index: -1;
-  padding-top: 6%;
-  padding-bottom: 8%;
-  height: auto;
-  min-height: 250px;
+  padding-top: 10vh;
+  padding-bottom: 2vh;
+  min-height: 85vh;
   width: 100%;
   justify-content: center;
   align-content: center;
@@ -14,12 +13,11 @@
 
 #formulario {
   width: 100%;
-  min-height: 250px;
+  min-height: 55vh;
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 5px;
-
 }
 
 #left-letters{

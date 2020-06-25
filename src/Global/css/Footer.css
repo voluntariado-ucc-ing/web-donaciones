@@ -4,6 +4,7 @@
 
 .computer-footer{
     display: block;
+    min-height: 15vh;
 }
 
 @media (min-width: 500px) and (max-width: 600px){
