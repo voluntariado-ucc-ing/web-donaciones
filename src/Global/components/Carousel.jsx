@@ -12,7 +12,6 @@ class CarouselUcc extends Component {
           className='react-player centerVideo'
           width='40%'
           height='40%'
-          resizeMode='contain'
         />
       </div>
     );
