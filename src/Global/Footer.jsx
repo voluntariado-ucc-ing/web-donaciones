@@ -21,7 +21,12 @@ class Footer extends Component {
                     <Row>
                         <Col>
                             <FontAwesomeIcon icon={faEnvelopeOpen} />
-                            <p>voluntariado.vmru@ucc.edu.ar</p>
+                            <a
+                                target="_top"
+                                rel="noopener noreferrer"
+                                href="mailto:voluntariado.vmru@ucc.edu.ar">
+                                <p className={"text-light"}>voluntariado.vmru@ucc.edu.ar</p>
+                            </a>
                         </Col>
                         <Col>
                             <FontAwesomeIcon icon={faInstagram} />
@@ -33,7 +38,13 @@ class Footer extends Component {
                         </Col>
                         <Col>
                             <FontAwesomeIcon icon={faPhone} />
-                            <p>(0351) 493 8000 int. 510</p>
+                            <a href="tel:+5403514938000p510"
+                                target="_top"
+                                rel="noopener noreferrer">
+                                <p className={"text-light"}>
+                                    (0351) 493 8000 int. 510
+                                    </p>
+                            </a>
                         </Col>
                     </Row>
                 </Container>
@@ -60,16 +71,23 @@ class Footer extends Component {
                                 <FontAwesomeIcon icon={faEnvelopeOpen} />
                             </Col>
                             <Col>
-                                <p>voluntariado.vmru@ucc.edu.ar</p>
+                                <a
+                                    target="_top"
+                                    rel="noopener noreferrer"
+                                    href="mailto:voluntariado.vmru@ucc.edu.ar">
+                                    <p className={"text-light"}>voluntariado.vmru@ucc.edu.ar</p>
+                                </a>
                             </Col>
                         </Row>
-                        <Row>
+                        <Row >
                             <Col sm>
                                 <FontAwesomeIcon icon={faPhone} />
                             </Col>
                             <Col sm>
-                                <a href="tel:+5403514938000;510" rel="noopener noreferrer">
-                                    <p>
+                                <a href="tel:+5403514938000p510"
+                                    target="_top"
+                                    rel="noopener noreferrer">
+                                    <p className={"text-light"}>
                                         (0351) 493 8000 int. 510
                                     </p>
                                 </a>
