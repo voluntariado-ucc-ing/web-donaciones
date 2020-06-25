@@ -68,7 +68,7 @@ class Footer extends Component {
                                 <FontAwesomeIcon icon={faPhone} />
                             </Col>
                             <Col>
-                                <p>(0351) 493 8000 int. 510</p>
+                                <p href="tel:+5403514938000;510">(0351) 493 8000 int. 510</p>
                             </Col>
                         </Row>
                     </Col>
