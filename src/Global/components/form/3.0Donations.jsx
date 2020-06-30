@@ -33,7 +33,8 @@ class Donation extends Component {
             number: '',
             numberCompleted: true,
             floorNumber: '',
-            floorCompleted: true
+            floorCompleted: true,
+            checked: false
         }
     }
 
@@ -148,10 +149,10 @@ class Donation extends Component {
     };
 
     render() {
-        const { handleDonacion, id, donations } = this.props;
+        const { handleDonacion, id, donations, checkedChange, directionChange } = this.props;
         const { elementCompleted, quantityCompleted, unitCompleted, otherUnitCompleted } = this.state;
         return (
-            <div>
+            <div className='donation'>
                 <Nav className={"justify-content-end mr-0 ml-0"}>
                     <Tooltip title="Nueva donación" arrow placement="top"
                         TransitionComponent={Zoom}
@@ -273,9 +274,12 @@ class Donation extends Component {
 
                         </Form.Row>
 
+
+
                         <Address
                             id={id}
                             handleChange={handleDonacion}
+                            checkedChange={checkedChange}
                             city={donations[id].state.city}
                             cityCompleted={this.state.cityCompleted}
                             street={donations[id].state.street}
@@ -284,6 +288,9 @@ class Donation extends Component {
                             numberCompleted={this.state.numberCompleted}
                             floorNumber={donations[id].state.floorNumber}
                             floorCompleted={this.state.floorCompleted}
+                            donations={this.props.donations}
+                            checked={donations[id].state.checked}
+                            directionChange={directionChange}
                         />
                         <hr className={"mt-1 mb-1"} />
                         <Form.Group controlId="exampleForm.ControlTextarea1">
