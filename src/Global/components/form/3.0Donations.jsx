@@ -34,7 +34,8 @@ class Donation extends Component {
             numberCompleted: true,
             floorNumber: '',
             floorCompleted: true,
-            checked: false
+            checked: false,
+            firstCheck: false
         }
     }
 
@@ -290,6 +291,7 @@ class Donation extends Component {
                             floorCompleted={this.state.floorCompleted}
                             donations={this.props.donations}
                             checked={donations[id].state.checked}
+                            firstCheck={donations[id].state.firstCheck}
                             directionChange={directionChange}
                         />
                         <hr className={"mt-1 mb-1"} />

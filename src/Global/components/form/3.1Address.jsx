@@ -12,7 +12,7 @@ class Address extends Component {
     }
 
     render() {
-        const { handleChange, checkedChange, id, city, street, number, floorNumber, cityCompleted, streetCompleted, numberCompleted, checked, donations } = this.props;
+        const { handleChange, checkedChange, id, city, street, number, floorNumber, cityCompleted, streetCompleted, numberCompleted, checked, donations, firstCheck } = this.props;
         return (
             <div>
                 <hr className={"m-1"} />
@@ -23,7 +23,7 @@ class Address extends Component {
                             <>
                                 <FormControlLabel
                                     control={<Checkbox
-                                        onChange={() => checkedChange(id)}
+                                        onChange={() => checkedChange(id, firstCheck)}
                                         checked={checked}
                                         color="primary" />}
                                     label="¿Misma dirección que la anterior?"
@@ -99,13 +99,15 @@ class Address extends Component {
                             <Form.Row>
                                 <Form.Group as={Col}
                                     md="12">
+
                                     <Form.Label>Seleccione una de las siguientes</Form.Label>
                                     <Form.Control
                                         as="select"
+                                        name="repeat"
                                         onChange={this.directionChange}
                                         value={donations[id].state.id}
                                     >
-                                        {donations.filter((item, index) => donations[index].state.street.indexOf(item.state.street) === index).map(addresses => (
+                                        {donations.filter((item, index, array) => item.state.street !== '' && index === array.findIndex(t => (t.state.street) === item.state.street)).map(addresses => (
                                             <option value={addresses.id}
                                                 key={addresses.id}
                                             >{addresses.state.street}</option>

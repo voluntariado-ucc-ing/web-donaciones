@@ -257,16 +257,18 @@ class Formulario extends Component {
     }
 
     //checkbox para ver si va a reutilizar la direccion
-    checkedChange = (id) => {
+    checkedChange = (id, first) => {
         const updateCheck = this.state.donations
+        if (!first)
+            this.directionChange(0, id)
         updateCheck[id].state.checked = !this.state.donations[id].state.checked
-        this.directionChange(0, id)
         this.setState({ donations: updateCheck })
     }
 
     //cambio de direccion cuando el checked es true
     directionChange = (copy, paste) => {
         const updateDirection = this.state.donations
+        updateDirection[paste].state.firstCheck = true
         updateDirection[paste].state.city = updateDirection[copy].state.city
         updateDirection[paste].state.street = updateDirection[copy].state.street
         updateDirection[paste].state.number = updateDirection[copy].state.number
