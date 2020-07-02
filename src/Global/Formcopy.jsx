@@ -24,15 +24,29 @@ class Formulario extends Component {
         super(props);
         this.state = {
             pasos: global.Introduccion,
-            firstName: '',
-            lastName: '',
-            phone: '',
-            email: '',
-            emailConfirmation: '',
             donations: [],
             donationStep: 0,
             alreadyDonate: false,
-            firstDonationCreated: false
+            firstDonationCreated: false,
+
+            //PersonalInfo
+            firstName: "",
+            lastName: "",
+            email: "",
+            emailConfirm: "",
+            phone: "",
+            element: "",
+            quantity: "",
+            category: "",
+            unit: "",
+            unconventionalUnit: false,
+
+            //Adress
+            city: "",
+            street: "",
+            height: "",
+            others: "",
+            floornumber:""
         };
     }
 
@@ -65,7 +79,7 @@ class Formulario extends Component {
                 handlePhone={this.handlePhone}
                 phone={this.state.phone}
                 email={this.state.email}
-                emailConfirmation={this.state.emailConfirmation}
+                emailConfirm={this.state.emailConfirm}
             />);
 
         if (this.state.pasos === global.Donacion) {
@@ -240,41 +254,41 @@ class Formulario extends Component {
 
     //eliminar donacion
     deleteDonation = (id) => {
-        var don = this.state.donations //se hace una copia de las donaciones actuales
-        don.splice(id, 1)  // se quita la donacion con posicion id, el uno representa que se quita solo esa donacion
-        var step = 0
+        var don = this.state.donations; //se hace una copia de las donaciones actuales
+        don.splice(id, 1);  // se quita la donacion con posicion id, el uno representa que se quita solo esa donacion
+        var step = 0;
         if (id !== 0)
-            step = id - 1
+            step = id - 1;
         for (let i = 0; i <= don.length; i++) {
             if (i !== id) {
-                var newId = (element) => element.id === i
-                var a = don.findIndex(newId)
+                var newId = (element) => element.id === i;
+                var a = don.findIndex(newId);
                 don[a].id = a
             }
         }
-        this.setState({ donations: don })
+        this.setState({ donations: don });
         this.setState({ donationStep: step })
-    }
+    };
 
     //checkbox para ver si va a reutilizar la direccion
     checkedChange = (id, first) => {
-        const updateCheck = this.state.donations
+        const updateCheck = this.state.donations;
         if (!first)
-            this.directionChange(0, id)
-        updateCheck[id].state.checked = !this.state.donations[id].state.checked
+            this.directionChange(0, id);
+        updateCheck[id].state.checked = !this.state.donations[id].state.checked;
         this.setState({ donations: updateCheck })
-    }
+    };
 
     //cambio de direccion cuando el checked es true
     directionChange = (copy, paste) => {
-        const updateDirection = this.state.donations
-        updateDirection[paste].state.firstCheck = true
-        updateDirection[paste].state.city = updateDirection[copy].state.city
-        updateDirection[paste].state.street = updateDirection[copy].state.street
-        updateDirection[paste].state.number = updateDirection[copy].state.number
-        updateDirection[paste].state.floorNumber = updateDirection[copy].state.floorNumber
+        const updateDirection = this.state.donations;
+        updateDirection[paste].state.firstCheck = true;
+        updateDirection[paste].state.city = updateDirection[copy].state.city;
+        updateDirection[paste].state.street = updateDirection[copy].state.street;
+        updateDirection[paste].state.number = updateDirection[copy].state.number;
+        updateDirection[paste].state.floorNumber = updateDirection[copy].state.floorNumber;
         this.setState({ donations: updateDirection })
-    }
+    };
 
     //botones nueva donacion
     backDonation = () => {

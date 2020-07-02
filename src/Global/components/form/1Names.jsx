@@ -4,30 +4,45 @@ import Button from '@material-ui/core/Button';
 import Container from 'react-bootstrap/Container';
 import '../../css/Formcopy.css';
 
+const initialState = {
+	firstNameError: "",
+	lastNameError: ""
+};
 
 class Names extends Component {
 	constructor(props) {
 		super(props);
-		this.state = {
-			firstNameWritten: true,
-			lastNameWritten: true
-		}
+		this.state = initialState;
 	}
-	continue = (e) => {
-		e.preventDefault();
-		if (this.props.firstName !== '' && this.props.lastName !== '') {
-			this.setState({ firstNameWritten: true });
-			this.setState({ lastNameWritten: true });
-			this.props.nextStep()
+
+	validateName = () => {
+		let firstNameError = "";
+		let lastNameError = "";
+
+		if (!this.props.firstName) {
+			firstNameError = "Ingrese su nombre";
 		}
-		else {
-			if (this.props.firstName === '') {
-				this.setState({ firstNameWritten: false })
-			}
-			else {
-				this.setState({ firstNameWritten: true });
-				this.setState({ lastNameWritten: false })
-			}
+
+		if (!this.props.lastName) {
+			lastNameError = "Ingrese su apellido";
+		}
+
+		if (firstNameError || lastNameError ) {
+			this.setState({firstNameError, lastNameError});
+			return false;
+		}
+
+		return true;
+	};
+
+	continue = e => {
+		e.preventDefault();
+		const isValid = this.validateName();
+		if (isValid) {
+			console.log(this.state);
+			// clear form
+			this.setState(initialState);
+			this.props.nextStep();
 		}
 	};
 
@@ -36,7 +51,9 @@ class Names extends Component {
 		this.props.prevStep()
 	};
 	render() {
-		const { handleChange, firstName, lastName } = this.props;
+
+		const {firstName, lastName, handleChange} = this.props;
+
 		return (
 			<Container>
 				<h3>DATOS PERSONALES</h3>
@@ -49,9 +66,9 @@ class Names extends Component {
 						onChange={handleChange('firstName')}
 						value={firstName}
 					/>
-					{this.state.firstNameWritten ? null : (<Form.Text className="invalidInput">
-						Debe introducir su nombre.
-					</Form.Text>)}
+					<div style={{ fontSize: 12, color: "red" }}>
+						{this.state.firstNameError}
+					</div>
 				</Form.Group>
 				<Form.Group>
 					<Form.Label>¿Y su apellido? *</Form.Label>
@@ -62,9 +79,9 @@ class Names extends Component {
 						onChange={handleChange('lastName')}
 						value={lastName}
 					/>
-					{this.state.lastNameWritten ? null : (<Form.Text className="invalidInput">
-						Debe introducir su apellido.
-					</Form.Text>)}
+					<div style={{ fontSize: 12, color: "red" }}>
+						{this.state.lastNameError}
+					</div>
 				</Form.Group>
 				<div className="bottomButton">
 					<Button onClick={this.back}

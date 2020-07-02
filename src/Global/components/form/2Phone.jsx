@@ -6,37 +6,58 @@ import Container from 'react-bootstrap/Container';
 import Button from '@material-ui/core/Button';
 import '../../css/Formcopy.css';
 
+let emailRegex;
+emailRegex = RegExp(
+	/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
+);
+
+const initialState = {
+	emailError: "",
+	emailConfirmError:"",
+	phoneError: ""
+};
 
 class Phone extends Component {
 	constructor(props) {
 		super(props);
-		this.state = {
-			phoneOk: true,
-			wrongEmail: false,
-			equalEmail: true,
-		}
+		this.state = initialState;
 	}
 
-	continue = (e) => {
-		let emailRegex = /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+.)+[^<>()[\].,;:\s@"]{2,})$/i;
-		e.preventDefault();
-		if (this.props.phone.length > "12" && this.props.phone.length < "16")
-			this.setState({ phoneOk: true });
-		else
-			this.setState({ phoneOk: false });
+	validatePhone = () => {
+		let emailError = "";
+		let emailConfirmError= "";
+		let phoneError="";
 
-		if (emailRegex.test(this.props.email))
-			this.setState({ wrongEmail: false });
-		else
-			this.setState({ wrongEmail: true });
-		if (this.props.email !== this.props.emailConfirmation)
-			this.setState({ equalEmail: false });
-		else
-			this.setState({ equalEmail: true }
-				, () => {
-					if (this.state.equalEmail === true && this.state.phoneOk === true && this.state.wrongEmail === false)
-						this.props.nextStep()
-				})
+		if (!this.props.email.includes("@") || this.props.email === emailRegex) {
+			emailError = "Ingrese un email válido";
+		}
+
+		if (!this.props.phone) {
+			phoneError = "Ingrese su telefono.";
+		}
+
+		if (!this.props.emailConfirm.includes("@") || this.props.emailConfirm !== this.props.email) {
+			emailConfirmError = "Asegúrese que los emails coincidan.";
+		}
+
+		if (emailError || phoneError || emailConfirmError) {
+			this.setState({ emailError, phoneError, emailConfirmError });
+			return false;
+		}
+
+		return true;
+	};
+
+
+	continue = e => {
+		e.preventDefault();
+		const isValid = this.validatePhone();
+		if (isValid) {
+			console.log(this.state);
+			// clear form
+			this.setState(initialState);
+			this.props.nextStep();
+		}
 	};
 
 	back = (e) => {
@@ -49,7 +70,7 @@ class Phone extends Component {
 	};
 
 	render() {
-		const { handleChange, email, emailConfirmation, phone } = this.props;
+		const { handleChange, email, emailConfirm, phone } = this.props;
 		return (
 			<Container>
 				<h5>Necesitamos los siguientes datos para poder comunicarnos con vos</h5>
@@ -61,13 +82,9 @@ class Phone extends Component {
 					onChange={this.handleInputChange}
 					value={phone}
 				/>
-				{
-					this.state.phoneOk ?
-						null :
-						(<Form.Text className="invalidInput">
-							Ingrese su el número de área sin el cero y el numero de teléfono sin el 15
-						</Form.Text>)
-				}
+				<div style={{ fontSize: 12, color: "red" }}>
+					{this.state.phoneError}
+				</div>
 				<br />
 				<Form.Group
 					id="formEmail">
@@ -79,29 +96,21 @@ class Phone extends Component {
 						onChange={handleChange('email')}
 						value={email}
 					/>
-					{
-						this.state.wrongEmail === true ?
-							(<Form.Text className="invalidInput">
-								Debe introducir su email de forma correcta.
-							</Form.Text>) : null
-					}
+					<div style={{ fontSize: 12, color: "red" }}>
+						{this.state.emailError}
+					</div>
 					<br />
 					<Form.Label>Confirmación de Email *</Form.Label>
 					<Form.Control
 						type="email"
 						placeholder="example@mail.com"
-						name='emailConfirmation'
-						onChange={handleChange('emailConfirmation')}
-						value={emailConfirmation}
+						name='emailConfirm'
+						onChange={handleChange('emailConfirm')}
+						value={emailConfirm}
 					/>
-					{
-						this.state.equalEmail ?
-							null :
-							(<Form.Text className="invalidInput">
-								Sus emails deben coincidir.
-							</Form.Text>)
-					}
-
+					<div style={{ fontSize: 12, color: "red" }}>
+						{this.state.emailConfirmError}
+					</div>
 				</Form.Group>
 				<br />
 				<div className="bottomButton">

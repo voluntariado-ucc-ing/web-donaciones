@@ -7,12 +7,13 @@ import Checkbox from '@material-ui/core/Checkbox';
 
 class Address extends Component {
     directionChange = (e) => {
-        const direc = e.target.value
+        const direc = e.target.value;
         this.props.directionChange(direc, this.props.id)
-    }
+    };
+
 
     render() {
-        const { handleChange, checkedChange, id, city, street, number, floorNumber, cityCompleted, streetCompleted, numberCompleted, checked, donations, firstCheck } = this.props;
+        const { handleChange, checkedChange, id, city, street, number, floorNumber, checked, donations, firstCheck } = this.props;
         return (
             <div>
                 <hr className={"m-1"} />
@@ -41,12 +42,9 @@ class Address extends Component {
                                     onChange={handleChange('city', id)}
                                     value={city}
                                 />
-                                {
-                                    cityCompleted ? null :
-                                        <Form.Text className="invalidInput">
-                                            Necesitamos este dato
-					                    	</Form.Text>
-                                }
+                                <div style={{ fontSize: 12, color: "red" }}>
+                                    {this.props.initialState.cityError}
+                                </div>
                             </Form.Group>
                             <Form.Row>
                                 <Form.Group as={Col}
@@ -58,12 +56,9 @@ class Address extends Component {
                                         onChange={handleChange('street', id)}
                                         value={street}
                                     />
-                                    {
-                                        streetCompleted ? null :
-                                            <Form.Text className="invalidInput">
-                                                Necesitamos este dato
-					                    	</Form.Text>
-                                    }
+                                    <div style={{ fontSize: 12, color: "red" }}>
+                                        {this.props.initialState.streetError}
+                                    </div>
                                 </Form.Group>
                                 <Form.Group as={Col}
                                     md="2"
@@ -75,12 +70,9 @@ class Address extends Component {
                                         onChange={handleChange('number', id)}
                                         value={number}
                                     />
-                                    {
-                                        numberCompleted ? null :
-                                            <Form.Text className="invalidInput">
-                                                Necesitamos este dato
-					                    	</Form.Text>
-                                    }
+                                    <div style={{ fontSize: 12, color: "red" }}>
+                                        {this.props.initialState.numberError}
+                                    </div>
                                 </Form.Group>
                                 <Form.Group as={Col}
                                     md="5"
