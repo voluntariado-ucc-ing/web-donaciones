@@ -32,6 +32,7 @@ class Donation extends Component {
             elementDonation: '',
             quantity: '',
             unit: '',
+            category: '',
             otherUnit: '',
             city: '',
             street: '',
@@ -184,6 +185,18 @@ class Donation extends Component {
                                 <div style={{ fontSize: 12, color: "red" }}>
                                     {this.state.quantityError}
                                 </div>
+                            </Form.Group>
+
+                            <Form.Group>Categoria *
+                                <Form.Control as="select"
+                                    name="category"
+                                    onChange={handleDonacion('category')}
+                                    value={donations[id].state.category}
+                                >
+                                    <option value="cat1">1</option>
+                                    <option value="cat2">2</option>
+                                    <option value={"other"}>Otro</option>
+                                </Form.Control>
                             </Form.Group>
 
                             {donations[this.props.id].state.isNoConventional ? (
