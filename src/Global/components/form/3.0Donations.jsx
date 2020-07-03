@@ -15,9 +15,9 @@ import Nav from "react-bootstrap/Nav";
 
 const initialState = {
     elementError: "",
-    quantityError:"",
-    categoryError:"",
-    unitError:"",
+    quantityError: "",
+    categoryError: "",
+    unitError: "",
     cityError: "",
     streetError: "",
     heightError: ""
@@ -32,7 +32,6 @@ class Donation extends Component {
             elementDonation: '',
             quantity: '',
             unit: '',
-            category: '',
             otherUnit: '',
             city: '',
             street: '',
@@ -52,6 +51,7 @@ class Donation extends Component {
         let streetError = "";
         let numberError = "";
 
+
         if (!this.props.donations[this.props.id].state.elementDonation) {
             elementError = "Ingrese su donación";
         }
@@ -65,27 +65,25 @@ class Donation extends Component {
             unitError = "Ingrese la unidad";
         }
 
-        if (!this.props.donations[this.props.id].state.category) {
-            categoryError = "Ingrese la categoría";
-        }
-
-        if(!this.props.donations[this.props.id].state.city){
+        if (!this.props.donations[this.props.id].state.city) {
             cityError = "Ingrese su ciudad de residencia"
         }
 
-        if(!this.props.donations[this.props.id].state.street){
+        if (!this.props.donations[this.props.id].state.street) {
             streetError = "Ingrese su ciudad de residencia"
         }
 
-        if(!this.props.donations[this.props.id].state.number){
+        if (!this.props.donations[this.props.id].state.number) {
             numberError = "Ingrese su ciudad de residencia"
         }
 
 
         if (elementError || quantityError || unitError || categoryError || cityError
             || streetError || numberError) {
-            this.setState({ elementError, quantityError, unitError, categoryError, cityError,
-                streetError, numberError});
+            this.setState({
+                elementError, quantityError, unitError, categoryError, cityError,
+                streetError, numberError
+            });
             return false;
         }
 
@@ -103,20 +101,20 @@ class Donation extends Component {
 
     continue = e => {
         e.preventDefault();
-        // const isValid = this.validateDonation();
-        // if (isValid) {
-        //     this.props.nextStep();
-        // }
+        const isValid = this.validateDonation();
+        if (isValid) {
+            this.props.nextStep();
+        }
         this.props.nextStep();
     };
 
     newDonation = (e) => {
         e.preventDefault();
-       /* const isValid = this.validateDonation();
+        const isValid = this.validateDonation();
         if (isValid) {
             alert('Ok!');
             this.props.newDonation();
-        }*/
+        }
         this.props.newDonation();
     };
 
@@ -147,6 +145,7 @@ class Donation extends Component {
                             className={"uccColor"}
                             fontSize={"large"}
                         />
+
                     </Tooltip>
                     {
                         this.props.donations.length > 1 ?
@@ -159,9 +158,12 @@ class Donation extends Component {
                             null
                     }
                 </Nav>
+
                 <hr className={"m-1"} />
+
                 <Row id={"donation"} className="justify-content-md-center pt-3">
                     <Col>
+
                         <h5>¿Con qué desea ayudarnos? *</h5>
                         <Form.Control
                             placeholder="Ingresá acá lo que vas a donar"
@@ -175,6 +177,7 @@ class Donation extends Component {
                         <br />
                         <Form.Row >
                             <Form.Group as={Col} md='4'>
+
                                 <Form.Label>Cantidad *</Form.Label>
                                 <Form.Control
                                     type="number"
@@ -187,86 +190,45 @@ class Donation extends Component {
                                 </div>
                             </Form.Group>
 
-                            <Form.Group>Categoria *
+                            <Form.Group as={Col} md={donations[this.props.id].state.isNoConventional ? '4' : '8'} >
+                                <Form.Label>Unidad *</Form.Label>
                                 <Form.Control as="select"
-                                    name="category"
-                                    onChange={handleDonacion('category')}
-                                    value={donations[id].state.category}
+                                    name="unit"
+                                    onChange={this.handleUnitChange}
+                                    value={donations[id].state.unit}
                                 >
-                                    <option value="cat1">1</option>
-                                    <option value="cat2">2</option>
-                                    <option value={"other"}>Otro</option>
+                                    <option value="">Elegir</option>
+                                    <option value="m">Metros</option>
+                                    <option value="kg">Kg</option>
+                                    <option value="ltr">Litro</option>
+                                    <option value="bolsa">Bolsa</option>
+                                    <option value="lata">Lata</option>
+                                    <option value="palette">Palette</option>
+                                    <option value="m2">Metro cuadrado</option>
+                                    <option value="m3">Metro cúbico</option>
+                                    <option value="un">Unidad</option>
+                                    <option value="otro">Otro</option>
                                 </Form.Control>
+                                <div style={{ fontSize: 12, color: "red" }}>
+                                    {this.state.unitError}
+                                </div>
                             </Form.Group>
 
-                            {donations[this.props.id].state.isNoConventional ? (
-                                <>
-                                    <Form.Group as={Col} md="4" >
-                                        <Form.Label>Unidad *</Form.Label>
-                                        <Form.Control as="select"
-                                            name="unit"
-                                            onChange={this.handleUnitChange}
-                                            value={donations[id].state.unit}
-                                        >
-                                            <option value="">Elegir</option>
-                                            <option value="m">Metros</option>
-                                            <option value="kg">Kg</option>
-                                            <option value="ltr">Litro</option>
-                                            <option value="bolsa">Bolsa</option>
-                                            <option value="lata">Lata</option>
-                                            <option value="palette">Palette</option>
-                                            <option value="m2">Metro cuadrado</option>
-                                            <option value="m3">Metro cúbico</option>
-                                            <option value="un">Unidad</option>
-                                            <option value="otro">Otro</option>
-                                        </Form.Control>
-                                        <div style={{ fontSize: 12, color: "red" }}>
-                                            {this.state.unitError}
-                                        </div>
-                                    </Form.Group>
-                                    <Form.Group as={Col} md="4" >
-                                        <Form.Label>Otra unidad *</Form.Label>
-                                        <Form.Control
-                                            type="text"
-                                            name="otherUnit"
-                                            onChange={handleDonacion('otherUnit', this.props.id)}
-                                            value={donations[this.props.id].state.otherUnit}
-                                        />
-                                        <div style={{ fontSize: 12, color: "red" }}>
-                                            {this.state.unitError}
-                                        </div>
-                                    </Form.Group>
-                                </>
-                            )
-                                :
-                                (<Form.Group
-                                    as={Col} md="8" >
-                                    <Form.Label>Unidad *</Form.Label>
-                                    <Form.Control as="select"
-                                        name="unit"
-                                        onChange={this.handleUnitChange}
-                                        value={donations[id].state.unit}
-                                    >
-                                        <option value="">Elegir</option>
-                                        <option value="m">Metros</option>
-                                        <option value="kg">Kg</option>
-                                        <option value="ltr">Litro</option>
-                                        <option value="bolsa">Bolsa</option>
-                                        <option value="lata">Lata</option>
-                                        <option value="palette">Palette</option>
-                                        <option value="m2">Metro cuadrado</option>
-                                        <option value="m3">Metro cúbico</option>
-                                        <option value="un">Unidad</option>
-                                        <option value="otro">Otro</option>
-                                    </Form.Control>
+                            {donations[this.props.id].state.isNoConventional ?
+                                <Form.Group as={Col} md="4" >
+                                    <Form.Label>Otra unidad *</Form.Label>
+                                    <Form.Control
+                                        type="text"
+                                        name="otherUnit"
+                                        onChange={handleDonacion('otherUnit', this.props.id)}
+                                        value={donations[this.props.id].state.otherUnit}
+                                    />
                                     <div style={{ fontSize: 12, color: "red" }}>
                                         {this.state.unitError}
                                     </div>
-                                </Form.Group>)
+                                </Form.Group> : null
                             }
-
                         </Form.Row>
-
 
 
                         <Address
@@ -281,7 +243,7 @@ class Donation extends Component {
                             checked={donations[id].state.checked}
                             firstCheck={donations[id].state.firstCheck}
                             directionChange={directionChange}
-                            initialState = {this.state.initialState}
+                            initialState={this.state.initialState}
 
                         />
 
