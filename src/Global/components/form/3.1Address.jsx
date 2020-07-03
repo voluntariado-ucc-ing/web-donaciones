@@ -43,7 +43,7 @@ class Address extends Component {
                                     value={city}
                                 />
                                 <div style={{ fontSize: 12, color: "red" }}>
-                                    {this.props.initialState.cityError}
+                                    {this.props.cityError}
                                 </div>
                             </Form.Group>
                             <Form.Row>
@@ -57,7 +57,7 @@ class Address extends Component {
                                         value={street}
                                     />
                                     <div style={{ fontSize: 12, color: "red" }}>
-                                        {this.props.initialState.streetError}
+                                        {this.props.streetError}
                                     </div>
                                 </Form.Group>
                                 <Form.Group as={Col}
@@ -71,7 +71,7 @@ class Address extends Component {
                                         value={number}
                                     />
                                     <div style={{ fontSize: 12, color: "red" }}>
-                                        {this.props.initialState.numberError}
+                                        {this.props.numberError}
                                     </div>
                                 </Form.Group>
                                 <Form.Group as={Col}
@@ -99,10 +99,10 @@ class Address extends Component {
                                         onChange={this.directionChange}
                                         value={donations[id].state.id}
                                     >
-                                        {donations.filter((item, index, array) => item.state.street !== '' && index === array.findIndex(t => (t.state.street) === item.state.street)).map(addresses => (
+                                        {donations.filter((item, index, array) => item.state.street !== '' && index === array.findIndex(t => (t.state.street) === item.state.street && (t.state.number === item.state.number))).map(addresses => (
                                             <option value={addresses.id}
                                                 key={addresses.id}
-                                            >{addresses.state.street}</option>
+                                            >{addresses.state.street + ' ' + addresses.state.number}</option>
                                         )
                                         )}
                                     </Form.Control>

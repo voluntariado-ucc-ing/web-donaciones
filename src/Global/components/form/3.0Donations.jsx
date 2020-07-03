@@ -20,7 +20,7 @@ const initialState = {
     unitError: "",
     cityError: "",
     streetError: "",
-    heightError: ""
+    numberError: ""
 };
 
 class Donation extends Component {
@@ -66,15 +66,15 @@ class Donation extends Component {
         }
 
         if (!this.props.donations[this.props.id].state.city) {
-            cityError = "Ingrese su ciudad de residencia"
+            cityError = "Ingrese la ciudad en la que se encuentra su donación"
         }
 
         if (!this.props.donations[this.props.id].state.street) {
-            streetError = "Ingrese su ciudad de residencia"
+            streetError = "Ingrese calle de la donación"
         }
 
         if (!this.props.donations[this.props.id].state.number) {
-            numberError = "Ingrese su ciudad de residencia"
+            numberError = "Ingrese a que altura se encuentra"
         }
 
 
@@ -105,17 +105,14 @@ class Donation extends Component {
         if (isValid) {
             this.props.nextStep();
         }
-        this.props.nextStep();
     };
 
     newDonation = (e) => {
         e.preventDefault();
         const isValid = this.validateDonation();
         if (isValid) {
-            alert('Ok!');
             this.props.newDonation();
         }
-        this.props.newDonation();
     };
 
     //deleteDonation
@@ -243,8 +240,9 @@ class Donation extends Component {
                             checked={donations[id].state.checked}
                             firstCheck={donations[id].state.firstCheck}
                             directionChange={directionChange}
-                            initialState={this.state.initialState}
-
+                            cityError={this.state.cityError}
+                            streetError={this.state.streetError}
+                            numberError={this.state.numberError}
                         />
 
                         <hr className={"mt-1 mb-1"} />
