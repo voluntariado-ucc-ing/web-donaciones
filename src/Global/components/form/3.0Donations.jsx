@@ -225,6 +225,18 @@ class Donation extends Component {
                                     </div>
                                 </Form.Group> : null
                             }
+
+                            <Form.Group as={Col} md='4'>Categoría *
+                                <Form.Control as="select"
+                                              name="category"
+                                              onChange={handleDonacion('category')}
+                                              value={donations[this.props.id].state.category}
+                                >
+                                    <option value="cat1">Herramientas</option>
+                                    <option value="cat2">2</option>
+                                    <option value={"other"}>Otro</option>
+                                </Form.Control>
+                            </Form.Group>
                         </Form.Row>
 
 
