@@ -38,7 +38,8 @@ class Donation extends Component {
             number: '',
             floorNumber: '',
             checked: false,
-            firstCheck: false
+            firstCheck: false,
+            message: ""
         }
     }
 
@@ -232,9 +233,10 @@ class Donation extends Component {
                                               onChange={handleDonacion('category')}
                                               value={donations[this.props.id].state.category}
                                 >
-                                    <option value="cat1">Herramientas</option>
-                                    <option value="cat2">2</option>
-                                    <option value={"other"}>Otro</option>
+                                    <option value="tools">Herramientas</option>
+                                    <option value="materials">Materiales de construcción</option>
+                                    <option value="clothes">Ropa y calzado</option>
+                                    <option value="food">Alimentos</option>
                                 </Form.Control>
                             </Form.Group>
                         </Form.Row>
@@ -259,10 +261,13 @@ class Donation extends Component {
 
                         <hr className={"mt-1 mb-1"} />
                         <Form.Group controlId="exampleForm.ControlTextarea1">
-                            <Form.Label>
+                            <Form.Label column={"1"}>
                                 <h5 className={"pt-3"}>¿Algo que deberíamos saber?</h5>
                             </Form.Label>
-                            <Form.Control as="textarea" rows="3" />
+                            <Form.Control as="textarea" rows="3"
+                                          name="message"
+                                          onChange={handleDonacion('message')}
+                                          value={donations[this.props.id].state.message}/>
                         </Form.Group>
 
                         <div >
