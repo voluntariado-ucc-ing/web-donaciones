@@ -35,20 +35,6 @@ class Formulario extends Component {
             email: "",
             emailConfirm: "",
             phone: "",
-            element: "",
-            quantity: "",
-            category: "",
-            unit: "",
-            unconventionalUnit: false,
-
-            //Adress
-            city: "",
-            street: "",
-            height: "",
-            others: "",
-            floornumber: "",
-
-            message: ""
         };
     }
 
@@ -123,6 +109,7 @@ class Formulario extends Component {
                             deleteDonation={this.deleteDonation}
                             checkedChange={this.checkedChange}
                             directionChange={this.directionChange}
+                            changeStep={this.changeStep}
                         />
                     ))
                     }
@@ -140,6 +127,7 @@ class Formulario extends Component {
                 donations={this.state.donations}
                 nextStep={this.nextStep}
                 prevStep={this.prevStep}
+                all={this.state}
             />);
 
         if (this.state.pasos === global.YaHeDonado)
@@ -167,7 +155,7 @@ class Formulario extends Component {
             let done = new Donation();
             done.id = 0;
             don.push(done);
-            this.setState({ donation: don });
+            this.setState({ donations: don });
             this.setState({ firstDonationCreated: true })
         }
     };
@@ -199,7 +187,7 @@ class Formulario extends Component {
             let done = new Donation();
             done.id = 0;
             don.push(done);
-            this.setState({ donation: don });
+            this.setState({ donations: don });
             this.setState({ firstDonationCreated: true })
         }
         this.setState({
@@ -251,7 +239,7 @@ class Formulario extends Component {
         done.id = don.length;
         this.setState({ donationStep: don.length });
         don.push(done);
-        this.setState({ donation: don });
+        this.setState({ donations: don });
     };
 
     //eliminar donacion
@@ -297,6 +285,11 @@ class Formulario extends Component {
         const pasoDonacion = this.state.donationStep - 1;
         this.setState({ donationStep: pasoDonacion })
     };
+
+    //cambio de paso en donacion si se verifca error de campos
+    changeStep = (step) => {
+        this.setState({ donationStep: step })
+    }
 
     forwardDonation = () => {
         const pasoDonacion = this.state.donationStep + 1;
