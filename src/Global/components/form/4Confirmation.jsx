@@ -68,14 +68,25 @@ class Confirmation extends Component {
                         className="forwardButton btn"
                         onClick={
                             () => {
-                                console.log(JSON.stringify(this.state));
+                                console.log(JSON.stringify({
+                                    "donations": donations.forEach(element => { console.log(JSON.stringify(element.state)) }),
+                                    "donator": {
+                                        "first_name": this.props.all.firstName,
+                                        "last_name": this.props.all.firstName,
+                                        "email": this.props.all.email,
+                                        "phone_number": this.props.all.phone
+                                    }
+                                }
+
+
+                                ))
                             }
                         }
                         id="enviar">
                         <AlertDialogSlide />
                     </Button>
                 </div>
-            </Container>
+            </Container >
         );
     }
 }
