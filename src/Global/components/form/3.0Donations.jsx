@@ -30,6 +30,7 @@ class Donation extends Component {
             initialState,
             isNoConventional: false,
             elementDonation: '',
+            category: '',
             quantity: '',
             unit: '',
             otherUnit: '',
@@ -57,6 +58,10 @@ class Donation extends Component {
             elementError = "Ingrese su donación";
         }
 
+        if (!this.props.donations[this.props.id].state.category) {
+            categoryError = "Ingrese la categoría";
+        }
+
         if (!this.props.donations[this.props.id].state.quantity ||
             this.props.donations[this.props.id].state.quantity <= 0) {
             quantityError = "Ingrese la cantidad";
@@ -77,6 +82,8 @@ class Donation extends Component {
         if (!this.props.donations[this.props.id].state.number) {
             numberError = "Ingrese a que altura se encuentra"
         }
+
+
 
 
         if (elementError || quantityError || unitError || categoryError || cityError
@@ -162,17 +169,38 @@ class Donation extends Component {
                 <Row id={"donation"} className="justify-content-md-center pt-3">
                     <Col>
 
-                        <h5>¿Con qué desea ayudarnos? *</h5>
-                        <Form.Control
-                            placeholder="Ingresá acá lo que vas a donar"
-                            name="elementDonation"
-                            onChange={handleDonacion('elementDonation', id)}
-                            value={donations[id].state.elementDonation}
-                        />
-                        <div style={{ fontSize: 12, color: "red" }}>
-                            {this.state.elementError}
-                        </div>
-                        <br />
+                        <h5>¿Con qué desea ayudarnos?</h5>
+                        <Form.Row>
+                            <Form.Group as={Col} md='6'>
+                                <Form.Label> Qué va a donar *</Form.Label>
+                                <Form.Control
+                                    placeholder="Ingresá acá lo que vas a donar"
+                                    name="elementDonation"
+                                    onChange={handleDonacion('elementDonation', id)}
+                                    value={donations[id].state.elementDonation}
+                                />
+                                <div style={{ fontSize: 12, color: "red" }}>
+                                    {this.state.elementError}
+                                </div>
+                            </Form.Group>
+                            <Form.Group as={Col} md='6'>
+                                <Form.Label>Categoría *</Form.Label>
+                                <Form.Control as="select"
+                                    name="category"
+                                    onChange={handleDonacion('category', id)}
+                                    value={donations[id].state.category}
+                                >
+                                    <option value="">Seleccione categoría</option>
+                                    <option value="tools">Herramientas</option>
+                                    <option value="materials">Materiales de construcción</option>
+                                    <option value="clothes">Ropa y calzado</option>
+                                    <option value="food">Alimentos</option>
+                                </Form.Control>
+                                <div style={{ fontSize: 12, color: "red" }}>
+                                    {this.state.categoryError}
+                                </div>
+                            </Form.Group>
+                        </Form.Row>
                         <Form.Row >
                             <Form.Group as={Col} md='4'>
 
@@ -218,8 +246,8 @@ class Donation extends Component {
                                     <Form.Control
                                         type="text"
                                         name="otherUnit"
-                                        onChange={handleDonacion('otherUnit', this.props.id)}
-                                        value={donations[this.props.id].state.otherUnit}
+                                        onChange={handleDonacion('otherUnit', id)}
+                                        value={donations[id].state.otherUnit}
                                     />
                                     <div style={{ fontSize: 12, color: "red" }}>
                                         {this.state.unitError}
@@ -227,18 +255,7 @@ class Donation extends Component {
                                 </Form.Group> : null
                             }
 
-                            <Form.Group as={Col} md='4'>Categoría *
-                                <Form.Control as="select"
-                                              name="category"
-                                              onChange={handleDonacion('category')}
-                                              value={donations[this.props.id].state.category}
-                                >
-                                    <option value="tools">Herramientas</option>
-                                    <option value="materials">Materiales de construcción</option>
-                                    <option value="clothes">Ropa y calzado</option>
-                                    <option value="food">Alimentos</option>
-                                </Form.Control>
-                            </Form.Group>
+
                         </Form.Row>
 
 
@@ -265,9 +282,9 @@ class Donation extends Component {
                                 <h5 className={"pt-3"}>¿Algo que deberíamos saber?</h5>
                             </Form.Label>
                             <Form.Control as="textarea" rows="3"
-                                          name="message"
-                                          onChange={handleDonacion('message')}
-                                          value={donations[this.props.id].state.message}/>
+                                name="message"
+                                onChange={handleDonacion('message', id)}
+                                value={donations[id].state.message} />
                         </Form.Group>
 
                         <div >
