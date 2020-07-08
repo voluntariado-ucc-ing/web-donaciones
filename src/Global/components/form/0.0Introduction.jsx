@@ -39,22 +39,21 @@ class Intro extends Component {
                     > Primera donación</Button>
                 </div>
 
-                <div className="mobile-menu">
+                <div className="mobile-intro">
                     <ul>
-                    <li><Button
+                    <Button
                         onClick={this.continue2}
                         className="btn mb-2"
                         variant="contained"
                     >
                         Ya he donado</Button>
-                    </li>
-                        <li>
+
                     <Button
                         onClick={this.continue}
                         className="btn"
                         variant="contained"
                     > Primera donación</Button>
-                        </li>
+
                     </ul>
                 </div>
 

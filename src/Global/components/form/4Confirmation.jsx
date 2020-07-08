@@ -18,6 +18,14 @@ class Confirmation extends Component {
         this.props.prevStep()
     };
 
+submit = (e) => {
+    e.preventDefault();
+
+    const axios = require('axios').default;
+
+
+    };
+
     render() {
         const { firstName, lastName, phone, email, donations, alreadyDonate } = this.props;
         return (

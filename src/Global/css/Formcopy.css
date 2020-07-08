@@ -117,7 +117,8 @@
 display: none;
 }
 
-@media(max-width: 355px){
+
+@media(max-width: 440px){
   .media-intro{
     display: inline-block;
   }

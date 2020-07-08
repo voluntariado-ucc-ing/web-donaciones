@@ -3,6 +3,10 @@ import Form from 'react-bootstrap/Form';
 import Button from '@material-ui/core/Button';
 import '../../css/Formcopy.css';
 
+const initialState = {
+    emailError: ""
+};
+
 class Verification extends Component {
     constructor(props) {
         super(props);
@@ -11,23 +15,62 @@ class Verification extends Component {
         }
     }
 
-    back = (e) => {
-        e.preventDefault()
-        this.props.prevStep()
-    }
-    continue = (e) => {
-        var emailRegex = /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+.)+[^<>()[\].,;:\s@"]{2,})$/i;
-        e.preventDefault()
-        if (emailRegex.test(this.props.email)) {
-            this.setState({ wrongEmail: false })
-            this.props.nextStep()
+    getUser = (email) =>{
+        const axios = require('axios').default;
+        axios.get('/user', {
+            params: {
+                EMAIL: email
+            }
+        })
+            .then(function (response) {
+                console.log(response);
+                return response
+            })
+            .catch(function (error) {
+                console.log(error);
+            })
+
+    };
+
+    validateEmail = () => {
+        let emailError = "";
+
+       /* const checkEmail = this.getUser(this.props.email);
+
+        if (checkEmail.status === 404) {
+           emailError = "Email incorrecto, intente de nuevo";
+        }*/
+
+        if(!this.props.email){
+            emailError = "Ingrese su email"
         }
-        else
-            this.setState({ wrongEmail: true })
-    }
+
+        if (emailError) {
+            this.setState({emailError});
+            return false;
+        }
+
+        return true;
+    };
+
+    back = (e) => {
+        e.preventDefault();
+        this.props.prevStep()
+    };
+
+    continue = (e) => {
+        e.preventDefault();
+        const isValid = this.validateEmail();
+        if (isValid) {
+            console.log(this.state);
+            // clear form
+            this.setState(initialState);
+            this.props.nextStep();
+        }
+    };
 
     render() {
-        const { handleChange, email } = this.props
+        const { handleChange, email } = this.props;
         return (
             <div>
                 <h5>Por favor ingrese su email para identificarse *</h5>
@@ -40,12 +83,11 @@ class Verification extends Component {
                         value={email}
                         required
                     />
-                    {this.state.wrongEmail === true ?
-                        (<Form.Text className="invalidInput">
-                            Debe introducir su email.
-                        </Form.Text>) : (null)
-                    }
+                    <div style={{ fontSize: 12, color: "red" }}>
+                        {this.state.emailError}
+                    </div>
                     <br />
+
                     <div className="bottomButton">
                         <Button
                             className="backButton btn"
