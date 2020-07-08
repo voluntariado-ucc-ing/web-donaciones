@@ -10,9 +10,7 @@ const initialState = {
 class Verification extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            wrongEmail: false
-        }
+        this.state = initialState;
     }
 
     getUser = (email) =>{
