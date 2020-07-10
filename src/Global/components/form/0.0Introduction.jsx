@@ -9,6 +9,7 @@ class Intro extends Component {
 
         this.props.firstDonationButton()
     };
+
     continue2 = e => {
         e.preventDefault();
         this.props.donationButon()

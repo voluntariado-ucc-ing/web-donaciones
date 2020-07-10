@@ -21,10 +21,10 @@ class Confirmation extends Component {
 submit = (e) => {
     e.preventDefault();
 
-    const axios = require('axios').default;
 
 
-    };
+
+};
 
     render() {
         const { firstName, lastName, phone, email, donations, alreadyDonate } = this.props;

@@ -36,7 +36,8 @@ class Phone extends Component {
 			phoneError = "Ingrese su telefono.";
 		}
 
-		if (!this.props.emailConfirm.includes("@") || this.props.emailConfirm !== this.props.email) {
+		if (!this.props.emailConfirm.includes("@") || this.props.emailConfirm !== this.props.email
+			|| this.props.emailConfirm === emailRegex ) {
 			emailConfirmError = "Asegúrese que los emails coincidan.";
 		}
 

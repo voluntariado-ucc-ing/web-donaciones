@@ -150,7 +150,6 @@ class Donation extends Component {
                             className={"uccColor"}
                             fontSize={"large"}
                         />
-
                     </Tooltip>
                     {
                         this.props.donations.length > 1 ?

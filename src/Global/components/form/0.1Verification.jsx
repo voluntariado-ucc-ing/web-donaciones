@@ -1,46 +1,75 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from '@material-ui/core/Button';
 import '../../css/Formcopy.css';
+import CustomizedSnackbars from "../Greeting";
+import DeleteOutlineIcon from "@material-ui/core/SvgIcon/SvgIcon";
+import Nav from "react-bootstrap/Nav";
+import AlertDialogSlide from "../Modal";
+
+
+let emailRegex;
+emailRegex = RegExp(
+    /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
+);
 
 const initialState = {
-    emailError: ""
+    emailError: "",
+    userError: false
 };
+
+function UserMissing(props) {
+    return <CustomizedSnackbars />;
+}
+
+
+function Greeting(props) {
+    const isDonator = props.isDonator;
+    if (isDonator) {
+        return <UserMissing />;
+    }
+    return <div />;
+}
 
 class Verification extends Component {
     constructor(props) {
         super(props);
-        this.state = initialState;
+        this.state = {
+            initialState
+        }
     }
 
-    getUser = (email) =>{
-        const axios = require('axios').default;
-        axios.get('/user', {
-            params: {
-                EMAIL: email
-            }
-        })
-            .then(function (response) {
-                console.log(response);
-                return response
+    getUser = (email) => {
+        const url = 'https://my-json-server.typicode.com/typicode/demo/posts/'+email;
+
+        //const url = ''+'/donations/donator?mail=$'+email;
+
+        fetch(url)
+            .then(response =>{
+                if(response.ok){
+                   console.log(response.json());
+
+                   this.props.nextStep();
+                }else{
+                    this.setState({userError: true});
+                }
             })
-            .catch(function (error) {
+            .then(function(data) {
+                return data;
+            })
+            .catch(function(error) {
                 console.log(error);
-            })
+            });
+
+        return false;
 
     };
 
     validateEmail = () => {
         let emailError = "";
 
-       /* const checkEmail = this.getUser(this.props.email);
-
-        if (checkEmail.status === 404) {
-           emailError = "Email incorrecto, intente de nuevo";
-        }*/
-
-        if(!this.props.email){
-            emailError = "Ingrese su email"
+        if (!this.props.email.includes("@") || this.props.email === emailRegex) {
+            emailError = "Ingrese un email válido";
         }
 
         if (emailError) {
@@ -58,17 +87,18 @@ class Verification extends Component {
 
     continue = (e) => {
         e.preventDefault();
-        const isValid = this.validateEmail();
-        if (isValid) {
+
+        let isCorrect = this.validateEmail();
+
+        if(isCorrect) {
             console.log(this.state);
-            // clear form
-            this.setState(initialState);
-            this.props.nextStep();
+            this.getUser(this.props.email);
         }
     };
 
     render() {
         const { handleChange, email } = this.props;
+
         return (
             <div>
                 <h5>Por favor ingrese su email para identificarse *</h5>
@@ -84,7 +114,9 @@ class Verification extends Component {
                     <div style={{ fontSize: 12, color: "red" }}>
                         {this.state.emailError}
                     </div>
+
                     <br />
+                    <Greeting isDonator={this.state.userError} />
 
                     <div className="bottomButton">
                         <Button
