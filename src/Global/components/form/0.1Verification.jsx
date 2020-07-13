@@ -3,9 +3,7 @@ import Form from 'react-bootstrap/Form';
 import Button from '@material-ui/core/Button';
 import '../../css/Formcopy.css';
 import CustomizedSnackbars from "../Greeting";
-import DeleteOutlineIcon from "@material-ui/core/SvgIcon/SvgIcon";
-import Nav from "react-bootstrap/Nav";
-import AlertDialogSlide from "../Modal";
+
 
 
 let emailRegex;
@@ -40,7 +38,7 @@ class Verification extends Component {
     }
 
     getUser = (email) => {
-        const url = 'https://my-json-server.typicode.com/typicode/demo/posts/'+email;
+        const url = 'https://my-json-server.typicode.com/typicode/demo/posts/'+1;
 
         //const url = ''+'/donations/donator?mail=$'+email;
 
