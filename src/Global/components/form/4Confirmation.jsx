@@ -17,14 +17,37 @@ class Confirmation extends Component {
         e.preventDefault();
         this.props.prevStep()
     };
+    submit = (e) => {
+        e.preventDefault()
+        const url = 'the.url.com'
+        let donaciones = JSON.stringify({ 0: this.props.donations[0].state })
+        for (var i = 1; i < this.props.donations.lenth; i++) {
+            let oneDonacion = JSON.stringify({ i: this.props.donations[i].state })
+            donaciones = JSON.stringify({ donaciones, oneDonacion })
+        }
+        let allDonaciones = JSON.stringify({ "donations": donaciones })
+        let donador = JSON.stringify({
+            "donator": {
+                "first_name": this.props.all.firstName,
+                "last_name": this.props.all.firstName,
+                "email": this.props.all.email,
+                "phone_number": this.props.all.phone
+            }
+        })
 
-submit = (e) => {
-    e.preventDefault();
+        let jsonFinal = allDonaciones.concat(donador)
 
+        console.log(jsonFinal)
 
+        fetch(url, {
+            method: 'POST',
+            body: jsonFinal,
+            headers: {
+                "Content-Type": "application/json; charset=UTF-8"
+            }
+        })
 
-
-};
+    };
 
     render() {
         const { firstName, lastName, phone, email, donations, alreadyDonate } = this.props;
@@ -74,21 +97,22 @@ submit = (e) => {
                         type="submit"
                         variant="contained"
                         className="forwardButton btn"
-                        onClick={
-                            () => {
-                                console.log(JSON.stringify({
-                                    "donations": donations.forEach(element => { console.log(JSON.stringify(element.state)) }),
-                                    "donator": {
-                                        "first_name": this.props.all.firstName,
-                                        "last_name": this.props.all.firstName,
-                                        "email": this.props.all.email,
-                                        "phone_number": this.props.all.phone
+                        onClick={this.submit
+                            /*
+                                () => {
+                                    console.log(JSON.stringify({
+                                        "donations": donations.forEach(element => { console.log(JSON.stringify(element.state)) }),
+                                        "donator": {
+                                            "first_name": this.props.all.firstName,
+                                            "last_name": this.props.all.firstName,
+                                            "email": this.props.all.email,
+                                            "phone_number": this.props.all.phone
+                                        }
                                     }
-                                }
-
-
-                                ))
-                            }
+    
+    
+                                    ))
+                                }*/
                         }
                         id="enviar">
                         <AlertDialogSlide />
