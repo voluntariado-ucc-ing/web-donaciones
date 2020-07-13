@@ -12,14 +12,14 @@ import Confirmation from './components/form/4Confirmation'
 import Verification from './components/form/0.1Verification'
 import Footer from "./Footer";
 
-import LinearWithValueLabel from "./components/Step";
-
+import LinearProgress from '@material-ui/core/LinearProgress';
 
 // variables globales
 import './components/form/global';
 import Nav from "react-bootstrap/Nav";
 import Button from "react-bootstrap/Button";
 import HeaderDonation from "./HeaderDonacion";
+import CustomizedProgressBars from "./components/Step";
 
 class Formulario extends Component {
     constructor(props) {
@@ -302,15 +302,12 @@ class Formulario extends Component {
     };
 
 
-
-
     render() {
         const { pasos } = this.state;
         return (
             <div>
                 <HeaderDonation />
                 <Container fluid id='background'>
-                    <LinearWithValueLabel />
                     <Container id="formulario">
                         <div id='left-letters'>
                             {this.init()}

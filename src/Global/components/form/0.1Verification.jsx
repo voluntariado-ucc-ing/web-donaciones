@@ -3,6 +3,7 @@ import Form from 'react-bootstrap/Form';
 import Button from '@material-ui/core/Button';
 import '../../css/Formcopy.css';
 import CustomizedSnackbars from "../Greeting";
+import CustomizedProgressBars from "../Step";
 
 
 
@@ -99,6 +100,7 @@ class Verification extends Component {
 
         return (
             <div>
+                <CustomizedProgressBars progress={20}/>
                 <h5>Por favor ingrese su email para identificarse *</h5>
                 <br />
                 <Form.Group>
