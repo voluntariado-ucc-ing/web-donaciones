@@ -12,6 +12,8 @@ import Confirmation from './components/form/4Confirmation'
 import Verification from './components/form/0.1Verification'
 import Footer from "./Footer";
 
+import LinearWithValueLabel from "./components/Step";
+
 
 // variables globales
 import './components/form/global';
@@ -148,8 +150,7 @@ class Formulario extends Component {
         if (pasos === global.Contacto)
             this.setState({
                 alreadyDonate: false
-            }
-            );
+            });
         if (!this.state.firstDonationCreated) {
             let don = this.state.donations;
             let done = new Donation();
@@ -289,7 +290,7 @@ class Formulario extends Component {
     //cambio de paso en donacion si se verifca error de campos
     changeStep = (step) => {
         this.setState({ donationStep: step })
-    }
+    };
 
     forwardDonation = () => {
         const pasoDonacion = this.state.donationStep + 1;
@@ -302,11 +303,14 @@ class Formulario extends Component {
 
 
 
+
     render() {
+        const { pasos } = this.state;
         return (
             <div>
                 <HeaderDonation />
                 <Container fluid id='background'>
+                    <LinearWithValueLabel />
                     <Container id="formulario">
                         <div id='left-letters'>
                             {this.init()}
