@@ -19,32 +19,61 @@ class Confirmation extends Component {
     };
     submit = (e) => {
         e.preventDefault()
-        const url = 'the.url.com'
-        let donaciones = JSON.stringify({ 0: this.props.donations[0].state })
-        for (var i = 1; i < this.props.donations.lenth; i++) {
-            let oneDonacion = JSON.stringify({ i: this.props.donations[i].state })
-            donaciones = JSON.stringify({ donaciones, oneDonacion })
-        }
-        let allDonaciones = JSON.stringify({ "donations": donaciones })
-        let donador = JSON.stringify({
-            "donator": {
-                "first_name": this.props.all.firstName,
-                "last_name": this.props.all.firstName,
-                "email": this.props.all.email,
-                "phone_number": this.props.all.phone
+        const url = 'this.url.com'
+        let donations = []
+        for (var i = 0; i < this.props.donations.length; i++) {
+            let category
+            switch (this.props.donations[i].state.category) {
+                case "tools":
+                    category = 1
+                    break
+                case "materials":
+                    category = 2
+                    break
+                case "clothes":
+                    category = 3
+                    break
+                case "food":
+                    category = 4
+                    break
+                default:
+                    category = 0
             }
-        })
+            donations[i] = {
+                "element": this.props.donations[i].state.elementDonation,
+                "quantity": this.props.donations[i].state.quantity,
+                "unit": this.props.donations[i].state.isNoConventional ? (this.props.donations[i].state.otherUnit) : (this.props.donations[i].state.unit),
+                "description": this.props.donations[i].state.message,
+                "type_id": category,
+                "direction": {
+                    "street": this.props.donations[i].state.street,
+                    "number": this.props.donations[i].state.number,
+                    "details": this.props.donations[i].state.floorNumber,
+                    "city": this.props.donations[i].state.city
+                }
+            }
+        }
 
-        let jsonFinal = allDonaciones.concat(donador)
+        let donator = {
 
-        console.log(jsonFinal)
+            "first_name": this.props.all.firstName,
+            "last_name": this.props.all.firstName,
+            "email": this.props.all.email,
+            "phone_number": this.props.all.phone
+
+        }
+
+        let jsonFinal = { donations, donator }
+
+        console.log(JSON.stringify(jsonFinal))
 
         fetch(url, {
             method: 'POST',
-            body: jsonFinal,
+            body: JSON.stringify(jsonFinal),
             headers: {
-                "Content-Type": "application/json; charset=UTF-8"
-            }
+                "Access-Control-Allow-Origin": "*"
+            },
+            mode: 'cors'
         })
 
     };
