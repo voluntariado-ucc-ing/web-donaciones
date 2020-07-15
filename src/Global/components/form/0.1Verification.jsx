@@ -6,7 +6,6 @@ import CustomizedSnackbars from "../Greeting";
 import CustomizedProgressBars from "../Step";
 
 
-
 let emailRegex;
 emailRegex = RegExp(
     /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
@@ -30,6 +29,22 @@ function Greeting(props) {
     return <div />;
 }
 
+
+async function getUser(email) {
+    const url = 'https://16cfb7b3aefc.ngrok.io/donations/donators?mail='+ email;
+    // Default options are marked with *
+    const response = await fetch(url, {
+        method: 'GET', // *GET, POST, PUT, DELETE, etc.
+        mode: 'cors', // no-cors, *cors, same-origin
+        cache: 'no-cache',  // include, *same-origin, omit
+        headers: {
+            'Access-Control-Allow-Origin': '*'
+        }
+    });
+    return response.json(); // parses JSON response into native JavaScript objects
+}
+
+
 class Verification extends Component {
     constructor(props) {
         super(props);
@@ -37,32 +52,6 @@ class Verification extends Component {
             initialState
         }
     }
-
-    getUser = (email) => {
-        const url = 'https://my-json-server.typicode.com/typicode/demo/posts/'+1;
-
-        //const url = ''+'/donations/donator?mail=$'+email;
-
-        fetch(url)
-            .then(response =>{
-                if(response.ok){
-                   console.log(response.json());
-
-                   this.props.nextStep();
-                }else{
-                    this.setState({userError: true});
-                }
-            })
-            .then(function(data) {
-                return data;
-            })
-            .catch(function(error) {
-                console.log(error);
-            });
-
-        return false;
-
-    };
 
     validateEmail = () => {
         let emailError = "";
@@ -75,7 +64,6 @@ class Verification extends Component {
             this.setState({emailError});
             return false;
         }
-
         return true;
     };
 
@@ -90,8 +78,13 @@ class Verification extends Component {
         let isCorrect = this.validateEmail();
 
         if(isCorrect) {
-            console.log(this.state);
-            this.getUser(this.props.email);
+          let response = getUser(this.props.email);
+          if(response){
+              console.log(response);
+              this.props.nextStep();
+          }else{
+                this.setState({userError: true});
+          }
         }
     };
 

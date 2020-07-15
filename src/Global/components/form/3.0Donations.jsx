@@ -141,170 +141,172 @@ class Donation extends Component {
         const { handleDonacion, id, donations, checkedChange, directionChange } = this.props;
 
         return (
-            <div className='donation'>
+            <div>
                 <CustomizedProgressBars progress={40}/>
-                <Nav className={"justify-content-end mr-0 ml-0"}>
-                    <Tooltip title="Nueva donación" arrow placement="top"
-                        TransitionComponent={Zoom}
-                        enterDelay={50} leaveDelay={300}>
-                        <AddCircleIcon
-                            onClick={this.newDonation}
-                            className={"uccColor"}
-                            fontSize={"large"}
-                        />
-                    </Tooltip>
-                    {
-                        this.props.donations.length > 1 ?
-                            (<DeleteOutlineIcon
-                                onClick={this.deleteDonation}
-                                className="ml-1 uccColor"
+                <div className='donation'>
+                    <Nav className={"justify-content-end mr-0 ml-0"}>
+                        <Tooltip title="Nueva donación" arrow placement="top"
+                                 TransitionComponent={Zoom}
+                                 enterDelay={50} leaveDelay={300}>
+                            <AddCircleIcon
+                                onClick={this.newDonation}
+                                className={"uccColor"}
                                 fontSize={"large"}
-                            />)
-                            :
-                            null
-                    }
-                </Nav>
+                            />
+                        </Tooltip>
+                        {
+                            this.props.donations.length > 1 ?
+                                (<DeleteOutlineIcon
+                                    onClick={this.deleteDonation}
+                                    className="ml-1 uccColor"
+                                    fontSize={"large"}
+                                />)
+                                :
+                                null
+                        }
+                    </Nav>
 
-                <hr className={"m-1"} />
+                    <hr className={"m-1"} />
 
-                <Row id={"donation"} className="justify-content-md-center pt-3">
-                    <Col>
+                    <Row id={"donation"} className="justify-content-md-center pt-3">
+                        <Col>
 
-                        <h5>¿Con qué desea ayudarnos?</h5>
-                        <Form.Row>
-                            <Form.Group as={Col} md='6'>
-                                <Form.Label> Qué va a donar *</Form.Label>
-                                <Form.Control
-                                    placeholder="Ingresá acá lo que vas a donar"
-                                    name="elementDonation"
-                                    onChange={handleDonacion('elementDonation', id)}
-                                    value={donations[id].state.elementDonation}
-                                />
-                                <div style={{ fontSize: 12, color: "red" }}>
-                                    {this.state.elementError}
-                                </div>
-                            </Form.Group>
-                            <Form.Group as={Col} md='6'>
-                                <Form.Label>Categoría *</Form.Label>
-                                <Form.Control as="select"
-                                    name="category"
-                                    onChange={handleDonacion('category', id)}
-                                    value={donations[id].state.category}
-                                >
-                                    <option value="">Seleccione categoría</option>
-                                    <option value="tools">Herramientas</option>
-                                    <option value="materials">Materiales de construcción</option>
-                                    <option value="clothes">Ropa y calzado</option>
-                                    <option value="food">Alimentos</option>
-                                </Form.Control>
-                                <div style={{ fontSize: 12, color: "red" }}>
-                                    {this.state.categoryError}
-                                </div>
-                            </Form.Group>
-                        </Form.Row>
-                        <Form.Row >
-                            <Form.Group as={Col} md='4'>
-
-                                <Form.Label>Cantidad *</Form.Label>
-                                <Form.Control
-                                    type="number"
-                                    name="quantity"
-                                    onChange={handleDonacion('quantity', id)}
-                                    value={donations[id].state.quantity}
-                                />
-                                <div style={{ fontSize: 12, color: "red" }}>
-                                    {this.state.quantityError}
-                                </div>
-                            </Form.Group>
-
-                            <Form.Group as={Col} md={donations[this.props.id].state.isNoConventional ? '4' : '8'} >
-                                <Form.Label>Unidad *</Form.Label>
-                                <Form.Control as="select"
-                                    name="unit"
-                                    onChange={this.handleUnitChange}
-                                    value={donations[id].state.unit}
-                                >
-                                    <option value="">Elegir</option>
-                                    <option value="m">Metros</option>
-                                    <option value="kg">Kg</option>
-                                    <option value="ltr">Litro</option>
-                                    <option value="bolsa">Bolsa</option>
-                                    <option value="lata">Lata</option>
-                                    <option value="palette">Palette</option>
-                                    <option value="m2">Metro cuadrado</option>
-                                    <option value="m3">Metro cúbico</option>
-                                    <option value="un">Unidad</option>
-                                    <option value="otro">Otro</option>
-                                </Form.Control>
-                                <div style={{ fontSize: 12, color: "red" }}>
-                                    {this.state.unitError}
-                                </div>
-                            </Form.Group>
-
-                            {donations[this.props.id].state.isNoConventional ?
-                                <Form.Group as={Col} md="4" >
-                                    <Form.Label>Otra unidad *</Form.Label>
+                            <h5>¿Con qué desea ayudarnos?</h5>
+                            <Form.Row>
+                                <Form.Group as={Col} md='6'>
+                                    <Form.Label> Qué va a donar *</Form.Label>
                                     <Form.Control
-                                        type="text"
-                                        name="otherUnit"
-                                        onChange={handleDonacion('otherUnit', id)}
-                                        value={donations[id].state.otherUnit}
+                                        placeholder="Ingresá acá lo que vas a donar"
+                                        name="elementDonation"
+                                        onChange={handleDonacion('elementDonation', id)}
+                                        value={donations[id].state.elementDonation}
                                     />
+                                    <div style={{ fontSize: 12, color: "red" }}>
+                                        {this.state.elementError}
+                                    </div>
+                                </Form.Group>
+                                <Form.Group as={Col} md='6'>
+                                    <Form.Label>Categoría *</Form.Label>
+                                    <Form.Control as="select"
+                                                  name="category"
+                                                  onChange={handleDonacion('category', id)}
+                                                  value={donations[id].state.category}
+                                    >
+                                        <option value="">Seleccione categoría</option>
+                                        <option value="tools">Herramientas</option>
+                                        <option value="materials">Materiales de construcción</option>
+                                        <option value="clothes">Ropa y calzado</option>
+                                        <option value="food">Alimentos</option>
+                                    </Form.Control>
+                                    <div style={{ fontSize: 12, color: "red" }}>
+                                        {this.state.categoryError}
+                                    </div>
+                                </Form.Group>
+                            </Form.Row>
+                            <Form.Row >
+                                <Form.Group as={Col} md='4'>
+
+                                    <Form.Label>Cantidad *</Form.Label>
+                                    <Form.Control
+                                        type="number"
+                                        name="quantity"
+                                        onChange={handleDonacion('quantity', id)}
+                                        value={donations[id].state.quantity}
+                                    />
+                                    <div style={{ fontSize: 12, color: "red" }}>
+                                        {this.state.quantityError}
+                                    </div>
+                                </Form.Group>
+
+                                <Form.Group as={Col} md={donations[this.props.id].state.isNoConventional ? '4' : '8'} >
+                                    <Form.Label>Unidad *</Form.Label>
+                                    <Form.Control as="select"
+                                                  name="unit"
+                                                  onChange={this.handleUnitChange}
+                                                  value={donations[id].state.unit}
+                                    >
+                                        <option value="">Elegir</option>
+                                        <option value="m">Metros</option>
+                                        <option value="kg">Kg</option>
+                                        <option value="ltr">Litro</option>
+                                        <option value="bolsa">Bolsa</option>
+                                        <option value="lata">Lata</option>
+                                        <option value="palette">Palette</option>
+                                        <option value="m2">Metro cuadrado</option>
+                                        <option value="m3">Metro cúbico</option>
+                                        <option value="un">Unidad</option>
+                                        <option value="otro">Otro</option>
+                                    </Form.Control>
                                     <div style={{ fontSize: 12, color: "red" }}>
                                         {this.state.unitError}
                                     </div>
-                                </Form.Group> : null
-                            }
+                                </Form.Group>
+
+                                {donations[this.props.id].state.isNoConventional ?
+                                    <Form.Group as={Col} md="4" >
+                                        <Form.Label>Otra unidad *</Form.Label>
+                                        <Form.Control
+                                            type="text"
+                                            name="otherUnit"
+                                            onChange={handleDonacion('otherUnit', id)}
+                                            value={donations[id].state.otherUnit}
+                                        />
+                                        <div style={{ fontSize: 12, color: "red" }}>
+                                            {this.state.unitError}
+                                        </div>
+                                    </Form.Group> : null
+                                }
 
 
-                        </Form.Row>
+                            </Form.Row>
 
 
-                        <Address
-                            id={id}
-                            handleChange={handleDonacion}
-                            checkedChange={checkedChange}
-                            city={donations[id].state.city}
-                            street={donations[id].state.street}
-                            number={donations[id].state.number}
-                            floorNumber={donations[id].state.floorNumber}
-                            donations={this.props.donations}
-                            checked={donations[id].state.checked}
-                            firstCheck={donations[id].state.firstCheck}
-                            directionChange={directionChange}
-                            cityError={this.state.cityError}
-                            streetError={this.state.streetError}
-                            numberError={this.state.numberError}
-                        />
+                            <Address
+                                id={id}
+                                handleChange={handleDonacion}
+                                checkedChange={checkedChange}
+                                city={donations[id].state.city}
+                                street={donations[id].state.street}
+                                number={donations[id].state.number}
+                                floorNumber={donations[id].state.floorNumber}
+                                donations={this.props.donations}
+                                checked={donations[id].state.checked}
+                                firstCheck={donations[id].state.firstCheck}
+                                directionChange={directionChange}
+                                cityError={this.state.cityError}
+                                streetError={this.state.streetError}
+                                numberError={this.state.numberError}
+                            />
 
-                        <hr className={"mt-1 mb-1"} />
-                        <Form.Group controlId="exampleForm.ControlTextarea1">
-                            <Form.Label column={"1"}>
-                                <h5 className={"pt-3"}>¿Algo que deberíamos saber?</h5>
-                            </Form.Label>
-                            <Form.Control as="textarea" rows="3"
-                                name="message"
-                                onChange={handleDonacion('message', id)}
-                                value={donations[id].state.message} />
-                        </Form.Group>
+                            <hr className={"mt-1 mb-1"} />
+                            <Form.Group controlId="exampleForm.ControlTextarea1">
+                                <Form.Label column={"1"}>
+                                    <h5 className={"pt-3"}>¿Algo que deberíamos saber?</h5>
+                                </Form.Label>
+                                <Form.Control as="textarea" rows="3"
+                                              name="message"
+                                              onChange={handleDonacion('message', id)}
+                                              value={donations[id].state.message} />
+                            </Form.Group>
 
-                        <div >
-                            <Button
-                                type="submit"
-                                onClick={this.back}
-                                className="backButton btn"
-                                variant="contained"
-                            > Mis Datos</Button>
+                            <div >
+                                <Button
+                                    type="submit"
+                                    onClick={this.back}
+                                    className="backButton btn"
+                                    variant="contained"
+                                > Mis Datos</Button>
 
-                            <Button
-                                onClick={this.continue}
-                                type="submit"
-                                className="forwardButton btn"
-                                variant="contained"
-                            >Finalizar</Button>
-                        </div>
-                    </Col>
-                </Row >
+                                <Button
+                                    onClick={this.continue}
+                                    type="submit"
+                                    className="forwardButton btn"
+                                    variant="contained"
+                                >Finalizar</Button>
+                            </div>
+                        </Col>
+                    </Row >
+                </div>
             </div>
         );
     }
