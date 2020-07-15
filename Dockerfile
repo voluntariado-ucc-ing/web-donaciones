@@ -7,7 +7,7 @@ COPY package.json .
 COPY package-lock.json ./
 
 RUN npm install --silent
-RUN npm instal -g serve
+RUN npm install -g serve
 RUN npm run build --silent
 
 COPY . .
