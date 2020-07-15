@@ -35,20 +35,21 @@
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../web-donaciones" />
+    <property name="last_opened_file_path" value="D:/stepformnew" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
     <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\WebStorm 2019.2.1\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\milel\OneDrive\Documentos\GitHub\web-donaciones\src\Global\components" />
+      <recent name="C:\Users\milel\OneDrive\Documentos\GitHub\web-donaciones\src" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\milel\OneDrive\Documentos\GitHub\web-donaciones\src\Global" />
       <recent name="C:\Users\milel\OneDrive\Documentos\GitHub\web-donaciones\src\Global\components" />
       <recent name="C:\Users\milel\OneDrive\Documentos\GitHub\web-donaciones" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\milel\OneDrive\Documentos\GitHub\web-donaciones\src" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -63,8 +64,25 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="npm.start">
+  <component name="RunManager" selected="Docker.Dockerfile">
     <configuration name="3.0Donations.jsx" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="3.0Donations.jsx" working-dir="$PROJECT_DIR$/src/Global/components/form">
+      <method v="2" />
+    </configuration>
+    <configuration name="prueba.jsx" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="prueba.jsx" working-dir="$PROJECT_DIR$/src">
+      <method v="2" />
+    </configuration>
+    <configuration name="Dockerfile" type="docker-deploy" factoryName="dockerfile" temporary="true" server-name="Docker">
+      <deployment type="dockerfile">
+        <settings>
+          <option name="buildCliOptions" value="" />
+          <option name="command" value="" />
+          <option name="containerName" value="" />
+          <option name="entrypoint" value="" />
+          <option name="imageTag" value="" />
+          <option name="commandLineOptions" value="" />
+          <option name="sourceFilePath" value="Dockerfile" />
+        </settings>
+      </deployment>
       <method v="2" />
     </configuration>
     <configuration name="start" type="js.build_tools.npm" nameIsGenerated="true">
@@ -79,6 +97,8 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Docker.Dockerfile" />
+        <item itemvalue="Node.js.prueba.jsx" />
         <item itemvalue="Node.js.3.0Donations.jsx" />
       </list>
     </recent_temporary>
@@ -182,6 +202,40 @@
       <workItem from="1592925091532" duration="1320000" />
       <workItem from="1592948096204" duration="1639000" />
       <workItem from="1593001209221" duration="5146000" />
+      <workItem from="1593541193578" duration="837000" />
+      <workItem from="1593548744562" duration="2446000" />
+      <workItem from="1593553335968" duration="29000" />
+      <workItem from="1593553586612" duration="600000" />
+      <workItem from="1593558007134" duration="1853000" />
+      <workItem from="1593607623491" duration="17000" />
+      <workItem from="1593619472780" duration="1175000" />
+      <workItem from="1593624223038" duration="1952000" />
+      <workItem from="1593627111527" duration="1026000" />
+      <workItem from="1593628172528" duration="25000" />
+      <workItem from="1593631743729" duration="389000" />
+      <workItem from="1593646828800" duration="164000" />
+      <workItem from="1593649708479" duration="2463000" />
+      <workItem from="1593713185905" duration="1580000" />
+      <workItem from="1593716674289" duration="1788000" />
+      <workItem from="1593724661156" duration="149000" />
+      <workItem from="1593726109447" duration="3495000" />
+      <workItem from="1593729908929" duration="50000" />
+      <workItem from="1593729984748" duration="2547000" />
+      <workItem from="1594064772759" duration="352000" />
+      <workItem from="1594075111572" duration="1038000" />
+      <workItem from="1594150606281" duration="286000" />
+      <workItem from="1594151972424" duration="784000" />
+      <workItem from="1594212981317" duration="5628000" />
+      <workItem from="1594313763180" duration="592000" />
+      <workItem from="1594330337362" duration="15164000" />
+      <workItem from="1594381507651" duration="2270000" />
+      <workItem from="1594387695122" duration="3551000" />
+      <workItem from="1594402799832" duration="4722000" />
+      <workItem from="1594499648998" duration="1219000" />
+      <workItem from="1594652753047" duration="165000" />
+      <workItem from="1594666693676" duration="3385000" />
+      <workItem from="1594676485117" duration="5432000" />
+      <workItem from="1594775528396" duration="327000" />
     </task>
     <servers />
   </component>
