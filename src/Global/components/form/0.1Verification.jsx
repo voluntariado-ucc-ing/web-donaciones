@@ -1,9 +1,10 @@
-import React, {Component} from 'react';
+import React, {Component, useEffect, useState} from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from '@material-ui/core/Button';
 import '../../css/Formcopy.css';
-import CustomizedSnackbars from "../Greeting";
-import CustomizedProgressBars from "../Step";
+import DataFetching from "../fetchButton";
+import axios from "axios";
+import Alert from "@material-ui/lab/Alert";
 
 
 let emailRegex;
@@ -12,91 +13,78 @@ emailRegex = RegExp(
 );
 
 const initialState = {
-    emailError: "",
-    userError: false
+    email: ""
 };
-
-function UserMissing(props) {
-    return <CustomizedSnackbars />;
-}
-
-
-function Greeting(props) {
-    const isDonator = props.isDonator;
-    if (isDonator) {
-        return <UserMissing />;
-    }
-    return <div />;
-}
-
-
-async function getUser(email) {
-    const url = 'https://16cfb7b3aefc.ngrok.io/donations/donators?mail='+ email;
-    // Default options are marked with *
-    const response = await fetch(url, {
-        method: 'GET', // *GET, POST, PUT, DELETE, etc.
-        mode: 'cors', // no-cors, *cors, same-origin
-        cache: 'no-cache',  // include, *same-origin, omit
-        headers: {
-            'Access-Control-Allow-Origin': '*'
-        }
-    });
-    return response.json(); // parses JSON response into native JavaScript objects
-}
-
 
 class Verification extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            initialState
+            initialState,
+            userInfo: "",
+           loading: false,
+            hasError: false,
+            emailError: false
         }
     }
 
-    validateEmail = () => {
-        let emailError = "";
+    getNameByEmail (email) {
+        axios
+            .get(`https://jsonplaceholder.typicode.com/posts/${email}`)
+            .then(res => {
+                console.log(res)
+                this.state.userInfo = res.data.userId
+                this.setState({loading: false})
+            })
+            .catch(err => {
+                console.log(err)
+                this.setState({loading: false})
+                this.setState({hasError: false})
+            })
+    }
 
-        if (!this.props.email.includes("@") || this.props.email === emailRegex) {
-            emailError = "Ingrese un email válido";
-        }
+    validateEmail = (email) => {
 
-        if (emailError) {
-            this.setState({emailError});
-            return false;
+        if (!email.includes("@") || email === emailRegex) {
+            this.setState({emailError: true});
+        }else{
+            this.setState({loading: true})
         }
-        return true;
     };
 
-    back = (e) => {
+    back = e => {
         e.preventDefault();
         this.props.prevStep()
     };
 
-    continue = (e) => {
+
+    continue= e => {
         e.preventDefault();
 
-        let isCorrect = this.validateEmail();
+       this.validateEmail(this.props.email)
 
-        if(isCorrect) {
-          let response = getUser(this.props.email);
-          if(response){
-              console.log(response);
-              this.props.nextStep();
-          }else{
-                this.setState({userError: true});
-          }
+        this.setState({loading: false})
+        this.getNameByEmail(this.props.email)
+
+        if(this.state.userInfo){
+            this.props.nextStep()
         }
-    };
+    }
+
+
 
     render() {
-        const { handleChange, email } = this.props;
+
+        const {handleChange, email} = this.props;
+        const {loading, emailError, hasError} = this.state;
 
         return (
             <div>
-                <CustomizedProgressBars progress={20}/>
                 <h5>Por favor ingrese su email para identificarse *</h5>
                 <br />
                 <Form.Group>
+                    {/*<DataFetching email = {this.state.userInfo}/>*/}
+
                     <Form.Control
                         type="email"
                         name='email'
@@ -104,28 +92,28 @@ class Verification extends Component {
                         value={email}
                         required
                     />
-                    <div style={{ fontSize: 12, color: "red" }}>
-                        {this.state.emailError}
-                    </div>
 
-                    <br />
-                    <Greeting isDonator={this.state.userError} />
+                    {
+                        loading ? <Alert severity="info">Buscando...</Alert> : hasError ? <Alert severity="error">No te encontramos...</Alert> : null
+                    }
 
-                    <div className="bottomButton">
-                        <Button
-                            className="backButton btn"
-                            variant="contained"
-                            onClick={this.back}
-                        > Atrás</Button>
-                        <Button
-                            className="forwardButton btn"
-                            onClick={this.continue}
-                            variant="contained"
-                            type="submit"
-                        >Continuar</Button>
-                    </div>
-
+                    { emailError?  <div style={{ fontSize: 12, color: "red" }}>Ingrese un email valido</div> : null }
                 </Form.Group>
+
+                <div className="bottomButton">
+                    <Button
+                        className="backButton btn"
+                        variant="contained"
+                        onClick={this.back}
+                    > Atrás</Button>
+
+                    <Button
+                        className="forwardButton btn"
+                        onClick={this.continue}
+                        variant="contained"
+                        type="submit"
+                    >Continuar</Button>
+                </div>
             </div>
         );
     }
