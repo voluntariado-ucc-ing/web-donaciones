@@ -1,8 +1,7 @@
-import React, {Component, useEffect, useState} from 'react';
+import React, {Component} from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from '@material-ui/core/Button';
 import '../../css/Formcopy.css';
-import DataFetching from "../fetchButton";
 import axios from "axios";
 import Alert from "@material-ui/lab/Alert";
 
@@ -13,19 +12,16 @@ emailRegex = RegExp(
 );
 
 const initialState = {
-    email: ""
+    emailError: "",
+    userInfo: "",
+    loading: false,
+    hasError: false
 };
 
 class Verification extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            initialState,
-            userInfo: "",
-           loading: false,
-            hasError: false,
-            emailError: false
-        }
+        this.state = initialState;
     }
 
     getNameByEmail (email) {
@@ -39,17 +35,23 @@ class Verification extends Component {
             .catch(err => {
                 console.log(err)
                 this.setState({loading: false})
-                this.setState({hasError: false})
+                this.setState({hasError: true})
             })
     }
 
-    validateEmail = (email) => {
+    validateEmail = () => {
+        let emailError = "";
 
-        if (!email.includes("@") || email === emailRegex) {
-            this.setState({emailError: true});
-        }else{
-            this.setState({loading: true})
+        if (!this.props.email.includes("@") || this.props.email === emailRegex) {
+            emailError = "Ingrese un email válido";
         }
+
+        if (emailError) {
+            this.setState({emailError});
+            return false;
+        }
+
+        return true;
     };
 
     back = e => {
@@ -61,12 +63,17 @@ class Verification extends Component {
     continue= e => {
         e.preventDefault();
 
-       this.validateEmail(this.props.email)
+        const isValid = this.validateEmail();
 
-        this.setState({loading: false})
-        this.getNameByEmail(this.props.email)
+        if (isValid) {
+           this.setState({loading: true})
 
-        if(this.state.userInfo){
+            setTimeout(()=>this.getNameByEmail(this.props.email), 2000)
+            // clear form
+            this.setState(initialState);
+        }
+
+        if(this.state.userInfo && !this.state.emailError){
             this.props.nextStep()
         }
     }
@@ -76,14 +83,13 @@ class Verification extends Component {
     render() {
 
         const {handleChange, email} = this.props;
-        const {loading, emailError, hasError} = this.state;
+        const {loading, hasError} = this.state;
 
         return (
             <div>
                 <h5>Por favor ingrese su email para identificarse *</h5>
                 <br />
                 <Form.Group>
-                    {/*<DataFetching email = {this.state.userInfo}/>*/}
 
                     <Form.Control
                         type="email"
@@ -97,7 +103,9 @@ class Verification extends Component {
                         loading ? <Alert severity="info">Buscando...</Alert> : hasError ? <Alert severity="error">No te encontramos...</Alert> : null
                     }
 
-                    { emailError?  <div style={{ fontSize: 12, color: "red" }}>Ingrese un email valido</div> : null }
+                    <div style={{ fontSize: 12, color: "red" }}>
+                        {this.state.emailError}
+                    </div>
                 </Form.Group>
 
                 <div className="bottomButton">
