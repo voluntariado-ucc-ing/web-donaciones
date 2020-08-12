@@ -57,13 +57,13 @@ class Confirmation extends Component {
             }
             donations[i] = {
                 "element": this.props.donations[i].state.elementDonation,
-                "quantity": this.props.donations[i].state.quantity,
+                "quantity": Number(this.props.donations[i].state.quantity),
                 "unit": this.props.donations[i].state.isNoConventional ? (this.props.donations[i].state.otherUnit) : (this.props.donations[i].state.unit),
                 "description": this.props.donations[i].state.message,
                 "type_id": category,
                 "direction": {
                     "street": this.props.donations[i].state.street,
-                    "number": this.props.donations[i].state.number,
+                    "number": Number(this.props.donations[i].state.number),
                     "details": this.props.donations[i].state.floorNumber,
                     "city": this.props.donations[i].state.city
                 }
@@ -149,6 +149,7 @@ class Confirmation extends Component {
                 </div>
                 <br />
                 {this.state.loading ? <LinearProgress /> : this.state.okMessage ? <AlertDialogSlide /> : null}
+                <br />
                 {this.state.errorMessage ? <Alert severity="error">No pudimos enviar su donación, por favor intente nuevamente en un instante.</Alert> : null}
             </Container >
         );
