@@ -34,7 +34,7 @@ export default function AlertDialogSlide() {
                     </DialogContentText>
             </DialogContent>
             <DialogActions>
-                <Button onClick={handleClose} color="primary">
+                <Button onClick={handleClose} color="primary" href={"/"}>
                     Cerrar
                     </Button>
             </DialogActions>

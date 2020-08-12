@@ -80,7 +80,8 @@ class Confirmation extends Component {
         let jsonFinal = { donations, donator }
 
         this.setState({ loading: true }, () => {
-            axios.post('https://cors-anywhere.herokuapp.com/https://b2f3beb00735.ngrok.io/donations/create', JSON.stringify(jsonFinal))
+            axios.post('http://httpbin.org/post', JSON.stringify(jsonFinal))
+                //https://cors-anywhere.herokuapp.com/https://b2f3beb00735.ngrok.io/donations/create
                 .then(response => {
                     console.log(response)
                     this.setState({ loading: false })
