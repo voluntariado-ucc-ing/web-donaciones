@@ -4,6 +4,9 @@ import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import '../../css/Formcopy.css';
 import AlertDialogSlide from "../Modal";
+import axios from 'axios';
+import LinearProgress from '@material-ui/core/LinearProgress';
+import Alert from "@material-ui/lab/Alert";
 
 import { GoPerson } from "react-icons/go";
 import { FaPhone } from "react-icons/fa";
@@ -12,14 +15,27 @@ import { MdLocationOn } from "react-icons/md"
 import { FaHandHoldingHeart } from "react-icons/fa"
 import { MdEdit } from "react-icons/md"
 
+const initialState = {
+    loading: false,
+    okMessage: false,
+    errorMessage: false
+
+};
+
 class Confirmation extends Component {
+    constructor(props) {
+        super(props);
+        this.state = initialState;
+    }
+
     back = (e) => {
-        e.preventDefault();
+        e.preventDefault()
         this.props.prevStep()
     };
+
     submit = (e) => {
         e.preventDefault()
-        const url = 'this.url.com'
+
         let donations = []
         for (var i = 0; i < this.props.donations.length; i++) {
             let category
@@ -55,28 +71,28 @@ class Confirmation extends Component {
         }
 
         let donator = {
-
             "first_name": this.props.all.firstName,
             "last_name": this.props.all.firstName,
             "email": this.props.all.email,
             "phone_number": this.props.all.phone
-
         }
 
         let jsonFinal = { donations, donator }
 
-        console.log(JSON.stringify(jsonFinal))
-
-        fetch(url, {
-            method: 'POST',
-            body: JSON.stringify(jsonFinal),
-            headers: {
-                "Access-Control-Allow-Origin": "*"
-            },
-            mode: 'cors'
+        this.setState({ loading: true }, () => {
+            axios.post('http://httpbin.org/post', JSON.stringify(jsonFinal))
+                .then(response => {
+                    console.log(response)
+                    this.setState({ loading: false })
+                    this.setState({ okMessage: true })
+                })
+                .catch(error => {
+                    console.log(error)
+                    this.setState({ loading: false })
+                    this.setState({ errorMessage: true })
+                })
         })
-
-    };
+    }
 
     render() {
         const { firstName, lastName, phone, email, donations, alreadyDonate } = this.props;
@@ -126,27 +142,14 @@ class Confirmation extends Component {
                         type="submit"
                         variant="contained"
                         className="forwardButton btn"
-                        onClick={this.submit
-                            /*
-                                () => {
-                                    console.log(JSON.stringify({
-                                        "donations": donations.forEach(element => { console.log(JSON.stringify(element.state)) }),
-                                        "donator": {
-                                            "first_name": this.props.all.firstName,
-                                            "last_name": this.props.all.firstName,
-                                            "email": this.props.all.email,
-                                            "phone_number": this.props.all.phone
-                                        }
-                                    }
-    
-    
-                                    ))
-                                }*/
-                        }
+                        onClick={this.submit}
                         id="enviar">
-                        <AlertDialogSlide />
+                        Enviar
                     </Button>
                 </div>
+                <br />
+                {this.state.loading ? <LinearProgress /> : this.state.okMessage ? <AlertDialogSlide /> : null}
+                {this.state.errorMessage ? <Alert severity="error">No pudimos enviar su donación, por favor intente nuevamente en un instante.</Alert> : null}
             </Container >
         );
     }
