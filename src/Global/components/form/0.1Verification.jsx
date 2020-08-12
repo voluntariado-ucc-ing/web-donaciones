@@ -24,18 +24,19 @@ class Verification extends Component {
         this.state = initialState;
     }
 
-    getNameByEmail (email) {
+    getNameByEmail(email) {
         axios
-            .get(`https://jsonplaceholder.typicode.com/posts/${email}`)
+            .get(`https://cors-anywhere.herokuapp.com/https://b2f3beb00735.ngrok.io/donations/donators?mail=${email}`)
             .then(res => {
                 console.log(res)
                 this.state.userInfo = res.data.userId
-                this.setState({loading: false})
+                this.setState({ loading: false })
+                this.props.nextStep()
             })
             .catch(err => {
                 console.log(err)
-                this.setState({loading: false})
-                this.setState({hasError: true})
+                this.setState({ loading: false })
+                this.setState({ hasError: true })
             })
     }
 
