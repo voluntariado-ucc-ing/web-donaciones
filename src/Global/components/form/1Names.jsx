@@ -5,8 +5,8 @@ import Container from 'react-bootstrap/Container';
 import '../../css/Formcopy.css';
 
 const initialState = {
-	firstNameError: "",
-	lastNameError: ""
+	firstNameErrorMessage: "",
+	lastNameErrorMessage: ""
 };
 
 class Names extends Component {
@@ -16,19 +16,23 @@ class Names extends Component {
 	}
 
 	validateName = () => {
-		let firstNameError = "";
-		let lastNameError = "";
+		let firstNameErrorMessage = "";
+		let lastNameErrorMessage = "";
 
 		if (!this.props.firstName) {
-			firstNameError = "Ingrese su nombre";
+			firstNameErrorMessage = "Ingrese su nombre";
 		}
+		else
+			firstNameErrorMessage = ""
 
 		if (!this.props.lastName) {
-			lastNameError = "Ingrese su apellido";
+			lastNameErrorMessage = "Ingrese su apellido";
 		}
+		else
+			lastNameErrorMessage = ""
 
-		if (firstNameError || lastNameError ) {
-			this.setState({firstNameError, lastNameError});
+		if (firstNameErrorMessage || lastNameErrorMessage) {
+			this.setState({ firstNameErrorMessage: firstNameErrorMessage, lastNameErrorMessage: lastNameErrorMessage });
 			return false;
 		}
 
@@ -52,7 +56,10 @@ class Names extends Component {
 	};
 	render() {
 
-		const {firstName, lastName, handleChange} = this.props;
+		const { firstName, lastName, handleChange } = this.props;
+		//variables de campos invalidos para que la pagina sea mas dinamica (checkear isInvalid en form control)
+		const nameError = this.state.firstNameErrorMessage !== '' && firstName === ''
+		const surnameError = this.state.lastNameErrorMessage !== '' && lastName === ''
 
 		return (
 			<Container>
@@ -65,9 +72,11 @@ class Names extends Component {
 						name="firstName"
 						onChange={handleChange('firstName')}
 						value={firstName}
+						isInvalid={nameError}
+						isValid={this.props.firstName !== ''}
 					/>
 					<div style={{ fontSize: 12, color: "red" }}>
-						{this.state.firstNameError}
+						{nameError ? this.state.firstNameErrorMessage : null}
 					</div>
 				</Form.Group>
 				<Form.Group>
@@ -78,9 +87,11 @@ class Names extends Component {
 						name='lastName'
 						onChange={handleChange('lastName')}
 						value={lastName}
+						isInvalid={surnameError}
+						isValid={this.props.lastName !== ''}
 					/>
 					<div style={{ fontSize: 12, color: "red" }}>
-						{this.state.lastNameError}
+						{surnameError ? this.state.lastNameErrorMessage : null}
 					</div>
 				</Form.Group>
 				<div className="bottomButton">

@@ -13,7 +13,10 @@ class Address extends Component {
 
 
     render() {
-        const { handleChange, checkedChange, id, city, street, number, floorNumber, checked, donations, firstCheck } = this.props;
+        const { handleChange, checkedChange, id, city, street, number, floorNumber, checked, donations, firstCheck, cityErrorMessage, streetErrorMessage, numberErrorMessage } = this.props;
+        const errorCity = cityErrorMessage !== '' && !(city !== '')
+        const errorStreet = streetErrorMessage !== '' && !(street !== '')
+        const errorNumber = numberErrorMessage !== '' && !(number !== '')
         return (
             <div>
                 <hr className={"m-1"} />
@@ -41,9 +44,11 @@ class Address extends Component {
                                     name="city"
                                     onChange={handleChange('city', id)}
                                     value={city}
+                                    isInvalid={errorCity}
+                                    isValid={city !== ''}
                                 />
                                 <div style={{ fontSize: 12, color: "red" }}>
-                                    {this.props.cityError}
+                                    {errorCity ? cityErrorMessage : null}
                                 </div>
                             </Form.Group>
                             <Form.Row>
@@ -55,9 +60,11 @@ class Address extends Component {
                                         name="street"
                                         onChange={handleChange('street', id)}
                                         value={street}
+                                        isInvalid={errorStreet}
+                                        isValid={street !== ''}
                                     />
                                     <div style={{ fontSize: 12, color: "red" }}>
-                                        {this.props.streetError}
+                                        {errorStreet ? streetErrorMessage : null}
                                     </div>
                                 </Form.Group>
                                 <Form.Group as={Col}
@@ -69,9 +76,11 @@ class Address extends Component {
                                         name="number"
                                         onChange={handleChange('number', id)}
                                         value={number}
+                                        isInvalid={errorNumber}
+                                        isValid={number !== ''}
                                     />
                                     <div style={{ fontSize: 12, color: "red" }}>
-                                        {this.props.numberError}
+                                        {errorNumber ? numberErrorMessage : null}
                                     </div>
                                 </Form.Group>
                                 <Form.Group as={Col}
