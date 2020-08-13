@@ -25,8 +25,10 @@ class Verification extends Component {
     }
 
     getNameByEmail(email) {
+
         axios
-            .get(`https://cors-anywhere.herokuapp.com/https://b2f3beb00735.ngrok.io/donations/donators?mail=${email}`)
+            .get(`http://httpbin.org/post=${email}`)
+            //`https://cors-anywhere.herokuapp.com/https://b2f3beb00735.ngrok.io/donations/donators?mail`
             .then(res => {
                 console.log(res)
                 this.state.userInfo = res.data.userId
@@ -49,6 +51,7 @@ class Verification extends Component {
 
         if (emailErrorMessage) {
             this.setState({ emailErrorMessage: emailErrorMessage });
+
             return false;
         }
 
@@ -86,7 +89,6 @@ class Verification extends Component {
         const { handleChange, email } = this.props;
         const { loading, hasError } = this.state;
         const errorEmail = this.state.emailErrorMessage !== '' && !emailRegex.test(email)
-
 
         return (
             <div>
