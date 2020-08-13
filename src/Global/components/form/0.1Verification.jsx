@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from '@material-ui/core/Button';
 import '../../css/Formcopy.css';
@@ -25,8 +25,10 @@ class Verification extends Component {
     }
 
     getNameByEmail(email) {
+
         axios
-            .get(`https://cors-anywhere.herokuapp.com/https://b2f3beb00735.ngrok.io/donations/donators?mail=${email}`)
+            .get(`http://httpbin.org/post=${email}`)
+            //`https://cors-anywhere.herokuapp.com/https://b2f3beb00735.ngrok.io/donations/donators?mail`
             .then(res => {
                 console.log(res)
                 this.state.userInfo = res.data.userId
@@ -48,7 +50,7 @@ class Verification extends Component {
         }
 
         if (emailError) {
-            this.setState({emailError});
+            this.setState({ emailError });
             return false;
         }
 
@@ -61,20 +63,20 @@ class Verification extends Component {
     };
 
 
-    continue= e => {
+    continue = e => {
         e.preventDefault();
 
         const isValid = this.validateEmail();
 
         if (isValid) {
-           this.setState({loading: true})
+            this.setState({ loading: true })
 
-            setTimeout(()=>this.getNameByEmail(this.props.email), 2000)
+            setTimeout(() => this.getNameByEmail(this.props.email), 2000)
             // clear form
             this.setState(initialState);
         }
 
-        if(this.state.userInfo && !this.state.emailError){
+        if (this.state.userInfo && !this.state.emailError) {
             this.props.nextStep()
         }
     }
@@ -83,8 +85,8 @@ class Verification extends Component {
 
     render() {
 
-        const {handleChange, email} = this.props;
-        const {loading, hasError} = this.state;
+        const { handleChange, email } = this.props;
+        const { loading, hasError } = this.state;
 
         return (
             <div>
