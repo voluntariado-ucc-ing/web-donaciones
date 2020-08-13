@@ -12,7 +12,7 @@ emailRegex = RegExp(
 );
 
 const initialState = {
-    emailError: "",
+    emailErrorMessage: "",
     userInfo: "",
     loading: false,
     hasError: false
@@ -43,14 +43,15 @@ class Verification extends Component {
     }
 
     validateEmail = () => {
-        let emailError = "";
+        let emailErrorMessage = "";
 
         if (!this.props.email.includes("@") || this.props.email === emailRegex) {
-            emailError = "Ingrese un email válido";
+            emailErrorMessage = "Ingrese un email válido";
         }
 
-        if (emailError) {
-            this.setState({ emailError });
+        if (emailErrorMessage) {
+            this.setState({ emailErrorMessage: emailErrorMessage });
+
             return false;
         }
 
@@ -76,7 +77,7 @@ class Verification extends Component {
             this.setState(initialState);
         }
 
-        if (this.state.userInfo && !this.state.emailError) {
+        if (this.state.userInfo && !this.state.emailErrorMessage) {
             this.props.nextStep()
         }
     }
@@ -87,6 +88,7 @@ class Verification extends Component {
 
         const { handleChange, email } = this.props;
         const { loading, hasError } = this.state;
+        const errorEmail = this.state.emailErrorMessage !== '' && !emailRegex.test(email)
 
         return (
             <div>
@@ -96,10 +98,12 @@ class Verification extends Component {
 
                     <Form.Control
                         type="email"
+                        placeholder="example@mail.com"
                         name='email'
                         onChange={handleChange('email')}
                         value={email}
-                        required
+                        isInvalid={errorEmail}
+                        isValid={emailRegex.test(email)}
                     />
 
                     {
@@ -107,7 +111,7 @@ class Verification extends Component {
                     }
 
                     <div style={{ fontSize: 12, color: "red" }}>
-                        {this.state.emailError}
+                        {errorEmail ? this.state.emailErrorMessage : null}
                     </div>
                 </Form.Group>
 
