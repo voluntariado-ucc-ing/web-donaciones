@@ -49,8 +49,8 @@ class Verification extends Component {
             emailErrorMessage = "Ingrese un email válido";
         }
 
-        if (emailError) {
-            this.setState({ emailError });
+        if (emailErrorMessage) {
+            this.setState({ emailErrorMessage });
             return false;
         }
 
@@ -76,7 +76,7 @@ class Verification extends Component {
             this.setState(initialState);
         }
 
-        if (this.state.userInfo && !this.state.emailError) {
+        if (this.state.userInfo && !this.state.emailErrorMessage) {
             this.props.nextStep()
         }
     }
@@ -87,6 +87,7 @@ class Verification extends Component {
 
         const { handleChange, email } = this.props;
         const { loading, hasError } = this.state;
+        const errorEmail = this.state.emailErrorMessage !== '' && !emailRegex.test(email)
 
         return (
             <div>
