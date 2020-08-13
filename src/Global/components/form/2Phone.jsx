@@ -12,9 +12,9 @@ emailRegex = RegExp(
 );
 
 const initialState = {
-	emailError: "",
-	emailConfirmError:"",
-	phoneError: ""
+	emailErrorMessage: "",
+	emailConfirmErrorMessage: "",
+	phoneErrorMessage: ""
 };
 
 class Phone extends Component {
@@ -24,25 +24,25 @@ class Phone extends Component {
 	}
 
 	validatePhone = () => {
-		let emailError = "";
-		let emailConfirmError= "";
-		let phoneError="";
+		let emailErrorMessage = "";
+		let emailConfirmErrorMessage = "";
+		let phoneErrorMessage = "";
 
 		if (!this.props.email.includes("@") || this.props.email === emailRegex) {
-			emailError = "Ingrese un email válido";
+			emailErrorMessage = "Ingrese un email válido";
 		}
 
-		if (!this.props.phone) {
-			phoneError = "Ingrese su telefono.";
+		if (this.props.phone === undefined || !(this.props.phone.length > "7" && this.props.phone.length < "16") || !(this.props.phone)) {
+			phoneErrorMessage = "Ingrese su telefono.";
 		}
 
 		if (!this.props.emailConfirm.includes("@") || this.props.emailConfirm !== this.props.email
-			|| this.props.emailConfirm === emailRegex ) {
-			emailConfirmError = "Asegúrese que los emails coincidan.";
+			|| this.props.emailConfirm === emailRegex) {
+			emailConfirmErrorMessage = "Asegúrese que los emails coincidan.";
 		}
 
-		if (emailError || phoneError || emailConfirmError) {
-			this.setState({ emailError, phoneError, emailConfirmError });
+		if (emailErrorMessage || phoneErrorMessage || emailConfirmErrorMessage) {
+			this.setState({ emailErrorMessage: emailErrorMessage, phoneErrorMessage: phoneErrorMessage, emailConfirmErrorMessage: emailConfirmErrorMessage });
 			return false;
 		}
 
@@ -72,6 +72,9 @@ class Phone extends Component {
 
 	render() {
 		const { handleChange, email, emailConfirm, phone } = this.props;
+		const errorPhone = phone === undefined || (this.state.phoneErrorMessage !== '') && (!(phone.length > "7" && phone.length < "16") || !phone)
+		const errorEmail = this.state.emailErrorMessage !== '' && !emailRegex.test(email)
+		const errorEmailC = (this.state.emailConfirmErrorMessage !== '') && !(emailConfirm === email && emailConfirm !== '')
 		return (
 			<Container>
 				<h5>Necesitamos los siguientes datos para poder comunicarnos con vos</h5>
@@ -82,9 +85,10 @@ class Phone extends Component {
 					defaultCountry="AR"
 					onChange={this.handleInputChange}
 					value={phone}
+					error={this.state.phoneErrorMessage !== ''}
 				/>
 				<div style={{ fontSize: 12, color: "red" }}>
-					{this.state.phoneError}
+					{errorPhone ? this.state.phoneErrorMessage : null}
 				</div>
 				<br />
 				<Form.Group
@@ -96,9 +100,11 @@ class Phone extends Component {
 						name='email'
 						onChange={handleChange('email')}
 						value={email}
+						isInvalid={errorEmail}
+						isValid={emailRegex.test(email)}
 					/>
 					<div style={{ fontSize: 12, color: "red" }}>
-						{this.state.emailError}
+						{errorEmail ? this.state.emailErrorMessage : null}
 					</div>
 					<br />
 					<Form.Label>Confirmación de Email *</Form.Label>
@@ -108,9 +114,11 @@ class Phone extends Component {
 						name='emailConfirm'
 						onChange={handleChange('emailConfirm')}
 						value={emailConfirm}
+						isInvalid={errorEmailC}
+						isValid={this.props.emailConfirm === this.props.email && this.props.emailConfirm !== ''}
 					/>
 					<div style={{ fontSize: 12, color: "red" }}>
-						{this.state.emailConfirmError}
+						{errorEmailC ? this.state.emailConfirmErrorMessage : null}
 					</div>
 				</Form.Group>
 				<br />
