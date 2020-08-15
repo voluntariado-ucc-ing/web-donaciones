@@ -94,6 +94,7 @@ class Names extends Component {
 						{surnameError ? this.state.lastNameErrorMessage : null}
 					</div>
 				</Form.Group>
+
 				<div className="bottomButton">
 					<Button onClick={this.back}
 						className="backButton btn"

@@ -12,7 +12,6 @@ import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline';
 //import address
 import Address from './3.1Address';
 import Nav from "react-bootstrap/Nav";
-import CustomizedProgressBars from "../Step";
 
 const initialState = {
     elementErrorMessage: "",
@@ -157,7 +156,6 @@ class Donation extends Component {
         const errorUnitO = this.state.otherUnitErrorMessage !== '' && !(donations[id].state.otherUnit !== '')
         return (
             <div>
-                <CustomizedProgressBars progress={40} />
                 <div className='donation'>
                     <Nav className={"justify-content-end mr-0 ml-0"}>
                         <Tooltip title="Nueva donación" arrow placement="top"

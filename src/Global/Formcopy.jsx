@@ -12,8 +12,6 @@ import Confirmation from './components/form/4Confirmation'
 import Verification from './components/form/0.1Verification'
 import Footer from "./Footer";
 
-import LinearProgress from '@material-ui/core/LinearProgress';
-
 // variables globales
 import './components/form/global';
 import Nav from "react-bootstrap/Nav";
@@ -26,6 +24,7 @@ class Formulario extends Component {
         super(props);
         this.state = {
             pasos: global.Introduccion,
+            progress: 0,
             donations: [],
             donationStep: 0,
             alreadyDonate: false,
@@ -75,7 +74,7 @@ class Formulario extends Component {
         if (this.state.pasos === global.Donacion) {
             return (
                 <div>
-                    <Nav className={"justify-content-start tab"} >
+                    <Nav className={"justify-content-start tab"}>
                         {
                             this.state.donations.map(mapNav => (
                                 <div key={mapNav.id}>
@@ -143,10 +142,15 @@ class Formulario extends Component {
 
 
     nextStep = () => {
-        const { pasos } = this.state;
+        const { pasos, progress } = this.state;
         this.setState({
             pasos: pasos + 1
         });
+
+        this.setState({
+            progress: progress + 25
+        });
+
         if (pasos === global.Contacto)
             this.setState({
                 alreadyDonate: false
@@ -162,9 +166,12 @@ class Formulario extends Component {
     };
 
     prevStep = () => {
-        const { pasos } = this.state;
+        const { pasos, progress } = this.state;
         this.setState({
             pasos: pasos - 1
+        });
+        this.setState({
+            progress: progress - 25
         });
     };
 
@@ -303,11 +310,11 @@ class Formulario extends Component {
 
 
     render() {
-        const { pasos } = this.state;
         return (
             <div>
-                <HeaderDonation />
+                <HeaderDonation/>
                 <Container fluid id='background'>
+                    <CustomizedProgressBars progress={this.state.progress}/>
                     <Container id="formulario">
                         <div id='left-letters'>
                             {this.init()}

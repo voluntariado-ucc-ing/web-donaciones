@@ -75,6 +75,7 @@ class Phone extends Component {
 		const errorPhone = phone === undefined || (this.state.phoneErrorMessage !== '') && (!(phone.length > "7" && phone.length < "16") || !phone)
 		const errorEmail = this.state.emailErrorMessage !== '' && !emailRegex.test(email)
 		const errorEmailC = (this.state.emailConfirmErrorMessage !== '') && !(emailConfirm === email && emailConfirm !== '')
+
 		return (
 			<Container>
 				<h5>Necesitamos los siguientes datos para poder comunicarnos con vos</h5>
