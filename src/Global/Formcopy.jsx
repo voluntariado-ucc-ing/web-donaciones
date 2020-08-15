@@ -143,6 +143,7 @@ class Formulario extends Component {
 
     nextStep = () => {
         const { pasos, progress } = this.state;
+
         this.setState({
             pasos: pasos + 1
         });
@@ -155,6 +156,7 @@ class Formulario extends Component {
             this.setState({
                 alreadyDonate: false
             });
+
         if (!this.state.firstDonationCreated) {
             let don = this.state.donations;
             let done = new Donation();
@@ -167,6 +169,7 @@ class Formulario extends Component {
 
     prevStep = () => {
         const { pasos, progress } = this.state;
+
         this.setState({
             pasos: pasos - 1
         });
@@ -176,16 +179,28 @@ class Formulario extends Component {
     };
 
     alreadyDonateNextStep = () => {
+        const { progress } = this.state;
+
         this.setState({
             pasos: global.YaHeDonado,
             alreadyDonate: true
         })
+
+        this.setState({
+            progress: progress + 25
+        });
     };
 
     alreadyDonatePrevStep = () => {
+        const { progress } = this.state;
+
         this.setState({
             pasos: global.Introduccion
         })
+
+        this.setState({
+            progress: progress - 25
+        });
     };
 
     //utilizado cuando el usuario ya 'creo' una donacion anteriormente
@@ -201,6 +216,10 @@ class Formulario extends Component {
         this.setState({
             pasos: global.Donacion
         })
+
+        this.setState({
+            progress: progress - 25
+        });
     };
 
     //utilizado cuando el usuario ya creo una donacion anteriormente
@@ -213,6 +232,10 @@ class Formulario extends Component {
             this.setState({
                 pasos: global.Contacto
             })
+
+        this.setState({
+            progress: progress - 25
+        });
     };
 
     //guardado de datos
