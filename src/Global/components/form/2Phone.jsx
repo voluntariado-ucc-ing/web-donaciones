@@ -54,8 +54,6 @@ class Phone extends Component {
 		e.preventDefault();
 		const isValid = this.validatePhone();
 		if (isValid) {
-			console.log(this.state);
-			// clear form
 			this.setState(initialState);
 			this.props.nextStep();
 		}
@@ -72,7 +70,7 @@ class Phone extends Component {
 
 	render() {
 		const { handleChange, email, emailConfirm, phone } = this.props;
-		const errorPhone = phone === undefined || (this.state.phoneErrorMessage !== '') && (!(phone.length > "7" && phone.length < "16") || !phone)
+		const errorPhone = (phone === undefined) || (this.state.phoneErrorMessage !== '') || !(phone.length > "7" && phone.length < "16") || !phone
 		const errorEmail = this.state.emailErrorMessage !== '' && !emailRegex.test(email)
 		const errorEmailC = (this.state.emailConfirmErrorMessage !== '') && !(emailConfirm === email && emailConfirm !== '')
 
@@ -86,7 +84,6 @@ class Phone extends Component {
 					defaultCountry="AR"
 					onChange={this.handleInputChange}
 					value={phone}
-					error={this.state.phoneErrorMessage !== ''}
 				/>
 				<div style={{ fontSize: 12, color: "red" }}>
 					{errorPhone ? this.state.phoneErrorMessage : null}

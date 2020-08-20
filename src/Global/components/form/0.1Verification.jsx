@@ -31,7 +31,7 @@ class Verification extends Component {
             //`https://cors-anywhere.herokuapp.com/https://b2f3beb00735.ngrok.io/donations/donators?mail`
             .then(res => {
                 console.log(res)
-                this.state.userInfo = res.data.userId
+                this.setState({ userInfo: res.data.userId })
                 this.setState({ loading: false })
                 this.props.nextStep()
             })

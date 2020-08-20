@@ -43,8 +43,6 @@ class Names extends Component {
 		e.preventDefault();
 		const isValid = this.validateName();
 		if (isValid) {
-			console.log(this.state);
-			// clear form
 			this.setState(initialState);
 			this.props.nextStep();
 		}
