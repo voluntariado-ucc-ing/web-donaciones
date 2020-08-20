@@ -205,6 +205,7 @@ class Formulario extends Component {
 
     //utilizado cuando el usuario ya 'creo' una donacion anteriormente
     nextStep2 = () => {
+        const { progress } = this.state;
         if (!this.state.firstDonationCreated) {
             let don = this.state.donations;
             let done = new Donation();
@@ -224,6 +225,7 @@ class Formulario extends Component {
 
     //utilizado cuando el usuario ya creo una donacion anteriormente
     prevStep2 = () => {
+        const { progress } = this.state;
         if (this.state.alreadyDonate === true)
             this.setState({
                 pasos: global.YaHeDonado
