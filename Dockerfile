@@ -1,16 +1,11 @@
-FROM node:10.19.0
+FROM node:13.14.0
 
-WORKDIR '/app'
-
-COPY package.json .
-
-COPY package-lock.json ./
+COPY . ./
 
 RUN npm install --silent
 RUN npm install -g serve
 RUN npm run build --silent
 
-COPY . .
 
 EXPOSE 3000
 
