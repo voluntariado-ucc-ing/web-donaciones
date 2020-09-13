@@ -28,7 +28,7 @@ class Verification extends Component {
     getNameByEmail(email) {
 
         axios
-            .get(`${API_DOMAIN}donations/donators?mail=${email}`)
+            .get(`donations/donators?mail=${email}`)
             .then(res => {
                 console.log(res)
                 this.setState({ userInfo: res.data.userId })

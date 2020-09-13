@@ -81,7 +81,7 @@ class Confirmation extends Component {
         let jsonFinal = { donations, donator }
 
         this.setState({ loading: true }, () => {
-            axios.post(`${API_DOMAIN}donations/create`, JSON.stringify(jsonFinal))
+            axios.post(`donations/create`, JSON.stringify(jsonFinal))
                 .then(response => {
                     console.log(response)
                     this.setState({ loading: false })
