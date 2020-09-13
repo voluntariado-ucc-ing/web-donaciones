@@ -83,7 +83,6 @@ class Confirmation extends Component {
         this.setState({ loading: true }, () => {
             axios.post(`donations/create`, JSON.stringify(jsonFinal))
                 .then(response => {
-                    console.log(response)
                     this.setState({ loading: false })
                     this.setState({ okMessage: true })
                 })
