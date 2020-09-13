@@ -14,6 +14,7 @@ import { GrMail } from "react-icons/gr";
 import { MdLocationOn } from "react-icons/md"
 import { FaHandHoldingHeart } from "react-icons/fa"
 import { MdEdit } from "react-icons/md"
+import { API_DOMAIN } from '../../../utils/config';
 
 const initialState = {
     loading: false,
@@ -80,8 +81,7 @@ class Confirmation extends Component {
         let jsonFinal = { donations, donator }
 
         this.setState({ loading: true }, () => {
-            axios.post('http://httpbin.org/post', JSON.stringify(jsonFinal))
-                //https://cors-anywhere.herokuapp.com/https://b2f3beb00735.ngrok.io/donations/create
+            axios.post(`${API_DOMAIN}donations/create`, JSON.stringify(jsonFinal))
                 .then(response => {
                     console.log(response)
                     this.setState({ loading: false })

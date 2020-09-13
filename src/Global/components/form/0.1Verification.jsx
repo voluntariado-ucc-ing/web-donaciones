@@ -4,6 +4,7 @@ import Button from '@material-ui/core/Button';
 import '../../css/Formcopy.css';
 import axios from "axios";
 import Alert from "@material-ui/lab/Alert";
+import { API_DOMAIN } from '../../../utils/config';
 
 
 let emailRegex;
@@ -27,8 +28,7 @@ class Verification extends Component {
     getNameByEmail(email) {
 
         axios
-            .get(`http://httpbin.org/post=${email}`)
-            //`https://cors-anywhere.herokuapp.com/https://b2f3beb00735.ngrok.io/donations/donators?mail`
+            .get(`${API_DOMAIN}donations/donators?mail=${email}`)
             .then(res => {
                 console.log(res)
                 this.setState({ userInfo: res.data.userId })
