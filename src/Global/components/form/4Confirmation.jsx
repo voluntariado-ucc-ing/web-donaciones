@@ -73,7 +73,7 @@ class Confirmation extends Component {
 
         let donator = {
             "first_name": this.props.all.firstName,
-            "last_name": this.props.all.firstName,
+            "last_name": this.props.all.lastName,
             "email": this.props.all.email,
             "phone_number": this.props.all.phone
         }
