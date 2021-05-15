@@ -20,6 +20,16 @@ const initialState = {
 };
 
 class Verification extends Component {
+    // mailEncontrado = (e) =>{
+    //     e.preventDefault();
+    //     this.props.pasaANuevaDonacion()
+    // }
+
+    // mailNoEncontrado = (e) =>{
+    //     e.preventDefault();
+    //     this.props.pasaANewDonor()
+    // }
+
     constructor(props) {
         super(props);
         this.state = initialState;
@@ -41,7 +51,7 @@ class Verification extends Component {
                 this.setState({ hasError: true })
             })
     }
-
+    //valida que este escrito con el @ y eso
     validateEmail = () => {
         let emailErrorMessage = "";
 
@@ -77,8 +87,11 @@ class Verification extends Component {
         }
 
         if (this.state.userInfo && !this.state.emailErrorMessage) {
-            this.props.nextStep()
+            this.props.pasaANuevaDonacion()
         }
+        else
+            this.props.pasaANewDonor()
+
     }
 
 
@@ -106,7 +119,8 @@ class Verification extends Component {
                     />
 
                     {
-                        loading ? <Alert severity="info">Buscando...</Alert> : hasError ? <Alert severity="error">No te encontramos...</Alert> : null
+                        //loading ? <Alert severity="info">Buscando...</Alert> : hasError ? this.mailNoEncontrado : this.mailEncontrado
+                        //loading ? <Alert severity="info">Buscando...</Alert> : hasError ? this.props.pasaANewDonor() : this.props.pasaANuevaDonacion()
                     }
 
                     <div style={{ fontSize: 12, color: "red" }}>
@@ -115,11 +129,11 @@ class Verification extends Component {
                 </Form.Group>
 
                 <div className="bottomButton">
-                    <Button
+                    {/* <Button
                         className="backButton btn"
                         variant="contained"
                         onClick={this.back}
-                    > Atrás</Button>
+                    > Atrás</Button> */}
 
                     <Button
                         className="forwardButton btn"

@@ -4,9 +4,10 @@ import Container from 'react-bootstrap/Container';
 import div from 'react-bootstrap/Form';
 
 // subcomponentes
-import Intro from './components/form/0.0Introduction'
+// import Intro from './components/form/0.0Introduction'
 import Names from './components/form/1Names'
 import Phone from './components/form/2Phone'
+import NewDonor from './components/form/NewDonor'
 import Donation from './components/form/3.0Donations'
 import Confirmation from './components/form/4Confirmation'
 import Verification from './components/form/0.1Verification'
@@ -19,11 +20,18 @@ import Button from "react-bootstrap/Button";
 import HeaderDonation from "./HeaderDonacion";
 import CustomizedProgressBars from "./components/Step";
 
+// global.Introduccion = 0
+// global.Nombre = 1
+// global.Contacto = 2
+// global.Donacion = 3
+// global.Confirmaion = 4
+// global.YaHeDonado = 11
+
 class Formulario extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            pasos: global.Introduccion,
+            pasos: global.YaHeDonado,
             progress: 0,
             donations: [],
             donationStep: 0,
@@ -42,26 +50,58 @@ class Formulario extends Component {
 
     //transiciones
     init = () => {
-
-        if (this.state.pasos === global.Introduccion)
-            return (<Intro
-                firstDonationButton={this.nextStep}
-                donationButon={this.alreadyDonateNextStep}
-            />);
-
-        if (this.state.pasos === global.Nombre)
+        if (this.state.pasos === global.YaHeDonado) {
+            console.log('Entro en 1')
             return (
-                <Names
+                <div>
+                    {console.log('Entro en 1.1')}
+                
+                <Verification
+                    // nextStep={this.nextStep2}
+                    //prevStep={this.alreadyDonatePrevStep}
+                    handleChange={this.handleChange}
+                    email={this.state.email}
+                    pasaANewDonor={this.nuevoDonanteStep}
+                    pasaANuevaDonacion={this.nextStep2}
+                />
+                {console.log('Entro en 1.2')}
+                </div>
+                ); 
+        }
+        if (this.state.pasos == global.pasaANuevoDonante)
+        {
+            console.log('Entro en 2')
+            return (
+                <div>
+                {console.log('Entro en 2.1')}
+            
+                <NewDonor
+                    nextStep={this.nextStep2}
+                    prevStep={this.prevStepNuevoDonante} 
+                    handleChange={this.handleChange}
+                    handlePhone={this.handlePhone}
+                    email={this.state.email}
+                    firstName={this.state.firstName}
+                    lastName={this.state.lastName}
+                    phone={this.state.phone}
+
+                // emailConfirm={this.state.emailConfirm}
+
+                />
+                {console.log('Entro en 2.2')}
+                
+                </div>
+            );
+        }
+            {/* <Names
                     nextStep={this.nextStep}
                     prevStep={this.prevStep}
                     handleChange={this.handleChange}
                     firstName={this.state.firstName}
                     lastName={this.state.lastName}
                 />
-            );
-
-        if (this.state.pasos === global.Contacto)
-            return (< Phone
+{/* Pasar de phone el telefono a name y ver lo del mail
+                < Phone
                 nextStep={this.nextStep}
                 prevStep={this.prevStep}
                 handleChange={this.handleChange}
@@ -69,7 +109,36 @@ class Formulario extends Component {
                 phone={this.state.phone}
                 email={this.state.email}
                 emailConfirm={this.state.emailConfirm}
-            />);
+            /> */}
+
+
+        // if (this.state.pasos === global.Introduccion)
+        //     return (<Intro
+        //         firstDonationButton={this.nextStep}
+        //         donationButon={this.alreadyDonateNextStep}
+        //     />);
+
+        // if (this.state.pasos === global.Nombre)
+        //     return (
+        //         <Names
+        //             nextStep={this.nextStep}
+        //             prevStep={this.prevStep}
+        //             handleChange={this.handleChange}
+        //             firstName={this.state.firstName}
+        //             lastName={this.state.lastName}
+        //         />
+        //     );
+
+        // if (this.state.pasos === global.Contacto)
+        //     return (< Phone
+        //         nextStep={this.nextStep}
+        //         prevStep={this.prevStep}
+        //         handleChange={this.handleChange}
+        //         handlePhone={this.handlePhone}
+        //         phone={this.state.phone}
+        //         email={this.state.email}
+        //         emailConfirm={this.state.emailConfirm}
+        //     />);
 
         if (this.state.pasos === global.Donacion) {
             return (
@@ -92,13 +161,14 @@ class Formulario extends Component {
                             ))
                         }
                     </Nav>
-
+                    {/* //Esto de acá abajo hace que las diferentes donaciones se vayan guardando en el array donations que definimos al principio */}
                     {this.state.donations.filter(x => x.id === this.state.donationStep).map(filteredDonation => (
                         <Donation
+    
                             donationStep={this.state.donationStep}
                             donations={this.state.donations}
-                            nextStep={this.nextStep}
-                            prevStep={this.prevStep2}
+                            nextStep={this.nextStepDonation}
+                            // prevStep={this.prevStep2}
                             handleDonacion={this.handleDonaciones}
                             handleUnit={this.handleUnitDonation}
                             key={filteredDonation.id}
@@ -119,7 +189,7 @@ class Formulario extends Component {
         }
 
         if (this.state.pasos === global.Confirmaion)
-            return (< Confirmation
+            return (< Confirmation 
                 alreadyDonate={this.state.alreadyDonate}
                 firstName={this.state.firstName}
                 lastName={this.state.lastName}
@@ -131,13 +201,6 @@ class Formulario extends Component {
                 all={this.state}
             />);
 
-        if (this.state.pasos === global.YaHeDonado)
-            return (<Verification
-                nextStep={this.nextStep2}
-                prevStep={this.alreadyDonatePrevStep}
-                handleChange={this.handleChange}
-                email={this.state.email}
-            />)
     };
 
 
@@ -167,6 +230,21 @@ class Formulario extends Component {
         }
     };
 
+
+    nextStepDonation = () => {
+        this.setState({
+            pasos : global.Confirmaion
+        })
+    }
+
+    prevStepNuevoDonante = () => {
+        this.setState({
+            pasos : global.YaHeDonado
+        })
+    }
+
+    
+
     prevStep = () => {
         const { pasos, progress } = this.state;
 
@@ -178,18 +256,18 @@ class Formulario extends Component {
         });
     };
 
-    alreadyDonateNextStep = () => {
-        const { progress } = this.state;
+    // alreadyDonateNextStep = () => {
+    //     const { progress } = this.state;
 
-        this.setState({
-            pasos: global.YaHeDonado,
-            alreadyDonate: true
-        })
+    //     this.setState({
+    //         pasos: global.YaHeDonado,
+    //         alreadyDonate: true
+    //     })
 
-        this.setState({
-            progress: progress + 25
-        });
-    };
+    //     this.setState({
+    //         progress: progress + 25
+    //     });
+    // };
 
     alreadyDonatePrevStep = () => {
         const { progress } = this.state;
@@ -223,22 +301,28 @@ class Formulario extends Component {
         });
     };
 
-    //utilizado cuando el usuario ya creo una donacion anteriormente
-    prevStep2 = () => {
-        const { progress } = this.state;
-        if (this.state.alreadyDonate === true)
-            this.setState({
-                pasos: global.YaHeDonado
-            });
-        else
-            this.setState({
-                pasos: global.Contacto
-            })
-
+    nuevoDonanteStep = () => {
         this.setState({
-            progress: progress - 25
-        });
-    };
+            pasos: global.pasaANuevoDonante
+        })
+    }
+
+    //utilizado cuando el usuario ya creo una donacion anteriormente
+    // prevStep2 = () => {
+    //     const { progress } = this.state;
+    //     if (this.state.alreadyDonate === true)
+    //         this.setState({
+    //             pasos: global.YaHeDonado
+    //         });
+    //     else
+    //         this.setState({
+    //             pasos: global.Contacto
+    //         })
+
+    //     this.setState({
+    //         progress: progress - 25
+    //     });
+    // };
 
     //guardado de datos
     handleChange = input => (e) => {
@@ -265,7 +349,8 @@ class Formulario extends Component {
         this.setState({ donations: updateDonations })
     };
 
-    //nueva donacion
+    //crea nueva donacion done y las carga en un array don
+    //donationStep hace referencia al paso entre los distintos id de donations
     clickNewDonation = () => {
         let don = this.state.donations;
         let done = new Donation();
@@ -337,9 +422,9 @@ class Formulario extends Component {
     render() {
         return (
             <div>
-                <HeaderDonation/>
+                <HeaderDonation />
                 <Container fluid id='background'>
-                    <CustomizedProgressBars progress={this.state.progress}/>
+                    <CustomizedProgressBars progress={this.state.progress} />
                     <Container id="formulario">
                         <div id='left-letters'>
                             {this.init()}

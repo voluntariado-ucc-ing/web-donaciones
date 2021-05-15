@@ -93,7 +93,7 @@ class Names extends Component {
 					</div>
 				</Form.Group>
 
-				<div className="bottomButton">
+				{/* <div className="bottomButton">
 					<Button onClick={this.back}
 						className="backButton btn"
 						variant="contained"
@@ -102,7 +102,7 @@ class Names extends Component {
 						className="forwardButton btn"
 						variant="contained"
 					>Continuar</Button>
-				</div>
+				</div> */}
 			</Container>
 		);
 	}
