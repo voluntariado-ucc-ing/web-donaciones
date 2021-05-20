@@ -34,12 +34,16 @@ class Confirmation extends Component {
         this.props.prevStep()
     };
 
+    /*Este es el que me persiste*/
+
     submit = (e) => {
         e.preventDefault()
 
+        //Creo los objetos para la donación
         let donations = []
         for (var i = 0; i < this.props.donations.length; i++) {
             let category
+            //mapeo las coategorías a un número entero
             switch (this.props.donations[i].state.category) {
                 case "tools":
                     category = 1
@@ -71,6 +75,7 @@ class Confirmation extends Component {
             }
         }
 
+        //Creo al objeto del donante
         let donator = {
             "first_name": this.props.all.firstName,
             "last_name": this.props.all.lastName,
@@ -78,6 +83,7 @@ class Confirmation extends Component {
             "phone_number": this.props.all.phone
         }
 
+        //Creo el objeto a persistir con lo de arriba
         let jsonFinal = { donations, donator }
 
         this.setState({ loading: true }, () => {

@@ -5,8 +5,12 @@ import Form from 'react-bootstrap/Form';
 import Button from '@material-ui/core/Button';
 import Container from 'react-bootstrap/Container';
 import '../../css/Formcopy.css';
+import axios from 'axios';
 
 const initialState = {
+    loading: false,
+    okMessage: false,
+    errorMessage: false,
     //Names
     firstNameErrorMessage: "",
     lastNameErrorMessage: "",
@@ -25,6 +29,43 @@ class NewDonor extends Component {
     constructor(props) {
         super(props);
         this.state = initialState;
+    }
+
+    submit = (e) => {
+        e.preventDefault()
+        const isValid = this.validatePhone();
+        if (isValid) {
+            this.setState(initialState);
+            //Creo los objetos para la donación
+            let donations = []
+
+            //Creo al objeto del donante
+            let donator = {
+                "first_name": this.props.firstName,
+                "last_name": this.props.lastName,
+                "email": this.props.email,
+                "phone_number": this.props.phone
+            }
+
+            //Creo el objeto a persistir con lo de arriba
+            let jsonFinal = { donations, donator }
+
+            this.setState({ loading: true }, () => {
+                axios.post(`donations/create`, JSON.stringify(jsonFinal))
+                    .then(response => {
+                        this.setState({ loading: false })
+                        this.setState({ okMessage: true })
+                    })
+                    .catch(error => {
+                        console.log(error)
+                        this.setState({ loading: false })
+                        this.setState({ errorMessage: true })
+                    })
+            })
+            this.props.nextStep();
+        }
+
+
     }
 
     //Funciones de Names
@@ -52,20 +93,6 @@ class NewDonor extends Component {
         return true;
     };
 
-    continue = e => {
-        e.preventDefault();
-        const isValid = this.validateName();
-        if (isValid) {
-            this.setState(initialState);
-            this.props.nextStep();
-        }
-    };
-
-    back = (e) => {
-        e.preventDefault();
-        this.props.prevStep()
-    };
-
     //Funciones de phone
     validatePhone = () => {
         let emailErrorMessage = "";
@@ -89,14 +116,15 @@ class NewDonor extends Component {
     };
 
 
-    continue = e => {
-        e.preventDefault();
-        const isValid = this.validatePhone();
-        if (isValid) {
-            this.setState(initialState);
-            this.props.nextStep();
-        }
-    };
+    // continue = e => {
+    //     e.preventDefault();
+    //     const isValid = this.validatePhone();
+    //     if (isValid) {
+    //         this.setState(initialState);
+    //         this.submit();
+    //         this.props.nextStep();
+    //     }
+    // };
 
     back = (e) => {
         e.preventDefault();
@@ -127,7 +155,7 @@ class NewDonor extends Component {
                 <br />
                 {/* Names */}
                 <Container>
-                    <Form.Group    id="formEmail">
+                    <Form.Group id="formEmail">
                         <Form.Label>Email *</Form.Label>
                         <Form.Control
                             type="email"
@@ -187,7 +215,7 @@ class NewDonor extends Component {
                 </Container>
                 {/* Phone */}
                 <Container>
-                    
+
                     <Form.Label>Teléfono o celular *</Form.Label>
                     <br />
                     <PhoneInput
@@ -205,7 +233,7 @@ class NewDonor extends Component {
                             variant="contained"
                             color="secondary"
                         > Atrás</Button>
-                        <Button onClick={this.continue}
+                        <Button onClick={this.submit}
                             className="forwardButton btn"
                             variant="contained"
                             color="primary"
