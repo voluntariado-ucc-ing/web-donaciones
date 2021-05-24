@@ -6,6 +6,7 @@ import Button from '@material-ui/core/Button';
 import Container from 'react-bootstrap/Container';
 import '../../css/Formcopy.css';
 import axios from 'axios';
+import { API_DOMAIN } from '../../../utils/config';
 
 const initialState = {
     loading: false,
@@ -51,6 +52,7 @@ class NewDonor extends Component {
             let jsonFinal = { donations, donator }
 
             this.setState({ loading: true }, () => {
+                console.log('en setState 1')
                 axios.post(`donations/create`, JSON.stringify(jsonFinal))
                     .then(response => {
                         this.setState({ loading: false })
@@ -61,10 +63,11 @@ class NewDonor extends Component {
                         this.setState({ loading: false })
                         this.setState({ errorMessage: true })
                     })
+                    console.log('en setState 2')
             })
+            console.log(jsonFinal);
             this.props.nextStep();
         }
-
 
     }
 

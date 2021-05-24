@@ -51,11 +51,9 @@ class Formulario extends Component {
     //transiciones
     init = () => {
         if (this.state.pasos === global.YaHeDonado) {
-            console.log('Entro en 1')
             return (
                 <div>
-                    {console.log('Entro en 1.1')}
-                
+                           
                 <Verification
                     // nextStep={this.nextStep2}
                     //prevStep={this.alreadyDonatePrevStep}
@@ -64,16 +62,15 @@ class Formulario extends Component {
                     pasaANewDonor={this.nuevoDonanteStep}
                     pasaANuevaDonacion={this.nextStep2}
                 />
-                {console.log('Entro en 1.2')}
+  
                 </div>
                 ); 
         }
         if (this.state.pasos == global.pasaANuevoDonante)
         {
-            console.log('Entro en 2')
+
             return (
                 <div>
-                {console.log('Entro en 2.1')}
             
                 <NewDonor
                     nextStep={this.nextStep2}
@@ -88,7 +85,6 @@ class Formulario extends Component {
                 // emailConfirm={this.state.emailConfirm}
 
                 />
-                {console.log('Entro en 2.2')}
                 
                 </div>
             );

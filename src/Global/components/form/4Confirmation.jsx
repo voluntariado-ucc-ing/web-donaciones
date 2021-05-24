@@ -75,12 +75,12 @@ class Confirmation extends Component {
             }
         }
 
-        //Creo al objeto del donante
+        //Creo al objeto del donante, ojo que sacamos los all
         let donator = {
-            "first_name": this.props.all.firstName,
-            "last_name": this.props.all.lastName,
-            "email": this.props.all.email,
-            "phone_number": this.props.all.phone
+            "first_name": this.props.firstName,
+            "last_name": this.props.lastName,
+            "email": this.props.email,
+            "phone_number": this.props.phone
         }
 
         //Creo el objeto a persistir con lo de arriba
