@@ -34,42 +34,105 @@ class NewDonor extends Component {
 
     submit = (e) => {
         e.preventDefault()
-        const isValid = this.validatePhone();
-        if (isValid) {
-            this.setState(initialState);
-            //Creo los objetos para la donación
-            let donations = []
 
-            //Creo al objeto del donante
-            let donator = {
-                "first_name": this.props.firstName,
-                "last_name": this.props.lastName,
-                "email": this.props.email,
-                "phone_number": this.props.phone
+        //Creo los objetos para la donación
+        let donations = []
+
+        let category = 0
+            donations[0] = {
+                "element": "test elemento",
+                "quantity": Number('3'),
+                "unit": "test unit",
+                "description": "test description",
+                "type_id": category,
+                "direction": {
+                    "street": "test street",
+                    "number": Number('3'),
+                    "details": "test details",
+                    "city": "test city"
+                }
             }
 
-            //Creo el objeto a persistir con lo de arriba
-            let jsonFinal = { donations, donator }
-
-            this.setState({ loading: true }, () => {
-                console.log('en setState 1')
-                axios.post(`donations/create`, JSON.stringify(jsonFinal))
-                    .then(response => {
-                        this.setState({ loading: false })
-                        this.setState({ okMessage: true })
-                    })
-                    .catch(error => {
-                        console.log(error)
-                        this.setState({ loading: false })
-                        this.setState({ errorMessage: true })
-                    })
-                    console.log('en setState 2')
-            })
-            console.log(jsonFinal);
-            this.props.nextStep();
+        //Creo al objeto del donante, ojo que sacamos los all
+        let donator = {
+            "first_name": this.props.firstName,
+            "last_name": this.props.lastName,
+            "email": this.props.email,
+            "phone_number": this.props.phone
         }
 
+        //Creo el objeto a persistir con lo de arriba
+        let jsonFinal = { donations, donator }
+
+        this.setState({ loading: true }, () => {
+            axios.post(`donations/create`, JSON.stringify(jsonFinal))
+                .then(response => {
+                    this.setState({ loading: false })
+                    this.setState({ okMessage: true })
+                })
+                .catch(error => {
+                    console.log(error)
+                    this.setState({ loading: false })
+                    this.setState({ errorMessage: true })
+                })
+        })
+        console.log(jsonFinal);
     }
+
+
+//Este tiene la validacion del telefono
+    // submit = (e) => {
+    //     e.preventDefault()
+    //     const isValid = this.validatePhone();
+    //     if (isValid) {
+    //         this.setState(initialState);
+    //         //Creo los objetos para la donación
+    //         let donations = []
+
+    //         let category = 0
+    //         donations[0] = {
+    //             "element": 'test elemento',
+    //             "quantity": Number('3'),
+    //             "unit": 'test unit',
+    //             "description": 'test description',
+    //             "type_id": category,
+    //             "direction": {
+    //                 "street": 'test street',
+    //                 "number": Number('3'),
+    //                 "details": 'test details',
+    //                 "city": 'test city'
+    //             }
+    //         }
+
+    //         //Creo al objeto del donante
+    //         let donator = {
+    //             "first_name": this.props.firstName,
+    //             "last_name": this.props.lastName,
+    //             "email": this.props.email,
+    //             "phone_number": this.props.phone
+    //         }
+
+    //         //Creo el objeto a persistir con lo de arriba
+    //         let jsonFinal = { donations, donator }
+
+    //         this.setState({ loading: true }, () => {
+    //             console.log('en setState 1')
+    //             axios.post(`donations/create`, JSON.stringify(jsonFinal))
+    //                 .then(response => {
+    //                     this.setState({ loading: false })
+    //                     this.setState({ okMessage: true })
+    //                 })
+    //                 .catch(error => {
+    //                     console.log(error)
+    //                     this.setState({ loading: false })
+    //                     this.setState({ errorMessage: true })
+    //                 })
+    //                 console.log('en setState 2')
+    //         })
+    //         console.log(jsonFinal);
+    //         this.props.nextStep();
+    //     }
+    // }
 
     //Funciones de Names
     validateName = () => {
