@@ -98,6 +98,7 @@ class Confirmation extends Component {
                     this.setState({ errorMessage: true })
                 })
         })
+        console.log(jsonFinal);
     }
 
     render() {
@@ -106,20 +107,7 @@ class Confirmation extends Component {
             <Container className={"justify-content-center"}>
                 <h4>CONFIRMACIÓN DE DONACIÓN</h4>
                 <br />
-                {
-                    alreadyDonate ?
-                        (<h5>¡Hola, {}!</h5>) :
-                        (
-                            <>
-                                <Form.Label>Tus datos</Form.Label>
-                                <hr className={"mt-1 mb-1"} />
-                                <Form.Label><GoPerson /> {firstName} {lastName}</Form.Label>
-                                <br />
-                                <Form.Label><FaPhone />  {phone}</Form.Label>
-
-                            </>
-                        )
-                }
+                    <h5>¡Hola { this.props.firstName }!</h5>
                 <Form.Group id="formEmail">
                     <Form.Label><GrMail /> {email}</Form.Label>
                 </Form.Group>

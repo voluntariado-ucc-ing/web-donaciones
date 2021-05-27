@@ -34,25 +34,6 @@ class NewDonor extends Component {
 
     submit = (e) => {
         e.preventDefault()
-
-        //Creo los objetos para la donación
-        let donations = []
-
-        let category = 0
-            donations[0] = {
-                "element": "test elemento",
-                "quantity": Number('3'),
-                "unit": "test unit",
-                "description": "test description",
-                "type_id": category,
-                "direction": {
-                    "street": "test street",
-                    "number": Number('3'),
-                    "details": "test details",
-                    "city": "test city"
-                }
-            }
-
         //Creo al objeto del donante, ojo que sacamos los all
         let donator = {
             "first_name": this.props.firstName,
@@ -62,10 +43,10 @@ class NewDonor extends Component {
         }
 
         //Creo el objeto a persistir con lo de arriba
-        let jsonFinal = { donations, donator }
+        let jsonFinal = { donator }
 
         this.setState({ loading: true }, () => {
-            axios.post(`donations/create`, JSON.stringify(jsonFinal))
+            axios.post(`donations/createdonor`, JSON.stringify(jsonFinal))
                 .then(response => {
                     this.setState({ loading: false })
                     this.setState({ okMessage: true })
@@ -77,10 +58,11 @@ class NewDonor extends Component {
                 })
         })
         console.log(jsonFinal);
+        this.props.nextStep();
     }
 
 
-//Este tiene la validacion del telefono
+    //Este tiene la validacion del telefono
     // submit = (e) => {
     //     e.preventDefault()
     //     const isValid = this.validatePhone();
