@@ -87,6 +87,7 @@ class Confirmation extends Component {
         let jsonFinal = { donations, donator }
 
         this.setState({ loading: true }, () => {
+            console.log("EAC1")
             axios.post(`donations/create`, JSON.stringify(jsonFinal))
                 .then(response => {
                     this.setState({ loading: false })

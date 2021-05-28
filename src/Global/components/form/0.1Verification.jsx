@@ -15,6 +15,9 @@ emailRegex = RegExp(
 const initialState = {
     emailErrorMessage: "",
     userInfo: "",
+    firstNameT:"",
+    lastNameT:"",
+    phoneT:"",
     loading: false,
     hasError: false
 };
@@ -43,7 +46,10 @@ class Verification extends Component {
                 console.log(res)
                 this.setState({ userInfo: res.data.userId })
                 this.setState({ loading: false })
-                this.props.nextStep()
+                // this.setState({ lastNameT: res.data.lastName })
+                // this.setState({ firstNameT: res.data.firstName })
+                // this.setState({ phoneT: res.data.phone })
+                // this.props.nextStep()
             })
             .catch(err => {
                 console.log(err)
@@ -80,13 +86,14 @@ class Verification extends Component {
 
         if (isValid) {
             this.setState({ loading: true })
-
-            setTimeout(() => this.getNameByEmail(this.props.email), 2000)
+            this.getNameByEmail(this.props.email)
+            // setTimeout(() => this.getNameByEmail(this.props.email), 2000)
             // clear form
             this.setState(initialState);
         }
 
         if (this.state.userInfo && !this.state.emailErrorMessage) {
+            this.props.handleUserInfo(this.lastNameT, this.firstNameT, this.phoneT)
             this.props.pasaANuevaDonacion()
         }
         else

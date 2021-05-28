@@ -8,6 +8,7 @@ import div from 'react-bootstrap/Form';
 import Names from './components/form/1Names'
 import Phone from './components/form/2Phone'
 import NewDonor from './components/form/NewDonor'
+import UpdateDonor from './components/form/UpdateDonor'
 import Donation from './components/form/3.0Donations'
 import Confirmation from './components/form/4Confirmation'
 import Verification from './components/form/0.1Verification'
@@ -75,6 +76,29 @@ class Formulario extends Component {
                 <NewDonor
                     nextStep={this.nextStep2}
                     prevStep={this.prevStepNuevoDonante} 
+                    handleChange={this.handleChange}
+                    handlePhone={this.handlePhone}
+                    email={this.state.email}
+                    firstName={this.state.firstName}
+                    lastName={this.state.lastName}
+                    phone={this.state.phone}
+
+                // emailConfirm={this.state.emailConfirm}
+
+                />
+                
+                </div>
+            );
+        }
+        if (this.state.pasos == global.MisDatos)
+        {
+
+            return (
+                <div>
+            
+                <UpdateDonor
+                    nextStep={this.nextStep2}
+                    //prevStep={this.prevStepNuevoDonante} 
                     handleChange={this.handleChange}
                     handlePhone={this.handlePhone}
                     email={this.state.email}
@@ -164,7 +188,7 @@ class Formulario extends Component {
                             donationStep={this.state.donationStep}
                             donations={this.state.donations}
                             nextStep={this.nextStepDonation}
-                            // prevStep={this.prevStep2}
+                            prevStep={this.prevStepNuevaDonacion}
                             handleDonacion={this.handleDonaciones}
                             handleUnit={this.handleUnitDonation}
                             key={filteredDonation.id}
@@ -204,7 +228,8 @@ class Formulario extends Component {
         const { pasos, progress } = this.state;
 
         this.setState({
-            pasos: pasos + 1
+            //pasos: pasos + 1
+            pasos: global.Donacion
         });
 
         this.setState({
@@ -232,6 +257,13 @@ class Formulario extends Component {
             pasos : global.Confirmaion
         })
     }
+
+    prevStepNuevaDonacion = () => {
+        this.setState({
+            pasos : global.MisDatos
+        })
+    }
+
 
     prevStepNuevoDonante = () => {
         this.setState({
@@ -319,6 +351,13 @@ class Formulario extends Component {
     //         progress: progress - 25
     //     });
     // };
+
+
+    handleUserInfo = (lastName, firstName, phone) => {
+        this.setState({ phone: phone })
+        this.setState({ lastName: lastName })
+        this.setState({ firstName: firstName })
+    }
 
     //guardado de datos
     handleChange = input => (e) => {
