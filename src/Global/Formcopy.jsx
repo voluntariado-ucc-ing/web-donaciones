@@ -59,10 +59,12 @@ class Formulario extends Component {
                     // nextStep={this.nextStep2}
                     //prevStep={this.alreadyDonatePrevStep}
                     handleChange={this.handleChange}
+                    handleUserInfo={this.handleUserInfo}
                     email={this.state.email}
                     pasaANewDonor={this.nuevoDonanteStep}
                     pasaANuevaDonacion={this.nextStep2}
                 />
+
   
                 </div>
                 ); 
@@ -72,6 +74,8 @@ class Formulario extends Component {
 
             return (
                 <div>
+               { console.log(this.state.lastName + "ND1") }
+               { console.log(this.state.phone + "ND2") }
             
                 <NewDonor
                     nextStep={this.nextStep2}
@@ -95,7 +99,7 @@ class Formulario extends Component {
 
             return (
                 <div>
-            
+            {console.log("updateD")}
                 <UpdateDonor
                     nextStep={this.nextStep2}
                     //prevStep={this.prevStepNuevoDonante} 
@@ -113,56 +117,13 @@ class Formulario extends Component {
                 </div>
             );
         }
-            {/* <Names
-                    nextStep={this.nextStep}
-                    prevStep={this.prevStep}
-                    handleChange={this.handleChange}
-                    firstName={this.state.firstName}
-                    lastName={this.state.lastName}
-                />
-{/* Pasar de phone el telefono a name y ver lo del mail
-                < Phone
-                nextStep={this.nextStep}
-                prevStep={this.prevStep}
-                handleChange={this.handleChange}
-                handlePhone={this.handlePhone}
-                phone={this.state.phone}
-                email={this.state.email}
-                emailConfirm={this.state.emailConfirm}
-            /> */}
 
-
-        // if (this.state.pasos === global.Introduccion)
-        //     return (<Intro
-        //         firstDonationButton={this.nextStep}
-        //         donationButon={this.alreadyDonateNextStep}
-        //     />);
-
-        // if (this.state.pasos === global.Nombre)
-        //     return (
-        //         <Names
-        //             nextStep={this.nextStep}
-        //             prevStep={this.prevStep}
-        //             handleChange={this.handleChange}
-        //             firstName={this.state.firstName}
-        //             lastName={this.state.lastName}
-        //         />
-        //     );
-
-        // if (this.state.pasos === global.Contacto)
-        //     return (< Phone
-        //         nextStep={this.nextStep}
-        //         prevStep={this.prevStep}
-        //         handleChange={this.handleChange}
-        //         handlePhone={this.handlePhone}
-        //         phone={this.state.phone}
-        //         email={this.state.email}
-        //         emailConfirm={this.state.emailConfirm}
-        //     />);
 
         if (this.state.pasos === global.Donacion) {
             return (
                 <div>
+                     { console.log(this.state.lastName + "D") }
+               { console.log(this.state.phone + "D") }
                     <Nav className={"justify-content-start tab"}>
                         {
                             this.state.donations.map(mapNav => (
@@ -223,6 +184,7 @@ class Formulario extends Component {
 
     };
 
+    consoleFunction = (param) => console.log(param);
 
     nextStep = () => {
         const { pasos, progress } = this.state;
@@ -309,6 +271,7 @@ class Formulario extends Component {
         });
     };
 
+
     //utilizado cuando el usuario ya 'creo' una donacion anteriormente
     nextStep2 = () => {
         const { progress } = this.state;
@@ -357,6 +320,8 @@ class Formulario extends Component {
         this.setState({ phone: phone })
         this.setState({ lastName: lastName })
         this.setState({ firstName: firstName })
+        console.log("handleUserInfo")
+        console.log(this.lastName)
     }
 
     //guardado de datos

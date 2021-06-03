@@ -15,11 +15,11 @@ emailRegex = RegExp(
 const initialState = {
     emailErrorMessage: "",
     userInfo: "",
-    firstNameT:"",
-    lastNameT:"",
-    phoneT:"",
+    firstNameT: "",
+    lastNameT: "",
+    phoneT: "",
     loading: false,
-    hasError: false
+    hasError: false,
 };
 
 class Verification extends Component {
@@ -45,18 +45,25 @@ class Verification extends Component {
             .then(res => {
                 console.log(res)
                 this.setState({ userInfo: res.data.userId })
+                //this.setState({ userInfo: String(res.data.donator_id)})
+                console.log(res.data.donator_id)
+                console.log("1")
                 this.setState({ loading: false })
-                // this.setState({ lastNameT: res.data.lastName })
-                // this.setState({ firstNameT: res.data.firstName })
-                // this.setState({ phoneT: res.data.phone })
-                // this.props.nextStep()
+                this.props.handleUserInfo(res.data.last_name, res.data.first_name, res.data.phone_number)
+                console.log("2")
+                this.props.pasaANuevaDonacion()
+                console.log("3")
             })
             .catch(err => {
                 console.log(err)
                 this.setState({ loading: false })
                 this.setState({ hasError: true })
+                this.setState({ notFound: true })
+                this.props.pasaANewDonor()
             })
     }
+
+
     //valida que este escrito con el @ y eso
     validateEmail = () => {
         let emailErrorMessage = "";
@@ -81,6 +88,7 @@ class Verification extends Component {
 
     continue = e => {
         e.preventDefault();
+        console.log("continue")
 
         const isValid = this.validateEmail();
 
@@ -93,11 +101,9 @@ class Verification extends Component {
         }
 
         if (this.state.userInfo && !this.state.emailErrorMessage) {
-            this.props.handleUserInfo(this.lastNameT, this.firstNameT, this.phoneT)
+            console.log("if")
             this.props.pasaANuevaDonacion()
         }
-        else
-            this.props.pasaANewDonor()
 
     }
 
