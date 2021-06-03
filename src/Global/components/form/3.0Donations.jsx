@@ -143,6 +143,7 @@ class Donation extends Component {
     };
 
     back = (e) => {
+        console.log("back en donations")
         e.preventDefault();
         this.props.prevStep()
     };

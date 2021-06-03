@@ -69,13 +69,13 @@ class Formulario extends Component {
                 </div>
                 ); 
         }
+
         if (this.state.pasos == global.pasaANuevoDonante)
         {
 
             return (
                 <div>
-               { console.log(this.state.lastName + "ND1") }
-               { console.log(this.state.phone + "ND2") }
+               { console.log("NewDonor1") }
             
                 <NewDonor
                     nextStep={this.nextStep2}
@@ -94,12 +94,13 @@ class Formulario extends Component {
                 </div>
             );
         }
+
         if (this.state.pasos == global.MisDatos)
         {
 
             return (
                 <div>
-            {console.log("updateD")}
+                {console.log("updateD")}
                 <UpdateDonor
                     nextStep={this.nextStep2}
                     //prevStep={this.prevStepNuevoDonante} 
@@ -122,8 +123,6 @@ class Formulario extends Component {
         if (this.state.pasos === global.Donacion) {
             return (
                 <div>
-                     { console.log(this.state.lastName + "D") }
-               { console.log(this.state.phone + "D") }
                     <Nav className={"justify-content-start tab"}>
                         {
                             this.state.donations.map(mapNav => (
@@ -221,9 +220,11 @@ class Formulario extends Component {
     }
 
     prevStepNuevaDonacion = () => {
+        console.log("prevStepNuevaDonacion1")
         this.setState({
             pasos : global.MisDatos
         })
+        console.log(this.state.pasos)
     }
 
 
