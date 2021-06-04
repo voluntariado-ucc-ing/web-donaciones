@@ -24,6 +24,7 @@
     "react-bootstrap": "^1.0.1",
     "react-cool-tabs": "^1.1.6",
     "react-dom": "^16.13.1",
+    "react-excel-renderer": "^1.1.0",
     "react-icons": "^3.10.0",
     "react-phone-number-input": "^3.0.22",
     "react-player": "^2.0.1",

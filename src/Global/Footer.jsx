@@ -35,6 +35,11 @@ class Footer extends Component {
                                     @voluntariadouccing
                                 </p>
                             </a>
+                            <a target="_blank" href={"/volunteers"} rel="noopener noreferrer">
+                                    <p className={"text-light"}>
+                                        Excel voluntarios
+                                    </p>
+                                </a>
                         </Col>
                         <Col>
                             <FontAwesomeIcon icon={faPhone} />
