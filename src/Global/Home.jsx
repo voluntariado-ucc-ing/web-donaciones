@@ -18,10 +18,27 @@ class Home extends Component {
             <div>
                 <Header />
                 <div className="totalContainer">
-                    <Container id="intro" fluid className={"background"}>
-                        <div className="transbox">
+                    <CarouselUcc id="intro" fluid className={"background"} />
+                        {/* <div className="transbox">
                             <Badge variant="light"><h1>Voluntariado Barrio El Milagro</h1></Badge>
-                        </div>
+                        </div> */}
+                    {/* </CarouselUcc> */}
+
+                    <Container id="ayudanos" fluid className={"site-section heading site-color how"}>
+                        <Row>
+                            <Col>
+                                <h2 className={"w-border"}>Cómo podes ayudarnos a ayudar</h2>
+                                <p>Recibimos materiales y elementos de construcción, alimentos, ropa y todo aquello que pueda colaborar con nuestra labor en el barrio.
+
+                                    También puede colaborar con dinero para que el voluntariado adquiera lo necesario para realizar las tareas solidarias. </p>
+                            </Col>
+                            <Col>
+                                <ButtonGroup vertical className={"info"}>
+                                    <Button variant="outline-dark" size="lg" className="link btn" target="_blank" href={"https://donaronline.org/universidad-catolica-de-cordoba/grupo-voluntario-de-jovenes-universitarios-en-barrio-el-milagro?preview=true"}>Donar dinero(transferencia)</Button>
+                                    <Button variant="outline-dark" size="lg" className="link" target="_blank" href={"/form"}>Otra clase de donaciones</Button>
+                                </ButtonGroup>
+                            </Col>
+                        </Row>
                     </Container>
 
                     <Container id="quienesSomos" fluid className="site-section heading">
@@ -48,27 +65,10 @@ class Home extends Component {
                         </Row>
                     </Container>
 
-                    <Container id="ayudanos" fluid className={"site-section heading site-color how"}>
-                        <Row>
-                            <Col>
-                                <h2 className={"w-border"}>Cómo podes ayudarnos a ayudar</h2>
-                                <p>Recibimos materiales y elementos de construcción, alimentos, ropa y todo aquello que pueda colaborar con nuestra labor en el barrio.
-
-                                    También puede colaborar con dinero para que el voluntariado adquiera lo necesario para realizar las tareas solidarias. </p>
-                            </Col>
-                            <Col>
-                                <ButtonGroup vertical className={"info"}>
-                                    <Button variant="outline-dark" size="lg" className="link btn" target="_blank" href={"https://donaronline.org/universidad-catolica-de-cordoba/grupo-voluntario-de-jovenes-universitarios-en-barrio-el-milagro?preview=true"}>Donar dinero(transferencia)</Button>
-                                    <Button variant="outline-dark" size="lg" className="link" target="_blank" href={"/form"}>Otra clase de donaciones</Button>
-                                </ButtonGroup>
-                            </Col>
-                        </Row>
-                    </Container>
-
-                    <Container id="queHacemos" fluid className={"site-section heading what"}>
+                    {/* <Container id="queHacemos" fluid className={"site-section heading what"}>
                         <h2>Qué hacemos</h2>
                         <CarouselUcc />
-                    </Container>
+                    </Container> */}
 
                     <Container id="dondeEstamos" fluid className={"site-section heading where"}>
                         <Row className={"justify-content-md-center"} xs={1} md={2}>

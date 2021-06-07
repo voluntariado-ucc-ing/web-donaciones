@@ -92,6 +92,7 @@ class Confirmation extends Component {
                 .then(response => {
                     this.setState({ loading: false })
                     this.setState({ okMessage: true })
+                    this.props.fullProgress()
                 })
                 .catch(error => {
                     console.log(error)

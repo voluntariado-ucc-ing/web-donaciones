@@ -10,8 +10,10 @@ class CarouselUcc extends Component {
         <ReactPlayer
           url='https://www.youtube.com/watch?v=soUWTT424Z4'
           className='react-player centerVideo'
-          width='40%'
-          height='40%'
+          // width='40%'
+          // height='40%'
+          playing={true}
+          muted={true}
         />
       </div>
     );
