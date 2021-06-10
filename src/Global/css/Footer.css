@@ -7,6 +7,10 @@
     min-height: 15vh;
 }
 
+.title{
+    align-content: center;
+}
+
 @media (min-width: 500px) and (max-width: 600px){
     .mobile-footer{
         display: inline-block;
@@ -16,3 +20,29 @@
     }
 }
 
+.how p{
+    align-content: center;
+    font-size: x-small;
+    font-family: 'Montserrat', sans-serif;;
+}
+
+.how h5{
+    width: 80%;
+    margin-left: 10%;
+    font-family: 'Montserrat', sans-serif;
+    font-size: mediums;
+}
+
+.how h6{
+    width: 80%;
+    margin-left: 10%;
+    font-family: 'Montserrat', sans-serif;
+    font-size: small;
+}
+
+a{
+    margin-top: 2px;
+    margin-left: 2px;
+    margin-right: 2px;
+    margin-bottom: 2px;
+}
