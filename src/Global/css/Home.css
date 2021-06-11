@@ -187,15 +187,13 @@ body {
     margin-left: 10%;
 }
 
+
 .how p{
     transition: transform .3s;
     width: 80%;
     margin-left: 10%;
 }
 
-.how p:hover{
-    transform: scale(1.1);
-}
 
 #map{
     width: 100%;
