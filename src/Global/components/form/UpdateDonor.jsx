@@ -129,12 +129,11 @@ class UpdateDonor extends Component {
 
 
             return (
-                <div>
-                    <h4>Primera donación</h4>
-                    <h5>Datos de contacto</h5>
+                <div className="donorDiv">
+                    <h4>Actualizar Datos</h4>
+                    <h5>Mis datos de contacto</h5>
                     <br />
                     {/* Names */}
-                    <Container>
                         <Form.Group id="formEmail">
                             <Form.Label>Email *</Form.Label>
                             <Form.Control
@@ -193,9 +192,6 @@ class UpdateDonor extends Component {
 						variant="contained"
 					>Continuar</Button>
 				</div> */}
-                    </Container>
-                    {/* Phone */}
-                    <Container>
 
                         <Form.Label>Teléfono o celular *</Form.Label>
                         <br />
@@ -220,7 +216,6 @@ class UpdateDonor extends Component {
                                 color="primary"
                             >Continuar</Button>
                         </div>
-                    </Container >
                 </div>
             );
 

@@ -139,12 +139,11 @@ class NewDonor extends Component {
 
     
         return (
-            <div>
+            <div className="donorDiv">
                 <h4>Primera donación</h4>
                 <h5>Datos de contacto</h5>
                 <br />
                 {/* Names */}
-                <Container>
                     <Form.Group id="formEmail">
                         <Form.Label>Email *</Form.Label>
                         <Form.Control
@@ -202,9 +201,6 @@ class NewDonor extends Component {
 						variant="contained"
 					>Continuar</Button>
 				</div> */}
-                </Container>
-                {/* Phone */}
-                <Container>
                     <Form.Label>Teléfono o celular *</Form.Label>
                     <br />
                     <PhoneInput
@@ -228,7 +224,6 @@ class NewDonor extends Component {
                             color="primary"
                         >Enviar mis datos</Button>
                     </div>
-                </Container >
             </div>
         );
 

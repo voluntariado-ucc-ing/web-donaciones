@@ -41,13 +41,13 @@ class Home extends Component {
                     <div>
                         <Row id="mainRow" className="blueBackground">
                             <Col id="title" lg={4} sm={12}>
-                                <Row> 
+                                <Row>
                                     <Col>
-                                    <h3>VOLUNTARIADO</h3>
-                                    <h2>BARRIO EL MILAGRO</h2>
-                                    <br></br>
-                                    <h5>AYUDANOS A AYUDAR</h5>
-                                    <br></br>
+                                        <h3>VOLUNTARIADO</h3>
+                                        <h2>BARRIO EL MILAGRO</h2>
+                                        <br></br>
+                                        <h5>AYUDANOS A AYUDAR</h5>
+                                        <br></br>
                                     </Col>
                                 </Row>
 
@@ -64,17 +64,9 @@ class Home extends Component {
                                     <br></br>
                                     <p>Recibimos materiales y elementos de construcción, alimentos, ropa y todo aquello que pueda colaborar con nuestra labor en el barrio.
 
-                                    También puede colaborar con dinero para que el voluntariado adquiera lo necesario para realizar las tareas solidarias. </p>
+                                        También puede colaborar con dinero para que el voluntariado adquiera lo necesario para realizar las tareas solidarias. </p>
                                 </Row>
 
-{/* Ver de poner esta imagen en la esquina inferior del video y chiquito */}
-
-                                {/* <Row>
-                                    <img
-                                     src={require('../images/logoVoluntariadoSinFondo.png')}
-                                     alt={"voluntarios"}
-                                     className={"logo2"}/>
-                                </Row> */}
                             </Col>
                             <Col lg={8} sm={12} id="ytVideo" style={vidStyle}>
                                 <Iframe type="text/html" width="100%" height="100%"
@@ -82,33 +74,15 @@ class Home extends Component {
                                     frameborder="0" />
                             </Col>
                         </Row>
+                            {/* <Row id="logoVideoRow">
+                                <img
+                                    src={require('../images/logoVoluntariadoSinFondo.png')}
+                                    alt={"voluntarios"} 
+                                    />
+                            </Row> */}
                     </div>
 
-                    {/* <div className="containert">
-                        <Iframe className="playert" type="text/html" width="100%" height="70%"
-                            src={'https://www.youtube.com/embed/soUWTT424Z4?autoplay=1&mute=1&loop'}
-                            frameborder="0" />
-                    </div> */}
-                    <div>
-                        {/* <Container id="ayudanos" fluid className={"site-section heading site-color how overlay"}>
-                            <Col className={"overlay"}>
-                                <Row>
-                                    <h2 className={"w-border"}>Ayudanos a ayudar</h2>
-                                    <Col className={"overlay"}>
-                                        <ButtonGroup horizontal className={"info"}>
-                                            <Col>
-                                                <Button variant="outline-dark" size="lg" className="link btn" target="_blank" href={"https://donaronline.org/universidad-catolica-de-cordoba/grupo-voluntario-de-jovenes-universitarios-en-barrio-el-milagro?preview=true"}>Transferir dinero</Button>
-                                            </Col>
-                                            <Col>
-                                                <Button variant="outline-dark" size="lg" className="link" target="_blank" href={"/form"}>Otra donación</Button>
 
-                                            </Col>
-                                        </ButtonGroup>
-                                    </Col>
-                                </Row>
-                            </Col>
-                        </Container> */}
-                    </div>
                     <div>
 
                         <Container id="quienesSomos" fluid className="site-section heading">
@@ -121,8 +95,8 @@ class Home extends Component {
                                     <p>Los encuentros se llevan a cabo los días sábados de 9 a 13 hs en el barrio El Milagro, al lado de Ciudad Obispo Angelelli, Córdoba.</p>
                                 </Col>
                                 <Col>
-                                    <iframe 
-                                    id='map'
+                                    <iframe
+                                        id='map'
                                         title='myFrame'
                                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3401.8228500839773!2d-64.1979016848499!3d-31.50155278137586!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9432a5ecfcca7701%3A0xe8d124696f0e3b94!2sBarrio%20el%20milagro!5e0!3m2!1ses!2sar!4v1589661316454!5m2!1ses!2sar"
                                         width={wmap} height="340" frameBorder="0" allowFullScreen=""
