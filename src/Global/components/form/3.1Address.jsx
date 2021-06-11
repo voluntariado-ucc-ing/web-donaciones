@@ -16,7 +16,7 @@ class Address extends Component {
         const { handleChange, checkedChange, id, city, street, number, floorNumber, checked, donations, firstCheck, cityErrorMessage, streetErrorMessage, numberErrorMessage } = this.props;
         const errorCity = cityErrorMessage !== '' && !(city !== '')
         const errorStreet = streetErrorMessage !== '' && !(street !== '')
-        const errorNumber = numberErrorMessage !== '' && !(number !== '')
+        const errorNumber = numberErrorMessage !== ''
         return (
             <div>
                 <hr className={"m-1"} />
@@ -74,6 +74,7 @@ class Address extends Component {
 
                                     <Form.Control type="number" placeholder="Altura"
                                         name="number"
+                                        min= "0"
                                         onChange={handleChange('number', id)}
                                         value={number}
                                         isInvalid={errorNumber}

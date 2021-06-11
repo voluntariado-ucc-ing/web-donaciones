@@ -73,8 +73,7 @@ class Donation extends Component {
             categoryErrorMessage = "Ingrese la categoría";
 
 
-        if (!this.props.donations[this.props.id].state.quantity ||
-            this.props.donations[this.props.id].state.quantity <= 0)
+        if (!this.props.donations[this.props.id].state.quantity || this.props.donations[this.props.id].state.quantity <= 0)
             quantityErrorMessage = "Ingrese la cantidad";
 
 
@@ -93,7 +92,7 @@ class Donation extends Component {
         if (!this.props.donations[this.props.id].state.street)
             streetErrorMessage = "Ingrese calle de la donación"
 
-        if (!this.props.donations[this.props.id].state.number)
+        if (!this.props.donations[this.props.id].state.number || this.props.donations[this.props.id].state.number <= 0)
             numberErrorMessage = "Ingrese a que altura se encuentra"
 
 
@@ -152,7 +151,8 @@ class Donation extends Component {
         const { handleDonacion, id, donations, checkedChange, directionChange } = this.props;
         const errorElement = this.state.elementErrorMessage !== '' && !(donations[id].state.elementDonation !== '')
         const errorCategory = this.state.categoryErrorMessage !== '' && !(donations[id].state.category !== '')
-        const errorQuantity = this.state.quantityErrorMessage !== '' && !(donations[id].state.quantity !== '')
+        const errorQuantity = (this.state.quantityErrorMessage !== '')
+        //|| !(donations[id].state.quantity !== '') || (donations[id].state.quantity <= 0
         const errorUnit = this.state.unitErrorMessage !== '' && !(donations[id].state.unit !== '')
         const errorUnitO = this.state.otherUnitErrorMessage !== '' && !(donations[id].state.otherUnit !== '')
         return (
@@ -225,9 +225,10 @@ class Donation extends Component {
                                 <Form.Group as={Col} md='4'>
 
                                     <Form.Label>Cantidad *</Form.Label>
-                                    <Form.Control
-                                        type="number"
-                                        name="quantity"
+                                    <Form.Control type="number"
+                                        name="number"
+                                        min= "0"
+                                        //name="quantity"
                                         onChange={handleDonacion('quantity', id)}
                                         value={donations[id].state.quantity}
                                         isInvalid={errorQuantity}
@@ -326,7 +327,7 @@ class Donation extends Component {
                                     type="submit"
                                     className="forwardButton btn"
                                     variant="contained"
-                                >Finalizar</Button>
+                                >Enviar</Button>
                             </div>
                         </Col>
                     </Row >
@@ -337,4 +338,5 @@ class Donation extends Component {
 }
 
 export default Donation;
+
 
