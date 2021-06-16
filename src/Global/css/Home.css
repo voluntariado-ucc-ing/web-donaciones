@@ -1,3 +1,23 @@
+
+.montseBlack{
+    font-family: 'Montserrat', sans-serif;
+    font-weight:900;
+    letter-spacing: .05em;
+}
+
+.montseBold
+{
+    font-family: 'Montserrat', sans-serif !important;
+    font-weight:600;
+}
+
+#mainTitle{
+    margin-top: 10%;
+    padding-top: 10%;
+    padding-bottom: 10%;
+}
+
+
 #logoVideoRow{
     margin-top: -20%;
     float: right; 
@@ -15,14 +35,36 @@
     padding: 0%;
 }
 
-#title{
+/* #title{
     margin:auto;
+} */
+
+.marginAuto{
+    margin:auto;
+}
+
+#recibimos{
+    margin: 5px;
+    margin-top: 15px;
+    /* margin-bottom: 5px;
+    margin-right: 150px;
+    margin-left: 80px; */ 
+    font-size: 14px;
+}
+
+.blue{
+    color: #002C55;
 }
 
 .blueBackground {
     background-color: #002C55;
     color: #ffffff;
 }
+
+p{
+    font-family: 'Roboto';
+}
+
 
 body {
     margin: 0;
@@ -98,7 +140,7 @@ body {
 }
 
 .totalContainer{
-    margin-top: 55px;
+    /* margin-top: 55px; */
     padding: 0;
     background-color: #F9F9F9;
 }
@@ -141,9 +183,17 @@ body {
     padding: 1em 0;
 }
 
+.size33{
+    font-size: 33px;
+}
+
+.size20{
+    font-size: 25px;
+}
+
 .heading h2 {
-    font-size: 2rem;
-    letter-spacing: .1em;
+    font-size: 33px;
+    letter-spacing: .05em;
     position: relative;
     padding-bottom: 15px;
 }
@@ -164,6 +214,7 @@ body {
 .info{
     /* padding-top: 5%; */
     margin: auto;
+    color: #000000;
 }
 
 .info-1{
@@ -225,3 +276,4 @@ body {
 .w-border{
     padding-top: 15px;
 }
+

@@ -35,19 +35,17 @@ class Home extends Component {
             height: hvideo
         }
         return (
-            <div>
+            <div className="blueBackground">
                 <Header />
                 <div className="totalContainer">
-                    <div>
+                    <div id="donar">
                         <Row id="mainRow" className="blueBackground">
-                            <Col id="title" lg={4} sm={12}>
-                                <Row>
+                            <Col id="title" className="marginAuto" lg={4} sm={12}>
+                                <Row id="mainTitle">
                                     <Col>
-                                        <h3>VOLUNTARIADO</h3>
-                                        <h2>BARRIO EL MILAGRO</h2>
-                                        <br></br>
-                                        <h5>AYUDANOS A AYUDAR</h5>
-                                        <br></br>
+                                        <h3 className="montseBold size20">VOLUNTARIADO</h3>
+                                        <h1 className="montseBlack size33">BARRIO EL MILAGRO</h1>
+
                                     </Col>
                                 </Row>
 
@@ -60,11 +58,11 @@ class Home extends Component {
 
                                     </Col>
                                 </Row>
-                                <Row>
-                                    <br></br>
-                                    <p>Recibimos materiales y elementos de construcción, alimentos, ropa y todo aquello que pueda colaborar con nuestra labor en el barrio.
-
-                                        También puede colaborar con dinero para que el voluntariado adquiera lo necesario para realizar las tareas solidarias. </p>
+                                <Row id="recibimos">
+                                    <Col className="marginAuto">
+                                        <h5 className="montseBold">AYUDANOS A AYUDAR</h5>
+                                        <p>Recibimos materiales y elementos de construcción, alimentos, ropa y todo aquello que pueda colaborar con nuestra labor en el barrio, incluso dinero.</p>
+                                    </Col>
                                 </Row>
 
                             </Col>
@@ -74,7 +72,7 @@ class Home extends Component {
                                     frameborder="0" />
                             </Col>
                         </Row>
-                            {/* <Row id="logoVideoRow">
+                        {/* <Row id="logoVideoRow">
                                 <img
                                     src={require('../images/logoVoluntariadoSinFondo.png')}
                                     alt={"voluntarios"} 
@@ -86,13 +84,12 @@ class Home extends Component {
                     <div>
 
                         <Container id="quienesSomos" fluid className="site-section heading">
-                            <Row className={"justify-content-md-center"} xs={1} md={2} >
+                            <Row id="quienesSomosRow" className={"justify-content-md-center"} xs={1} md={2} >
                                 <Col className={"info"}>
-                                    <h2>Quiénes somos</h2>
+                                    <h2 className="montseBlack blue">¿QUIENES SOMOS?</h2>
                                     <p>
                                         Somos un voluntariado perteneciente a la Universidad Católica de Córdoba conformado por todos aquellos que quieran ayudar sin importar la universidad en la que estudian.</p>
-                                    <h2>En dónde</h2>
-                                    <p>Los encuentros se llevan a cabo los días sábados de 9 a 13 hs en el barrio El Milagro, al lado de Ciudad Obispo Angelelli, Córdoba.</p>
+                                    <p> Los encuentros se llevan a cabo los días sábados de 9 a 13 hs en el barrio El Milagro, al lado de Ciudad Obispo Angelelli, Córdoba.donde ayudamos a la construcción de viviendas para aquellos que más necesitan una mano.</p>
                                 </Col>
                                 <Col>
                                     <iframe

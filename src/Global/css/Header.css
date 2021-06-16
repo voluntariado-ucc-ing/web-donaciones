@@ -1,7 +1,51 @@
+
+.nameBrand{
+    text-decoration: none;
+    color: #002C55;
+    /* padding: 19px 25px 13px;
+    margin-left: 15px;
+    margin-right: 15px; */
+  }
+  
+  .nameBrand:hover{
+    text-decoration: none;
+    color: #61b3e4;
+  }
+
+.leftAlign{
+  text-align: left;
+  align-items: flex-end;
+  vertical-align: bottom;
+  padding-left: 0;
+  margin: auto;
+
+}
+
+.montseBlack2{
+  font-family: 'Montserrat', sans-serif;
+  font-weight:900;
+  letter-spacing: .01em;
+  margin-bottom: 0;
+  font-size: 15px;
+}
+
+.montseBold2
+{
+    font-family: 'Montserrat', sans-serif !important;
+    font-weight:600;
+    margin-bottom: 0;
+    font-size: 12px;
+}
+
+
+.links{
+  margin-right: 20px;
+}
+
 .navbar {
   text-decoration-color: #002c55;
   background-color: #EEEEEE;
-  padding: 0 0 0 20vh;
+  padding: 0 0 0 10vh;
 }
 
 .links Link{
@@ -22,6 +66,8 @@
   text-decoration: none;
   color: rgb(59, 59, 59);
   padding: 19px 25px 13px;
+  margin-left: 15px;
+  margin-right: 15px;
 }
 
 .b2:hover{

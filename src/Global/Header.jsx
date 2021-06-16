@@ -5,25 +5,38 @@ import Navbar from "react-bootstrap/Navbar";
 import "././css/Header.css";
 import { Link } from "react-scroll";
 import iconoCatolica from "../images/iconoCatolica.svg";
+import logoVoluntariado from "../images/logoVoluntariadoSinFondo.png"
+import Col from "react-bootstrap/Col";
+import Row from "react-bootstrap/Row";
 
 class Header extends Component {
     render() {
         return (
             <div>
                 <Navbar variant="pills" className="navbar" fixed="top">
-                    <Navbar.Brand>
-                        <img
-                            alt="ucc"
-                            src={iconoCatolica}
-                            width="80"
-                            height="40"
-                            className="d-inline-block align-top"
-                        />
+                    <Navbar.Brand href="/">
+                        <Row>
+                            <Col>
+                                <img
+                                    alt="ucc"
+                                    src={logoVoluntariado}
+                                    width="50"
+                                    height="50"
+                                    className="d-inline-block align-top"
+                                />
+                            </Col>
+                            <Col className="leftAlign nameBrand">
+                                <h6 className="montseBold2" >VOLUNTARIADO</h6>
+                                <h5 className="montseBlack2">BARRIO EL MILAGRO</h5>
+                            </Col>
+                        </Row>
                     </Navbar.Brand>
                     <Nav className="ml-auto links">
+                        {/* <Nav.Link className="b2" href="#donar">Ayudar💗</Nav.Link>
+                        <Nav.Link className="b2" href="#quienesSomos">¿Quiénes somos?</Nav.Link> */}
                         <Link
-                            activeClass="active"
-                            to="intro"
+                            // activeClass="active"
+                            to="donar"
                             spy={true}
                             smooth={true}
                             offset={-64}
@@ -31,9 +44,9 @@ class Header extends Component {
                             delay={50}
                             href="/"
                             className="b2"
-                        >Inicio</Link>
+                        >Ayudar💗</Link>
                         <Link
-                            to="quienesSomos"
+                            to="quienesSomosRow"
                             spy={true}
                             smooth={true}
                             offset={-60}
@@ -41,8 +54,8 @@ class Header extends Component {
                             delay={50}
                             href="/"
                             className="b2"
-                        >Quiénes Somos</Link>
-                        <Link
+                        >¿Quiénes somos?</Link>
+                        {/* <Link
                             to="ayudanos"
                             spy={true}
                             smooth={true}
@@ -71,25 +84,24 @@ class Header extends Component {
                             delay={50}
                             href="/"
                             className="b2"
-                        >En dónde</Link>
+                        >En dónde</Link> */}
                     </Nav>
                 </Navbar>
-
                 <Nav defaultActiveKey="/home" className="flex-column">
                     <Navbar className={"mobile-menu"}>
                         <Navbar.Brand>
                             <img
                                 alt="ucc"
-                                src={iconoCatolica}
-                                width="80"
-                                height="40"
+                                src={logoVoluntariado}
+                                width="50"
+                                height="50"
                                 className="d-inline-block align-top"
                             />
                         </Navbar.Brand>
                         <ul>
                             <li>
                                 <Link activeClass="active"
-                                    to="intro"
+                                    to="donar"
                                     spy={true}
                                     smooth={true}
                                     offset={-64}
@@ -97,11 +109,11 @@ class Header extends Component {
                                     delay={50}
                                     href="/"
                                     className="b2"
-                                >Inicio</Link>
+                                >Ayudar💗</Link>
                             </li>
                             <li>
                                 <Link
-                                    to="quienesSomos"
+                                    to="quienesSomosRow"
                                     spy={true}
                                     smooth={true}
                                     offset={-64}
@@ -109,9 +121,9 @@ class Header extends Component {
                                     delay={50}
                                     href="/"
                                     className="b2"
-                                >Quiénes Somos</Link>
+                                >¿Quiénes Somos?</Link>
                             </li>
-                            <li>
+                            {/* <li>
                                 <Link
                                     to="ayudanos"
                                     spy={true}
@@ -146,7 +158,7 @@ class Header extends Component {
                                     href="/"
                                     className="b2"
                                 >En dónde</Link>
-                            </li>
+                            </li> */}
                         </ul>
                     </Navbar>
                 </Nav>
