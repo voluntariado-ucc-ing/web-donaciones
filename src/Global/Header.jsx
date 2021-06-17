@@ -44,7 +44,7 @@ class Header extends Component {
                             delay={50}
                             href="/"
                             className="b2"
-                        >Ayudar💗</Link>
+                        >Ayudar</Link>
                         <Link
                             to="quienesSomosRow"
                             spy={true}

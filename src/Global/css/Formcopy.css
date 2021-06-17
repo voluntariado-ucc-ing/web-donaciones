@@ -1,6 +1,14 @@
+.smallText{
+  font-size: small;
+}
+
 .donorDiv{
   width: 150%;
   margin-left: -20%;
+}
+
+.donorContainer{
+  width: 400px;
 }
 
 #background{

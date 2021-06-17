@@ -49,13 +49,13 @@ class NewDonor extends Component {
 
     //Funciones de phone
     validatePhone = () => {
-        
+
         let phoneErrorMessage = "";
 
         if (this.props.phone === undefined || !(this.props.phone.length > 12 && this.props.phone.length < 16) || !(this.props.phone)) {
             phoneErrorMessage = "Ingrese su telefono.";
         }
-        
+
         if (phoneErrorMessage) {
             this.setState({ phoneErrorMessage: phoneErrorMessage });
             return false;
@@ -63,17 +63,17 @@ class NewDonor extends Component {
         return true;
     };
 
-     //Funciones de nombre
-     validateName = () => {
-    
+    //Funciones de nombre
+    validateName = () => {
+
         let firstNameErrorMessage = "";
 
-        if ( this.props.firstName === undefined  || !(this.props.firstName)) {
+        if (this.props.firstName === undefined || !(this.props.firstName)) {
             firstNameErrorMessage = "Ingrese su nombre.";
         }
-        
+
         if (firstNameErrorMessage) {
-            this.setState({firstNameErrorMessage: firstNameErrorMessage });
+            this.setState({ firstNameErrorMessage: firstNameErrorMessage });
             return false;
         }
 
@@ -82,15 +82,15 @@ class NewDonor extends Component {
 
     //Funciones de apellido
     validateLastName = () => {
-    
+
         let lastNameErrorMessage = "";
 
-        if (this.props.lastName === undefined  || !(this.props.lastName)) {
+        if (this.props.lastName === undefined || !(this.props.lastName)) {
             lastNameErrorMessage = "Ingrese su apellido.";
         }
 
         if (lastNameErrorMessage) {
-            this.setState({lastNameErrorMessage: lastNameErrorMessage });
+            this.setState({ lastNameErrorMessage: lastNameErrorMessage });
             return false;
         }
 
@@ -105,14 +105,15 @@ class NewDonor extends Component {
         const isNameValid = this.validateName();
         const isLastNameValid = this.validateLastName();
         console.log("continue NewDonor2")
-        if (isValid ) {
-            if(isNameValid){ 
-                if(isLastNameValid){
+        if (isValid) {
+            if (isNameValid) {
+                if (isLastNameValid) {
                     console.log("continue NewDonor3")
                     this.submit();
                     console.log("continue NewDonor4")
                 }
-        }}
+            }
+        }
     };
 
     back = (e) => {
@@ -131,19 +132,20 @@ class NewDonor extends Component {
         //const nameError = this.state.firstNameErrorMessage !== ' ' && firstName === ' '
         //const surnameError = this.state.lastNameErrorMessage !== '' && lastName === ''
         //Constantes de phone
-        const errorName =  (firstName === undefined) || (this.state.firstNameErrorMessage !== '') 
-        const errorLastName = (lastName === undefined) || (this.state.lastNameErrorMessage !== '') 
+        const errorName = (firstName === undefined) || (this.state.firstNameErrorMessage !== '')
+        const errorLastName = (lastName === undefined) || (this.state.lastNameErrorMessage !== '')
         const errorPhone = (phone === undefined) || (this.state.phoneErrorMessage !== '') || !(phone.length > "7" && phone.length < "16") || !phone
         const errorEmail = this.state.emailErrorMessage !== '' && !emailRegex.test(email)
         const errorEmailC = (this.state.emailConfirmErrorMessage !== '') && !(emailConfirm === email && emailConfirm !== '')
 
-    
+
         return (
-            <div className="donorDiv">
-                <h4>Primera donación</h4>
-                <h5>Datos de contacto</h5>
-                <br />
-                {/* Names */}
+            <div>
+                <Container className="donorContainer">
+                    <h4>Primera donación</h4>
+                    <h5>Datos de contacto</h5>
+                    <br />
+                    {/* Names */}
                     <Form.Group id="formEmail">
                         <Form.Label>Email *</Form.Label>
                         <Form.Control
@@ -190,6 +192,7 @@ class NewDonor extends Component {
                             {errorLastName ? this.state.lastNameErrorMessage : null}
                         </div>
                     </Form.Group>
+                    
 
                     {/* <div className="bottomButton">
 					<Button onClick={this.back}
@@ -212,6 +215,9 @@ class NewDonor extends Component {
                         {errorPhone ? this.state.phoneErrorMessage : null}
                     </div>
                     <br />
+                    <p className="smallText">
+                        Los datos proporcionados solo serán utilizados con fines de contacto, siempre referido a las donaciones realizadas por el usuario.
+                    </p>
                     <div className="bottomButton">
                         <Button onClick={this.back}
                             className="backButton btn"
@@ -224,6 +230,7 @@ class NewDonor extends Component {
                             color="primary"
                         >Enviar mis datos</Button>
                     </div>
+                </Container>
             </div>
         );
 

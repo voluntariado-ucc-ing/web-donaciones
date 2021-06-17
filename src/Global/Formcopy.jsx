@@ -38,6 +38,7 @@ class Formulario extends Component {
             donationStep: 0,
             alreadyDonate: false,
             firstDonationCreated: false,
+            needUpdate: false,
 
             //PersonalInfo
             firstName: "",
@@ -45,6 +46,7 @@ class Formulario extends Component {
             email: "",
             emailConfirm: "",
             phone: "",
+            
         };
     }
 
@@ -103,6 +105,7 @@ class Formulario extends Component {
                         nextStep={this.nextStep2}
                         //prevStep={this.prevStepNuevoDonante} 
                         handleChange={this.handleChange}
+                        handleChangeUpdateDonor={this.handleChangeUpdateDonor}
                         handlePhone={this.handlePhone}
                         email={this.state.email}
                         firstName={this.state.firstName}
@@ -346,6 +349,13 @@ class Formulario extends Component {
     handleChange = input => (e) => {
         e.preventDefault();
         this.setState({ [input]: e.target.value })
+    };
+
+    handleChangeUpdateDonor = input => (e) => {
+        e.preventDefault();
+        this.setState({ [input]: e.target.value })
+        this.setState({ needUpdate: true })
+        console.log(this.needUpdate)
     };
 
     //guardado de telefono
