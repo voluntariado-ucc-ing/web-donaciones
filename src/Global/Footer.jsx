@@ -22,7 +22,7 @@ class Footer extends Component {
                 <Container fluid className={"site-section heading site-color how computer-footer"}>
                     <div class="Title">
                         <Row>
-                            <h5>Voluntariado Barrio El Milagro</h5>
+                            <h4>Voluntariado Barrio El Milagro</h4>
                         </Row>
                     </div>
                     <div>
@@ -107,6 +107,7 @@ class Footer extends Component {
                             <p className={"text-light"}>
                                 Excel voluntarios
                             </p>
+                            <h5>tel:+5493514938000; 510</h5>
                         </a>
                 </Container>
             </div >

@@ -22,21 +22,25 @@
 
 .how p{
     align-content: center;
-    font-size: x-small;
-    font-family: 'Montserrat', sans-serif;;
+    font-size: small;
+    font-family: 'Roboto', sans-serif;
+}
+
+.how h4{
+    width: 80%;
+    margin-left: 10%;
+    font-family: 'Roboto', sans-serif;
+    font-size: mediums;
 }
 
 .how h5{
     width: 80%;
     margin-left: 10%;
-    font-family: 'Montserrat', sans-serif;
-    font-size: mediums;
+    font-family: 'Roboto', sans-serif;
+    font-size: small;
 }
 
 .how h6{
-    width: 80%;
-    margin-left: 10%;
-    font-family: 'Montserrat', sans-serif;
     font-size: small;
 }
 
