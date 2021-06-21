@@ -38,7 +38,6 @@ class Formulario extends Component {
             donationStep: 0,
             alreadyDonate: false,
             firstDonationCreated: false,
-            needUpdate: false,
 
             //PersonalInfo
             firstName: "",
@@ -46,7 +45,9 @@ class Formulario extends Component {
             email: "",
             emailConfirm: "",
             phone: "",
-            
+            firstNameBD: "",
+            lastNameBD: "",
+            phoneBD:""
         };
     }
 
@@ -107,10 +108,14 @@ class Formulario extends Component {
                         handleChange={this.handleChange}
                         handleChangeUpdateDonor={this.handleChangeUpdateDonor}
                         handlePhone={this.handlePhone}
+                        updateBDValues={this.updateBDValues}
                         email={this.state.email}
                         firstName={this.state.firstName}
                         lastName={this.state.lastName}
                         phone={this.state.phone}
+                        firstNameBD={this.state.firstNameBD}
+                        lastNameBD={this.state.lastNameBD}
+                        phoneBD={this.state.phoneBD}
 
                     // emailConfirm={this.state.emailConfirm}
 
@@ -341,8 +346,11 @@ class Formulario extends Component {
         this.setState({ phone: phone })
         this.setState({ lastName: lastName })
         this.setState({ firstName: firstName })
+        this.setState({ phoneBD: phone })
+        this.setState({ lastNameBD: lastName })
+        this.setState({ firstNameBD: firstName })
         console.log("handleUserInfo")
-        console.log(this.lastName)
+    
     }
 
     //guardado de datos
@@ -354,8 +362,6 @@ class Formulario extends Component {
     handleChangeUpdateDonor = input => (e) => {
         e.preventDefault();
         this.setState({ [input]: e.target.value })
-        this.setState({ needUpdate: true })
-        console.log(this.needUpdate)
     };
 
     //guardado de telefono
@@ -376,6 +382,14 @@ class Formulario extends Component {
         updateDonations[id].state.isNoConventional = isNoConventional;
         this.setState({ donations: updateDonations })
     };
+
+    updateBDValues = () => {
+        this.setState({ firstNameBD: this.state.firstName})
+        this.setState({ lastNameBD: this.state.lastName})
+        this.setState({ phoneBD: this.state.phone})
+    }
+
+
 
     //crea nueva donacion done y las carga en un array don
     //donationStep hace referencia al paso entre los distintos id de donations

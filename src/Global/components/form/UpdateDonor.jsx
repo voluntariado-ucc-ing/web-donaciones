@@ -17,9 +17,6 @@ const initialState = {
     emailErrorMessage: "",
     emailConfirmErrorMessage: "",
     phoneErrorMessage: "",
-    initialFirstName: "",
-    initialLastName: "",
-    initialPhone: ""
 };
 
 let emailRegex;
@@ -35,24 +32,27 @@ class UpdateDonor extends Component {
 
     submit = (e) => {
         e.preventDefault()
+        console.log(this.props.firstName)
+        console.log(this.props.firstNameBD)
         //Creo al objeto del donante, ojo que sacamos los all
-        if (this.props.needUpdate) {
-            console.log("se actualiza")
-        }
-        else
+        if ((this.props.firstNameBD === this.props.firstName) && (this.props.phoneBD === this.props.phone) && (this.props.lastNameBD === this.props.lastName)) {
             console.log("no se actualiza")
-        let donator = {
-            "first_name": this.props.firstName,
-            "last_name": this.props.lastName,
-            "email": this.props.email,
-            "phone_number": this.props.phone
         }
+        else {
+            console.log("se actualiza")
+            let donator = {
+                "first_name": this.props.firstName,
+                "last_name": this.props.lastName,
+                "email": this.props.email,
+                "phone_number": this.props.phone
+            }
 
-        //Creo el objeto a persistir con lo de arriba
-        let jsonFinal = { donator }
+            //Creo el objeto a persistir con lo de arriba
+            let jsonFinal = { donator }
 
-
-        axios.post(`donations/createdonor`, JSON.stringify(jsonFinal))
+            axios.post(`donations/editdonor`, JSON.stringify(jsonFinal))
+            this.props.updateBDValues()
+        }
         this.props.nextStep();
     }
 
